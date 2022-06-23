@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,879 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">linux常用命令大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-28 14:01:26 / 修改时间：14:16:13" itemprop="dateCreated datePublished" datetime="2022-05-28T14:01:26+08:00">2022-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="x2F-系统信息"><a href="#x2F-系统信息" class="headerlink" title="&#x2F;系统信息"></a>&#x2F;系统信息</h2><p>arch 显示机器的处理器架构</p>
+<p>uname -m 显示机器的处理器架构</p>
+<p>uname -r 显示正在使用的内核版本</p>
+<p>dmidecode -q 显示硬件系统部件 - (SMBIOS &#x2F; DMI) </p>
+<p>hdparm -i &#x2F;dev&#x2F;hda 罗列一个磁盘的架构特性 </p>
+<p>hdparm -tT &#x2F;dev&#x2F;sda 在磁盘上执行测试性读取操作 </p>
+<p>cat &#x2F;proc&#x2F;cpuinfo 显示CPU info的信息</p>
+<p>cat &#x2F;proc&#x2F;interrupts 显示中断 </p>
+<p>cat &#x2F;proc&#x2F;meminfo 校验内存使用 </p>
+<p>cat &#x2F;proc&#x2F;swaps 显示哪些swap被使用</p>
+<p>cat &#x2F;proc&#x2F;version 显示内核的版本 </p>
+<p>cat &#x2F;proc&#x2F;net&#x2F;dev 显示网络适配器及统计 </p>
+<p>cat &#x2F;proc&#x2F;mounts 显示已加载的文件系统 </p>
+<p>lspci -tv 罗列 PCI 设备 </p>
+<p>lsusb -tv 显示 USB 设备 </p>
+<p>date 显示系统日期</p>
+<p>cal 2007 显示2007年的日历表 </p>
+<p>date 041217002007.00 设置日期和时间 - 月日时分年.秒 </p>
+<p>clock -w 将时间修改保存到 BIOS </p>
+<h1 id="关机-系统的关机、重启以及登出"><a href="#关机-系统的关机、重启以及登出" class="headerlink" title="关机 (系统的关机、重启以及登出 )"></a>关机 (系统的关机、重启以及登出 )</h1><p>shutdown -h now 关闭系统</p>
+<p>init 0 关闭系统</p>
+<p>telinit 0 关闭系统</p>
+<p>shutdown -h hours:minutes &amp; 按预定时间关闭系统 </p>
+<p>shutdown -c 取消按预定时间关闭系统</p>
+<p>shutdown -r now 重启</p>
+<p>reboot 重启</p>
+<p>logout 注销</p>
+<h1 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h1><p>cd &#x2F;home 进入 ‘&#x2F; home’ 目录’ </p>
+<p>cd .. 返回上一级目录</p>
+<p>cd ..&#x2F;.. 返回上两级目录</p>
+<p>cd 进入个人的主目录</p>
+<p>cd ~user1 进入个人的主目录</p>
+<p>cd - 返回上次所在的目录</p>
+<p>pwd 显示工作路径</p>
+<p>ls 查看目录中的文件</p>
+<p>ls -F 查看目录中的文件</p>
+<p>ls -l 显示文件和目录的详细资料</p>
+<p>ls -a 显示隐藏文件</p>
+<p>ls <em>[0-9]</em> 显示包含数字的文件名和目录名</p>
+<p>tree 显示文件和目录由根目录开始的树形结构</p>
+<p>lstree 显示文件和目录由根目录开始的树形结构</p>
+<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’ </p>
+<p>mkdir dir1 dir2 同时创建两个目录 </p>
+<p>mkdir -p &#x2F;tmp&#x2F;dir1&#x2F;dir2 创建一个目录树 </p>
+<p>rm -f file1 删除一个叫做 ‘file1’ 的文件’ </p>
+<p>rmdir dir1 删除一个叫做 ‘dir1’ 的目录’ </p>
+<p>rm -rf dir1 删除一个叫做 ‘dir1’ 的目录并同时删除其内容</p>
+<p>rm -rf dir1 dir2 同时删除两个目录及它们的内容 </p>
+<p>mv dir1 new_dir 重命名&#x2F;移动 一个目录 </p>
+<p>cp file1 file2 复制一个文件 </p>
+<p>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录</p>
+<p>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录 </p>
+<p>cp -a dir1 dir2 复制一个目录 </p>
+<p>cp -r dir1 dir2 复制一个目录及子目录</p>
+<p>ln -s file1 lnk1 创建一个指向文件或目录的软链接 </p>
+<p>ln file1 lnk1 创建一个指向文件或目录的物理链接 </p>
+<p>touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm) </p>
+<p>file file1 outputs the mime type of the file as text </p>
+<p>iconv -l 列出已知的编码</p>
+<p>iconv -f fromEncoding -t toEncoding inputFile &gt; outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding. </p>
+<p>find . -maxdepth 1 -name *.jpg -print -exec convert “{}” -resize 80x60 “thumbs&#x2F;{}” ; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick) </p>
+<h1 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h1><p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录</p>
+<p>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录 </p>
+<p>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件</p>
+<p>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件</p>
+<p>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件</p>
+<p>find &#x2F; -name *.rpm -exec chmod 755 ‘{}’ ; 搜索以 ‘.rpm’ 结尾的文件并定义其权限 </p>
+<p>find &#x2F; -xdev -name *.rpm 搜索以 ‘.rpm’ 结尾的文件，忽略光驱、捷盘等可移动设备</p>
+<p>locate *.ps 寻找以 ‘.ps’ 结尾的文件 - 先运行 ‘updatedb’ 命令 </p>
+<p>whereis halt 显示一个二进制文件、源码或man的位置 </p>
+<p>which halt 显示一个二进制文件或可执行文件的完整路径</p>
+<h1 id="挂载一个文件系统"><a href="#挂载一个文件系统" class="headerlink" title="挂载一个文件系统"></a>挂载一个文件系统</h1><p>mount &#x2F;dev&#x2F;hda2 &#x2F;mnt&#x2F;hda2 挂载一个叫做hda2的盘 - 确定目录 ‘&#x2F; mnt&#x2F;hda2’ 已经存在 </p>
+<p>umount &#x2F;dev&#x2F;hda2 卸载一个叫做hda2的盘 - 先从挂载点 ‘&#x2F; mnt&#x2F;hda2’ 退出 </p>
+<p>fuser -km &#x2F;mnt&#x2F;hda2 当设备繁忙时强制卸载 </p>
+<p>umount -n &#x2F;mnt&#x2F;hda2 运行卸载操作而不写入 &#x2F;etc&#x2F;mtab 文件- 当文件为只读或当磁盘写满时非常有用</p>
+<p>mount &#x2F;dev&#x2F;fd0 &#x2F;mnt&#x2F;floppy 挂载一个软盘 </p>
+<p>mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom 挂载一个cdrom或dvdrom </p>
+<p>mount &#x2F;dev&#x2F;hdc &#x2F;mnt&#x2F;cdrecorder 挂载一个cdrw或dvdrom </p>
+<p>mount &#x2F;dev&#x2F;hdb &#x2F;mnt&#x2F;cdrecorder 挂载一个cdrw或dvdrom </p>
+<p>mount -o loop file.iso &#x2F;mnt&#x2F;cdrom 挂载一个文件或ISO镜像文件</p>
+<p>mount -t vfat &#x2F;dev&#x2F;hda5 &#x2F;mnt&#x2F;hda5 挂载一个Windows FAT32文件系统 </p>
+<p>mount &#x2F;dev&#x2F;sda1 &#x2F;mnt&#x2F;usbdisk 挂载一个usb 捷盘或闪存设备</p>
+<p>mount -t smbfs -o username&#x3D;user,password&#x3D;pass &#x2F;&#x2F;WinClient&#x2F;share &#x2F;mnt&#x2F;share 挂载一个windows网络共享 </p>
+<h1 id="磁盘空间"><a href="#磁盘空间" class="headerlink" title="磁盘空间"></a>磁盘空间</h1><p>df -h 显示已经挂载的分区列表</p>
+<p>ls -lSr |more 以尺寸大小排列文件和目录 </p>
+<p>du -sh dir1 估算目录 ‘dir1’ 已经使用的磁盘空间’ </p>
+<p>du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小 </p>
+<p>rpm -q -a –qf ‘%10{SIZE}t%{NAME}n’ | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统) </p>
+<p>dpkg-query -W -f&#x3D;’${Installed-Size;10}t${Package}n’ | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统) </p>
+<h1 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h1><p>groupadd group_name 创建一个新用户组 </p>
+<p>groupdel group_name 删除一个用户组 </p>
+<p>groupmod -n new_group_name old_group_name 重命名一个用户组 </p>
+<p>useradd -c “Name Surname “ -g admin -d &#x2F;home&#x2F;user1 -s &#x2F;bin&#x2F;bash user1 创建一个属于 “admin” 用户组的用户 </p>
+<p>useradd user1 创建一个新用户 </p>
+<p>userdel -r user1 删除一个用户 ( ‘-r’ 排除主目录) </p>
+<p>usermod -c “User FTP” -g system -d &#x2F;ftp&#x2F;user1 -s &#x2F;bin&#x2F;nologin user1 修改用户属性</p>
+<p>passwd 修改口令</p>
+<p>passwd user1 修改一个用户的口令 (只允许root执行) </p>
+<p>chage -E 2005-12-31 user1 设置用户口令的失效期限 </p>
+<p>pwck 检查 ‘&#x2F;etc&#x2F;passwd’ 的文件格式和语法修正以及存在的用户</p>
+<p>grpck 检查 ‘&#x2F;etc&#x2F;passwd’ 的文件格式和语法修正以及存在的群组</p>
+<p>newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 </p>
+<h1 id="文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</h1><p>ls -lh 显示权限</p>
+<p>ls &#x2F;tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示</p>
+<p>chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 </p>
+<p>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限</p>
+<p>chown user1 file1 改变一个文件的所有人属性 </p>
+<p>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 </p>
+<p>chgrp group1 file1 改变文件的群组 </p>
+<p>chown user1:group1 file1 改变一个文件的所有人和群组属性 </p>
+<p>find &#x2F; -perm -u+s 罗列一个系统中所有使用了SUID控制的文件 </p>
+<p>chmod u+s &#x2F;bin&#x2F;file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限</p>
+<p>chmod u-s &#x2F;bin&#x2F;file1 禁用一个二进制文件的 SUID位 </p>
+<p>chmod g+s &#x2F;home&#x2F;public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的</p>
+<p>chmod g-s &#x2F;home&#x2F;public 禁用一个目录的 SGID 位 </p>
+<p>chmod o+t &#x2F;home&#x2F;public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件</p>
+<p>chmod o-t &#x2F;home&#x2F;public 禁用一个目录的 STIKY 位 </p>
+<h1 id="文件的特殊属性-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的特殊属性-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的特殊属性 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的特殊属性 - 使用 “+” 设置权限，使用 “-“ 用于取消</h1><p>chattr +a file1 只允许以追加方式读写文件 </p>
+<p>chattr +c file1 允许这个文件能被内核自动压缩&#x2F;解压 </p>
+<p>chattr +d file1 在进行文件系统备份时，dump程序将忽略这个文件 </p>
+<p>chattr +i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接 </p>
+<p>chattr +s file1 允许一个文件被安全地删除 </p>
+<p>chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘 </p>
+<p>chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件 </p>
+<p>lsattr 显示特殊的属性</p>
+<h1 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h1><p>bunzip2 file1.bz2 解压一个叫做 ‘file1.bz2’的文件 </p>
+<p>bzip2 file1 压缩一个叫做 ‘file1’ 的文件 </p>
+<p>gunzip file1.gz 解压一个叫做 ‘file1.gz’的文件 </p>
+<p>gzip file1 压缩一个叫做 ‘file1’的文件 </p>
+<p>gzip -9 file1 最大程度压缩 </p>
+<p>rar a file1.rar test_file 创建一个叫做 ‘file1.rar’ 的包 </p>
+<p>rar a file1.rar file1 file2 dir1 同时压缩 ‘file1’, ‘file2’ 以及目录 ‘dir1’ </p>
+<p>rar x file1.rar 解压rar包</p>
+<p>unrar x file1.rar 解压rar包</p>
+<p>tar -cvf archive.tar file1 创建一个非压缩的 tarball </p>
+<p>tar -cvf archive.tar file1 file2 dir1 创建一个包含了 ‘file1’, ‘file2’ 以及 ‘dir1’的档案文件</p>
+<p>tar -tf archive.tar 显示一个包中的内容 </p>
+<p>tar -xvf archive.tar 释放一个包 </p>
+<p>tar -xvf archive.tar -C &#x2F;tmp 将压缩包释放到 &#x2F;tmp目录下</p>
+<p>tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包</p>
+<p>tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包</p>
+<p>tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包</p>
+<p>tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包</p>
+<p>zip file1.zip file1 创建一个zip格式的压缩包</p>
+<p>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 </p>
+<p>unzip file1.zip 解压一个zip格式压缩包</p>
+<h1 id="扩展名-zst表示存档由zstd压缩。"><a href="#扩展名-zst表示存档由zstd压缩。" class="headerlink" title="扩展名.zst表示存档由zstd压缩。"></a>扩展名.zst表示存档由zstd压缩。</h1><p>tar命令有一个选项-I（ - use-compress-program）来指定压缩&#x2F;解压缩命令。</p>
+<p>可以按照如下命令进行解压：</p>
+<p>$ tar -I zstd -xvf xxxx.tar.zst</p>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/172210/answer/274433">https://cloud.tencent.com/developer/ask/172210/answer/274433</a></p>
+<p>但是在执行tar -I zstd -xvf xxxx.tar.zst过程中遇到了如下问题：</p>
+<p>tar (child): zstd: Cannot exec: No such file or directory</p>
+<p>tar (child): Error is not recoverable: exiting now</p>
+<p>tar: Child returned status 2</p>
+<p>tar: Error is not recoverable: exiting now</p>
+<p>出现了这个是因为没有安装zstd包，需要手动安装这个安装包来解压zst</p>
+<p>ubuntu 系统可以直接通过下面命令进行安装</p>
+<p>$ sudo apt install zstd</p>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/clairedandan/p/13830908.html">https://www.cnblogs.com/clairedandan/p/13830908.html</a></p>
+<h1 id="RPM-包-（Fedora-Redhat及类似系统）"><a href="#RPM-包-（Fedora-Redhat及类似系统）" class="headerlink" title="RPM 包 - （Fedora, Redhat及类似系统）"></a>RPM 包 - （Fedora, Redhat及类似系统）</h1><p>rpm -ivh package.rpm 安装一个rpm包</p>
+<p>rpm -ivh –nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告</p>
+<p>rpm -U package.rpm 更新一个rpm包但不改变其配置文件</p>
+<p>rpm -F package.rpm 更新一个确定已经安装的rpm包 </p>
+<p>rpm -e package_name.rpm 删除一个rpm包</p>
+<p>rpm -qa 显示系统中所有已经安装的rpm包 </p>
+<p>rpm -qa | grep httpd 显示所有名称中包含 “httpd” 字样的rpm包</p>
+<p>rpm -qi package_name 获取一个已安装包的特殊信息 </p>
+<p>rpm -qg “System Environment&#x2F;Daemons” 显示一个组件的rpm包 </p>
+<p>rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表</p>
+<p>rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表</p>
+<p>rpm -q package_name –whatrequires 显示与一个rpm包存在依赖关系的列表</p>
+<p>rpm -q package_name –whatprovides 显示一个rpm包所占的体积</p>
+<p>rpm -q package_name –scripts 显示在安装&#x2F;删除期间所执行的脚本l </p>
+<p>rpm -q package_name –changelog 显示一个rpm包的修改历史</p>
+<p>rpm -qf &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf 确认所给的文件由哪个rpm包所提供 </p>
+<p>rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表 </p>
+<p>rpm –import &#x2F;media&#x2F;cdrom&#x2F;RPM-GPG-KEY 导入公钥数字证书 </p>
+<p>rpm –checksig package.rpm 确认一个rpm包的完整性</p>
+<p>rpm -qa gpg-pubkey 确认已安装的所有rpm包的完整性</p>
+<p>rpm -V package_name 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间</p>
+<p>rpm -Va 检查系统中所有已安装的rpm包- 小心使用 </p>
+<p>rpm -Vp package.rpm 确认一个rpm包还未安装</p>
+<p>rpm2cpio package.rpm | cpio –extract –make-directories <em>bin</em> 从一个rpm包运行可执行文件</p>
+<p>rpm -ivh &#x2F;usr&#x2F;src&#x2F;redhat&#x2F;RPMS&#x2F;<code>arch</code>&#x2F;package.rpm 从一个rpm源码安装一个构建好的包 </p>
+<p>rpmbuild –rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 </p>
+<h1 id="YUM-软件包升级器-（Fedora-RedHat及类似系统）"><a href="#YUM-软件包升级器-（Fedora-RedHat及类似系统）" class="headerlink" title="YUM 软件包升级器 - （Fedora, RedHat及类似系统）"></a>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</h1><p>yum install package_name 下载并安装一个rpm包</p>
+<p>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系</p>
+<p>yum update package_name.rpm 更新当前系统中所有安装的rpm包 </p>
+<p>yum update package_name 更新一个rpm包</p>
+<p>yum remove package_name 删除一个rpm包</p>
+<p>yum list 列出当前系统中安装的所有包</p>
+<p>yum search package_name 在rpm仓库中搜寻软件包</p>
+<p>yum clean packages 清理rpm缓存删除下载的包</p>
+<p>yum clean headers 删除所有头文件 </p>
+<p>yum clean all 删除所有缓存的包和头文件 </p>
+<h1 id="DEB-包-Debian-Ubuntu-以及类似系统"><a href="#DEB-包-Debian-Ubuntu-以及类似系统" class="headerlink" title="DEB 包 (Debian, Ubuntu 以及类似系统)"></a>DEB 包 (Debian, Ubuntu 以及类似系统)</h1><p>dpkg -i package.deb 安装&#x2F;更新一个 deb 包 </p>
+<p>dpkg -r package_name 从系统删除一个 deb 包</p>
+<p>dpkg -l 显示系统中所有已经安装的 deb 包 </p>
+<p>dpkg -l | grep httpd 显示所有名称中包含 “httpd” 字样的deb包</p>
+<p>dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 </p>
+<p>dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 </p>
+<p>dpkg –contents package.deb 显示尚未安装的一个包所提供的文件列表 </p>
+<p>dpkg -S &#x2F;bin&#x2F;ping 确认所给的文件由哪个deb包提供 </p>
+<h1 id="APT-软件工具-Debian-Ubuntu-以及类似系统"><a href="#APT-软件工具-Debian-Ubuntu-以及类似系统" class="headerlink" title="APT 软件工具 (Debian, Ubuntu 以及类似系统)"></a>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h1><p>apt-get install package_name 安装&#x2F;更新一个 deb 包 </p>
+<p>apt-cdrom install package_name 从光盘安装&#x2F;更新一个 deb 包 </p>
+<p>apt-get update 升级列表中的软件包 </p>
+<p>apt-get upgrade 升级所有已安装的软件 </p>
+<p>apt-get remove package_name 从系统删除一个deb包</p>
+<p>apt-get check 确认依赖的软件仓库正确 </p>
+<p>apt-get clean 从下载的软件包中清理缓存 </p>
+<p>apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 </p>
+<h1 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h1><p>cat file1 从第一个字节开始正向查看文件的内容</p>
+<p>tac file1 从最后一行开始反向查看一个文件的内容</p>
+<p>more file1 查看一个长文件的内容</p>
+<p>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作</p>
+<p>head -2 file1 查看一个文件的前两行 </p>
+<p>tail -2 file1 查看一个文件的最后两行 </p>
+<p>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
+<h1 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h1><p>cat file1 file2 … | command &lt;&gt; file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT </p>
+<p>cat file1 | command( sed, grep, awk, grep, etc…) &gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中</p>
+<p>cat file1 | command( sed, grep, awk, grep, etc…) &gt;&gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中</p>
+<p>grep Aug &#x2F;var&#x2F;log&#x2F;messages 在文件 ‘&#x2F;var&#x2F;log&#x2F;messages’中查找关键词”Aug” </p>
+<p>grep ^Aug &#x2F;var&#x2F;log&#x2F;messages 在文件 ‘&#x2F;var&#x2F;log&#x2F;messages’中查找以”Aug”开始的词汇 </p>
+<p>grep [0-9] &#x2F;var&#x2F;log&#x2F;messages 选择 ‘&#x2F;var&#x2F;log&#x2F;messages’ 文件中所有包含数字的行 </p>
+<p>grep Aug -R &#x2F;var&#x2F;log&#x2F;* 在目录 ‘&#x2F;var&#x2F;log’ 及随后的目录中搜索字符串”Aug” </p>
+<p>sed ‘s&#x2F;stringa1&#x2F;stringa2&#x2F;g’ example.txt 将example.txt文件中的 “string1” 替换成 “string2” </p>
+<p>sed ‘&#x2F;^$&#x2F;d’ example.txt 从example.txt文件中删除所有空白行</p>
+<p>sed ‘&#x2F; *#&#x2F;d; &#x2F;^$&#x2F;d’ example.txt 从example.txt文件中删除所有注释和空白行</p>
+<p>echo ‘esempio’ | tr ‘[:lower:]’ ‘[:upper:]’ 合并上下单元格内容 </p>
+<p>sed -e ‘1d’ result.txt 从文件example.txt 中排除第一行 </p>
+<p>sed -n ‘&#x2F;stringa1&#x2F;p’ 查看只包含词汇 “string1”的行 </p>
+<p>sed -e ‘s&#x2F; *$&#x2F;&#x2F;‘ example.txt 删除每一行最后的空白字符 </p>
+<p>sed -e ‘s&#x2F;stringa1&#x2F;&#x2F;g’ example.txt 从文档中只删除词汇 “string1” 并保留剩余全部 </p>
+<p>sed -n ‘1,5p;5q’ example.txt 查看从第一行到第5行内容</p>
+<p>sed -n ‘5p;5q’ example.txt 查看第5行</p>
+<p>sed -e ‘s&#x2F;00*&#x2F;0&#x2F;g’ example.txt 用单个零替换多个零 </p>
+<p>cat -n file1 标示文件的行数</p>
+<p>cat example.txt | awk ‘NR%2&#x3D;&#x3D;1’ 删除example.txt文件中的所有偶数行 </p>
+<p>echo a b c | awk ‘{print $1}’ 查看一行第一栏 </p>
+<p>echo a b c | awk ‘{print $1,$3}’ 查看一行的第一和第三栏 </p>
+<p>paste file1 file2 合并两个文件或两栏的内容 </p>
+<p>paste -d ‘+’ file1 file2 合并两个文件或两栏的内容，中间用”+”区分 </p>
+<p>sort file1 file2 排序两个文件的内容 </p>
+<p>sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) </p>
+<p>sort file1 file2 | uniq -u 删除交集，留下其他的行 </p>
+<p>sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) </p>
+<p>comm -1 file1 file2 比较两个文件的内容只删除 ‘file1’ 所包含的内容 </p>
+<p>comm -2 file1 file2 比较两个文件的内容只删除 ‘file2’ 所包含的内容 </p>
+<p>comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分 </p>
+<h1 id="字符设置和文件格式转换"><a href="#字符设置和文件格式转换" class="headerlink" title="字符设置和文件格式转换"></a>字符设置和文件格式转换</h1><p>dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX </p>
+<p>unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS </p>
+<p>recode ..HTML &lt; page.txt &gt; page.html 将一个文本文件转换成html </p>
+<p>recode -l | more 显示所有允许的转换格式 </p>
+<h1 id="文件系统分析"><a href="#文件系统分析" class="headerlink" title="文件系统分析"></a>文件系统分析</h1><p>badblocks -v &#x2F;dev&#x2F;hda1 检查磁盘hda1上的坏磁块</p>
+<p>fsck &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上linux文件系统的完整性</p>
+<p>fsck.ext2 &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上ext2文件系统的完整性</p>
+<p>e2fsck &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上ext2文件系统的完整性</p>
+<p>e2fsck -j &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上ext3文件系统的完整性</p>
+<p>fsck.ext3 &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上ext3文件系统的完整性</p>
+<p>fsck.vfat &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上fat文件系统的完整性</p>
+<p>fsck.msdos &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上dos文件系统的完整性</p>
+<p>dosfsck &#x2F;dev&#x2F;hda1 修复&#x2F;检查hda1磁盘上dos文件系统的完整性</p>
+<h1 id="初始化一个文件系统"><a href="#初始化一个文件系统" class="headerlink" title="初始化一个文件系统"></a>初始化一个文件系统</h1><p>mkfs &#x2F;dev&#x2F;hda1 在hda1分区创建一个文件系统</p>
+<p>mke2fs &#x2F;dev&#x2F;hda1 在hda1分区创建一个linux ext2的文件系统 </p>
+<p>mke2fs -j &#x2F;dev&#x2F;hda1 在hda1分区创建一个linux ext3(日志型)的文件系统 </p>
+<p>mkfs -t vfat 32 -F &#x2F;dev&#x2F;hda1 创建一个 FAT32 文件系统</p>
+<p>fdformat -n &#x2F;dev&#x2F;fd0 格式化一个软盘 </p>
+<p>mkswap &#x2F;dev&#x2F;hda3 创建一个swap文件系统</p>
+<h1 id="SWAP文件系统"><a href="#SWAP文件系统" class="headerlink" title="SWAP文件系统"></a>SWAP文件系统</h1><p>mkswap &#x2F;dev&#x2F;hda3 创建一个swap文件系统</p>
+<p>swapon &#x2F;dev&#x2F;hda3 启用一个新的swap文件系统</p>
+<p>swapon &#x2F;dev&#x2F;hda2 &#x2F;dev&#x2F;hdb3 启用两个swap分区</p>
+<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><p>dump -0aj -f &#x2F;tmp&#x2F;home0.bak &#x2F;home 制作一个 ‘&#x2F;home’ 目录的完整备份 </p>
+<p>dump -1aj -f &#x2F;tmp&#x2F;home0.bak &#x2F;home 制作一个 ‘&#x2F;home’ 目录的交互式备份 </p>
+<p>restore -if &#x2F;tmp&#x2F;home0.bak 还原一个交互式备份 </p>
+<p>rsync -rogpav –delete &#x2F;home &#x2F;tmp 同步两边的目录 </p>
+<p>rsync -rogpav -e ssh –delete &#x2F;home ip_address:&#x2F;tmp 通过SSH通道rsync </p>
+<p>rsync -az -e ssh –delete ip_addr:&#x2F;home&#x2F;public &#x2F;home&#x2F;local 通过ssh和压缩将一个远程目录同步到本地目录</p>
+<p>rsync -az -e ssh –delete &#x2F;home&#x2F;local ip_addr:&#x2F;home&#x2F;public 通过ssh和压缩将本地目录同步到远程目录</p>
+<p>dd bs&#x3D;1M if&#x3D;&#x2F;dev&#x2F;hda | gzip | ssh user@ip_addr ‘dd of&#x3D;hda.gz’ 通过ssh在远程主机上执行一次备份本地磁盘的操作</p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;sda of&#x3D;&#x2F;tmp&#x2F;file1 备份磁盘内容到一个文件 </p>
+<p>tar -Puf backup.tar &#x2F;home&#x2F;user 执行一次对 ‘&#x2F;home&#x2F;user’ 目录的交互式备份操作 </p>
+<p>( cd &#x2F;tmp&#x2F;local&#x2F; &amp;&amp; tar c . ) | ssh -C user@ip_addr ‘cd &#x2F;home&#x2F;share&#x2F; &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个目录内容</p>
+<p>( tar c &#x2F;home ) | ssh -C user@ip_addr ‘cd &#x2F;home&#x2F;backup-home &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个本地目录</p>
+<p>tar cf - . | (cd &#x2F;tmp&#x2F;backup ; tar xf - ) 本地将一个目录复制到另一个地方，保留原有权限及链接 </p>
+<p>find &#x2F;home&#x2F;user1 -name ‘*.txt’ | xargs cp -av –target-directory&#x3D;&#x2F;home&#x2F;backup&#x2F; –parents 从一个目录查找并复制所有以 ‘.txt’ 结尾的文件到另一个目录</p>
+<p>find &#x2F;var&#x2F;log -name ‘*.log’ | tar cv –files-from&#x3D;- | bzip2 &gt; log.tar.bz2 查找所有以 ‘.log’ 结尾的文件并做成一个bzip包 </p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;hda of&#x3D;&#x2F;dev&#x2F;fd0 bs&#x3D;512 count&#x3D;1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作 </p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;fd0 of&#x3D;&#x2F;dev&#x2F;hda bs&#x3D;512 count&#x3D;1 从已经保存到软盘的备份中恢复MBR内容 </p>
+<h1 id="光盘"><a href="#光盘" class="headerlink" title="光盘"></a>光盘</h1><p>cdrecord -v gracetime&#x3D;2 dev&#x3D;&#x2F;dev&#x2F;cdrom -eject blank&#x3D;fast -force 清空一个可复写的光盘内容</p>
+<p>mkisofs &#x2F;dev&#x2F;cdrom &gt; cd.iso 在磁盘上创建一个光盘的iso镜像文件 </p>
+<p>mkisofs &#x2F;dev&#x2F;cdrom | gzip &gt; cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件 </p>
+<p>mkisofs -J -allow-leading-dots -R -V “Label CD” -iso-level 4 -o .&#x2F;cd.iso data_cd 创建一个目录的iso镜像文件</p>
+<p>cdrecord -v dev&#x3D;&#x2F;dev&#x2F;cdrom cd.iso 刻录一个ISO镜像文件</p>
+<p>gzip -dc cd_iso.gz | cdrecord dev&#x3D;&#x2F;dev&#x2F;cdrom - 刻录一个压缩了的ISO镜像文件 </p>
+<p>mount -o loop cd.iso &#x2F;mnt&#x2F;iso 挂载一个ISO镜像文件</p>
+<p>cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中 </p>
+<p>cd-paranoia – “-3” 从一个CD光盘转录音轨到 wav 文件中（参数-3） </p>
+<p>cdrecord –scanbus 扫描总线以识别scsi通道</p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD </p>
+<h1 id="网络-（以太网和WIFI无线）"><a href="#网络-（以太网和WIFI无线）" class="headerlink" title="网络 - （以太网和WIFI无线）"></a>网络 - （以太网和WIFI无线）</h1><p>ifconfig eth0 显示一个以太网卡的配置 </p>
+<p>ifup eth0 启用一个 ‘eth0’ 网络设备 </p>
+<p>ifdown eth0 禁用一个 ‘eth0’ 网络设备 </p>
+<p>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址 </p>
+<p>ifconfig eth0 promisc 设置 ‘eth0’ 成混杂模式以嗅探数据包 (sniffing) </p>
+<p>dhclient eth0 以dhcp模式启用 ‘eth0’ </p>
+<p>route -n show routing table </p>
+<p>route add -net 0&#x2F;0 gw IP_Gateway configura default gateway </p>
+<p>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network ‘192.168.0.0&#x2F;16’ </p>
+<p>route del 0&#x2F;0 gw IP_gateway remove static route </p>
+<p>echo “1” &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward activate ip routing </p>
+<p>hostname show hostname of system </p>
+<p>host <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa</p>
+<p>nslookup <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa</p>
+<p>ip link show show link status of all interfaces </p>
+<p>mii-tool eth0 show link status of ‘eth0’ </p>
+<p>ethtool eth0 show statistics of network card ‘eth0’ </p>
+<p>netstat -tup show all active network connections and their PID </p>
+<p>netstat -tupl show all network services listening on the system and their PID </p>
+<p>tcpdump tcp port 80 show all HTTP traffic </p>
+<p>iwlist scan show wireless networks </p>
+<p>iwconfig eth1 show configuration of a wireless network card </p>
+<p>hostname show hostname </p>
+<p>host <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa </p>
+<p>nslookup <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa </p>
+<p>whois <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup on Whois database </p>
+<h1 id="JPS工具"><a href="#JPS工具" class="headerlink" title="JPS工具"></a>JPS工具</h1><p>jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux&#x2F;unix平台上简单察看当前java进程的一些简单情况。</p>
+<p>  我想很多人都是用过unix系统里的ps命令，这个命令主要是用来显示当前系统的进程情况，有哪些进程，及其 id。 jps 也是一样，它的作用是显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。</p>
+<p>   使用方法：在当前命令行下打 jps(需要JAVA_HOME，没有的话，到改程序的目录下打) 。</p>
+<p>jps存放在JAVA_HOME&#x2F;bin&#x2F;jps，使用时为了方便请将JAVA_HOME&#x2F;bin&#x2F;加入到Path.</p>
+<p>$&gt; jps</p>
+<p>23991 Jps</p>
+<p>23789 BossMain</p>
+<p>23651 Resin</p>
+<h1 id="比较常用的参数："><a href="#比较常用的参数：" class="headerlink" title="比较常用的参数："></a>比较常用的参数：</h1><p>-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数</p>
+<p>$&gt; jps -q</p>
+<p>28680</p>
+<p>23789</p>
+<p>23651</p>
+<p>-m 输出传递给main 方法的参数，在嵌入式jvm上可能是null</p>
+<p>$&gt; jps -m</p>
+<p>28715 Jps -m</p>
+<p>23789 BossMain</p>
+<p>23651 Resin -socketwait 32768 -stdout &#x2F;data&#x2F;aoxj&#x2F;resin&#x2F;log&#x2F;stdout.log -stderr &#x2F;data&#x2F;aoxj&#x2F;resin&#x2F;log&#x2F;stderr.log</p>
+<p>-l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名</p>
+<p>$&gt; jps -l</p>
+<p>28729 sun.tools.jps.Jps</p>
+<p>23789 com.asiainfo.aimc.bossbi.BossMain</p>
+<p>23651 com.caucho.server.resin.Resin</p>
+<p>-v 输出传递给JVM的参数</p>
+<p>$&gt; jps -v</p>
+<p>23789 BossMain</p>
+<p>28802 Jps -Denv.class.path&#x3D;&#x2F;data&#x2F;aoxj&#x2F;bossbi&#x2F;twsecurity&#x2F;java&#x2F;trustwork140.jar:&#x2F;data&#x2F;aoxj&#x2F;bossbi&#x2F;twsecurity&#x2F;java&#x2F;:&#x2F;data&#x2F;aoxj&#x2F;bossbi&#x2F;twsecurity&#x2F;java&#x2F;twcmcc.jar:&#x2F;data&#x2F;aoxj&#x2F;jdk15&#x2F;lib&#x2F;rt.jar:&#x2F;data&#x2F;aoxj&#x2F;jd</p>
+<p>k15&#x2F;lib&#x2F;tools.jar -Dapplication.home&#x3D;&#x2F;data&#x2F;aoxj&#x2F;jdk15 -Xms8m</p>
+<p>23651 Resin -Xss1m -Dresin.home&#x3D;&#x2F;data&#x2F;aoxj&#x2F;resin -Dserver.root&#x3D;&#x2F;data&#x2F;aoxj&#x2F;resin -Djava.util.logging.manager&#x3D;com.caucho.log.LogManagerImpl -</p>
+<p>Djavax.management.builder.initial&#x3D;com.caucho.jmx.MBeanServerBuilderImpl</p>
+<p>sudo jps看到的进程数量最全</p>
+<p>jps 192.168.0.77</p>
+<p>列出远程服务器192.168.0.77机器所有的jvm实例，采用rmi协议，默认连接端口为1099</p>
+<p>（前提是远程服务器提供jstatd服务）</p>
+<p>注：jps命令有个地方很不好，似乎只能显示当前用户的java进程，要显示其他用户的还是只能用unix&#x2F;linux的ps命令。</p>
+<p>转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yjd_hycf_space/p/7730690.html">https://www.cnblogs.com/yjd_hycf_space/p/7730690.html</a></p>
+<p>详细情况请参考sun官方文档。</p>
+<p><a target="_blank" rel="noopener" href="http://java.sun.com/j2se/1.7.0/docs/tooldocs/share/jps.html">http://java.sun.com/j2se/1.7.0/docs/tooldocs/share/jps.html</a></p>
+<p>(2) 修改字体和字体大小:</p>
+<p>cd &#x2F;lib&#x2F;kbd&#x2F;consolefonts    &#x2F;&#x2F;进入到有字体的目录</p>
+<p>ls                     &#x2F;&#x2F;查看所有字体</p>
+<p>setfont lat4-16+          &#x2F;&#x2F;设置所选字体，lat4-16+为一个字体名字</p>
+<p>echo ‘setfont lat4-16+’ &gt;&gt; &#x2F;etc&#x2F;bashrc     &#x2F;&#x2F;设置为开机默认</p>
+<p>(3) 修改分辨率</p>
+<p>首先打开一个文件：</p>
+<p>vi &#x2F;etc&#x2F;default&#x2F;grub</p>
+<p>在倒数第2行的 GRUB_CMDLINE_LINUX参数中的末尾添加以下内容：</p>
+<p>net.ifnames&#x3D;0 vga&#x3D;0x314</p>
+<p>将上面的文件保存退出。 </p>
+<p>执行下面的命令，重新生成目标文件：</p>
+<p>grub2-mkconfig &gt; &#x2F;boot&#x2F;grub2&#x2F;grub.cfg</p>
+<p>显示 done完成后，重启系统后生效：</p>
+<p>reboot</p>
+<h1 id="Iptables-x2F-firewalld"><a href="#Iptables-x2F-firewalld" class="headerlink" title="Iptables &#x2F; firewalld"></a>Iptables &#x2F; firewalld</h1><p>Centos7默认安装了firewalld，如果没有安装的话，可以使用 yum install firewalld firewalld-config进行安装。</p>
+<h2 id="1-启动防火墙"><a href="#1-启动防火墙" class="headerlink" title="1.启动防火墙"></a>1.启动防火墙</h2><p>systemctl start firewalld</p>
+<h2 id="2-禁用防火墙"><a href="#2-禁用防火墙" class="headerlink" title="2.禁用防火墙"></a>2.禁用防火墙</h2><p>systemctl stop firewalld</p>
+<h2 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h2><p>systemctl enable firewalld</p>
+<h2 id="4-停止并禁用开机启动"><a href="#4-停止并禁用开机启动" class="headerlink" title="4.停止并禁用开机启动"></a>4.停止并禁用开机启动</h2><p>sytemctl disable firewalld</p>
+<h2 id="5-重启防火墙"><a href="#5-重启防火墙" class="headerlink" title="5.重启防火墙"></a>5.重启防火墙</h2><p>systemctl restart firewalld</p>
+<p>firewall-cmd –reload</p>
+<h2 id="6-查看状态"><a href="#6-查看状态" class="headerlink" title="6.查看状态"></a>6.查看状态</h2><p>systemctl status firewalld或者 firewall-cmd –state</p>
+<h2 id="7-查看版本"><a href="#7-查看版本" class="headerlink" title="7.查看版本"></a>7.查看版本</h2><p>firewall-cmd –version</p>
+<h2 id="8-查看帮助"><a href="#8-查看帮助" class="headerlink" title="8.查看帮助"></a>8.查看帮助</h2><p>firewall-cmd –help</p>
+<h2 id="9-查看区域信息"><a href="#9-查看区域信息" class="headerlink" title="9.查看区域信息"></a>9.查看区域信息</h2><p>firewall-cmd –get-active-zones</p>
+<h2 id="10-查看指定接口所属区域信息"><a href="#10-查看指定接口所属区域信息" class="headerlink" title="10.查看指定接口所属区域信息"></a>10.查看指定接口所属区域信息</h2><p>firewall-cmd –get-zone-of-interface&#x3D;eth0</p>
+<h2 id="11-拒绝所有包"><a href="#11-拒绝所有包" class="headerlink" title="11.拒绝所有包"></a>11.拒绝所有包</h2><p>firewall-cmd –panic-on</p>
+<h2 id="12-取消拒绝状态"><a href="#12-取消拒绝状态" class="headerlink" title="12.取消拒绝状态"></a>12.取消拒绝状态</h2><p>firewall-cmd –panic-off</p>
+<h2 id="13-查看是否拒绝"><a href="#13-查看是否拒绝" class="headerlink" title="13.查看是否拒绝"></a>13.查看是否拒绝</h2><p>firewall-cmd –query-panic</p>
+<h2 id="14-将接口添加到区域-默认接口都在public"><a href="#14-将接口添加到区域-默认接口都在public" class="headerlink" title="14.将接口添加到区域(默认接口都在public)"></a>14.将接口添加到区域(默认接口都在public)</h2><p>firewall-cmd –zone&#x3D;public –add-interface&#x3D;eth0(永久生效再加上 –permanent 然后reload防火墙)</p>
+<h2 id="15-设置默认接口区域"><a href="#15-设置默认接口区域" class="headerlink" title="15.设置默认接口区域"></a>15.设置默认接口区域</h2><p>firewall-cmd –set-default-zone&#x3D;public(立即生效，无需重启)</p>
+<h2 id="16-更新防火墙规则"><a href="#16-更新防火墙规则" class="headerlink" title="16.更新防火墙规则"></a>16.更新防火墙规则</h2><p>firewall-cmd –reload或firewall-cmd –complete-reload(两者的区别就是第一个无需断开连接，就是firewalld特性之一动态</p>
+<p>添加规则，第二个需要断开连接，类似重启服务)</p>
+<h2 id="17-查看指定区域所有打开的端口"><a href="#17-查看指定区域所有打开的端口" class="headerlink" title="17.查看指定区域所有打开的端口"></a>17.查看指定区域所有打开的端口</h2><p>firewall-cmd –zone&#x3D;public –list-ports</p>
+<h2 id="18-在指定区域打开端口（记得重启防火墙）"><a href="#18-在指定区域打开端口（记得重启防火墙）" class="headerlink" title="18.在指定区域打开端口（记得重启防火墙）"></a>18.在指定区域打开端口（记得重启防火墙）</h2><p>firewall-cmd –zone&#x3D;public –add-port&#x3D;80&#x2F;tcp(永久生效再加上 –permanent)</p>
+<p>说明：</p>
+<p>–zone 作用域</p>
+<p>–add-port&#x3D;8080&#x2F;tcp 添加端口，格式为：端口&#x2F;通讯协议</p>
+<p>–permanent #永久生效，没有此参数重启后失效</p>
+<p>一、查看哪些端口被打开 netstat -anp</p>
+<p>二、关闭端口号:</p>
+<p>iptables -A OUTPUT -p tcp –dport 端口号-j DROP</p>
+<p>1</p>
+<p>三、打开端口号：</p>
+<p>iptables -A INPUT -ptcp –dport 端口号-j ACCEPT</p>
+<p>1</p>
+<p>四、保存设置</p>
+<p>service iptables save</p>
+<p>1</p>
+<p>五、以下是linux打开端口命令的使用方法。</p>
+<p>　　nc -lp 23 &amp;(打开23端口，即telnet)</p>
+<p>　　netstat -an | grep 23 (查看是否打开23端口)</p>
+<p>六、linux打开端口命令每一个打开的端口，都需要有相应的监听程序才可以</p>
+<p>检查更新防火墙规则：</p>
+<p>firewall-cmd –list-all</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/28/Linux%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/28/Linux%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">linux基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-28 12:57:51 / 修改时间：13:06:57" itemprop="dateCreated datePublished" datetime="2022-05-28T12:57:51+08:00">2022-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-Linux命令格式"><a href="#1-Linux命令格式" class="headerlink" title="1.Linux命令格式"></a>1.Linux命令格式</h1><p>命令名称 [命名参数] [命名对象]</p>
+<h2 id="（1）获取登录信息-w-x2F-who-x2F-last"><a href="#（1）获取登录信息-w-x2F-who-x2F-last" class="headerlink" title="（1）获取登录信息-w&#x2F;who&#x2F;last"></a>（1）获取登录信息-w&#x2F;who&#x2F;last</h2><p>who am i – 获取当前用户信息</p>
+<p>Logout&#x2F;exit – 登出当前用户</p>
+<p>w – 详细登录信息</p>
+<p>last – 历史登录信息</p>
+<h2 id="2-History-历史命令-c-清除历史"><a href="#2-History-历史命令-c-清除历史" class="headerlink" title="(2) History - 历史命令 -c 清除历史"></a>(2) History - 历史命令 -c 清除历史</h2><h2 id="3-Wget-通过网络获取文件"><a href="#3-Wget-通过网络获取文件" class="headerlink" title="(3) Wget - 通过网络获取文件"></a>(3) Wget - 通过网络获取文件</h2><p>-O 重命名下载的文件</p>
+<p>例如：wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tar.xz</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</span><br><span class="line">tar -xvf Python-3.8.0a1.tgz</span><br></pre></td></tr></table></figure>
+
+<p> wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tgz</a></p>
+<h2 id="4-Xz-z-压缩-d-解压缩"><a href="#4-Xz-z-压缩-d-解压缩" class="headerlink" title="(4) Xz -z 压缩 -d 解压缩"></a>(4) Xz -z 压缩 -d 解压缩</h2><h2 id="5-Tar-xvf解归档-cvf-创建归档文件"><a href="#5-Tar-xvf解归档-cvf-创建归档文件" class="headerlink" title="(5) Tar -xvf解归档 -cvf 创建归档文件"></a>(5) Tar -xvf解归档 -cvf 创建归档文件</h2><h2 id="6-Cat-n-添加行号-cat-n-taobao-html-more"><a href="#6-Cat-n-添加行号-cat-n-taobao-html-more" class="headerlink" title="(6) Cat -n 添加行号 cat -n taobao.html | more"></a>(6) Cat -n 添加行号 cat -n taobao.html | more</h2><h2 id="7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"><a href="#7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）" class="headerlink" title="(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"></a>(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）</h2><h2 id="8-2-gt-错误输出重定向"><a href="#8-2-gt-错误输出重定向" class="headerlink" title="(8) 2&gt; - 错误输出重定向"></a>(8) 2&gt; - 错误输出重定向</h2><h2 id="9-2-gt-gt-错误追加输出重定向"><a href="#9-2-gt-gt-错误追加输出重定向" class="headerlink" title="(9) 2&gt;&gt; - 错误追加输出重定向"></a>(9) 2&gt;&gt; - 错误追加输出重定向</h2><h2 id="10-Nginx-Web服务器（HTTP服务器）-x2F-反向代理服务器"><a href="#10-Nginx-Web服务器（HTTP服务器）-x2F-反向代理服务器" class="headerlink" title="(10) Nginx - Web服务器（HTTP服务器）&#x2F;反向代理服务器"></a>(10) Nginx - Web服务器（HTTP服务器）&#x2F;反向代理服务器</h2><p>nginx 启用</p>
+<p>Nginx -s stop 停止</p>
+<h2 id="11-Yum-list-installed-grep-nginx-–-grep查询字符串"><a href="#11-Yum-list-installed-grep-nginx-–-grep查询字符串" class="headerlink" title="(11) Yum list installed | grep nginx – grep查询字符串"></a>(11) Yum list installed | grep nginx – grep查询字符串</h2><h2 id="12-Yum-y-–自动同意所有询问"><a href="#12-Yum-y-–自动同意所有询问" class="headerlink" title="(12) Yum -y –自动同意所有询问"></a>(12) Yum -y –自动同意所有询问</h2><h2 id="13-Gcc-–version-C语言编译器"><a href="#13-Gcc-–version-C语言编译器" class="headerlink" title="(13) Gcc –version C语言编译器"></a>(13) Gcc –version C语言编译器</h2><h2 id="14-源代码构建安装Python解释器"><a href="#14-源代码构建安装Python解释器" class="headerlink" title="(14) 源代码构建安装Python解释器"></a>(14) 源代码构建安装Python解释器</h2><p>下载: wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz">https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</a></p>
+<p>解压缩和解归档：xz -d xxx.xz&#x2F;tar -xvf xxx.tar</p>
+<p>补充依赖库：</p>
+<p>yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</p>
+<p>进入Python源代码目录安装前准备工作：</p>
+<p>cd pythonxxx</p>
+<p>.&#x2F;configure –prefix&#x3D;usr&#x2F;local&#x2F;python38 –enable-optimizations</p>
+<p>构建和安装：make &amp;&amp; make install</p>
+<p>注册PATH环境变量：</p>
+<p>Cd ~</p>
+<p>Vim .bash_profile</p>
+<p>PATH&#x3D;…:&#x2F;usr&#x2F;local&#x2F;python38&#x2F;bin</p>
+<p>激活环境变量：source .bash_profile</p>
+<p>测试安装是否成功：python3 –version</p>
+<p>创建链接：</p>
+<p>- 硬链接：- ln &#x2F;code&#x2F;example01.py &#x2F;root&#x2F;xxx (给磁盘文件增加了新的引用，只要引用数不为0文件就不会消失)</p>
+<p>- 软链接：- ln -s &#x2F;usr&#x2F;local&#x2F;python38&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python3（相当于windows系统下的快捷方式）</p>
+<h2 id="15-Ls-l长格式查看"><a href="#15-Ls-l长格式查看" class="headerlink" title="(15) Ls -l长格式查看"></a>(15) Ls -l长格式查看</h2><p>-rwxr-xr-x 当前文件r:可读w:可写x:可执行</p>
+<h2 id="16-VIM编辑模式："><a href="#16-VIM编辑模式：" class="headerlink" title="(16) VIM编辑模式："></a>(16) VIM编辑模式：</h2><p>I&#x2F;a: 编辑</p>
+<p>Esc: 退出编辑–&gt;命令模式–&gt; :或&#x2F; 末行模式</p>
+<p>:q 退出</p>
+<p>:set nu 显示行号</p>
+<p>:set nonu 去掉行号</p>
+<p>:set ts&#x3D;4 tab键占位数</p>
+<p>Shift+zz&#x2F;:wq ： 保存退出</p>
+<p>:syntax on 高亮语法&#x2F;颜色代码 off关掉</p>
+<p>:set ruler 显示光标所在位置 set noruler关闭</p>
+<p>命令模式下输入G移动光标到末尾，500G表示光标移动到第500行；gg - 移到开头</p>
+<p>上下左右移动光标：hjkl -左下右上（前面可以加数字）</p>
+<p>Ctrl+y&#x2F;ctrl+e：移动一行</p>
+<p>Ctrl+f&#x2F;ctrl+b：翻一页</p>
+<p>0&#x2F;$：移到行首行尾</p>
+<p>W: 移到下一个单词</p>
+<p>dd: 光标所在行删除一行，100dd删除100行</p>
+<p>yy: 复制光标所在行，10yy从所在行复制10行</p>
+<p>P: 粘贴，5P粘贴5次</p>
+<p>U: 撤销 &#x2F; ctrl+R恢复</p>
+<p>多文件操作：</p>
+<p>:ls 显示所有同时打开的文件</p>
+<p>:b 2 切换到第二个文件</p>
+<p>:vs 垂直分屏</p>
+<p>:sp 水平分屏</p>
+<p>Ctrl+ww 切换分屏</p>
+<p>:qa 退出所有分屏</p>
+<p>:wqa 保存退出</p>
+<p>Vim -d 文件1 文件2 - 打开多文件进行版本比较</p>
+<p>映射快捷键：</p>
+<p>- map <F2> gg9999dd 清空命令行</p>
+<p>- inoremap _main if <strong>name</strong>&#x3D;&#x3D; ‘__main__’:</p>
+<h2 id="17-Alias-hao-x3D-’ls-laR’-把常用命令设置别名"><a href="#17-Alias-hao-x3D-’ls-laR’-把常用命令设置别名" class="headerlink" title="(17) Alias hao&#x3D;’ls -laR’ 把常用命令设置别名"></a>(17) Alias hao&#x3D;’ls -laR’ 把常用命令设置别名</h2><p>①   Unalias hao 取消别名</p>
+<h2 id="18-宏操作："><a href="#18-宏操作：" class="headerlink" title="(18) 宏操作："></a>(18) 宏操作：</h2><p>录制宏：qa (a是寄存器的名字) - recording</p>
+<p>结束录制：q</p>
+<p>播放宏：@a</p>
+<h2 id="19-查找和替换："><a href="#19-查找和替换：" class="headerlink" title="(19) 查找和替换："></a>(19) 查找和替换：</h2><p>查找 - ？或者&#x2F; - &#x2F;idx - 支持正则</p>
+<p>N &#x2F; n - 正向搜索&#x2F;反向搜索</p>
+<p>替换 - :1,$s&#x2F;idx&#x2F;index&#x2F;cgie</p>
+<p> - c - confirm - 确认</p>
+<p> - g - global - 全局(一行出现多出匹配全部找出)</p>
+<p> - i - ignore case - 忽略大小写</p>
+<p> - e - error - 忽略错误</p>
+<h2 id="20-查找命令："><a href="#20-查找命令：" class="headerlink" title="(20) 查找命令："></a>(20) 查找命令：</h2><p> - grep - 搜索字符串(支持正则表达式)</p>
+<p> - find - 搜索文件</p>
+<p>-name - 根据名字搜索 - find &#x2F; -name “*.html”</p>
+<p>-size - 根据大小搜索 - -10M &#x2F; +10M</p>
+<p>-type - 根据类型搜索 - d &#x2F; f &#x2F; l &#x2F; s</p>
+<p>-atime - 最后访问时间</p>
+<p>-mtime - 最后修改时间 - find . -mtime 0</p>
+<p>-ctime - 创建时间</p>
+<h2 id="21-网络相关命令："><a href="#21-网络相关命令：" class="headerlink" title="(21) 网络相关命令："></a>(21) 网络相关命令：</h2><p>- ssh - 安全远程连接 - 例如：ssh <a href="mailto:root@xx.xxx.xxx.xx(云服务器公网ip)">root@xx.xxx.xxx.xx(云服务器公网ip)</a></p>
+<p>- scp - 安全文件拷贝 - 例如：scp -r &#x2F;root&#x2F;code <a href="mailto:root@xx.xxx.xxx.xx:/root/code">root@xx.xxx.xxx.xx:/root/code</a></p>
+<p>- sftp - 安全文件传输（file transfer protocol）- 例如：sftp <a href="mailto:root@xx.xxx.xxx.xx">root@xx.xxx.xxx.xx</a></p>
+<p>-put - 上传</p>
+<p>-get - 下载</p>
+<p>-bye - 退出</p>
+<p>-help 查看帮助</p>
+<p>-lls 本地列出文件</p>
+<p>-ping - 检查网络可达性 - ICMP - Internet Control Management Protocol - 网络层</p>
+<p> - ttl - time to live</p>
+<p> - ping to death - DDoS - Distributed Deny of Service - 分布式拒绝服务攻击</p>
+<p>-ifconfig &#x2F; ip</p>
+<p>- 127.0.0.1 - 回环地址 - localhost</p>
+<p>-netstat</p>
+<p>- netstat -nap | grep 进程或端口</p>
+<p>-p - process - 查看进程信息（进程编号和进程名字）</p>
+<p>- kill 进程号</p>
+<h2 id="22-nginx启动停止重启服务："><a href="#22-nginx启动停止重启服务：" class="headerlink" title="(22) nginx启动停止重启服务："></a>(22) nginx启动停止重启服务：</h2><p>Service nginx start</p>
+<p>Systemctl start nginx</p>
+<p>Systemctl stop nginx</p>
+<p>Systemctl restart nginx</p>
+<p>Systemctl status nginx</p>
+<p>Systemctl enable nginx - 开机自启</p>
+<p>Systemctl disable nginx</p>
+<h2 id="23-进程操作相关命令："><a href="#23-进程操作相关命令：" class="headerlink" title="(23) 进程操作相关命令："></a>(23) 进程操作相关命令：</h2><p>~命令+&amp; - 把命令放到后台运行</p>
+<p>Ctrl+z - 把前台命令停止并放到后台运行</p>
+<p>bg %编号 - 重新运行已停止的命令</p>
+<p>~ ps - processes - 例如：ps -ef | grep redis | grep -v grep 不显示grep信息</p>
+<p>~kill - 结束进程</p>
+<p>~jobs - 查看后台运行或停止的进程</p>
+<p>~fg - foreground - 将后台命令至于前台</p>
+<p>~bg - background - 让命令在后台运行 ctl+z</p>
+<p>~top - 任务管理器 q退出</p>
+<h2 id="24-centos7-命令行界面上下翻页"><a href="#24-centos7-命令行界面上下翻页" class="headerlink" title="(24) centos7 命令行界面上下翻页:"></a>(24) centos7 命令行界面上下翻页:</h2><p>shift + pageup 上翻</p>
+<p>shift + pagedown 下翻</p>
+<h2 id="25-Linux下命令行中的复制和粘贴"><a href="#25-Linux下命令行中的复制和粘贴" class="headerlink" title="(25) Linux下命令行中的复制和粘贴:"></a>(25) Linux下命令行中的复制和粘贴:</h2><p>安装gpm：yum install -y gpm*</p>
+<p>开启gpm服务：systemctl start gpm</p>
+<p>按住鼠标左键，选中想要复制的内容，松开就完成复制，再在复制的位置按右键就完成粘贴。</p>
+<h2 id="26-数据库："><a href="#26-数据库：" class="headerlink" title="(26) 数据库："></a>(26) 数据库：</h2><p>关系型数据库 - Oracle &#x2F; MySQL &#x2F; MariaDB - 二维表</p>
+<p>非关系型数据库 - MongoDB &#x2F; Redis &#x2F; ElasticSearch - 文档数据库&#x2F;KV数据库</p>
+<p>Yum install -y mariadb mariadb-server</p>
+<p>Mysqld - MySQL Daemon - 守护进程 </p>
+<p>Rpm -ivh mysql-5.7.34-1.el7.x86_64.rpm</p>
+<p>Rpm -e 擦除</p>
+<p>Systemctl start mariadb - 启动mysql</p>
+<p>Mysql -u root -p - 连接mysql</p>
+<p>Use mysql</p>
+<p>修改mysql密码</p>
+<p>Update user set password&#x3D;password(‘123456’) where user&#x3D;’root’;</p>
+<p>Flush privileges;</p>
+<p>10.4版本以后：</p>
+<p>select user, password, host from user; # 查询已有用户</p>
+<p>SET PASSWORD FOR ‘bob‘@’%.loc.gov’ &#x3D; PASSWORD(‘newpass’); # 根据用户及host修改密码</p>
+<p>SET PASSWORD FOR ‘bob‘@localhost &#x3D; PASSWORD(“”); # # 根据用户及host删除密码</p>
+<p>delete from user where user&#x3D;’XXX’ and host&#x3D;’localhost’; ## 指定域及用户删除用户</p>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION; 创建一个用户能使用root从任何主机连接到mysql服务器。</p>
+<p>—Redis数据库：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io</a></p>
+<p><a target="_blank" rel="noopener" href="https://redisdoc.com/">https://redisdoc.com</a> 使用手册</p>
+<p>下载Radis:</p>
+<p>Wget <a target="_blank" rel="noopener" href="https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920">https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920</a></p>
+<p>解压缩解归档</p>
+<p>安装：make &amp;&amp; make install</p>
+<p>redis:编译时报错 &#x2F;bin&#x2F;sh: cc: command not found：</p>
+<p>补依赖项：yum -y install gcc gcc-c++ libstdc++-devel</p>
+<p>【Redis】编译错误zmalloc.h:50:31: fatal error: jemalloc&#x2F;jemalloc.h: No such file or directory：</p>
+<p>–make MALLOC&#x3D;libc</p>
+<p>–redis-server –version - 查看是否安装成功</p>
+<p>–redis-sever &amp; - 启动redis服务(&amp;表示后台运行)</p>
+<p>–netstat -nap | grep 6379或 ps -ef | grep redis | grep -v grep 或 jobs - 查看redis服务启动是否成功</p>
+<p>–redis-server –requirepass 123456 &amp; - 带密码启动</p>
+<p>–redis-cli - 客户端访问 - auth 123456 - 输密码</p>
+<p>–redis-cli – 关闭redis</p>
+<p>–shutdown</p>
+<h2 id="27-安装和使用Git"><a href="#27-安装和使用Git" class="headerlink" title="(27) 安装和使用Git:"></a>(27) 安装和使用Git:</h2><p>​    Git官网：<a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a></p>
+<p>点击Tarballs，右击选择复制所需文件的下载链接地址</p>
+<p>Wget + 链接地址</p>
+<p>解压缩： xz -d xxx.tar.xz</p>
+<p>解归档：tar -xvf xxx.tar</p>
+<p>安装依赖项：yum install libcurl-devel； yum install zlib-devel</p>
+<p>安装GIT: .&#x2F;configure –prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;</p>
+<p> Make $$ make install</p>
+<p> Git –version</p>
+<p>版本控制：</p>
+<p>1990s - CVS &#x2F; VSS - 锁定模式</p>
+<p>2000 - Subversion(SVN) - 合并模式</p>
+<p>必须有版本控制的中央服务器才能使用版本控制 - 中央集权型的版本控制系统</p>
+<p>分布式版本控制系统 - 2005 - Git</p>
+<p>Git &#x2F; Mercury</p>
+<p>—Git命令：</p>
+<p>Git init - 将文件夹初始化为Git仓库</p>
+<p>Git add xxxx - 添加文件到git仓库</p>
+<p>Git status - 查看添加状态</p>
+<p>Git add . - 添加当前目录所有文件</p>
+<p>Git commit -m ‘提交说明’ - 提交命令</p>
+<p>按提示设置账户默认ID</p>
+<p>Git log - 查看日志</p>
+<p>若使用 rm -f *误删除：git checkout – . 恢复所有文件</p>
+<p>或使用 git log 查看commit一栏前6位作为ID</p>
+<p>Git reset –hard <ID> - 回到指定版本</p>
+<p>git reset –hard HEAD^ - 回到上一版本</p>
+<p>Git reflog 查看已修改过版本</p>
+<p>—国内代码托管平台：gitee &#x2F;coding</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com</a> – account: <a href="mailto:1174185292@qq.com">1174185292@qq.com</a> Z110112WILOVEME</p>
+<p><a target="_blank" rel="noopener" href="https://coding.net/">https://coding.net</a></p>
+<p>Git clone <a target="_blank" rel="noopener" href="https://gitee.com/zwzwzw001/python001.git">https://gitee.com/zwzwzw001/python001.git</a> - 从网站克隆到本地</p>
+<p>-git push - 将本地代码推到服务器</p>
+<p>&#x3D;git pull - 将服务器更新同步到本地</p>
+<h2 id="28-centos不小心删除-x2F-root目录该如何解决"><a href="#28-centos不小心删除-x2F-root目录该如何解决" class="headerlink" title="(28) centos不小心删除&#x2F;root目录该如何解决?"></a>(28) centos不小心删除&#x2F;root目录该如何解决?</h2><p>1.直接创建&#x2F;root目录；mkdir &#x2F;root</p>
+<p>2.复制&#x2F;etc&#x2F;skel&#x2F;下的隐藏文件到&#x2F;root目录下；cp &#x2F;etc&#x2F;skel&#x2F;.bash* &#x2F;root</p>
+<p>3.重启即可</p>
+<h2 id="29-数据库-数据的仓库-database-实现数据持久化和数据管理"><a href="#29-数据库-数据的仓库-database-实现数据持久化和数据管理" class="headerlink" title="(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理"></a>(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理</h2><p>持久化 - 将数据从内存转移到能够长久保存数据的存储介质的过程</p>
+<p>保证数据的完整性和一致性</p>
+<p>完整性：</p>
+<p>\1. 实体完整性 - 每一个实体都是独一无二的，没有冗余 - 主键&#x2F;唯一索引</p>
+<p>\2. 参照完整性 - 外键</p>
+<p>\3. 域完整性 - 录入的数据都是有效的数据 - 数据类型&#x2F;数据长度&#x2F;非空约束&#x2F;默认值约束&#x2F;检查约束</p>
+<p>Alter table tb_score add constraint ck_score_scmark check (scmark between 0 and 100);</p>
+<p>一致性：事务 - 要么全成功要么全失败，操作不可分割 - ACID特性</p>
+<p>\1. A - Atomicity - 原子性 - 不可分割</p>
+<p>\2. C - Consistency - 一致性 - 事务前后数据状态要一致</p>
+<p>\3. I - Isolation - 隔离性 - 并发的多个事务不知道彼此的中间状态</p>
+<p>\4. D - Duration - 持久性 - 事务完成后数据要做持久化</p>
+<p>分类：关系型数据库(SQL)和非关系型数据库(NoSQL)</p>
+<p>- 文档数据库 - MongoDB &#x2F; ElasticSearch</p>
+<p>- 键值对数据库 - Redis - 内存 - 单线程+异步I&#x2F;O （多路I&#x2F;O复用）</p>
+<p>- 列族数据库</p>
+<p>- 图数据库</p>
+<p>计算密集型应用 - 多进程 + 多线程</p>
+<p>I&#x2F;O密集型应用 - 单线程 + 异步I&#x2F;O (协程（微线程）)</p>
+<p>2008年 - LLOOGG - log(日志)</p>
+<p>MySQL - Redis - REmote DIctionary Server</p>
+<p>Github &#x2F; Twitter &#x2F; Sina &#x2F; </p>
+<p>冷数据（不经常使用）&#x2F; 热数据（经常使用）</p>
+<p>\1. 高速缓存服务（用户经常访问的数据从数据库搬到内存）</p>
+<p>\2. 实时排行榜</p>
+<p>\3. 投票点赞</p>
+<p>\4. 消息队列</p>
+<p>Yum install redis</p>
+<p>源代码构建安装 make &amp;&amp; make install</p>
+<p>Redis-server –port 1234 –requirepass 123456 –appendonly yes</p>
+<p>Redis-server –requirepass 123456 &gt; redis.log&amp;</p>
+<p>Redis-server 配置文件(redis.conf) &gt; redis.log &amp;</p>
+<p>启动Redis客户端：</p>
+<p>Redis-cli -h 主机IP地址 -p 端口（默认6379）</p>
+<p>主机：端口&gt;auth 密码</p>
+<p>主机：端口&gt;ping</p>
+<p>&gt;keys *</p>
+<p>&gt;type </p>
+<p>Redis 命令参考 - <a target="_blank" rel="noopener" href="http://redisdoc.com/">http://redisdoc.com/</a></p>
+<p>哈希存储 - 性能非常好的存储方案 – set(集合)</p>
+<p>Obj — 哈希函数 —&gt; 哈希码（散列码） —&gt; 对象在内存中存储的位置</p>
+<p>文件 —&gt; MD5 &#x2F; SHA1 &#x2F; SHA256 —&gt; 哈希码（数字指纹&#x2F;签名）</p>
+<p>哈希表</p>
+<p>hmset stu1 id 1001 name xxx sex male te1 11323232xxx</p>
+<p>Hget stu1 name</p>
+<p>Hmget stu1 name sex tel</p>
+<p>Hvals stu1</p>
+<p>Hgetall stu1</p>
+<p>Hdel stu1 tel </p>
+<p>- Redis主从复制读写分离</p>
+<p>Redis-server –slaveof [主ip] 6379 –masterauth 123456 &gt; redis.log &amp;</p>
+<p>info replication # 查看主从复制信息exitexit</p>
+<p>Slaveof no one</p>
+<p>-Redis修复持久化文件的工具</p>
+<p>-dump.rdb文件误删解决方法</p>
+<p>redis-server –requirepass 123456 –appendonly yes &gt; redis.log &amp; # 生成.aof文件的保存方式</p>
+<p>Redis-check-aof –fix appendonly.aof</p>
+<p>Redis-check-rdb –fix dump.rdb</p>
+<p>Tornado &#x2F; Node.js</p>
+<p>文件系统 &#x2F; 层次数据库 &#x2F; 网状数据库</p>
+<p>- 关系型数据库：</p>
+<p>- 理论基础：关系代数和集合论</p>
+<p>-具体表象：用二维表来保存数据 - 学生表</p>
+<p>&#x3D;行：一条记录 - 一个学生的信息</p>
+<p>-列：一个字段 - 学生的属性</p>
+<p>-主键列：能够唯一标识一条记录的列，如学号</p>
+<p>-编程语言：SQL - 结构化查询语言</p>
+<p>- DDL - 数据定义语言 - create &#x2F; drop &#x2F; alter</p>
+<p>- create database xxx default charset utf8mb4; - 创建名为xxx的数据库</p>
+<p>- use school;</p>
+<p>- show tables;</p>
+<p>- create user ‘root’@’%’ identified by ‘123456’; 添加访问权限</p>
+<p>- flush privileges</p>
+<p>- grant all privileges on <em>.</em> to ‘root’@’%’ with grant option; 允许所有客户端连接</p>
+<p>- flush privileges</p>
+<p>- drop database if exists xxx - 删除xxx数据库</p>
+<p>- ？ data types - 查看数据类型</p>
+<p>- ？ int - int类型描述</p>
+<p>- DML - 数据操作语言 - insert &#x2F; delete &#x2F; update &#x2F; select</p>
+<p>- DCL - 数据控制语言 - grant &#x2F; revoke</p>
+<p>-产品：Oracle - 甲骨文</p>
+<p>IBM DB2</p>
+<p>Microsoft SQLServer</p>
+<p>Sybase</p>
+<p>MySQL</p>
+<p>PostgreSQL</p>
+<p>SQLite</p>
+<p>学生（学号、姓名、性别、生日、家庭住址）</p>
+<p>学院（编号、名称、网址、。。。。）</p>
+<p>插入不少于3条学院记录</p>
+<p>实体：学生、学院</p>
+<p>关系：属于</p>
+<p>重数：多对一</p>
+<p>– 一对一重数关系</p>
+<p>create table tb_person</p>
+<p>(</p>
+<p>pid int auto_increment,</p>
+<p>pname varchar(50),</p>
+<p>primary key (pid)</p>
+<p>);</p>
+<p>create table tb_idcard</p>
+<p>(</p>
+<p>cid int auto_increment,</p>
+<p>cno char(18) not null,</p>
+<p>ps varchar(255) not null,</p>
+<p>expire date not null,</p>
+<p>pid int not null,</p>
+<p>PRIMARY key (cid)</p>
+<p>);</p>
+<p>alter table tb_idcard add CONSTRAINT fk_card_pid foreign key (pid) REFERENCES tb_person (pid);</p>
+<p>– 一对一是多对一的特例，加上唯一性约束</p>
+<p>alter table tb_idcard add CONSTRAINT uni_card_pid unique (pid);</p>
+<p>–SQL注射攻击：</p>
+<p>tb_user</p>
+<p>Userid    username     userpass …</p>
+<p>1          admin        123456</p>
+<p>select * from tb_user where username&#x3D;’%s’ and password&#x3D;’%s’</p>
+<p>Username&#x3D;admin</p>
+<p>Password&#x3D;’x’ or ‘1’&#x3D;’1’</p>
+<p>‘; update … where ‘1’ &#x3D; ‘1’</p>
+<p>select * from tb_user where username&#x3D;’admin’ and password&#x3D;’x’ or ‘1’&#x3D;’1’</p>
+<p>select * from tb_user where username&#x3D;’admin’ and password&#x3D;’‘; update … where ‘1’ &#x3D; ‘1’</p>
+<p># 向表中添加数据应避免用字符串拼接，防止SQL注射攻击。</p>
+<h1 id="—-防火墙"><a href="#—-防火墙" class="headerlink" title="— 防火墙"></a>— 防火墙</h1><p>开启：systemctl start firewalld</p>
+<p>添加80端口：firewall-cmd –add-port&#x3D;80&#x2F;tcp –permanent</p>
+<p>重启：systemctl restart firewalld</p>
+<p>firewalld和iptables</p>
+<p>If you haven’t any real data in your database then clear all in &#x2F;var&#x2F;lib&#x2F;mysql.</p>
+<p>After that try again to run command mysql_install_db –user&#x3D;mysql –basedir&#x3D;&#x2F;usr –datadir&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql to initialize database directory.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1085,7 +1958,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1098,7 +1971,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
