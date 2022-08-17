@@ -17,19 +17,19 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="1第一个界面.py12345678910111213141516171819202122232425262728# 1. 导入库import PySimpleGUI as sg# 2. 定义布局，确定行数layout&#x3D;[			[sg.Text(&amp;#x27;请输入您的基本信息&amp;#x27;)],			[sg.Text(&amp;#x27;姓名&amp;#x27;),sg.InputText(&amp;#x27;xx&amp;#x27">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python图形界面开发">
 <meta property="og:url" content="http://example.com/2022/08/17/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="PeacefulRace">
 <meta property="og:description" content="1第一个界面.py12345678910111213141516171819202122232425262728# 1. 导入库import PySimpleGUI as sg# 2. 定义布局，确定行数layout&#x3D;[			[sg.Text(&amp;#x27;请输入您的基本信息&amp;#x27;)],			[sg.Text(&amp;#x27;姓名&amp;#x27;),sg.InputText(&amp;#x27;xx&amp;#x27">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-17T02:16:24.937Z">
 <meta property="article:modified_time" content="2022-06-01T04:40:00.037Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Private">
 <meta property="article:tag" content="图形界面">
 <meta name="twitter:card" content="summary">
 
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>python图形界面开发 | Hexo</title>
+  <title>python图形界面开发 | PeacefulRace</title>
   
 
 
@@ -97,13 +97,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">PeacefulRace</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">学习笔记</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -118,16 +120,58 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-about">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -155,12 +199,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="PeacefulRace">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -389,14 +433,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%95%8C%E9%9D%A2-py"><span class="nav-number">1.</span> <span class="nav-text">1第一个界面.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E7%AA%97%E5%8F%A3%E8%AF%BB%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC%E2%80%93%E4%BA%8B%E4%BB%B6-py"><span class="nav-number">2.</span> <span class="nav-text">2窗口读取返回值–事件.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E7%AA%97%E5%8F%A3%E8%AF%BB%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC%E2%80%93%E5%80%BC-py"><span class="nav-number">3.</span> <span class="nav-text">3窗口读取返回值–值.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4PySimpleGUI%E5%A6%82%E4%BD%95%E8%AE%BE%E5%AE%9A%E4%B8%BB%E9%A2%98-py"><span class="nav-number">4.</span> <span class="nav-text">4PySimpleGUI如何设定主题.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98-py"><span class="nav-number">5.</span> <span class="nav-text">5如何修改主题.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AA%97%E5%8F%A3-py"><span class="nav-number">6.</span> <span class="nav-text">6如何自定义窗口.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">7.</span> <span class="nav-text">7文本元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8%E8%AE%BE%E5%AE%9A%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95-py"><span class="nav-number">8.</span> <span class="nav-text">8设定文本元素的更新的方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9%E7%BB%83%E4%B9%A0-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2%E7%9A%84%E9%A1%B5%E9%9D%A2-py"><span class="nav-number">9.</span> <span class="nav-text">9练习-制作一个可中英文切换的页面.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10%E5%8D%95%E8%A1%8C%E8%BE%93%E5%85%A5%E6%A1%86%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">10.</span> <span class="nav-text">10单行输入框元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E5%8D%95%E8%A1%8C%E8%BE%93%E5%85%A5%E6%A1%86%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">11.</span> <span class="nav-text">11单行输入框元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12%E7%BB%83%E4%B9%A0-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%99%BB%E9%99%86%E7%AA%97%E5%8F%A3-py"><span class="nav-number">12.</span> <span class="nav-text">12练习-编写一个登陆窗口.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-%E5%9B%BE%E7%89%87base64%E6%A0%BC%E5%BC%8F%E7%BC%96%E7%A0%81-py"><span class="nav-number">13.</span> <span class="nav-text">13-图片base64格式编码.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13%E6%8C%89%E9%94%AE%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">14.</span> <span class="nav-text">13按键元素的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%BA%A2%E7%BB%BF%E7%81%AF%EF%BC%88%E6%8C%89%E9%94%AE%E7%BB%83%E4%B9%A0%EF%BC%89-py"><span class="nav-number">15.</span> <span class="nav-text">14编写一个红绿灯（按键练习）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">16.</span> <span class="nav-text">15列表元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">17.</span> <span class="nav-text">16列表元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17%E5%9C%A8%E7%AA%97%E5%8F%A3%E4%B8%8A%E8%B0%83%E7%94%A8%E5%AD%97%E5%85%B8%E9%87%8C%E7%9A%84%E9%94%AE%E5%92%8C%E5%80%BC-py"><span class="nav-number">18.</span> <span class="nav-text">17在窗口上调用字典里的键和值.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">19.</span> <span class="nav-text">18下拉菜单的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95%E5%8F%8A%E5%B0%8F%E7%BB%83%E4%B9%A0-py"><span class="nav-number">20.</span> <span class="nav-text">19下拉菜单的更新方法及小练习.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20%E9%80%89%E6%8B%A9%E8%8F%9C%E5%8D%95%E5%92%8C%E6%97%8B%E8%BD%AC%E6%8C%89%E9%94%AE-py"><span class="nav-number">21.</span> <span class="nav-text">20选择菜单和旋转按键.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21%E5%8D%95%E9%80%89%E6%A1%86%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95-py"><span class="nav-number">22.</span> <span class="nav-text">21单选框的多种布局方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22%E5%8D%95%E9%80%89%E6%A1%86%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">23.</span> <span class="nav-text">22单选框属性的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23%E5%A4%8D%E9%80%89%E6%A1%86%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">24.</span> <span class="nav-text">23复选框的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24%E6%BB%91%E5%9D%97%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">25.</span> <span class="nav-text">24滑块元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#25%E6%BB%91%E5%9D%97%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">26.</span> <span class="nav-text">25滑块元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26%E5%9B%BE%E7%89%87%E5%85%83%E7%B4%A0%E7%9A%84%E5%A4%9A%E7%A7%8D%E4%B9%A6%E5%86%99%E6%96%B9%E5%BC%8F-py"><span class="nav-number">27.</span> <span class="nav-text">26图片元素的多种书写方式.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#27%E5%9B%BE%E7%89%87%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-number">28.</span> <span class="nav-text">27图片元素的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#28%E5%88%97%E5%85%83%E7%B4%A0%E7%9A%84%E4%B9%A6%E5%86%99%E5%8F%8A%E8%AE%BE%E5%AE%9A%E6%96%B9%E5%BC%8F-py"><span class="nav-number">29.</span> <span class="nav-text">28列元素的书写及设定方式.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#29%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0%E7%9A%84%E4%B9%A6%E5%86%99%E5%8F%8A%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">30.</span> <span class="nav-text">29框架元素的书写及设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#30%E9%80%9A%E8%BF%87%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0%E6%9B%B4%E6%96%B0%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%87%E6%8D%A2-py"><span class="nav-number">31.</span> <span class="nav-text">30通过框架元素更新实现界面切换.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#31%E6%A0%87%E7%AD%BE%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%B2%E8%A7%A3%E5%8F%8A%E7%BB%83%E4%B9%A0-py"><span class="nav-number">32.</span> <span class="nav-text">31标签元素的讲解及练习.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E5%99%A8-py"><span class="nav-number">33.</span> <span class="nav-text">32编写一个文件选择器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#33%E6%96%87%E4%BB%B6%E5%A4%B9%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%8E%E6%96%87%E4%BB%B6%E5%8F%A6%E5%AD%98%E4%B8%BA-py"><span class="nav-number">34.</span> <span class="nav-text">33文件夹选择器与文件另存为.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#34%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E6%97%A5%E5%8E%86%E9%80%89%E6%8B%A9%E5%99%A8-py"><span class="nav-number">35.</span> <span class="nav-text">34颜色选择器和日历选择器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#35%E5%85%B3%E4%BA%8E%E5%BC%B9%E7%AA%97%E7%9A%84%E5%90%84%E7%A7%8D%E8%AE%BE%E5%AE%9A-py"><span class="nav-number">36.</span> <span class="nav-text">35关于弹窗的各种设定.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#36%E5%BC%B9%E7%AA%97%E4%B9%8BPopupGetText-py"><span class="nav-number">37.</span> <span class="nav-text">36弹窗之PopupGetText.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#37%E5%90%84%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%89%B9%E5%BE%81%E7%9A%84%E5%BC%B9%E7%AA%97-py"><span class="nav-number">38.</span> <span class="nav-text">37各种不同特征的弹窗.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#38%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">39.</span> <span class="nav-text">38菜单栏的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#39%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E9%87%8D%E7%82%B9%E8%A1%A5%E5%85%85-py"><span class="nav-number">40.</span> <span class="nav-text">39菜单栏的重点补充.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#40window%E7%AA%97%E5%8F%A3%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7-py"><span class="nav-number">41.</span> <span class="nav-text">40window窗口常用属性.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#41%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86%EF%BC%881%EF%BC%89-py"><span class="nav-number">42.</span> <span class="nav-text">41多行文本框（1）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#42%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86%EF%BC%882%EF%BC%89-py"><span class="nav-number">43.</span> <span class="nav-text">42多行文本框（2）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#43%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8-py"><span class="nav-number">44.</span> <span class="nav-text">43综合练习编写计算器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#44%E6%8A%8Apy%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E6%88%90EXE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-txt"><span class="nav-number">45.</span> <span class="nav-text">44把py文件打包成EXE应用程序.txt</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#45%E7%BC%96%E5%86%99%E5%B8%A6%E7%95%8C%E9%9D%A2%E7%9A%84PDF%E5%90%88%E5%B9%B6%E5%B7%A5%E5%85%B7-py"><span class="nav-number">46.</span> <span class="nav-text">45编写带界面的PDF合并工具.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#46%E8%A1%A8%E6%A0%BC%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-number">47.</span> <span class="nav-text">46表格元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#47%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-py"><span class="nav-number">48.</span> <span class="nav-text">47商品管理系统.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#orm-py"><span class="nav-number">49.</span> <span class="nav-text">orm.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B"><span class="nav-number">50.</span> <span class="nav-text">桌面应用开发实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%B0%E8%B4%A6%E6%9C%AC-py"><span class="nav-number">50.1.</span> <span class="nav-text">1.记账本.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-txt"><span class="nav-number">50.2.</span> <span class="nav-text">data.txt</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%95%8C%E9%9D%A2-py"><span class="nav-text">1第一个界面.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E7%AA%97%E5%8F%A3%E8%AF%BB%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC%E2%80%93%E4%BA%8B%E4%BB%B6-py"><span class="nav-text">2窗口读取返回值–事件.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E7%AA%97%E5%8F%A3%E8%AF%BB%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC%E2%80%93%E5%80%BC-py"><span class="nav-text">3窗口读取返回值–值.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4PySimpleGUI%E5%A6%82%E4%BD%95%E8%AE%BE%E5%AE%9A%E4%B8%BB%E9%A2%98-py"><span class="nav-text">4PySimpleGUI如何设定主题.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98-py"><span class="nav-text">5如何修改主题.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AA%97%E5%8F%A3-py"><span class="nav-text">6如何自定义窗口.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">7文本元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8%E8%AE%BE%E5%AE%9A%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95-py"><span class="nav-text">8设定文本元素的更新的方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9%E7%BB%83%E4%B9%A0-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2%E7%9A%84%E9%A1%B5%E9%9D%A2-py"><span class="nav-text">9练习-制作一个可中英文切换的页面.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10%E5%8D%95%E8%A1%8C%E8%BE%93%E5%85%A5%E6%A1%86%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">10单行输入框元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E5%8D%95%E8%A1%8C%E8%BE%93%E5%85%A5%E6%A1%86%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">11单行输入框元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12%E7%BB%83%E4%B9%A0-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%99%BB%E9%99%86%E7%AA%97%E5%8F%A3-py"><span class="nav-text">12练习-编写一个登陆窗口.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-%E5%9B%BE%E7%89%87base64%E6%A0%BC%E5%BC%8F%E7%BC%96%E7%A0%81-py"><span class="nav-text">13-图片base64格式编码.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13%E6%8C%89%E9%94%AE%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">13按键元素的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%BA%A2%E7%BB%BF%E7%81%AF%EF%BC%88%E6%8C%89%E9%94%AE%E7%BB%83%E4%B9%A0%EF%BC%89-py"><span class="nav-text">14编写一个红绿灯（按键练习）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">15列表元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">16列表元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17%E5%9C%A8%E7%AA%97%E5%8F%A3%E4%B8%8A%E8%B0%83%E7%94%A8%E5%AD%97%E5%85%B8%E9%87%8C%E7%9A%84%E9%94%AE%E5%92%8C%E5%80%BC-py"><span class="nav-text">17在窗口上调用字典里的键和值.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">18下拉菜单的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95%E5%8F%8A%E5%B0%8F%E7%BB%83%E4%B9%A0-py"><span class="nav-text">19下拉菜单的更新方法及小练习.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20%E9%80%89%E6%8B%A9%E8%8F%9C%E5%8D%95%E5%92%8C%E6%97%8B%E8%BD%AC%E6%8C%89%E9%94%AE-py"><span class="nav-text">20选择菜单和旋转按键.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21%E5%8D%95%E9%80%89%E6%A1%86%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%B8%83%E5%B1%80%E6%96%B9%E6%B3%95-py"><span class="nav-text">21单选框的多种布局方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22%E5%8D%95%E9%80%89%E6%A1%86%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">22单选框属性的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23%E5%A4%8D%E9%80%89%E6%A1%86%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">23复选框的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24%E6%BB%91%E5%9D%97%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">24滑块元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#25%E6%BB%91%E5%9D%97%E5%85%83%E7%B4%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">25滑块元素的更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26%E5%9B%BE%E7%89%87%E5%85%83%E7%B4%A0%E7%9A%84%E5%A4%9A%E7%A7%8D%E4%B9%A6%E5%86%99%E6%96%B9%E5%BC%8F-py"><span class="nav-text">26图片元素的多种书写方式.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#27%E5%9B%BE%E7%89%87%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E5%8F%8A%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95-py"><span class="nav-text">27图片元素的设定及更新方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#28%E5%88%97%E5%85%83%E7%B4%A0%E7%9A%84%E4%B9%A6%E5%86%99%E5%8F%8A%E8%AE%BE%E5%AE%9A%E6%96%B9%E5%BC%8F-py"><span class="nav-text">28列元素的书写及设定方式.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#29%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0%E7%9A%84%E4%B9%A6%E5%86%99%E5%8F%8A%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">29框架元素的书写及设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#30%E9%80%9A%E8%BF%87%E6%A1%86%E6%9E%B6%E5%85%83%E7%B4%A0%E6%9B%B4%E6%96%B0%E5%AE%9E%E7%8E%B0%E7%95%8C%E9%9D%A2%E5%88%87%E6%8D%A2-py"><span class="nav-text">30通过框架元素更新实现界面切换.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#31%E6%A0%87%E7%AD%BE%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%B2%E8%A7%A3%E5%8F%8A%E7%BB%83%E4%B9%A0-py"><span class="nav-text">31标签元素的讲解及练习.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E5%99%A8-py"><span class="nav-text">32编写一个文件选择器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#33%E6%96%87%E4%BB%B6%E5%A4%B9%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%8E%E6%96%87%E4%BB%B6%E5%8F%A6%E5%AD%98%E4%B8%BA-py"><span class="nav-text">33文件夹选择器与文件另存为.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#34%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E6%97%A5%E5%8E%86%E9%80%89%E6%8B%A9%E5%99%A8-py"><span class="nav-text">34颜色选择器和日历选择器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#35%E5%85%B3%E4%BA%8E%E5%BC%B9%E7%AA%97%E7%9A%84%E5%90%84%E7%A7%8D%E8%AE%BE%E5%AE%9A-py"><span class="nav-text">35关于弹窗的各种设定.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#36%E5%BC%B9%E7%AA%97%E4%B9%8BPopupGetText-py"><span class="nav-text">36弹窗之PopupGetText.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#37%E5%90%84%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%89%B9%E5%BE%81%E7%9A%84%E5%BC%B9%E7%AA%97-py"><span class="nav-text">37各种不同特征的弹窗.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#38%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">38菜单栏的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#39%E8%8F%9C%E5%8D%95%E6%A0%8F%E7%9A%84%E9%87%8D%E7%82%B9%E8%A1%A5%E5%85%85-py"><span class="nav-text">39菜单栏的重点补充.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#40window%E7%AA%97%E5%8F%A3%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7-py"><span class="nav-text">40window窗口常用属性.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#41%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86%EF%BC%881%EF%BC%89-py"><span class="nav-text">41多行文本框（1）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#42%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86%EF%BC%882%EF%BC%89-py"><span class="nav-text">42多行文本框（2）.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#43%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8-py"><span class="nav-text">43综合练习编写计算器.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#44%E6%8A%8Apy%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E6%88%90EXE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-txt"><span class="nav-text">44把py文件打包成EXE应用程序.txt</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#45%E7%BC%96%E5%86%99%E5%B8%A6%E7%95%8C%E9%9D%A2%E7%9A%84PDF%E5%90%88%E5%B9%B6%E5%B7%A5%E5%85%B7-py"><span class="nav-text">45编写带界面的PDF合并工具.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#46%E8%A1%A8%E6%A0%BC%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BE%E5%AE%9A%E6%96%B9%E6%B3%95-py"><span class="nav-text">46表格元素的设定方法.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#47%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-py"><span class="nav-text">47商品管理系统.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#orm-py"><span class="nav-text">orm.py</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B"><span class="nav-text">桌面应用开发实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%B0%E8%B4%A6%E6%9C%AC-py"><span class="nav-text">1.记账本.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-txt"><span class="nav-text">data.txt</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Private</p>
+  <div class="site-description" itemprop="description">程序语言记录</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -443,9 +487,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Private</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -471,7 +515,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -482,6 +526,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
