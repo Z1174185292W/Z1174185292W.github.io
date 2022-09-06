@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,169 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/06/x-ui%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/06/x-ui%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">x-ui安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 12:13:05 / 修改时间：12:14:46" itemprop="dateCreated datePublished" datetime="2022-09-06T12:13:05+08:00">2022-09-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B8%B8%E7%94%A8%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">常用记录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="x-ui"><a href="#x-ui" class="headerlink" title="x-ui"></a>x-ui</h1><p>支持多协议多用户的 xray 面板</p>
+<h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><ul>
+<li>系统状态监控</li>
+<li>支持多用户多协议，网页可视化操作</li>
+<li>支持的协议：vmess、vless、trojan、shadowsocks、dokodemo-door、socks、http</li>
+<li>支持配置更多传输配置</li>
+<li>流量统计，限制流量，限制到期时间</li>
+<li>可自定义 xray 配置模板</li>
+<li>支持 https 访问面板（自备域名 + ssl 证书）</li>
+<li>支持一键SSL证书申请且自动续签</li>
+<li>更多高级配置项，详见面板</li>
+</ul>
+<h1 id="安装-amp-升级"><a href="#安装-amp-升级" class="headerlink" title="安装&amp;升级"></a>安装&amp;升级</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动安装-amp-升级"><a href="#手动安装-amp-升级" class="headerlink" title="手动安装&amp;升级"></a>手动安装&amp;升级</h2><ol>
+<li>首先从 <a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui/releases">https://github.com/vaxilu/x-ui/releases</a> 下载最新的压缩包，一般选择 <code>amd64</code>架构</li>
+<li>然后将这个压缩包上传到服务器的 <code>/root/</code>目录下，并使用 <code>root</code>用户登录服务器</li>
+</ol>
+<blockquote>
+<p>如果你的服务器 cpu 架构不是 <code>amd64</code>，自行将命令中的 <code>amd64</code>替换为其他架构</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /root/</span><br><span class="line">rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf</span><br><span class="line">tar zxvf x-ui-linux-amd64.tar.gz</span><br><span class="line">chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh</span><br><span class="line">cp x-ui/x-ui.sh /usr/bin/x-ui</span><br><span class="line">cp -f x-ui/x-ui.service /etc/systemd/system/</span><br><span class="line">mv x-ui/ /usr/local/</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl enable x-ui</span><br><span class="line">systemctl restart x-ui</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用docker安装"><a href="#使用docker安装" class="headerlink" title="使用docker安装"></a>使用docker安装</h2><blockquote>
+<p>此 docker 教程与 docker 镜像由<a target="_blank" rel="noopener" href="https://github.com/Chasing66">Chasing66</a>提供</p>
+</blockquote>
+<ol>
+<li>安装docker</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | sh</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装x-ui</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir x-ui &amp;&amp; cd x-ui</span><br><span class="line">docker run -itd --network=host \</span><br><span class="line">    -v $PWD/db/:/etc/x-ui/ \</span><br><span class="line">    -v $PWD/cert/:/root/cert/ \</span><br><span class="line">    --name x-ui --restart=unless-stopped \</span><br><span class="line">    enwaiax/x-ui:latest</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Build 自己的镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t x-ui .</span><br></pre></td></tr></table></figure>
+
+<h2 id="SSL证书申请"><a href="#SSL证书申请" class="headerlink" title="SSL证书申请"></a>SSL证书申请</h2><blockquote>
+<p>此功能与教程由<a target="_blank" rel="noopener" href="https://github.com/FranzKafkaYu">FranzKafkaYu</a>提供</p>
+</blockquote>
+<p>脚本内置SSL证书申请功能，使用该脚本申请证书，需满足以下条件:</p>
+<ul>
+<li>知晓Cloudflare 注册邮箱</li>
+<li>知晓Cloudflare Global API Key</li>
+<li>域名已通过cloudflare进行解析到当前服务器</li>
+</ul>
+<p>获取Cloudflare Global API Key的方法:<br>    <img src="media/bda84fbc2ede834deaba1c173a932223.png"><br>    <img src="media/d13ffd6a73f938d1037d0708e31433bf.png"></p>
+<p>使用时只需输入 <code>域名</code>, <code>邮箱</code>, <code>API KEY</code>即可，示意图如下：<br>        <img src="media/2022-04-04_141259.png"></p>
+<p>注意事项:</p>
+<ul>
+<li>该脚本使用DNS API进行证书申请</li>
+<li>默认使用Let’sEncrypt作为CA方</li>
+<li>证书安装目录为/root/cert目录</li>
+<li>本脚本申请证书均为泛域名证书</li>
+</ul>
+<h2 id="Tg机器人使用（开发中，暂不可使用）"><a href="#Tg机器人使用（开发中，暂不可使用）" class="headerlink" title="Tg机器人使用（开发中，暂不可使用）"></a>Tg机器人使用（开发中，暂不可使用）</h2><blockquote>
+<p>此功能与教程由<a target="_blank" rel="noopener" href="https://github.com/FranzKafkaYu">FranzKafkaYu</a>提供</p>
+</blockquote>
+<p>X-UI支持通过Tg机器人实现每日流量通知，面板登录提醒等功能，使用Tg机器人，需要自行申请<br>具体申请教程可以参考<a target="_blank" rel="noopener" href="https://coderfan.net/how-to-use-telegram-bot-to-alarm-you-when-someone-login-into-your-vps.html">博客链接</a><br>使用说明:在面板后台设置机器人相关参数，具体包括</p>
+<ul>
+<li>Tg机器人Token</li>
+<li>Tg机器人ChatId</li>
+<li>Tg机器人周期运行时间，采用crontab语法  </li>
+</ul>
+<p>参考语法：</p>
+<ul>
+<li>30 * * * * * //每一分的第30s进行通知</li>
+<li>@hourly      //每小时通知</li>
+<li>@daily       //每天通知（凌晨零点整）</li>
+<li>@every 8h    //每8小时通知  </li>
+</ul>
+<p>TG通知内容：</p>
+<ul>
+<li>节点流量使用</li>
+<li>面板登录提醒</li>
+<li>节点到期提醒</li>
+<li>流量预警提醒  </li>
+</ul>
+<p>更多功能规划中…</p>
+<h2 id="建议系统"><a href="#建议系统" class="headerlink" title="建议系统"></a>建议系统</h2><ul>
+<li>CentOS 7+</li>
+<li>Ubuntu 16+</li>
+<li>Debian 8+</li>
+</ul>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="从-v2-ui-迁移"><a href="#从-v2-ui-迁移" class="headerlink" title="从 v2-ui 迁移"></a>从 v2-ui 迁移</h2><p>首先在安装了 v2-ui 的服务器上安装最新版 x-ui，然后使用以下命令进行迁移，将迁移本机 v2-ui 的 <code>所有 inbound 账号数据</code>至 x-ui，<code>面板设置和用户名密码不会迁移</code></p>
+<blockquote>
+<p>迁移成功后请 <code>关闭 v2-ui</code>并且 <code>重启 x-ui</code>，否则 v2-ui 的 inbound 会与 x-ui 的 inbound 会产生 <code>端口冲突</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x-ui v2-ui</span><br></pre></td></tr></table></figure>
+
+<h2 id="issue-关闭"><a href="#issue-关闭" class="headerlink" title="issue 关闭"></a>issue 关闭</h2><p>各种小白问题看得血压很高</p>
+<h2 id="Stargazers-over-time"><a href="#Stargazers-over-time" class="headerlink" title="Stargazers over time"></a>Stargazers over time</h2><p><a target="_blank" rel="noopener" href="https://starchart.cc/vaxilu/x-ui"><img src="https://starchart.cc/vaxilu/x-ui.svg" alt="Stargazers over time"></a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -717,7 +880,7 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Regist<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;phone&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;phone&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;date&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;生日&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;up_ajax()&quot;</span>&gt;</span>ajax上传json数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">up_ajax</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                data = &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">name</span>: <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="number">0</span>].<span class="property">name</span>.<span class="property">value</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">phone</span>: <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="number">0</span>].<span class="property">phone</span>.<span class="property">value</span>,</span></span><br><span class="line"><span class="language-javascript">                &#125;;</span></span><br><span class="line"><span class="language-javascript">                <span class="title function_">fetch</span>(<span class="string">&#x27;&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data),</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                    &#125;,</span></span><br><span class="line"><span class="language-javascript">                &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">text</span>()).<span class="title function_">then</span>(<span class="function"><span class="params">text</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="variable language_">document</span>.<span class="title function_">write</span>(text)</span></span><br><span class="line"><span class="language-javascript">                &#125;);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        请求路径-path：&#123;&#123; request.path &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        请求的URI(统一资源标识符): http://&#123;&#123; request.get_host &#125;&#125;:&#123;&#123; request.get_port &#125;&#125;&#123;&#123; request.get_full_path &#125;&#125;</span><br><span class="line">&#123;#                             &#123;&#123; request.get_raw_uri &#125;&#125;#&#125;</span><br><span class="line">&#123;#        The undocumented HttpRequest.get_raw_uri() method is removed.#&#125;</span><br><span class="line">&#123;#        The HttpRequest.build_absolute_uri() method may be a suitable alternative.#&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">            URL: 统一资源定位符，资源的网络地址</span><br><span class="line">            URI: 统一资源标识符，用于RESTful规范中，可以理解为URL</span><br><span class="line">        <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        请求方法：&#123;&#123; request.method &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        content_type: &#123;&#123; request.content_type &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        encoding: &#123;&#123; request.encoding &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        content_params: &#123;&#123; request.content_params &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        body: &#123;&#123; request.body &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>github仓库：<a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a>:disenQF/advanceDjango1.git</p>
+<p>github仓库：<a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;</a>:disenQF/advanceDjango1.git</p>
 <h3 id="1-2-response对象"><a href="#1-2-response对象" class="headerlink" title="1.2 response对象"></a>1.2 response对象</h3><p>响应对象是视图函数返回的对象。由我们自己创建，当然，django有很多快捷方法，如render()/redirect()快速生成response响应对象。</p>
 <p>常用的响应类：</p>
 <ul>
@@ -970,7 +1133,7 @@
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">celery -A advanceDjango worker -B -l info -f celery.log</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="WEB后端服务第19天-Django第9天"><a href="#WEB后端服务第19天-Django第9天" class="headerlink" title="WEB后端服务第19天-Django第9天"></a>WEB后端服务第19天-Django第9天</h1><h2 id="一、基于Celery-Redis实现抢购方案"><a href="#一、基于Celery-Redis实现抢购方案" class="headerlink" title="一、基于Celery+Redis实现抢购方案"></a>一、基于Celery+Redis实现抢购方案</h2><p>项目：<a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:disenQF/QBuyPro.git</p>
+<h1 id="WEB后端服务第19天-Django第9天"><a href="#WEB后端服务第19天-Django第9天" class="headerlink" title="WEB后端服务第19天-Django第9天"></a>WEB后端服务第19天-Django第9天</h1><h2 id="一、基于Celery-Redis实现抢购方案"><a href="#一、基于Celery-Redis实现抢购方案" class="headerlink" title="一、基于Celery+Redis实现抢购方案"></a>一、基于Celery+Redis实现抢购方案</h2><p>项目：<a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a>:disenQF/QBuyPro.git</p>
 <h3 id="1-1-业务描述"><a href="#1-1-业务描述" class="headerlink" title="1.1 业务描述"></a>1.1 业务描述</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">实现抢购活动开始后，每位用户每天只限抢购一件商品。</span><br><span class="line">活动信息：图片、标题、商品、价格折扣、开始时间、结束时间</span><br><span class="line"></span><br><span class="line">另外：每天限量 5</span><br></pre></td></tr></table></figure>
 
 <h3 id="1-2-设计模型类"><a href="#1-2-设计模型类" class="headerlink" title="1.2 设计模型类"></a>1.2 设计模型类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>(models.Model):</span><br><span class="line">    <span class="comment"># 名称</span></span><br><span class="line">    <span class="comment"># 单价</span></span><br><span class="line">    <span class="comment"># 描述</span></span><br><span class="line">    <span class="comment"># 图片</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoginUser</span>(models.Model):</span><br><span class="line">    <span class="comment"># 登录名</span></span><br><span class="line">    <span class="comment"># 登录口令</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ActiveModel</span>(models.Model):</span><br><span class="line">    <span class="comment"># 名称</span></span><br><span class="line">    <span class="comment"># 图片</span></span><br><span class="line">    <span class="comment"># 开始时间</span></span><br><span class="line">    <span class="comment"># 结束时间</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ActiveGoodsModel</span>(model.Model):</span><br><span class="line">    <span class="comment"># 活动ID - ForiegnKey(ActiveModel=)</span></span><br><span class="line">    <span class="comment"># 商品ID - ForeignKey(Goods, related_name=)</span></span><br><span class="line">    <span class="comment"># 折扣 rate  小数</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 增加订单和订单详情模型</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -2971,498 +3134,6 @@ if hasattr(model_admin, &#39;&#123;field&#125;_choices&#39;.format(field=field.n
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Private">
-      <meta itemprop="description" content="程序语言记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PeacefulRace">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/17/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">linux常用命令大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-17 10:16:24" itemprop="dateCreated datePublished" datetime="2022-08-17T10:16:24+08:00">2022-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-30 15:37:19" itemprop="dateModified" datetime="2022-08-30T15:37:19+08:00">2022-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="系统信息"><a href="#系统信息" class="headerlink" title="/系统信息"></a>/系统信息</h2><p>arch 显示机器的处理器架构</p>
-<p>uname -m 显示机器的处理器架构</p>
-<p>uname -r 显示正在使用的内核版本</p>
-<p>dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI) </p>
-<p>hdparm -i /dev/hda 罗列一个磁盘的架构特性 </p>
-<p>hdparm -tT /dev/sda 在磁盘上执行测试性读取操作 </p>
-<p>cat /proc/cpuinfo 显示CPU info的信息</p>
-<p>cat /proc/interrupts 显示中断 </p>
-<p>cat /proc/meminfo 校验内存使用 </p>
-<p>cat /proc/swaps 显示哪些swap被使用</p>
-<p>cat /proc/version 显示内核的版本 </p>
-<p>cat /proc/net/dev 显示网络适配器及统计 </p>
-<p>cat /proc/mounts 显示已加载的文件系统 </p>
-<p>lspci -tv 罗列 PCI 设备 </p>
-<p>lsusb -tv 显示 USB 设备 </p>
-<p>date 显示系统日期</p>
-<p>cal 2007 显示2007年的日历表 </p>
-<p>date 041217002007.00 设置日期和时间 - 月日时分年.秒 </p>
-<p>clock -w 将时间修改保存到 BIOS </p>
-<h1 id="关机-系统的关机、重启以及登出"><a href="#关机-系统的关机、重启以及登出" class="headerlink" title="关机 (系统的关机、重启以及登出 )"></a>关机 (系统的关机、重启以及登出 )</h1><p>shutdown -h now 关闭系统</p>
-<p>init 0 关闭系统</p>
-<p>telinit 0 关闭系统</p>
-<p>shutdown -h hours:minutes &amp; 按预定时间关闭系统 </p>
-<p>shutdown -c 取消按预定时间关闭系统</p>
-<p>shutdown -r now 重启</p>
-<p>reboot 重启</p>
-<p>logout 注销</p>
-<h1 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h1><p>cd /home 进入 ‘/ home’ 目录’ </p>
-<p>cd .. 返回上一级目录</p>
-<p>cd ../.. 返回上两级目录</p>
-<p>cd 进入个人的主目录</p>
-<p>cd ~user1 进入个人的主目录</p>
-<p>cd - 返回上次所在的目录</p>
-<p>pwd 显示工作路径</p>
-<p>ls 查看目录中的文件</p>
-<p>ls -F 查看目录中的文件</p>
-<p>ls -l 显示文件和目录的详细资料</p>
-<p>ls -a 显示隐藏文件</p>
-<p>ls <em>[0-9]</em> 显示包含数字的文件名和目录名</p>
-<p>tree 显示文件和目录由根目录开始的树形结构</p>
-<p>lstree 显示文件和目录由根目录开始的树形结构</p>
-<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’ </p>
-<p>mkdir dir1 dir2 同时创建两个目录 </p>
-<p>mkdir -p /tmp/dir1/dir2 创建一个目录树 </p>
-<p>rm -f file1 删除一个叫做 ‘file1’ 的文件’ </p>
-<p>rmdir dir1 删除一个叫做 ‘dir1’ 的目录’ </p>
-<p>rm -rf dir1 删除一个叫做 ‘dir1’ 的目录并同时删除其内容</p>
-<p>rm -rf dir1 dir2 同时删除两个目录及它们的内容 </p>
-<p>mv dir1 new_dir 重命名/移动 一个目录 </p>
-<p>cp file1 file2 复制一个文件 </p>
-<p>cp dir/* . 复制一个目录下的所有文件到当前工作目录</p>
-<p>cp -a /tmp/dir1 . 复制一个目录到当前工作目录 </p>
-<p>cp -a dir1 dir2 复制一个目录 </p>
-<p>cp -r dir1 dir2 复制一个目录及子目录</p>
-<p>ln -s file1 lnk1 创建一个指向文件或目录的软链接 </p>
-<p>ln file1 lnk1 创建一个指向文件或目录的物理链接 </p>
-<p>touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm) </p>
-<p>file file1 outputs the mime type of the file as text </p>
-<p>iconv -l 列出已知的编码</p>
-<p>iconv -f fromEncoding -t toEncoding inputFile &gt; outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding. </p>
-<p>find . -maxdepth 1 -name *.jpg -print -exec convert “{}” -resize 80x60 “thumbs/{}” ; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick) </p>
-<h1 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h1><p>find / -name file1 从 ‘/‘ 开始进入根文件系统搜索文件和目录</p>
-<p>find / -user user1 搜索属于用户 ‘user1’ 的文件和目录 </p>
-<p>find /home/user1 -name *.bin 在目录 ‘/ home/user1’ 中搜索带有’.bin’ 结尾的文件</p>
-<p>find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件</p>
-<p>find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件</p>
-<p>find / -name *.rpm -exec chmod 755 ‘{}’ ; 搜索以 ‘.rpm’ 结尾的文件并定义其权限 </p>
-<p>find / -xdev -name *.rpm 搜索以 ‘.rpm’ 结尾的文件，忽略光驱、捷盘等可移动设备</p>
-<p>locate *.ps 寻找以 ‘.ps’ 结尾的文件 - 先运行 ‘updatedb’ 命令 </p>
-<p>whereis halt 显示一个二进制文件、源码或man的位置 </p>
-<p>which halt 显示一个二进制文件或可执行文件的完整路径</p>
-<h1 id="挂载一个文件系统"><a href="#挂载一个文件系统" class="headerlink" title="挂载一个文件系统"></a>挂载一个文件系统</h1><p>mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 ‘/ mnt/hda2’ 已经存在 </p>
-<p>umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 ‘/ mnt/hda2’ 退出 </p>
-<p>fuser -km /mnt/hda2 当设备繁忙时强制卸载 </p>
-<p>umount -n /mnt/hda2 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用</p>
-<p>mount /dev/fd0 /mnt/floppy 挂载一个软盘 </p>
-<p>mount /dev/cdrom /mnt/cdrom 挂载一个cdrom或dvdrom </p>
-<p>mount /dev/hdc /mnt/cdrecorder 挂载一个cdrw或dvdrom </p>
-<p>mount /dev/hdb /mnt/cdrecorder 挂载一个cdrw或dvdrom </p>
-<p>mount -o loop file.iso /mnt/cdrom 挂载一个文件或ISO镜像文件</p>
-<p>mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统 </p>
-<p>mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备</p>
-<p>mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享 </p>
-<h1 id="磁盘空间"><a href="#磁盘空间" class="headerlink" title="磁盘空间"></a>磁盘空间</h1><p>df -h 显示已经挂载的分区列表</p>
-<p>ls -lSr |more 以尺寸大小排列文件和目录 </p>
-<p>du -sh dir1 估算目录 ‘dir1’ 已经使用的磁盘空间’ </p>
-<p>du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小 </p>
-<p>rpm -q -a –qf ‘%10{SIZE}t%{NAME}n’ | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统) </p>
-<p>dpkg-query -W -f=’${Installed-Size;10}t${Package}n’ | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统) </p>
-<h1 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h1><p>groupadd group_name 创建一个新用户组 </p>
-<p>groupdel group_name 删除一个用户组 </p>
-<p>groupmod -n new_group_name old_group_name 重命名一个用户组 </p>
-<p>useradd -c “Name Surname “ -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 “admin” 用户组的用户 </p>
-<p>useradd user1 创建一个新用户 </p>
-<p>userdel -r user1 删除一个用户 ( ‘-r’ 排除主目录) </p>
-<p>usermod -c “User FTP” -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性</p>
-<p>passwd 修改口令</p>
-<p>passwd user1 修改一个用户的口令 (只允许root执行) </p>
-<p>chage -E 2005-12-31 user1 设置用户口令的失效期限 </p>
-<p>pwck 检查 ‘/etc/passwd’ 的文件格式和语法修正以及存在的用户</p>
-<p>grpck 检查 ‘/etc/passwd’ 的文件格式和语法修正以及存在的群组</p>
-<p>newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 </p>
-<h1 id="文件的权限-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的权限-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的权限 - 使用 “+” 设置权限，使用 “-“ 用于取消</h1><p>ls -lh 显示权限</p>
-<p>ls /tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示</p>
-<p>chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 </p>
-<p>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限</p>
-<p>chown user1 file1 改变一个文件的所有人属性 </p>
-<p>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 </p>
-<p>chgrp group1 file1 改变文件的群组 </p>
-<p>chown user1:group1 file1 改变一个文件的所有人和群组属性 </p>
-<p>find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件 </p>
-<p>chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限</p>
-<p>chmod u-s /bin/file1 禁用一个二进制文件的 SUID位 </p>
-<p>chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的</p>
-<p>chmod g-s /home/public 禁用一个目录的 SGID 位 </p>
-<p>chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件</p>
-<p>chmod o-t /home/public 禁用一个目录的 STIKY 位 </p>
-<h1 id="文件的特殊属性-使用-“-”-设置权限，使用-“-“-用于取消"><a href="#文件的特殊属性-使用-“-”-设置权限，使用-“-“-用于取消" class="headerlink" title="文件的特殊属性 - 使用 “+” 设置权限，使用 “-“ 用于取消"></a>文件的特殊属性 - 使用 “+” 设置权限，使用 “-“ 用于取消</h1><p>chattr +a file1 只允许以追加方式读写文件 </p>
-<p>chattr +c file1 允许这个文件能被内核自动压缩/解压 </p>
-<p>chattr +d file1 在进行文件系统备份时，dump程序将忽略这个文件 </p>
-<p>chattr +i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接 </p>
-<p>chattr +s file1 允许一个文件被安全地删除 </p>
-<p>chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘 </p>
-<p>chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件 </p>
-<p>lsattr 显示特殊的属性</p>
-<h1 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h1><p>bunzip2 file1.bz2 解压一个叫做 ‘file1.bz2’的文件 </p>
-<p>bzip2 file1 压缩一个叫做 ‘file1’ 的文件 </p>
-<p>gunzip file1.gz 解压一个叫做 ‘file1.gz’的文件 </p>
-<p>gzip file1 压缩一个叫做 ‘file1’的文件 </p>
-<p>gzip -9 file1 最大程度压缩 </p>
-<p>rar a file1.rar test_file 创建一个叫做 ‘file1.rar’ 的包 </p>
-<p>rar a file1.rar file1 file2 dir1 同时压缩 ‘file1’, ‘file2’ 以及目录 ‘dir1’ </p>
-<p>rar x file1.rar 解压rar包</p>
-<p>unrar x file1.rar 解压rar包</p>
-<p>tar -cvf archive.tar file1 创建一个非压缩的 tarball </p>
-<p>tar -cvf archive.tar file1 file2 dir1 创建一个包含了 ‘file1’, ‘file2’ 以及 ‘dir1’的档案文件</p>
-<p>tar -tf archive.tar 显示一个包中的内容 </p>
-<p>tar -xvf archive.tar 释放一个包 </p>
-<p>tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下</p>
-<p>tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包</p>
-<p>tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包</p>
-<p>tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包</p>
-<p>tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包</p>
-<p>zip file1.zip file1 创建一个zip格式的压缩包</p>
-<p>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 </p>
-<p>unzip file1.zip 解压一个zip格式压缩包</p>
-<h1 id="扩展名-zst表示存档由zstd压缩。"><a href="#扩展名-zst表示存档由zstd压缩。" class="headerlink" title="扩展名.zst表示存档由zstd压缩。"></a>扩展名.zst表示存档由zstd压缩。</h1><p>tar命令有一个选项-I（ - use-compress-program）来指定压缩/解压缩命令。</p>
-<p>可以按照如下命令进行解压：</p>
-<p>$ tar -I zstd -xvf xxxx.tar.zst</p>
-<p>参考文档：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/172210/answer/274433">https://cloud.tencent.com/developer/ask/172210/answer/274433</a></p>
-<p>但是在执行tar -I zstd -xvf xxxx.tar.zst过程中遇到了如下问题：</p>
-<p>tar (child): zstd: Cannot exec: No such file or directory</p>
-<p>tar (child): Error is not recoverable: exiting now</p>
-<p>tar: Child returned status 2</p>
-<p>tar: Error is not recoverable: exiting now</p>
-<p>出现了这个是因为没有安装zstd包，需要手动安装这个安装包来解压zst</p>
-<p>ubuntu 系统可以直接通过下面命令进行安装</p>
-<p>$ sudo apt install zstd</p>
-<p>参考文档：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/clairedandan/p/13830908.html">https://www.cnblogs.com/clairedandan/p/13830908.html</a></p>
-<h1 id="RPM-包-（Fedora-Redhat及类似系统）"><a href="#RPM-包-（Fedora-Redhat及类似系统）" class="headerlink" title="RPM 包 - （Fedora, Redhat及类似系统）"></a>RPM 包 - （Fedora, Redhat及类似系统）</h1><p>rpm -ivh package.rpm 安装一个rpm包</p>
-<p>rpm -ivh –nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告</p>
-<p>rpm -U package.rpm 更新一个rpm包但不改变其配置文件</p>
-<p>rpm -F package.rpm 更新一个确定已经安装的rpm包 </p>
-<p>rpm -e package_name.rpm 删除一个rpm包</p>
-<p>rpm -qa 显示系统中所有已经安装的rpm包 </p>
-<p>rpm -qa | grep httpd 显示所有名称中包含 “httpd” 字样的rpm包</p>
-<p>rpm -qi package_name 获取一个已安装包的特殊信息 </p>
-<p>rpm -qg “System Environment/Daemons” 显示一个组件的rpm包 </p>
-<p>rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表</p>
-<p>rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表</p>
-<p>rpm -q package_name –whatrequires 显示与一个rpm包存在依赖关系的列表</p>
-<p>rpm -q package_name –whatprovides 显示一个rpm包所占的体积</p>
-<p>rpm -q package_name –scripts 显示在安装/删除期间所执行的脚本l </p>
-<p>rpm -q package_name –changelog 显示一个rpm包的修改历史</p>
-<p>rpm -qf /etc/httpd/conf/httpd.conf 确认所给的文件由哪个rpm包所提供 </p>
-<p>rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表 </p>
-<p>rpm –import /media/cdrom/RPM-GPG-KEY 导入公钥数字证书 </p>
-<p>rpm –checksig package.rpm 确认一个rpm包的完整性</p>
-<p>rpm -qa gpg-pubkey 确认已安装的所有rpm包的完整性</p>
-<p>rpm -V package_name 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间</p>
-<p>rpm -Va 检查系统中所有已安装的rpm包- 小心使用 </p>
-<p>rpm -Vp package.rpm 确认一个rpm包还未安装</p>
-<p>rpm2cpio package.rpm | cpio –extract –make-directories <em>bin</em> 从一个rpm包运行可执行文件</p>
-<p>rpm -ivh /usr/src/redhat/RPMS/<code>arch</code>/package.rpm 从一个rpm源码安装一个构建好的包 </p>
-<p>rpmbuild –rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 </p>
-<h1 id="YUM-软件包升级器-（Fedora-RedHat及类似系统）"><a href="#YUM-软件包升级器-（Fedora-RedHat及类似系统）" class="headerlink" title="YUM 软件包升级器 - （Fedora, RedHat及类似系统）"></a>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</h1><p>yum install package_name 下载并安装一个rpm包</p>
-<p>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系</p>
-<p>yum update package_name.rpm 更新当前系统中所有安装的rpm包 </p>
-<p>yum update package_name 更新一个rpm包</p>
-<p>yum remove package_name 删除一个rpm包</p>
-<p>yum list 列出当前系统中安装的所有包</p>
-<p>yum search package_name 在rpm仓库中搜寻软件包</p>
-<p>yum clean packages 清理rpm缓存删除下载的包</p>
-<p>yum clean headers 删除所有头文件 </p>
-<p>yum clean all 删除所有缓存的包和头文件 </p>
-<h1 id="DEB-包-Debian-Ubuntu-以及类似系统"><a href="#DEB-包-Debian-Ubuntu-以及类似系统" class="headerlink" title="DEB 包 (Debian, Ubuntu 以及类似系统)"></a>DEB 包 (Debian, Ubuntu 以及类似系统)</h1><p>dpkg -i package.deb 安装/更新一个 deb 包 </p>
-<p>dpkg -r package_name 从系统删除一个 deb 包</p>
-<p>dpkg -l 显示系统中所有已经安装的 deb 包 </p>
-<p>dpkg -l | grep httpd 显示所有名称中包含 “httpd” 字样的deb包</p>
-<p>dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 </p>
-<p>dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 </p>
-<p>dpkg –contents package.deb 显示尚未安装的一个包所提供的文件列表 </p>
-<p>dpkg -S /bin/ping 确认所给的文件由哪个deb包提供 </p>
-<h1 id="APT-软件工具-Debian-Ubuntu-以及类似系统"><a href="#APT-软件工具-Debian-Ubuntu-以及类似系统" class="headerlink" title="APT 软件工具 (Debian, Ubuntu 以及类似系统)"></a>APT 软件工具 (Debian, Ubuntu 以及类似系统)</h1><p>apt-get install package_name 安装/更新一个 deb 包 </p>
-<p>apt-cdrom install package_name 从光盘安装/更新一个 deb 包 </p>
-<p>apt-get update 升级列表中的软件包 </p>
-<p>apt-get upgrade 升级所有已安装的软件 </p>
-<p>apt-get remove package_name 从系统删除一个deb包</p>
-<p>apt-get check 确认依赖的软件仓库正确 </p>
-<p>apt-get clean 从下载的软件包中清理缓存 </p>
-<p>apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 </p>
-<h1 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h1><p>cat file1 从第一个字节开始正向查看文件的内容</p>
-<p>tac file1 从最后一行开始反向查看一个文件的内容</p>
-<p>more file1 查看一个长文件的内容</p>
-<p>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作</p>
-<p>head -2 file1 查看一个文件的前两行 </p>
-<p>tail -2 file1 查看一个文件的最后两行 </p>
-<p>tail -f /var/log/messages 实时查看被添加到一个文件中的内容 </p>
-<h1 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h1><p>cat file1 file2 … | command &lt;&gt; file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT </p>
-<p>cat file1 | command( sed, grep, awk, grep, etc…) &gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中</p>
-<p>cat file1 | command( sed, grep, awk, grep, etc…) &gt;&gt; result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中</p>
-<p>grep Aug /var/log/messages 在文件 ‘/var/log/messages’中查找关键词”Aug” </p>
-<p>grep ^Aug /var/log/messages 在文件 ‘/var/log/messages’中查找以”Aug”开始的词汇 </p>
-<p>grep [0-9] /var/log/messages 选择 ‘/var/log/messages’ 文件中所有包含数字的行 </p>
-<p>grep Aug -R /var/log/* 在目录 ‘/var/log’ 及随后的目录中搜索字符串”Aug” </p>
-<p>sed ‘s/stringa1/stringa2/g’ example.txt 将example.txt文件中的 “string1” 替换成 “string2” </p>
-<p>sed ‘/^$/d’ example.txt 从example.txt文件中删除所有空白行</p>
-<p>sed ‘/ *#/d; /^$/d’ example.txt 从example.txt文件中删除所有注释和空白行</p>
-<p>echo ‘esempio’ | tr ‘[:lower:]’ ‘[:upper:]’ 合并上下单元格内容 </p>
-<p>sed -e ‘1d’ result.txt 从文件example.txt 中排除第一行 </p>
-<p>sed -n ‘/stringa1/p’ 查看只包含词汇 “string1”的行 </p>
-<p>sed -e ‘s/ *$//‘ example.txt 删除每一行最后的空白字符 </p>
-<p>sed -e ‘s/stringa1//g’ example.txt 从文档中只删除词汇 “string1” 并保留剩余全部 </p>
-<p>sed -n ‘1,5p;5q’ example.txt 查看从第一行到第5行内容</p>
-<p>sed -n ‘5p;5q’ example.txt 查看第5行</p>
-<p>sed -e ‘s/00*/0/g’ example.txt 用单个零替换多个零 </p>
-<p>cat -n file1 标示文件的行数</p>
-<p>cat example.txt | awk ‘NR%2==1’ 删除example.txt文件中的所有偶数行 </p>
-<p>echo a b c | awk ‘{print $1}’ 查看一行第一栏 </p>
-<p>echo a b c | awk ‘{print $1,$3}’ 查看一行的第一和第三栏 </p>
-<p>paste file1 file2 合并两个文件或两栏的内容 </p>
-<p>paste -d ‘+’ file1 file2 合并两个文件或两栏的内容，中间用”+”区分 </p>
-<p>sort file1 file2 排序两个文件的内容 </p>
-<p>sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) </p>
-<p>sort file1 file2 | uniq -u 删除交集，留下其他的行 </p>
-<p>sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) </p>
-<p>comm -1 file1 file2 比较两个文件的内容只删除 ‘file1’ 所包含的内容 </p>
-<p>comm -2 file1 file2 比较两个文件的内容只删除 ‘file2’ 所包含的内容 </p>
-<p>comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分 </p>
-<h1 id="字符设置和文件格式转换"><a href="#字符设置和文件格式转换" class="headerlink" title="字符设置和文件格式转换"></a>字符设置和文件格式转换</h1><p>dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX </p>
-<p>unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS </p>
-<p>recode ..HTML &lt; page.txt &gt; page.html 将一个文本文件转换成html </p>
-<p>recode -l | more 显示所有允许的转换格式 </p>
-<h1 id="文件系统分析"><a href="#文件系统分析" class="headerlink" title="文件系统分析"></a>文件系统分析</h1><p>badblocks -v /dev/hda1 检查磁盘hda1上的坏磁块</p>
-<p>fsck /dev/hda1 修复/检查hda1磁盘上linux文件系统的完整性</p>
-<p>fsck.ext2 /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性</p>
-<p>e2fsck /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性</p>
-<p>e2fsck -j /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性</p>
-<p>fsck.ext3 /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性</p>
-<p>fsck.vfat /dev/hda1 修复/检查hda1磁盘上fat文件系统的完整性</p>
-<p>fsck.msdos /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性</p>
-<p>dosfsck /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性</p>
-<h1 id="初始化一个文件系统"><a href="#初始化一个文件系统" class="headerlink" title="初始化一个文件系统"></a>初始化一个文件系统</h1><p>mkfs /dev/hda1 在hda1分区创建一个文件系统</p>
-<p>mke2fs /dev/hda1 在hda1分区创建一个linux ext2的文件系统 </p>
-<p>mke2fs -j /dev/hda1 在hda1分区创建一个linux ext3(日志型)的文件系统 </p>
-<p>mkfs -t vfat 32 -F /dev/hda1 创建一个 FAT32 文件系统</p>
-<p>fdformat -n /dev/fd0 格式化一个软盘 </p>
-<p>mkswap /dev/hda3 创建一个swap文件系统</p>
-<h1 id="SWAP文件系统"><a href="#SWAP文件系统" class="headerlink" title="SWAP文件系统"></a>SWAP文件系统</h1><p>mkswap /dev/hda3 创建一个swap文件系统</p>
-<p>swapon /dev/hda3 启用一个新的swap文件系统</p>
-<p>swapon /dev/hda2 /dev/hdb3 启用两个swap分区</p>
-<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><p>dump -0aj -f /tmp/home0.bak /home 制作一个 ‘/home’ 目录的完整备份 </p>
-<p>dump -1aj -f /tmp/home0.bak /home 制作一个 ‘/home’ 目录的交互式备份 </p>
-<p>restore -if /tmp/home0.bak 还原一个交互式备份 </p>
-<p>rsync -rogpav –delete /home /tmp 同步两边的目录 </p>
-<p>rsync -rogpav -e ssh –delete /home ip_address:/tmp 通过SSH通道rsync </p>
-<p>rsync -az -e ssh –delete ip_addr:/home/public /home/local 通过ssh和压缩将一个远程目录同步到本地目录</p>
-<p>rsync -az -e ssh –delete /home/local ip_addr:/home/public 通过ssh和压缩将本地目录同步到远程目录</p>
-<p>dd bs=1M if=/dev/hda | gzip | ssh user@ip_addr ‘dd of=hda.gz’ 通过ssh在远程主机上执行一次备份本地磁盘的操作</p>
-<p>dd if=/dev/sda of=/tmp/file1 备份磁盘内容到一个文件 </p>
-<p>tar -Puf backup.tar /home/user 执行一次对 ‘/home/user’ 目录的交互式备份操作 </p>
-<p>( cd /tmp/local/ &amp;&amp; tar c . ) | ssh -C user@ip_addr ‘cd /home/share/ &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个目录内容</p>
-<p>( tar c /home ) | ssh -C user@ip_addr ‘cd /home/backup-home &amp;&amp; tar x -p’ 通过ssh在远程目录中复制一个本地目录</p>
-<p>tar cf - . | (cd /tmp/backup ; tar xf - ) 本地将一个目录复制到另一个地方，保留原有权限及链接 </p>
-<p>find /home/user1 -name ‘*.txt’ | xargs cp -av –target-directory=/home/backup/ –parents 从一个目录查找并复制所有以 ‘.txt’ 结尾的文件到另一个目录</p>
-<p>find /var/log -name ‘*.log’ | tar cv –files-from=- | bzip2 &gt; log.tar.bz2 查找所有以 ‘.log’ 结尾的文件并做成一个bzip包 </p>
-<p>dd if=/dev/hda of=/dev/fd0 bs=512 count=1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作 </p>
-<p>dd if=/dev/fd0 of=/dev/hda bs=512 count=1 从已经保存到软盘的备份中恢复MBR内容 </p>
-<h1 id="光盘"><a href="#光盘" class="headerlink" title="光盘"></a>光盘</h1><p>cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容</p>
-<p>mkisofs /dev/cdrom &gt; cd.iso 在磁盘上创建一个光盘的iso镜像文件 </p>
-<p>mkisofs /dev/cdrom | gzip &gt; cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件 </p>
-<p>mkisofs -J -allow-leading-dots -R -V “Label CD” -iso-level 4 -o ./cd.iso data_cd 创建一个目录的iso镜像文件</p>
-<p>cdrecord -v dev=/dev/cdrom cd.iso 刻录一个ISO镜像文件</p>
-<p>gzip -dc cd_iso.gz | cdrecord dev=/dev/cdrom - 刻录一个压缩了的ISO镜像文件 </p>
-<p>mount -o loop cd.iso /mnt/iso 挂载一个ISO镜像文件</p>
-<p>cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中 </p>
-<p>cd-paranoia – “-3” 从一个CD光盘转录音轨到 wav 文件中（参数-3） </p>
-<p>cdrecord –scanbus 扫描总线以识别scsi通道</p>
-<p>dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD </p>
-<h1 id="网络-（以太网和WIFI无线）"><a href="#网络-（以太网和WIFI无线）" class="headerlink" title="网络 - （以太网和WIFI无线）"></a>网络 - （以太网和WIFI无线）</h1><p>ifconfig eth0 显示一个以太网卡的配置 </p>
-<p>ifup eth0 启用一个 ‘eth0’ 网络设备 </p>
-<p>ifdown eth0 禁用一个 ‘eth0’ 网络设备 </p>
-<p>ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址 </p>
-<p>ifconfig eth0 promisc 设置 ‘eth0’ 成混杂模式以嗅探数据包 (sniffing) </p>
-<p>dhclient eth0 以dhcp模式启用 ‘eth0’ </p>
-<p>route -n show routing table </p>
-<p>route add -net 0/0 gw IP_Gateway configura default gateway </p>
-<p>route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network ‘192.168.0.0/16’ </p>
-<p>route del 0/0 gw IP_gateway remove static route </p>
-<p>echo “1” &gt; /proc/sys/net/ipv4/ip_forward activate ip routing </p>
-<p>hostname show hostname of system </p>
-<p>host <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa</p>
-<p>nslookup <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa</p>
-<p>ip link show show link status of all interfaces </p>
-<p>mii-tool eth0 show link status of ‘eth0’ </p>
-<p>ethtool eth0 show statistics of network card ‘eth0’ </p>
-<p>netstat -tup show all active network connections and their PID </p>
-<p>netstat -tupl show all network services listening on the system and their PID </p>
-<p>tcpdump tcp port 80 show all HTTP traffic </p>
-<p>iwlist scan show wireless networks </p>
-<p>iwconfig eth1 show configuration of a wireless network card </p>
-<p>hostname show hostname </p>
-<p>host <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa </p>
-<p>nslookup <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup hostname to resolve name to ip address and viceversa </p>
-<p>whois <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> lookup on Whois database </p>
-<h1 id="JPS工具"><a href="#JPS工具" class="headerlink" title="JPS工具"></a>JPS工具</h1><p>jps(Java Virtual Machine Process Status Tool)是JDK 1.5提供的一个显示当前所有java进程pid的命令，简单实用，非常适合在linux/unix平台上简单察看当前java进程的一些简单情况。</p>
-<p>  我想很多人都是用过unix系统里的ps命令，这个命令主要是用来显示当前系统的进程情况，有哪些进程，及其 id。 jps 也是一样，它的作用是显示当前系统的java进程情况，及其id号。我们可以通过它来查看我们到底启动了几个java进程（因为每一个java程序都会独占一个java虚拟机实例），和他们的进程号（为下面几个程序做准备），并可通过opt来查看这些进程的详细启动参数。</p>
-<p>   使用方法：在当前命令行下打 jps(需要JAVA_HOME，没有的话，到改程序的目录下打) 。</p>
-<p>jps存放在JAVA_HOME/bin/jps，使用时为了方便请将JAVA_HOME/bin/加入到Path.</p>
-<p>$&gt; jps</p>
-<p>23991 Jps</p>
-<p>23789 BossMain</p>
-<p>23651 Resin</p>
-<h1 id="比较常用的参数："><a href="#比较常用的参数：" class="headerlink" title="比较常用的参数："></a>比较常用的参数：</h1><p>-q 只显示pid，不显示class名称,jar文件名和传递给main 方法的参数</p>
-<p>$&gt; jps -q</p>
-<p>28680</p>
-<p>23789</p>
-<p>23651</p>
-<p>-m 输出传递给main 方法的参数，在嵌入式jvm上可能是null</p>
-<p>$&gt; jps -m</p>
-<p>28715 Jps -m</p>
-<p>23789 BossMain</p>
-<p>23651 Resin -socketwait 32768 -stdout /data/aoxj/resin/log/stdout.log -stderr /data/aoxj/resin/log/stderr.log</p>
-<p>-l 输出应用程序main class的完整package名 或者 应用程序的jar文件完整路径名</p>
-<p>$&gt; jps -l</p>
-<p>28729 sun.tools.jps.Jps</p>
-<p>23789 com.asiainfo.aimc.bossbi.BossMain</p>
-<p>23651 com.caucho.server.resin.Resin</p>
-<p>-v 输出传递给JVM的参数</p>
-<p>$&gt; jps -v</p>
-<p>23789 BossMain</p>
-<p>28802 Jps -Denv.class.path=/data/aoxj/bossbi/twsecurity/java/trustwork140.jar:/data/aoxj/bossbi/twsecurity/java/:/data/aoxj/bossbi/twsecurity/java/twcmcc.jar:/data/aoxj/jdk15/lib/rt.jar:/data/aoxj/jd</p>
-<p>k15/lib/tools.jar -Dapplication.home=/data/aoxj/jdk15 -Xms8m</p>
-<p>23651 Resin -Xss1m -Dresin.home=/data/aoxj/resin -Dserver.root=/data/aoxj/resin -Djava.util.logging.manager=com.caucho.log.LogManagerImpl -</p>
-<p>Djavax.management.builder.initial=com.caucho.jmx.MBeanServerBuilderImpl</p>
-<p>sudo jps看到的进程数量最全</p>
-<p>jps 192.168.0.77</p>
-<p>列出远程服务器192.168.0.77机器所有的jvm实例，采用rmi协议，默认连接端口为1099</p>
-<p>（前提是远程服务器提供jstatd服务）</p>
-<p>注：jps命令有个地方很不好，似乎只能显示当前用户的java进程，要显示其他用户的还是只能用unix/linux的ps命令。</p>
-<p>转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yjd_hycf_space/p/7730690.html">https://www.cnblogs.com/yjd_hycf_space/p/7730690.html</a></p>
-<p>详细情况请参考sun官方文档。</p>
-<p><a target="_blank" rel="noopener" href="http://java.sun.com/j2se/1.7.0/docs/tooldocs/share/jps.html">http://java.sun.com/j2se/1.7.0/docs/tooldocs/share/jps.html</a></p>
-<p>(2) 修改字体和字体大小:</p>
-<p>cd /lib/kbd/consolefonts    //进入到有字体的目录</p>
-<p>ls                     //查看所有字体</p>
-<p>setfont lat4-16+          //设置所选字体，lat4-16+为一个字体名字</p>
-<p>echo ‘setfont lat4-16+’ &gt;&gt; /etc/bashrc     //设置为开机默认</p>
-<p>(3) 修改分辨率</p>
-<p>首先打开一个文件：</p>
-<p>vi /etc/default/grub</p>
-<p>在倒数第2行的 GRUB_CMDLINE_LINUX参数中的末尾添加以下内容：</p>
-<p>net.ifnames=0 vga=0x314</p>
-<p>将上面的文件保存退出。 </p>
-<p>执行下面的命令，重新生成目标文件：</p>
-<p>grub2-mkconfig &gt; /boot/grub2/grub.cfg</p>
-<p>显示 done完成后，重启系统后生效：</p>
-<p>reboot</p>
-<h1 id="Iptables-firewalld"><a href="#Iptables-firewalld" class="headerlink" title="Iptables / firewalld"></a>Iptables / firewalld</h1><p>Centos7默认安装了firewalld，如果没有安装的话，可以使用 yum install firewalld firewalld-config进行安装。</p>
-<h2 id="1-启动防火墙"><a href="#1-启动防火墙" class="headerlink" title="1.启动防火墙"></a>1.启动防火墙</h2><p>systemctl start firewalld</p>
-<h2 id="2-禁用防火墙"><a href="#2-禁用防火墙" class="headerlink" title="2.禁用防火墙"></a>2.禁用防火墙</h2><p>systemctl stop firewalld</p>
-<h2 id="3-设置开机启动"><a href="#3-设置开机启动" class="headerlink" title="3.设置开机启动"></a>3.设置开机启动</h2><p>systemctl enable firewalld</p>
-<h2 id="4-停止并禁用开机启动"><a href="#4-停止并禁用开机启动" class="headerlink" title="4.停止并禁用开机启动"></a>4.停止并禁用开机启动</h2><p>sytemctl disable firewalld</p>
-<h2 id="5-重启防火墙"><a href="#5-重启防火墙" class="headerlink" title="5.重启防火墙"></a>5.重启防火墙</h2><p>systemctl restart firewalld</p>
-<p>firewall-cmd –reload</p>
-<h2 id="6-查看状态"><a href="#6-查看状态" class="headerlink" title="6.查看状态"></a>6.查看状态</h2><p>systemctl status firewalld或者 firewall-cmd –state</p>
-<h2 id="7-查看版本"><a href="#7-查看版本" class="headerlink" title="7.查看版本"></a>7.查看版本</h2><p>firewall-cmd –version</p>
-<h2 id="8-查看帮助"><a href="#8-查看帮助" class="headerlink" title="8.查看帮助"></a>8.查看帮助</h2><p>firewall-cmd –help</p>
-<h2 id="9-查看区域信息"><a href="#9-查看区域信息" class="headerlink" title="9.查看区域信息"></a>9.查看区域信息</h2><p>firewall-cmd –get-active-zones</p>
-<h2 id="10-查看指定接口所属区域信息"><a href="#10-查看指定接口所属区域信息" class="headerlink" title="10.查看指定接口所属区域信息"></a>10.查看指定接口所属区域信息</h2><p>firewall-cmd –get-zone-of-interface=eth0</p>
-<h2 id="11-拒绝所有包"><a href="#11-拒绝所有包" class="headerlink" title="11.拒绝所有包"></a>11.拒绝所有包</h2><p>firewall-cmd –panic-on</p>
-<h2 id="12-取消拒绝状态"><a href="#12-取消拒绝状态" class="headerlink" title="12.取消拒绝状态"></a>12.取消拒绝状态</h2><p>firewall-cmd –panic-off</p>
-<h2 id="13-查看是否拒绝"><a href="#13-查看是否拒绝" class="headerlink" title="13.查看是否拒绝"></a>13.查看是否拒绝</h2><p>firewall-cmd –query-panic</p>
-<h2 id="14-将接口添加到区域-默认接口都在public"><a href="#14-将接口添加到区域-默认接口都在public" class="headerlink" title="14.将接口添加到区域(默认接口都在public)"></a>14.将接口添加到区域(默认接口都在public)</h2><p>firewall-cmd –zone=public –add-interface=eth0(永久生效再加上 –permanent 然后reload防火墙)</p>
-<h2 id="15-设置默认接口区域"><a href="#15-设置默认接口区域" class="headerlink" title="15.设置默认接口区域"></a>15.设置默认接口区域</h2><p>firewall-cmd –set-default-zone=public(立即生效，无需重启)</p>
-<h2 id="16-更新防火墙规则"><a href="#16-更新防火墙规则" class="headerlink" title="16.更新防火墙规则"></a>16.更新防火墙规则</h2><p>firewall-cmd –reload或firewall-cmd –complete-reload(两者的区别就是第一个无需断开连接，就是firewalld特性之一动态</p>
-<p>添加规则，第二个需要断开连接，类似重启服务)</p>
-<h2 id="17-查看指定区域所有打开的端口"><a href="#17-查看指定区域所有打开的端口" class="headerlink" title="17.查看指定区域所有打开的端口"></a>17.查看指定区域所有打开的端口</h2><p>firewall-cmd –zone=public –list-ports</p>
-<h2 id="18-在指定区域打开端口（记得重启防火墙）"><a href="#18-在指定区域打开端口（记得重启防火墙）" class="headerlink" title="18.在指定区域打开端口（记得重启防火墙）"></a>18.在指定区域打开端口（记得重启防火墙）</h2><p>firewall-cmd –zone=public –add-port=80/tcp(永久生效再加上 –permanent)</p>
-<p>说明：</p>
-<p>–zone 作用域</p>
-<p>–add-port=8080/tcp 添加端口，格式为：端口/通讯协议</p>
-<p>–permanent #永久生效，没有此参数重启后失效</p>
-<p>一、查看哪些端口被打开 netstat -anp</p>
-<p>二、关闭端口号:</p>
-<p><code>iptables -A OUTPUT -p tcp - -dport 端口号-j DROP</code></p>
-<p>1</p>
-<p>三、打开端口号：</p>
-<p><code>iptables -A INPUT -ptcp - -dport 端口号-j ACCEPT</code></p>
-<p>1</p>
-<p>四、保存设置</p>
-<p>service iptables save</p>
-<p>1</p>
-<p>五、以下是linux打开端口命令的使用方法。</p>
-<p>　　nc -lp 23 &amp;(打开23端口，即telnet)</p>
-<p>　　netstat -an | grep 23 (查看是否打开23端口)</p>
-<p>六、linux打开端口命令每一个打开的端口，都需要有相应的监听程序才可以</p>
-<p>检查更新防火墙规则：</p>
-<p>firewall-cmd –list-all</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -3532,7 +3203,7 @@ if hasattr(model_admin, &#39;&#123;field&#125;_choices&#39;.format(field=field.n
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
