@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -395,6 +395,391 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/26/python-%E7%88%AC%E8%99%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/26/python-%E7%88%AC%E8%99%AB/" class="post-title-link" itemprop="url">python-爬虫</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-26T00:00:00+08:00">2019-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-17 15:18:32" itemprop="dateModified" datetime="2022-09-17T15:18:32+08:00">2022-09-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、CURL的使用"><a href="#一、CURL的使用" class="headerlink" title="一、CURL的使用"></a>一、CURL的使用</h1><p>【注意】安装的时候可能会遇到报错，有可能是openssl没装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install curl</span><br><span class="line">apt install openssl</span><br><span class="line">apt install openssl-dev</span><br></pre></td></tr></table></figure>
+
+<p>请求测试网址：<a target="_blank" rel="noopener" href="http://httpbin.org/">http://httpbin.org</a></p>
+<p>本地搭建请求测试网址：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull kennethreitz/httpbin</span><br><span class="line">docker run -p 80:80 kennethreitz/httpbin</span><br></pre></td></tr></table></figure>
+
+<p><strong>HTTP PROXY代理安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install tinyproxy</span><br><span class="line">vim /etc/tinyproxy/tinyproxy.conf # 修改Port，注释掉Allow 127.0.0.1</span><br><span class="line">tail -f /var/log/tinyproxy/tinyproxy.log # 查看实时日志</span><br></pre></td></tr></table></figure>
+
+<p>一些常用参数的用法</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-A</td>
+<td>设置user-agent</td>
+<td>curl -A “Chrome” <a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td>-X</td>
+<td>用指定方法请求</td>
+<td>curl -X POST <a target="_blank" rel="noopener" href="http://httpbin.org/post">http://httpbin.org/post</a></td>
+</tr>
+<tr>
+<td>-I</td>
+<td>只返回请求的头信息</td>
+<td>curl -I <a target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>以POST方法请求url，并发送相应的参数</td>
+<td>-d a=1 -d b=2 -d c=3 -d “a=1&amp;b=2&amp;c=3” -d @filename</td>
+</tr>
+<tr>
+<td>-O</td>
+<td>下载文件并以远程的文件名保存</td>
+<td>curl -O <a target="_blank" rel="noopener" href="https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg">https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg</a></td>
+</tr>
+<tr>
+<td>-o</td>
+<td>下载文件并以指定的文件名保存</td>
+<td>curl -o 1.jpg <a target="_blank" rel="noopener" href="https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg">https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg</a></td>
+</tr>
+<tr>
+<td>-L</td>
+<td>跟随重定向请求</td>
+<td>curl -IL <a target="_blank" rel="noopener" href="https://baidu.com/">https://baidu.com</a></td>
+</tr>
+<tr>
+<td>-H</td>
+<td>设置头信息</td>
+<td>curl -o 1.webp -H “accept:image/webp” <a target="_blank" rel="noopener" href="https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg">https://lmg.jj20.com/up/allimg/1115/0214221G625/2202141G625-1-lp.jpg</a></td>
+</tr>
+<tr>
+<td>-k</td>
+<td>允许发起不安全的SSL请求</td>
+<td></td>
+</tr>
+<tr>
+<td>-b</td>
+<td>设置cookies</td>
+<td>curl -b a=test <a target="_blank" rel="noopener" href="https://httpbin.org/cookies">https://httpbin.org/cookies</a></td>
+</tr>
+<tr>
+<td>-s</td>
+<td>不显示其他无关信息</td>
+<td></td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示连接过程中的所有信息</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>自定义一个命令，查看本机外网IP</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias myip=&quot;curl http://httpbin.org/get|grep -E &#x27;\d+&#x27;|grep -v User-Agent|cut -d &#x27;\&quot;&#x27; -f4&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://www.xiachufang.com/|grep -oP &quot;(?&lt;=src=\&quot;)https://i2\.chuimg\.com/\w+\.jpg&quot;|xargs -i curl --create-dir &#123;&#125; -o ./images/&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、wget的使用"><a href="#二、wget的使用" class="headerlink" title="二、wget的使用"></a>二、wget的使用</h2><p>安装：</p>
+<p><code>apt install wget</code></p>
+<p>参数说明</p>
+<table>
+<thead>
+<tr>
+<th>-O</th>
+<th>以指定文件名保存下载的文件</th>
+<th>wget -O 3.jpg <a target="_blank" rel="noopener" href="http://img.netbian.com/file/2022/0825/115508eowE3.jpg">http://img.netbian.com/file/2022/0825/115508eowE3.jpg</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–limit-rate=200k</td>
+<td>以指定的速度下载目标文件</td>
+<td>wget –limit-rate=200k <a target="_blank" rel="noopener" href="https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4">https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4</a></td>
+</tr>
+<tr>
+<td>-c</td>
+<td>断点续传</td>
+<td>wget -c –limit-rate=200k <a target="_blank" rel="noopener" href="https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4">https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4</a></td>
+</tr>
+<tr>
+<td>-b</td>
+<td>后台下载</td>
+<td>wget -bc –limit-rate=200k <a target="_blank" rel="noopener" href="https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4">https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4</a><br /><br />tail -f wget-log</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>设置User-Agent</td>
+<td>wget -U “Windows IE 10.0” -bc –limit-rate=200k <a target="_blank" rel="noopener" href="https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4">https://ks-xpc19.xpccdn.com/f6061729-e55b-4ac1-8228-e19c1801544e.mp4</a></td>
+</tr>
+<tr>
+<td>–mirror</td>
+<td>镜像某个目标网站</td>
+<td>wget –mirror -U “Mozilla” -p <a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/latest/">https://requests.readthedocs.io/en/latest/</a></td>
+</tr>
+<tr>
+<td>-p</td>
+<td>下载页面中的所有相关资源</td>
+<td>wget –mirror -U “Mozilla” -p <a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/latest/">https://requests.readthedocs.io/en/latest/</a></td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归下载所有网页中所有的链接</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">镜像下载整个网站并保存到本地</span></span><br><span class="line">wget -c --mirror -U &quot;Mozilla&quot; -p --convert-links https://requests.readthedocs.io/en/latest/</span><br><span class="line">cd requests.readthedocs.io/en/latest/  # index.html目录</span><br><span class="line">python -m http.server  # 启动python的http服务</span><br></pre></td></tr></table></figure>
+
+<p><strong>httpie</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install httpie</span><br><span class="line">pip install httpie</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、scrapy的安装"><a href="#三、scrapy的安装" class="headerlink" title="三、scrapy的安装"></a>三、scrapy的安装</h1><p>scrapy的底层依赖于lxml，twisted，openssl。涉及到系统C库，所以有可能会导致安装失败。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy</span><br><span class="line">apt install python3-scrapy</span><br></pre></td></tr></table></figure>
+
+<p><strong>scrapy命令</strong></p>
+<p>创建项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject qianmu</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成spider文件</strong></p>
+<p>【注意】爬虫名称不能和项目名称重复</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># scrapy genspider [爬虫名称] [目标网站域名]</span><br><span class="line">scrapy genspider qsrank www.qianmu.org</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行爬虫</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行名为qsrank的爬虫</span></span><br><span class="line">scrapy crawl qsrank</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将爬到的数据导出为json文件</span></span><br><span class="line">scrapy crawl qsrank -o qsrank.json</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导出为csv</span></span><br><span class="line">scrapy crawl qsrank -o qsrank.csv -t csv</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">单独运行爬虫文件</span></span><br><span class="line">scrapy runspider qsrank.py</span><br></pre></td></tr></table></figure>
+
+<p><strong>虚拟环境</strong></p>
+<p>创建虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br><span class="line">virtualenv env</span><br><span class="line">virtualenv.exe –p E:\ProgramFiles\Python\Python27\python.exe D:\PythonVirtualenv\27virtualenv </span><br><span class="line">virtualenv.exe –p E:\ProgramFiles\Python\Python37\python.exe D:\PythonVirtualenv\37virtualenv</span><br></pre></td></tr></table></figure>
+
+<p>pip虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">which</span> pip3</span></span><br><span class="line">/usr/bin/pip3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">cat</span> $(<span class="built_in">which</span> pip)</span> </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/python3</span>  </span><br><span class="line">&quot;&quot;&quot;指定默认解释器, 可修改如#!/home/testscript/xiachufang/env/bin/python&quot;&quot;&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-*- coding: utf-8 -*-</span></span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pip._internal.cli.main import main</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    sys.argv[0] = re.sub(r&quot;(-script\.pyw|\.exe)?$&quot;, &quot;&quot;, sys.argv[0])</span><br><span class="line">    sys.exit(main())</span><br><span class="line">    </span><br><span class="line">&quot;&quot;&quot;指定pip环境位置安装模块&quot;&quot;&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&gt; python3 /home/testscript/xiachufang/env/bin/pip install bottle</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">curl https://sh.rustup.rs -sSf | sh</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.cargo/env&quot;</span></span> </span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">pip3 install cryptography -target=/home/testscript/xiachufang/env/lib/python3.9/site-packages</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">pip3 install scrapy -target=/home/testscript/xiachufang/env/lib/python3.9/site-packages</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">source</span> /home/testscript/xiachufang/env/bin/activate</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">scrapy --version</span>                                   </span><br><span class="line">Scrapy 2.6.2 - no active project</span><br><span class="line">...</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">deactivate</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$PATH</span></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">export</span> PATH=<span class="string">&quot;XXX&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>调试爬虫</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入到scrapy控制台，使用的是项目的环境</span></span><br><span class="line">scrapy shell</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">带一个URL参数，将会自动请求这个url，并在请求成功后进入控制台</span></span><br><span class="line">scrapy shell http://url.com</span><br></pre></td></tr></table></figure>
+
+<p>进入到控制台以后，可以使用以下函数和对象</p>
+<table>
+<thead>
+<tr>
+<th>fetch</th>
+<th>请求url或者Request对象，注意：请求成功以后会自动将当前作用域内的request和response对象重新赋值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>view</td>
+<td>用浏览器打开response对象内的网页</td>
+</tr>
+<tr>
+<td>shelp</td>
+<td>打印帮助信息</td>
+</tr>
+<tr>
+<td>spider</td>
+<td>相应的spider类的实例</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>保存所有配置信息的settings对象</td>
+</tr>
+<tr>
+<td>crawler</td>
+<td>当前Crawler对象</td>
+</tr>
+<tr>
+<td>scrapy</td>
+<td>scrapy模块</td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用项目配置下载网页，然后用浏览器打开网页</span></span><br><span class="line">scrapy view url</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用项目配置下载网页，然后输出至控制台</span></span><br><span class="line">scrapy fetch url</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、中间件的调用规则"><a href="#四、中间件的调用规则" class="headerlink" title="四、中间件的调用规则"></a>四、中间件的调用规则</h1><p><strong>process_request</strong></p>
+<p>在request对象传往downloader的过程中和将下载结果返回给engine过程中调用。当返回不同类型的值得时候，行为也不一样：</p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>None</td>
+<td>一切正常，继续执行其他的中间件链</td>
+</tr>
+<tr>
+<td>Response</td>
+<td>停止调用其他process_request和process_exception函数，也不再继续下载该请求，然后走调用process_response的流程</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>不再继续调用其他process_request函数，交由调度器重新安排下载</td>
+</tr>
+<tr>
+<td>IgnoreRequest</td>
+<td>process_exception函数会被调用，如果没有此方法，则request.errback会被调用，如果errback也没有，则此异常会被忽略，甚至没有日志。</td>
+</tr>
+</tbody></table>
+<p><strong>process_response</strong></p>
+<p>在将下载结果返回给engine过程中调用。</p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Response</td>
+<td>继续调用其他中间件的process_response</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>不再继续调用其他process_request函数，交由调度器重新安排下载</td>
+</tr>
+<tr>
+<td>IgnoreRequest</td>
+<td>request.errback会被调用，如果errback也没有，则此异常会被忽略，甚至没有日志。</td>
+</tr>
+</tbody></table>
+<p><strong>process_exception</strong></p>
+<p>在下载过程中出现异常，或者在process_request中抛出IgnoreResponse异常的时候调用。</p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Response</td>
+<td>开始中间件链的process_response处理流程</td>
+</tr>
+<tr>
+<td>Request</td>
+<td>不再继续调用其他process_request函数，交由调度器重新安排下载</td>
+</tr>
+<tr>
+<td>None</td>
+<td>继续调用其他中间件里的process_exception函数</td>
+</tr>
+</tbody></table>
+<p><strong>from_crawler(cls, crawler)</strong></p>
+<p>如果存在该函数，则调用该函数创建中间件的实例。如果要写这个函数，一定要返回一个中间件的对象。</p>
+<h2 id="内置中间件"><a href="#内置中间件" class="headerlink" title="内置中间件"></a>内置中间件</h2><p>请求robots.txt文件，并解析其中的规则。</p>
+<p>‘scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware’,</p>
+<p>执行带Basic-auth验证的请求</p>
+<p> ‘scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware’,</p>
+<p>下载请求超时最大时长</p>
+<p> ‘scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware’,</p>
+<p>设置默认的请求头信息</p>
+<p> ‘scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware’,</p>
+<p>设置请求头信息里的User-Agent</p>
+<p> ‘scrapy.downloadermiddlewares.useragent.UserAgentMiddleware’,</p>
+<p>如果下载失败，是否重试，重试几次</p>
+<p> ‘scrapy.downloadermiddlewares.retry.RetryMiddleware’,</p>
+<p>实现Meta标签重定向</p>
+<p> ‘scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware’,</p>
+<p>实现压缩内容的解析（比如gzip）</p>
+<p> ‘scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware’,</p>
+<p>实现30x的HTTP code的重定向</p>
+<p> ‘scrapy.downloadermiddlewares.redirect.RedirectMiddleware’,</p>
+<p>实现对cookies的设置管理</p>
+<p> ‘scrapy.downloadermiddlewares.cookies.CookiesMiddleware’,</p>
+<p>实现IP代理</p>
+<p> ‘scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware’,</p>
+<p>下载信息的统计</p>
+<p> ‘scrapy.downloadermiddlewares.stats.DownloaderStats’,</p>
+<p>下载结果的缓存</p>
+<p> ‘scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware’]</p>
+<p><strong>查看nginx的访问日志</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tail -f /var/log/nginx/*.log</span><br><span class="line">tail -f /var/log/nginx/*.log|cut -d &#x27; &#x27; -f1  # 查看访问ip</span><br></pre></td></tr></table></figure>
+
+<p><strong>telnet console</strong></p>
+<ul>
+<li>settings.py</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/CatchLight/article/details/<span class="number">119237729</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Scrapy settings for ScrapyDemo project</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动生成的配置，无需关注，不用修改</span></span><br><span class="line">BOT_NAME = <span class="string">&#x27;ScrapyDemo&#x27;</span></span><br><span class="line">SPIDER_MODULES = [<span class="string">&#x27;ScrapyDemo.spiders&#x27;</span>]</span><br><span class="line">NEWSPIDER_MODULE = <span class="string">&#x27;ScrapyDemo.spiders&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置UA，但不常用，一般都是在MiddleWare中添加</span></span><br><span class="line">USER_AGENT = <span class="string">&#x27;ScrapyDemo (+http://www.yourdomain.com)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遵循robots.txt中的爬虫规则，很多人喜欢False，当然我也喜欢....</span></span><br><span class="line">ROBOTSTXT_OBEY = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对网站并发请求总数，默认16</span></span><br><span class="line">CONCURRENT_REQUESTS = <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 相同网站两个请求之间的间隔时间，默认是0s。相当于time.sleep()</span></span><br><span class="line">DOWNLOAD_DELAY = <span class="number">3</span></span><br><span class="line"><span class="comment"># 下面两个配置二选一，但其值不能大于CONCURRENT_REQUESTS，默认启用PER_DOMAIN</span></span><br><span class="line"><span class="comment"># 对网站每个域名的最大并发请求，默认8</span></span><br><span class="line">CONCURRENT_REQUESTS_PER_DOMAIN = <span class="number">16</span></span><br><span class="line"><span class="comment"># 默认0，对网站每个IP的最大并发请求，会覆盖上面PER_DOMAIN配置，</span></span><br><span class="line"><span class="comment"># 同时DOWNLOAD_DELAY也成了相同IP两个请求间的间隔了</span></span><br><span class="line">CONCURRENT_REQUESTS_PER_IP = <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用cookie，默认是True，启用</span></span><br><span class="line">COOKIES_ENABLED = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求头设置，这里基本上不用</span></span><br><span class="line">DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="line"><span class="comment">#   &#x27;Accept&#x27;: &#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;,</span></span><br><span class="line"><span class="comment">#   &#x27;Accept-Language&#x27;: &#x27;en&#x27;,</span></span><br><span class="line"><span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置启用Spider MiddleWares，Key是class，Value是优先级</span></span><br><span class="line">SPIDER_MIDDLEWARES = &#123;</span><br><span class="line">    <span class="string">&#x27;ScrapyDemo.middlewares.ScrapydemoSpiderMiddleware&#x27;</span>: <span class="number">543</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置启用Downloader MiddleWares</span></span><br><span class="line"></span><br><span class="line">DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="line">    <span class="string">&#x27;ScrapyDemo.middlewares.ScrapydemoDownloaderMiddleware&#x27;</span>: <span class="number">543</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置并启用扩展，主要是一些状态监控</span></span><br><span class="line">EXTENSIONS = &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy.extensions.telnet.TelnetConsole&#x27;</span>: <span class="literal">None</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置启用Pipeline用来持久化数据</span></span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   <span class="string">&#x27;ScrapyDemo.pipelines.ScrapydemoPipeline&#x27;</span>: <span class="number">300</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁止控制台使用telnet连接scrapy获取状态，默认是启用。我们使用默认值即可</span></span><br><span class="line">TELNETCONSOLE_ENABLED = <span class="literal">False</span></span><br><span class="line"><span class="comment"># Telnet终端使用的端口范围。默认: [6023, 6073],如果设置为 None 或 0 ， 则使用动态分配的端口</span></span><br><span class="line"><span class="comment"># TELNETCONSOLE_PORT</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># telnet账号，默认：scrapy</span></span><br><span class="line">TELNETCONSOLE_USERNAME = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># telnet密码：默认会自动生成一个密码</span></span><br><span class="line">TELNETCONSOLE_PASSWORD = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Telnet终端监听的接口(interface)。默认: &#x27;127.0.0.1&#x27;</span></span><br><span class="line">TELNETCONSOLE_HOST = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># AutoThrottle是限速节流算法</span></span><br><span class="line"><span class="comment"># 让爬虫程序自适应download_delay和concurrent并发</span></span><br><span class="line">AUTOTHROTTLE_ENABLED = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 爬虫程序启动时，开始对网站发起请求的延迟</span></span><br><span class="line">AUTOTHROTTLE_START_DELAY = <span class="number">5</span></span><br><span class="line"><span class="comment"># 请求到响应的最大允许的延迟时间，必须大于download_delay</span></span><br><span class="line">AUTOTHROTTLE_MAX_DELAY = <span class="number">60</span></span><br><span class="line"><span class="comment"># 并行发送到每个远程服务器的平均请求数，小于CONCURRENT_REQUESTS_PER_DOMAIN和CONCURRENT_REQUESTS_PER_IP</span></span><br><span class="line">AUTOTHROTTLE_TARGET_CONCURRENCY = <span class="number">1.0</span></span><br><span class="line"><span class="comment"># 为每个响应启用显示限制统计信息</span></span><br><span class="line">AUTOTHROTTLE_DEBUG = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># HttpCache主要是将每次的请求和响应缓存到本地，可以离线进行处理</span></span><br><span class="line"><span class="comment"># 配置启用HTTP Cache，默认不启用</span></span><br><span class="line">HTTPCACHE_ENABLED = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 缓存的过期时间，0为永不过期</span></span><br><span class="line">HTTPCACHE_EXPIRATION_SECS = <span class="number">0</span></span><br><span class="line"><span class="comment"># 缓存目录名称</span></span><br><span class="line">HTTPCACHE_DIR = <span class="string">&#x27;httpcache&#x27;</span></span><br><span class="line"><span class="comment"># 设置不需要缓存的状态码请求</span></span><br><span class="line">HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="line"><span class="comment"># 此类将缓存保存到本地文件系统，还可以使用其他类保存到数据库</span></span><br><span class="line">HTTPCACHE_STORAGE = <span class="string">&#x27;scrapy.extensions.httpcache.FilesystemCacheStorage&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动爬虫之后，使用以下命令进入telnet。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># telnet终端监听端口配置为*TELNETCONSOLE_PORT*，默认为6023。</span></span><br><span class="line">telnet localhost 6023</span><br></pre></td></tr></table></figure>
+
+<p>输入账号和密码， 进入交互页面，输入est()，输出引擎状态指标。</p>
+<p>For more info see: <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/telnetconsole.html">https://docs.scrapy.org/en/latest/topics/telnetconsole.html</a></p>
+<p><strong>scrapy-redis</strong></p>
+<p><a target="_blank" rel="noopener" href="https://scrapy-redis.readthedocs.io/en/stable/">https://scrapy-redis.readthedocs.io/en/stable/</a></p>
 
       
     </div>
@@ -722,7 +1107,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -735,7 +1120,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
