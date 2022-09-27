@@ -28,7 +28,7 @@
 <meta property="og:description" content="一、CURL的使用【注意】安装的时候可能会遇到报错，有可能是openssl没装。 123apt install curlapt install opensslapt install openssl-dev  请求测试网址：http:&#x2F;&#x2F;httpbin.org 本地搭建请求测试网址： 12docker pull kennethreitz&#x2F;httpbindocker run -p 80:80 kenn">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-17T07:18:32.261Z">
+<meta property="article:modified_time" content="2022-09-27T06:31:45.727Z">
 <meta property="article:author" content="Private">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-17 15:18:32" itemprop="dateModified" datetime="2022-09-17T15:18:32+08:00">2022-09-17</time>
+                <time title="修改时间：2022-09-27 14:31:45" itemprop="dateModified" datetime="2022-09-27T14:31:45+08:00">2022-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -446,7 +446,7 @@
 </tbody></table>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用项目配置下载网页，然后用浏览器打开网页</span></span><br><span class="line">scrapy view url</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用项目配置下载网页，然后输出至控制台</span></span><br><span class="line">scrapy fetch url</span><br></pre></td></tr></table></figure>
 
-<h1 id="四、中间件的调用规则"><a href="#四、中间件的调用规则" class="headerlink" title="四、中间件的调用规则"></a>四、中间件的调用规则</h1><p><strong>process_request</strong></p>
+<h2 id="中间件的调用规则"><a href="#中间件的调用规则" class="headerlink" title="中间件的调用规则"></a>中间件的调用规则</h2><p><strong>process_request</strong></p>
 <p>在request对象传往downloader的过程中和将下载结果返回给engine过程中调用。当返回不同类型的值得时候，行为也不一样：</p>
 <table>
 <thead>
@@ -560,6 +560,135 @@
 <p>For more info see: <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/telnetconsole.html">https://docs.scrapy.org/en/latest/topics/telnetconsole.html</a></p>
 <p><strong>scrapy-redis</strong></p>
 <p><a target="_blank" rel="noopener" href="https://scrapy-redis.readthedocs.io/en/stable/">https://scrapy-redis.readthedocs.io/en/stable/</a></p>
+<h1 id="四、selenium的使用"><a href="#四、selenium的使用" class="headerlink" title="四、selenium的使用"></a>四、selenium的使用</h1><p><a target="_blank" rel="noopener" href="https://selenium-python-zh.readthedocs.io/en/latest/index.html">https://selenium-python-zh.readthedocs.io/en/latest/index.html</a></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>selenium是一个自动化测试框架，主要运用其webdriver。</p>
+<p><strong>webdriver</strong></p>
+<p>支持各大主流浏览器</p>
+<p>chromedriver安装:</p>
+<p>安装chromedriver，下载压缩包，解压以后，把可执行文件所在的目录放到PATH环境变量里。比如，chromedriver在/home/user/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>:/home/user&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果不设置环境变量，则需要在启动的时候指定chromedriver的路径。</p>
+<h2 id="启动浏览器"><a href="#启动浏览器" class="headerlink" title="启动浏览器"></a>启动浏览器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="comment"># 启动chrome浏览器</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line"><span class="comment"># 指定chromedriver的路径并启动chrome</span></span><br><span class="line">driver = webdriver.Chrome(executable_path=<span class="string">&#x27;/home/user/chromedriver&#x27;</span>)</span><br><span class="line"><span class="comment"># 启动chrome-headless</span></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line">option = Options()</span><br><span class="line">option.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line">driver = webdriver.Chrome(chrome_options=option)</span><br><span class="line"><span class="comment"># 启动phantomjs</span></span><br><span class="line">driver = webdriver.PhantomJs()</span><br></pre></td></tr></table></figure>
+
+<p>chrome-headless是无界面版的chrome，它替代了停止维护的phantomjs。</p>
+<h2 id="控制浏览器"><a href="#控制浏览器" class="headerlink" title="控制浏览器"></a>控制浏览器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 访问某个url</span></span><br><span class="line">driver.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line"><span class="comment"># 刷新</span></span><br><span class="line">driver.refresh()</span><br><span class="line"><span class="comment"># 前进</span></span><br><span class="line">driver.forward()</span><br><span class="line"><span class="comment"># 后退</span></span><br><span class="line">driver.back()</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line">driver.quit()</span><br><span class="line"><span class="comment"># 当前的url</span></span><br><span class="line">driver.current_url</span><br><span class="line"><span class="comment"># 截图</span></span><br><span class="line">driver.save_screenshot(<span class="string">&#x27;/tmp/test.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素查找"><a href="#元素查找" class="headerlink" title="元素查找"></a>元素查找</h2><p>find函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="string">&#x27;find_element(By.ID, &#x27;</span><span class="string">&#x27;)&#x27;</span>, <span class="comment"># 查找单个元素，返回单个webElement对象</span></span><br><span class="line"><span class="string">&#x27;find_elements(By.XPATH, &#x27;</span><span class="string">&#x27;)&#x27;</span>, <span class="comment"># 查找多个元素，返回一个列表，包含若干个webElement对象，如果查找不到，则抛出异常</span></span><br></pre></td></tr></table></figure>
+
+<p>by.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">By</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Set of supported locator strategies.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    ID = <span class="string">&quot;id&quot;</span> <span class="comment"># 根据元素的ID查找</span></span><br><span class="line">    XPATH = <span class="string">&quot;xpath&quot;</span> <span class="comment"># 根据xpath表达式查找</span></span><br><span class="line">    LINK_TEXT = <span class="string">&quot;link text&quot;</span> <span class="comment"># 根据链接内的文本查找</span></span><br><span class="line">    PARTIAL_LINK_TEXT = <span class="string">&quot;partial link text&quot;</span> <span class="comment"># 根据链接内的文本是否包含指定的查找文字</span></span><br><span class="line">    NAME = <span class="string">&quot;name&quot;</span> <span class="comment"># 根据元素的name属性查找</span></span><br><span class="line">    TAG_NAME = <span class="string">&quot;tag name&quot;</span> <span class="comment"># 根据标签名查找</span></span><br><span class="line">    CLASS_NAME = <span class="string">&quot;class name&quot;</span> <span class="comment"># 根据元素的class属性</span></span><br><span class="line">    CSS_SELECTOR = <span class="string">&quot;css selector&quot;</span> <span class="comment"># 用css选择器查找</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>page_source</strong></p>
+<p>获取整个页面的源码</p>
+<p><strong>get_cookie/get_cookies</strong></p>
+<p>获取服务器返回的cookie</p>
+<p><strong>执行javascript</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将网页滚动到最底部</span></span><br><span class="line">driver.execute(<span class="string">&#x27;window.scrollTo(0, document.body.scrollHeight)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行异步的js函数</span></span><br><span class="line">driver.execute_async_script(<span class="string">&#x27;send_xml_request()&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="等待，wait"><a href="#等待，wait" class="headerlink" title="等待，wait"></a>等待，wait</h2><p>隐式等待</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找某个（某些）元素，如果没有立即查找到，则等待10秒</span></span><br><span class="line">driver.implicityly_wait(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>显式等待</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="comment"># 查找一个按钮</span></span><br><span class="line"><span class="comment"># 最长等待10秒，直到找到查找条件中指定的元素</span></span><br><span class="line">sort_btn = WebDriverWait(driver, <span class="number">10</span>).until(</span><br><span class="line">        EC.presence_of_element_located((</span><br><span class="line">            By.XPATH, <span class="string">&#x27;//div[@class=&quot;f-sort&quot;]/a[2]&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>显式等待通常更符合我们的程序逻辑，当我们对页面的加载方式还不太确定的时候，也可以隐式等待。</p>
+<h2 id="WebElement"><a href="#WebElement" class="headerlink" title="WebElement"></a>WebElement</h2><p>也有很多的find函数，用法和之前一样。</p>
+<p>click</p>
+<p>点击某个具体的元素</p>
+<p>send_keys</p>
+<p>向某个元素（通常是可输入的标签，比如input）发送键盘事件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向input元素内输入iphone</span></span><br><span class="line"><span class="built_in">input</span>.send_keys(<span class="string">&#x27;iphone&#x27;</span>)</span><br><span class="line"><span class="comment"># 向input发送一个回车键</span></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="built_in">input</span>.send_keys(Keys.RETURN)</span><br></pre></td></tr></table></figure>
+
+<p>rect</p>
+<p>返回元素的宽和高，以及在屏幕上的坐标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回结果</span></span><br><span class="line">&#123;<span class="string">u&#x27;height&#x27;</span>: <span class="number">24</span>, <span class="string">u&#x27;width&#x27;</span>: <span class="number">26</span>, <span class="string">u&#x27;x&#x27;</span>:<span class="number">347.1875</span>, <span class="string">u&#x27;y&#x27;</span>: <span class="number">19</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>location</p>
+<p>返回屏幕上的坐标</p>
+<p>text</p>
+<p>返回元素内的文本信息。</p>
+<p>注意：在selenium内查找元素时，不可以直接查找它的文本，比如写xpath表达式的时候，不可以用text()函数，要先取到节点，然后再用它的text属性取出文本。</p>
+<p>get_attribute</p>
+<p>get_property</p>
+<p>获取元素的属性值，同上，它不可以在选择器里直接写，需要先取到节点，然后再调用这两种方法获取属性值。</p>
+<p>value_of_css_property</p>
+<p>获取节点的CSS样式属性</p>
+<h2 id="报错信息："><a href="#报错信息：" class="headerlink" title="报错信息："></a>报错信息：</h2><p>[8360:2692:0918/111205.897:ERROR:ssl_client_socket_impl.cc(983)] handshake failed; returned -1, SSL error code 1, net_error -101<br>[8360:2692:0918/111206.123:ERROR:ssl_client_socket_impl.cc(983)] handshake failed; returned -1, SSL error code 1, net_error -101</p>
+<ol>
+<li>Chrome浏览器解决方案：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    options=webdriver.ChromeOptions()</span><br><span class="line">    <span class="comment"># 处理SSL证书错误问题</span></span><br><span class="line">    options.add_argument(<span class="string">&#x27;--ignore-certificate-errors&#x27;</span>)</span><br><span class="line">    options.add_argument(<span class="string">&#x27;-ignore -ssl-errors&#x27;</span>)</span><br><span class="line">    <span class="comment"># 忽略无用的日志</span></span><br><span class="line">    options.add_experimental_option(<span class="string">&quot;excludeSwitches&quot;</span>, [<span class="string">&#x27;enable-automation&#x27;</span>, <span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">    driver=webdriver.Chrome(chrome_options=options)</span><br><span class="line">    driver.get(<span class="string">u&#x27;https://python.org/&#x27;</span>)</span><br><span class="line">    driver.close()</span><br></pre></td></tr></table></figure>
+
+<p>另外一个</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--disable-extensions&#x27;</span>)</span><br><span class="line">chrome_options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;ignore-certificate-errors&#x27;</span>])</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--start-maximized&#x27;</span>)</span><br><span class="line">self.driver = webdriver.Chrome(chrome_options = chrome_options)</span><br><span class="line">size_Dict = driver.get_window_size()</span><br><span class="line">driver.set_window_rect(x=<span class="number">1300</span>, y=<span class="number">100</span>, width=<span class="number">1250</span>, height=<span class="number">1300</span>)  <span class="comment"># 设置浏览器的大小和位置</span></span><br><span class="line"><span class="comment"># driver.maximize_window()    # 最大化浏览器窗口</span></span><br><span class="line">driver.implicitly_wait(<span class="number">20</span>)   <span class="comment"># 隐式等待。网页加载数据需要时间，智能化等待。</span></span><br><span class="line">driver.get(<span class="string">&quot;https://www.amazon.co.jp&quot;</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.close</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对于Firefox，您需要将 accept_untrusted_certs 设置为True：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">profile = webdriver.FirefoxProfile（）</span><br><span class="line">profile.accept_untrusted_certs = <span class="literal">True</span> </span><br><span class="line">driver = webdriver.Firefox（firefox_profile = profile）</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>对于Internet Explorer，您需要设置 acceptSslCerts 所需的功能：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">caps = webdriver.DesiredCapabilities.INTERNETEXPLORER</span><br><span class="line">caps[<span class="string">&#x27;acceptInsecureCerts&#x27;</span>] = <span class="literal">True</span></span><br><span class="line">caps[<span class="string">&#x27;acceptSslCerts&#x27;</span>] = <span class="literal">True</span></span><br><span class="line">driver = webdriver.Ie（capabilities = capabilities）</span><br></pre></td></tr></table></figure>
+
+<h2 id="‘WebDriver’-object-has-no-attribute-‘find-element-by-xpath’"><a href="#‘WebDriver’-object-has-no-attribute-‘find-element-by-xpath’" class="headerlink" title="‘WebDriver’ object has no attribute ‘find_element_by_xpath’"></a>‘WebDriver’ object has no attribute ‘find_element_by_xpath’</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="comment"># driver.find_element_by_xpath(&#x27;//div[@id=&quot;s-top-left&quot;]/a[1]&#x27; # 旧版</span></span><br><span class="line">test_poet1 = driver.find_element(By.XPATH, <span class="string">r&#x27;//*[@id=&quot;new&quot;]/div[1]/div[2]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="splash"><a href="#splash" class="headerlink" title="splash"></a>splash</h1><p>doc：<a target="_blank" rel="noopener" href="https://splash.readthedocs.io/en/stable/">https://splash.readthedocs.io/en/stable/</a></p>
+<ol>
+<li><p>Install <a target="_blank" rel="noopener" href="http://docker.io/">Docker</a>. Make sure Docker version &gt;= 17 is installed.</p>
+</li>
+<li><p>Pull the image:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker pull scrapinghub/splash</span><br></pre></td></tr></table></figure></li>
+<li><p>Start the container:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run --name splash -p 8050:8050 --rm scrapinghub/splash</span><br></pre></td></tr></table></figure></li>
+<li><p>Splash is now available at 0.0.0.0 at port 8050 (http).</p>
+</li>
+</ol>
+<h2 id="scrapy-splash"><a href="#scrapy-splash" class="headerlink" title="scrapy-splash"></a>scrapy-splash</h2><p><a target="_blank" rel="noopener" href="https://github.com/scrapy-plugins/scrapy-splash">https://github.com/scrapy-plugins/scrapy-splash</a></p>
+<h1 id="反爬虫方式"><a href="#反爬虫方式" class="headerlink" title="反爬虫方式"></a>反爬虫方式</h1><h2 id="User-Agent识别"><a href="#User-Agent识别" class="headerlink" title="User-Agent识别"></a>User-Agent识别</h2><p>修改请求头信息里的User-Agent</p>
+<h2 id="请求头信息识别"><a href="#请求头信息识别" class="headerlink" title="请求头信息识别"></a>请求头信息识别</h2><p>比如说referer，content-type，请求方法（POST, GET）</p>
+<p>构造相应的请求头信息。比如referer。在提取URL的时候，要把URL所在页面的URL也存储起来，并放到request.headers。</p>
+<h2 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h2><p>需要分析页面的网络请求，从中找出和我们想要的数据相关的请求，并分析它的请求头信息、参数、cookie，然后根据这些信息构造请求。通常都是ajax请求，也有图片请求，比如图片的lazy load，通过js在页面加载后修改图片的src属性。一般都会有其他的自定义属性存在，比如”_src”。总之，可以找到一些ID或者链接。注意观察相关dom节点树上的特殊属性。</p>
+<h2 id="请求参数加密"><a href="#请求参数加密" class="headerlink" title="请求参数加密"></a>请求参数加密</h2><p>一般是在前端通过一定的计算，构造出一个哈希值。需要分析前端的代码，找出具体计算的代码逻辑，并用python再实现。如果前端的代码经过混淆，并且代码量十分巨大，可以使用selenium或者splash等引擎去请求。但是，如果爬取的数据需求量比较大，还是要通过直接调用对方的接口的形式去获取数据。</p>
+<h2 id="请求结果加密"><a href="#请求结果加密" class="headerlink" title="请求结果加密"></a>请求结果加密</h2><ol>
+<li><p>json数据加密</p>
+<p>比如携程酒店房型列表接口，用它自己的js解密，或者分析它的js前端逻辑，用python代码实现出来。</p>
+</li>
+<li><p>CSS加密</p>
+<p>比如大众点评，通过CSS样式去代替某个字符。需要同时爬取CSS文件，并且分析CSS文件内的样式，最后定位到svg文件，并分析提取svg内的内容，完成替换。</p>
+</li>
+<li><p>字体加密</p>
+<p>比如猫眼电影，每次随机返回一个字体文件，并且字符也是随机的。需要每次下载对应的字体文件，并解析字体文件和字符之间的对应关系。</p>
+</li>
+</ol>
+<h2 id="Cookie限制"><a href="#Cookie限制" class="headerlink" title="Cookie限制"></a>Cookie限制</h2><p>​    登录、session限制，比如新片场，拿到登录以后的cookie，然后set到头信息里面，这样请求的时候就相当于登录了。</p>
+<h2 id="IP频率限制"><a href="#IP频率限制" class="headerlink" title="IP频率限制"></a>IP频率限制</h2><p>​    需要准备大量的IP代理，获得IP代理的方式有：</p>
+<pre><code>    1. 自己搭建代理服务器（tinyproxy, squid+动态拨号，DDNS）
+    1. 付费购买
+    1. 爬取公开网络的代理（可用性比较低）
+</code></pre>
+<p>控制爬取频率，保持不被封的情况下的最合适的并发数量。</p>
+<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><ol>
+<li>尝试可否绕过前端验证，直接请求具体的接口，以绕开验证码。</li>
+<li>可以用图片识别库去识别某些比较简单的验证码。</li>
+<li>接入云打码平台。</li>
+<li>机器学习训练验证码图片库。</li>
+</ol>
+<p><strong>tesseract-ocr</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt install tesseract-ocr</span><br><span class="line">pip3 install pytesseract</span><br><span class="line">tesseract -v</span><br><span class="line">tesseract test.png output_1 -l eng</span><br><span class="line">python3 tesseract_sample.py test.png</span><br></pre></td></tr></table></figure>
+
+<p>批量获取验证码图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 1 100 | xargs -i curl https://so.gushiwen.cn/RandCode.ashx -o &#123;&#125;.png</span><br></pre></td></tr></table></figure>
+
+<p>将全部图片整合到一个html文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 1 100 | xargs -i echo &#x27;&lt;img src=&quot;&#123;&#125;.png&quot;/&gt;   &#123;&#125;.png&lt;br/&gt;&#x27;&gt;&gt;test.html</span><br></pre></td></tr></table></figure>
+
+<p>批量识别验证码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 1 100 | xargs -i python3 tesseract_sample.py &#123;&#125;.png</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -577,13 +706,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2019/03/26/python-web-project/" rel="prev" title="python-web-project">
-      <i class="fa fa-chevron-left"></i> python-web-project
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/17/hello-world/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
+    <a href="/2019/03/26/python-web-project/" rel="next" title="python-web-project">
+      python-web-project <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -643,7 +769,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81CURL%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">一、CURL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81wget%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">二、wget的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81scrapy%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-text">三、scrapy的安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E8%B0%83%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-text">四、中间件的调用规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-text">内置中间件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81CURL%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">一、CURL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81wget%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">二、wget的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81scrapy%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-text">三、scrapy的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E8%B0%83%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-text">中间件的调用规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-text">内置中间件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81selenium%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">四、selenium的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-text">启动浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-text">控制浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%9F%A5%E6%89%BE"><span class="nav-text">元素查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%EF%BC%8Cwait"><span class="nav-text">等待，wait</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebElement"><span class="nav-text">WebElement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-text">报错信息：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%98WebDriver%E2%80%99-object-has-no-attribute-%E2%80%98find-element-by-xpath%E2%80%99"><span class="nav-text">‘WebDriver’ object has no attribute ‘find_element_by_xpath’</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splash"><span class="nav-text">splash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy-splash"><span class="nav-text">scrapy-splash</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E7%88%AC%E8%99%AB%E6%96%B9%E5%BC%8F"><span class="nav-text">反爬虫方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#User-Agent%E8%AF%86%E5%88%AB"><span class="nav-text">User-Agent识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF%E8%AF%86%E5%88%AB"><span class="nav-text">请求头信息识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD"><span class="nav-text">异步加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%8A%A0%E5%AF%86"><span class="nav-text">请求参数加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%9C%E5%8A%A0%E5%AF%86"><span class="nav-text">请求结果加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie%E9%99%90%E5%88%B6"><span class="nav-text">Cookie限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6"><span class="nav-text">IP频率限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">验证码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
