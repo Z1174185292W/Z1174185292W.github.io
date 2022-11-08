@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="个人模块开发一、功能概览 用户数据模型设计 手机注册 短信验证登录 获取个人资料 修改个人资料 头像上传  二、用户数据模型设计 User（用户自身数据）    Field Description    phonenum 手机号   nickname 昵称   sex 性别   birth_year 出生年   birth_month 出生月   birth_day 出生日   avatar 个人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-swiper">
+<meta property="og:url" content="http://example.com/2019/03/26/python-swiper/index.html">
+<meta property="og:site_name" content="PeacefulRace">
+<meta property="og:description" content="个人模块开发一、功能概览 用户数据模型设计 手机注册 短信验证登录 获取个人资料 修改个人资料 头像上传  二、用户数据模型设计 User（用户自身数据）    Field Description    phonenum 手机号   nickname 昵称   sex 性别   birth_year 出生年   birth_month 出生月   birth_day 出生日   avatar 个人">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/celery.png">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/front-back.jpg">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/fb-dev.jpg">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/db1.png">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/db2.png">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/GIL1.png">
+<meta property="og:image" content="http://example.com/2019/03/26/python-swiper/img/GIL2.png">
+<meta property="article:published_time" content="2019-03-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-08T08:32:37.721Z">
+<meta property="article:author" content="Private">
+<meta property="article:tag" content="python-swiper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2019/03/26/python-swiper/img/celery.png">
+
+<link rel="canonical" href="http://example.com/2019/03/26/python-swiper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python-swiper | PeacefulRace</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PeacefulRace</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习笔记</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/26/python-swiper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Private">
+      <meta itemprop="description" content="程序语言记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PeacefulRace">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-swiper
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-26T00:00:00+08:00">2019-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-08 16:32:37" itemprop="dateModified" datetime="2022-11-08T16:32:37+08:00">2022-11-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="个人模块开发"><a href="#个人模块开发" class="headerlink" title="个人模块开发"></a>个人模块开发</h1><h2 id="一、功能概览"><a href="#一、功能概览" class="headerlink" title="一、功能概览"></a>一、功能概览</h2><ul>
+<li>用户数据模型设计</li>
+<li>手机注册</li>
+<li>短信验证登录</li>
+<li>获取个人资料</li>
+<li>修改个人资料</li>
+<li>头像上传</li>
+</ul>
+<h2 id="二、用户数据模型设计"><a href="#二、用户数据模型设计" class="headerlink" title="二、用户数据模型设计"></a>二、用户数据模型设计</h2><ol>
+<li><p>User（用户自身数据）</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>phonenum</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>昵称</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>性别</td>
+</tr>
+<tr>
+<td>birth_year</td>
+<td>出生年</td>
+</tr>
+<tr>
+<td>birth_month</td>
+<td>出生月</td>
+</tr>
+<tr>
+<td>birth_day</td>
+<td>出生日</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>个人形象</td>
+</tr>
+<tr>
+<td>location</td>
+<td>常居地</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Profile（个人配置数据）</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>location</td>
+<td>目标城市</td>
+</tr>
+<tr>
+<td>min_distance</td>
+<td>最小查找范围</td>
+</tr>
+<tr>
+<td>max_distance</td>
+<td>最大查找范围</td>
+</tr>
+<tr>
+<td>min_dating_age</td>
+<td>最小交友年龄</td>
+</tr>
+<tr>
+<td>max_dating_age</td>
+<td>最大交友年龄</td>
+</tr>
+<tr>
+<td>dating_sex</td>
+<td>匹配的性别</td>
+</tr>
+<tr>
+<td>vibration</td>
+<td>开启震动</td>
+</tr>
+<tr>
+<td>only_match</td>
+<td>不让未匹配的人看我的相册</td>
+</tr>
+<tr>
+<td>auto_play</td>
+<td>自动播放视频</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="三、关系构建"><a href="#三、关系构建" class="headerlink" title="三、关系构建"></a>三、关系构建</h2><ol>
+<li><p>关系分类</p>
+<ul>
+<li>一对一关系</li>
+<li>一对多关系</li>
+<li>多对多关系</li>
+</ul>
+</li>
+<li><p>外键的优缺点</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>由数据库自身保证数据一致性和完整性，数据更可靠</li>
+<li>可以增加ER图的可读性</li>
+<li>外键可节省开发量</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>性能缺陷，有额外开销</p>
+</li>
+<li><p>主键表被锁定时，会引发外键表也被锁</p>
+</li>
+<li><p>删除主键表的数据时，需先删除外键表的数据</p>
+</li>
+<li><p>修改外键表字段时，需重建外键约束</p>
+</li>
+<li><p>不能用于分布式环境</p>
+</li>
+<li><p>不容易做到数据解耦</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>应用场景</p>
+<ul>
+<li>适用场景：内部系统、传统企业级应用可以使用（需要数据量可控，数据库服务器数量可控）</li>
+<li>不适用场景：互联网行业不建议使用</li>
+</ul>
+</li>
+<li><p>手动构建关联</p>
+<ol>
+<li>一对一：主表id与子表id完全一一对应</li>
+<li>一对多：在“多”的表内添加“唯一”表id字段</li>
+<li>多对多：创建关系表，关系表中一般只存放两个相关联的条目的id</li>
+</ol>
+</li>
+<li><p>方法属性化</p>
+<ul>
+<li><p>property</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Box</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.l = <span class="number">123</span></span><br><span class="line">        self.w = <span class="number">10</span></span><br><span class="line">        self.h = <span class="number">80</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">v</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.l * self.w * self.h</span><br></pre></td></tr></table></figure></li>
+<li><p>cached_property</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.functional <span class="keyword">import</span> cached_property</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(models.Model):</span><br><span class="line">	year = <span class="number">1990</span></span><br><span class="line">    month = <span class="number">10</span></span><br><span class="line">    day = <span class="number">20</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @cached_property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">age</span>(<span class="params">self</span>):</span><br><span class="line">        today = datetime.date.today()</span><br><span class="line">        birth_date = datetime.date(self.year, self.month, self.day)</span><br><span class="line">        times = today - birth_date</span><br><span class="line">        <span class="keyword">return</span> times.days // <span class="number">365</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h4 id="django删除migrations文件夹，结果为No-Changes解决方案"><a href="#django删除migrations文件夹，结果为No-Changes解决方案" class="headerlink" title="django删除migrations文件夹，结果为No Changes解决方案"></a>django删除migrations文件夹，结果为No Changes解决方案</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations --empty &lt;app_name&gt;</span><br><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、第三方短信平台的接入"><a href="#四、第三方短信平台的接入" class="headerlink" title="四、第三方短信平台的接入"></a>四、第三方短信平台的接入</h2><p>云之讯：<a target="_blank" rel="noopener" href="https://www.ucpaas.com/service/experience.html">https://www.ucpaas.com/service/experience.html</a></p>
+<p>互亿无线：<a target="_blank" rel="noopener" href="https://www.ihuyi.com/">https://www.ihuyi.com/</a></p>
+<ol>
+<li><p>注册账号后，将平台分配的APP_ID和APP_SECRET</p>
+<ul>
+<li>APP_ID：平台分配的ID</li>
+<li>APP_SECRET：与平台交互时，用来做安全验证的一段加密用的文本，不能泄漏给其他人</li>
+</ul>
+</li>
+<li><p>注册平台的短信模板</p>
+</li>
+<li><p>按照平台接口文档开发接口</p>
+</li>
+</ol>
+<h2 id="五、Celery及异步任务的处理"><a href="#五、Celery及异步任务的处理" class="headerlink" title="五、Celery及异步任务的处理"></a>五、Celery及异步任务的处理</h2><p><a target="_blank" rel="noopener" href="https://docs.celeryq.dev/en/stable/">https://docs.celeryq.dev/en/stable/</a></p>
+<p><a target="_blank" rel="noopener" href="https://readthedocs.org/projects/celery/">https://readthedocs.org/projects/celery/</a></p>
+<ol>
+<li><p>模块组成</p>
+<p><img src="./img/celery.png" alt="celery"></p>
+<ul>
+<li><p>任务模块 Task</p>
+<p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p>
+</li>
+<li><p>消息中间件 Broker</p>
+<p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p>
+</li>
+<li><p>任务执行单元 Worker</p>
+<p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p>
+</li>
+<li><p>任务结果存储 Backend</p>
+<p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>
+</li>
+</ul>
+</li>
+<li><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &#x27;celery[redis]&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"></span><br><span class="line">broker = <span class="string">&#x27;redis://127.0.0.1:6379&#x27;</span></span><br><span class="line">backend = <span class="string">&#x27;redis://127.0.0.1:6379/0&#x27;</span></span><br><span class="line">app = Celery(<span class="string">&#x27;my_task&#x27;</span>, broker=broker, backend=backend)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.task</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    time.sleep(<span class="number">5</span>)     <span class="comment"># 模拟耗时操作</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure></li>
+<li><p>启动 Worker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">celery -A proj worker -l INFO</span><br><span class="line"># celery worker -A tasks --loglevel=info</span><br></pre></td></tr></table></figure></li>
+<li><p>调用任务</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tasks <span class="keyword">import</span> add</span><br><span class="line"></span><br><span class="line">add.delay(<span class="number">2</span>, <span class="number">8</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>常规配置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">broker_url = <span class="string">&#x27;redis://127.0.0.1:6379/0&#x27;</span></span><br><span class="line">broker_pool_limit = <span class="number">1000</span>  <span class="comment"># Broker 连接池，默认是10</span></span><br><span class="line"></span><br><span class="line">timezone = <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line">accept_content = [<span class="string">&#x27;pickle&#x27;</span>, <span class="string">&#x27;json&#x27;</span>]</span><br><span class="line"></span><br><span class="line">task_serializer = <span class="string">&#x27;pickle&#x27;</span></span><br><span class="line">result_expires = <span class="number">3600</span>  <span class="comment"># 任务过期时间</span></span><br><span class="line"></span><br><span class="line">result_backend = <span class="string">&#x27;redis://127.0.0.1:6379/0&#x27;</span></span><br><span class="line">result_serializer = <span class="string">&#x27;pickle&#x27;</span></span><br><span class="line">result_cache_max = <span class="number">10000</span>  <span class="comment"># 任务结果最大缓存数量</span></span><br><span class="line"></span><br><span class="line">worker_redirect_stdouts_level = <span class="string">&#x27;INFO&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="Win10启动Celery报错解决方案-Task-handler-raised-error-ValueError-not-enough-values-to-unpack"><a href="#Win10启动Celery报错解决方案-Task-handler-raised-error-ValueError-not-enough-values-to-unpack" class="headerlink" title="Win10启动Celery报错解决方案 Task handler raised error: ValueError: not enough values to unpack"></a>Win10启动Celery报错解决方案 Task handler raised error: ValueError: not enough values to unpack</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/py0312/article/details/105538699">https://blog.csdn.net/py0312/article/details/105538699</a></p>
+<ul>
+<li><strong>安装包 eventlet</strong><br><code>pip install eventlet</code></li>
+<li><strong>通过以下命令启动服务</strong><br><code>celery -A celery_task worker -l info -P eventlet</code></li>
+</ul>
+<h2 id="六、RESTful与前后端分离"><a href="#六、RESTful与前后端分离" class="headerlink" title="六、RESTful与前后端分离"></a>六、RESTful与前后端分离</h2><ol>
+<li><p>RESTful</p>
+<ul>
+<li>RESTful 是一种网络软件架构风格, 而非标准</li>
+<li>用 URL 定位一个网络资源</li>
+<li>用 HTTP 动词描述对资源的操作<ul>
+<li>GET: 用来获取资源</li>
+<li>POST: 用来新建资源</li>
+<li>PUT: 用来更新资源</li>
+<li>DELETE: 用来删除资源</li>
+</ul>
+</li>
+<li>误区<ul>
+<li>URL 中使用动词</li>
+<li>URL 中出现版本号</li>
+<li>参数用 querystring 表示, 而不要拼在 path 部分<ul>
+<li>错误示范: GET /user/book/3</li>
+<li>正确示范: GET /user/book?id=3</li>
+</ul>
+</li>
+<li>状态码的使用要精确<ul>
+<li>2xx：操作成功</li>
+<li>3xx：重定向</li>
+<li>4xx：客户端错误</li>
+<li>5xx：服务器错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RESTful 与 Django REST framework 的区别</li>
+</ul>
+</li>
+<li><p>前后端分离</p>
+<p>传统 Web 开发，view 函数中需要进行墨般渲染，逻辑处理与显示的样式均需要后端开发。</p>
+<p>变成前后端分离后，显示效果的处理完全交给前端来做，前端自由度变大。后端只需要传递前端需要的数据即可，将后端人员从繁琐的显示处理中解放出来，专心处理业务逻辑</p>
+<ul>
+<li><p>优点: 前端负责显示, 后端负责逻辑, 分工更加明确, 彻底解放前、后端开发者</p>
+</li>
+<li><p>JSON: 完全独立于编程语言的文本格式, 用来存储和表示数据</p>
+</li>
+<li><p>前后端分离的本质</p>
+<p><img src="./img/front-back.jpg" alt="front-back"></p>
+</li>
+<li><p>前后端分离后的开发流程</p>
+<p><img src="./img/fb-dev.jpg" alt="fb-dev"></p>
+</li>
+</ul>
+</li>
+<li><p>代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> json <span class="keyword">import</span> dumps</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">render_json</span>(<span class="params">data=<span class="literal">None</span>, error_code=<span class="number">0</span></span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;将返回值渲染为 JSON 数据&#x27;&#x27;&#x27;</span></span><br><span class="line">    result = &#123;</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span>: data,       <span class="comment"># 返回给前端的数据</span></span><br><span class="line">        <span class="string">&#x27;code&#x27;</span>: error_code  <span class="comment"># 状态码 (status code)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    json_str = dumps(result, ensure_ascii=<span class="literal">False</span>, separators=[<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;:&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(json_str)</span><br></pre></td></tr></table></figure></li>
+<li><p>接口的定义</p>
+<ol>
+<li><p>定义接口基本格式</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span>   <span class="comment">// 状态码 (status code)</span></span><br><span class="line">    <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span>    <span class="comment">// 接口数据</span></span><br><span class="line">        <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;uid&quot;</span><span class="punctuation">:</span> <span class="number">123321</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Lion&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sex&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Male&quot;</span></span><br><span class="line">         <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2018-09-12&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>定义 status 状态码</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>服务器内部错误</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>参数错误</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>数据错误</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>详细定义每一个接口的各个部分:</p>
+<ul>
+<li>名称 (Name)</li>
+<li>描述 (Description)</li>
+<li>方法 (Method)</li>
+<li>路径 (Path)</li>
+<li>参数 (Params)</li>
+<li>返回值 (Returns)</li>
+</ul>
+</li>
+<li><p>接口定义举例：</p>
+<blockquote>
+<p><strong>接口名称：提交验证码登录</strong></p>
+<ul>
+<li><p><strong>Description</strong>: 根据上一步的结果提交需要的数据</p>
+</li>
+<li><p><strong>Method</strong>: POST</p>
+</li>
+<li><p><strong>Path</strong>: /user/login</p>
+</li>
+<li><p><strong>Params</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>required</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>phone</td>
+<td>Yes</td>
+<td>int</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Yes</td>
+<td>int</td>
+<td>验证码</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Return</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>required</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uid</td>
+<td>Yes</td>
+<td>int</td>
+<td>用户 id</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>Yes</td>
+<td>str</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>age</td>
+<td>Yes</td>
+<td>int</td>
+<td>年龄</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>Yes</td>
+<td>str</td>
+<td>性别</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Yes</td>
+<td>str</td>
+<td>常居地</td>
+</tr>
+<tr>
+<td>avatars</td>
+<td>Yes</td>
+<td>list</td>
+<td>头像 URL 列表, 最多为 6 张</td>
+</tr>
+</tbody></table>
+<p>示例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;uid&quot;</span><span class="punctuation">:</span> <span class="number">123</span><span class="punctuation">,</span>                   <span class="comment">// 用户 id</span></span><br><span class="line">        <span class="attr">&quot;nickname&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Miao&quot;</span><span class="punctuation">,</span>           <span class="comment">// 用户名</span></span><br><span class="line">        <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span>                    <span class="comment">// 年龄</span></span><br><span class="line">        <span class="attr">&quot;sex&quot;</span><span class="punctuation">:</span> <span class="string">&quot;M&quot;</span><span class="punctuation">,</span>                   <span class="comment">// 性别</span></span><br><span class="line">        <span class="attr">&quot;location&quot;</span><span class="punctuation">:</span> <span class="string">&quot;China/Beijing&quot;</span><span class="punctuation">,</span>  <span class="comment">// 常居地</span></span><br><span class="line">        <span class="attr">&quot;avatars&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>                  <span class="comment">// 头像 URL 列表, 最多为 6 张</span></span><br><span class="line">            <span class="string">&quot;http://xxx.com/user/avatar/123/1.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="string">&quot;http://xxx.com/user/avatar/123/2.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="string">&quot;http://xxx.com/user/avatar/123/3.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line">            ...</span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="七、状态码及异常处理"><a href="#七、状态码及异常处理" class="headerlink" title="七、状态码及异常处理"></a>七、状态码及异常处理</h2><ol>
+<li><p>为什么要定义错误码</p>
+<ul>
+<li>使用错误码可以将错误分类，调试时更容易甄别错误</li>
+<li>前后端通过错误码识别错误，使接口更简单</li>
+<li>前端处理多语言时，可以使用错误码匹配不同语言的提示信息</li>
+</ul>
+</li>
+<li><p>逻辑异常类的实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LogicError</span>(<span class="title class_ inherited__">BaseException</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;程序内部逻辑错误&#x27;&#x27;&#x27;</span></span><br><span class="line">    code = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, data=<span class="literal">None</span></span>):</span><br><span class="line">        self.data = data  <span class="comment"># 发生异常时需要传回前端的数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.__class__.__name__</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_error</span>(<span class="params">name: <span class="built_in">str</span>, err_code: <span class="built_in">int</span></span>) -&gt; LogicError:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;逻辑异常类的工厂函数&#x27;&#x27;&#x27;</span></span><br><span class="line">    base_cls = (LogicError,)</span><br><span class="line">    cls_attr = &#123;<span class="string">&#x27;code&#x27;</span>: err_code&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">type</span>(name, base_cls, cls_attr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义逻辑异常</span></span><br><span class="line">InternalError = gen_error(<span class="string">&#x27;InternalError&#x27;</span>, <span class="number">1000</span>)  <span class="comment"># 服务器内部错误</span></span><br><span class="line">LoginRequired = gen_error(<span class="string">&#x27;LoginRequired&#x27;</span>, <span class="number">2000</span>)  <span class="comment"># 用户未登录</span></span><br></pre></td></tr></table></figure></li>
+<li><p>逻辑异常处理中间件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> common <span class="keyword">import</span> errors</span><br><span class="line"><span class="keyword">from</span> lib.http <span class="keyword">import</span> render_json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ErrorHandlerMiddleware</span>(<span class="title class_ inherited__">MiddlewareMixin</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;将结果渲染成 json 数据&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_exception</span>(<span class="params">self, request, exception</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;异常处理&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(exception, errors.LogicError):</span><br><span class="line">            <span class="comment"># 处理逻辑错误</span></span><br><span class="line">            <span class="keyword">return</span> render_json(error=exception)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 处理程序错误</span></span><br><span class="line">            error_info = format_exception(*exc_info())</span><br><span class="line">            err_log.error(<span class="string">&#x27;&#x27;</span>.join(error_info))  <span class="comment"># 将异常信息输出到错误日志</span></span><br><span class="line">            <span class="keyword">return</span> render_json(error=errors.InternalError)  <span class="comment"># 程序错误统一使用 InternalError</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="八、Cookie、Session机制剖析"><a href="#八、Cookie、Session机制剖析" class="headerlink" title="八、Cookie、Session机制剖析"></a>八、Cookie、Session机制剖析</h2><ol>
+<li><p>产生过程</p>
+<ol>
+<li>浏览器：向服务器发送请求</li>
+<li>服务器：接手并创建session对象（该对象包含一个session_id）</li>
+<li>服务器：执行views函数，并得到一个response对象</li>
+<li>服务器：执行response.set_cookie(‘sessionid’, session_id)将session_id写入cookie</li>
+<li>服务器：将response传回浏览器</li>
+<li>浏览器：读取response报文，从cookies取出session_id并保存</li>
+</ol>
+</li>
+<li><p>后续请求</p>
+<ol>
+<li>浏览器：向服务器发送请求，session_id随cookies一同发送给server</li>
+<li>服务器：从Headers的Cookies中取出session_id</li>
+<li>服务器：根据session_id找出对应的数据，确认客户端身份</li>
+</ol>
+</li>
+<li><p>Django中的代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SessionMiddleware</span>(<span class="title class_ inherited__">MiddlewareMixin</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, get_response=<span class="literal">None</span></span>):</span><br><span class="line">        self.get_response = get_response</span><br><span class="line">        engine = import_module(settings.SESSION_ENGINE)</span><br><span class="line">        self.SessionStore = engine.SessionStore  <span class="comment"># 设置session存储类</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_request</span>(<span class="params">self, request</span>):</span><br><span class="line">        <span class="comment"># 从cookie获取sessionid</span></span><br><span class="line">        session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME)</span><br><span class="line">        <span class="comment"># 通过session_key获取之前保存的数据</span></span><br><span class="line">        request.session = self.SessionStore(session_key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_response</span>(<span class="params">self, request, response</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        If request.session was modified, or if the configuration is to save the</span></span><br><span class="line"><span class="string">        session every time, save the changes and set a session cookie or delete</span></span><br><span class="line"><span class="string">        the session cookie if the session has been emptied.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># view函数结束后，获取session状态</span></span><br><span class="line">            accessed = request.session.accessed</span><br><span class="line">            modified = request.session.modified</span><br><span class="line">            empty = request.session.is_empty()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 如果cookie中有sessionid，但session为空</span></span><br><span class="line">            <span class="comment"># 说明view中执行过session.flush等操作</span></span><br><span class="line">            <span class="comment"># 直接删除cookie中的session</span></span><br><span class="line">            <span class="keyword">if</span> settings.SESSION_COOKIE_NAME <span class="keyword">in</span> request.COOKIES <span class="keyword">and</span> empty:</span><br><span class="line">                response.delete_cookie(</span><br><span class="line">                    settings.SESSION_COOKIE_NAME,</span><br><span class="line">                    path=settings.SESSION_COOKIE_PATH,</span><br><span class="line">                    domain=settings.SESSION_COOKIE_DOMAIN,</span><br><span class="line">                )</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> accessed:</span><br><span class="line">                    patch_vary_headers(response, (<span class="string">&#x27;Cookie&#x27;</span>,))</span><br><span class="line">                <span class="keyword">if</span> (modified <span class="keyword">or</span> settings.SESSION_SAVE_EVERY_REQUEST) <span class="keyword">and</span> <span class="keyword">not</span> empty:</span><br><span class="line">                    <span class="comment"># 设置过期时间</span></span><br><span class="line">                    <span class="keyword">if</span> request.session.get_expire_at_browser_close():</span><br><span class="line">                        max_age = <span class="literal">None</span></span><br><span class="line">                        expires = <span class="literal">None</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        max_age = request.session.get_expiry_age()</span><br><span class="line">                        expires_time = time.time() + max_age</span><br><span class="line">                        expires = cookie_date(expires_time)</span><br><span class="line">                    <span class="comment"># 保存会话数据，并刷新客户端cookie</span></span><br><span class="line">                    <span class="comment"># Skip session save for 500 responses, refs #3881.</span></span><br><span class="line">                    <span class="keyword">if</span> response.status_code != <span class="number">500</span>:</span><br><span class="line">                        <span class="keyword">try</span>:</span><br><span class="line">                            request.session.save()</span><br><span class="line">                        <span class="keyword">except</span> UpdateError:</span><br><span class="line">                            <span class="keyword">raise</span> SuspiciousOperation(</span><br><span class="line">                                <span class="string">&quot;The request&#x27;s session was deleted before the &quot;</span></span><br><span class="line">                                <span class="string">&quot;request completed. The user may have logged &quot;</span></span><br><span class="line">                                <span class="string">&quot;out in a concurrent request, for example.&quot;</span></span><br><span class="line">                            )</span><br><span class="line">                        <span class="comment"># 让客户端将sessionid添加到cookie中</span></span><br><span class="line">                        response.set_cookie(</span><br><span class="line">                            settings.SESSION_COOKIE_NAME,</span><br><span class="line">                            request.session.session_key, max_age=max_age,</span><br><span class="line">                            expires=expires, domain=settings.SESSION_COOKIE_DOMAIN,</span><br><span class="line">                            path=settings.SESSION_COOKIE_PATH,</span><br><span class="line">                            secure=settings.SESSION_COOKIE_SECURE <span class="keyword">or</span> <span class="literal">None</span>,</span><br><span class="line">                            httponly=settings.SESSION_COOKIE_HTTPONLY <span class="keyword">or</span> <span class="literal">None</span>,</span><br><span class="line">                        )</span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="九、Django中的Form表单验证"><a href="#九、Django中的Form表单验证" class="headerlink" title="九、Django中的Form表单验证"></a>九、Django中的Form表单验证</h2><ul>
+<li><p>核心功能：数据验证</p>
+</li>
+<li><p>form的method只能是POST或GET</p>
+</li>
+<li><p>method=GET时，表单提交的参数会出现在URL里</p>
+</li>
+<li><p>属性和方法</p>
+<ul>
+<li>form.is_valid()</li>
+<li>form.has_changed()</li>
+<li>form.clean_<field>()</li>
+<li>form.cleaned_data[‘fieldname’]</li>
+</ul>
+</li>
+<li><p>Form的定义和使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">from</span> django.forms <span class="keyword">import</span> Form</span><br><span class="line">  <span class="keyword">from</span> django.forms <span class="keyword">import</span> IntegerField, CharField, DateField, ChoiceField</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">TestForm</span>(<span class="title class_ inherited__">Form</span>):</span><br><span class="line">      TAGS = (</span><br><span class="line">          (<span class="string">&#x27;py&#x27;</span>, <span class="string">&#x27;python&#x27;</span>),</span><br><span class="line">          (<span class="string">&#x27;ln&#x27;</span>, <span class="string">&#x27;linux&#x27;</span>),</span><br><span class="line">          (<span class="string">&#x27;dj&#x27;</span>, <span class="string">&#x27;django&#x27;</span>),</span><br><span class="line">      )</span><br><span class="line">      fid = IntegerField()</span><br><span class="line">      name = CharField(max_length=<span class="number">10</span>)</span><br><span class="line">      tag = ChoiceField(choices=TAGS)</span><br><span class="line">      date = DateField()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  data = &#123;<span class="string">&#x27;fid&#x27;</span>: <span class="string">&#x27;abc123&#x27;</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;1234567890&#x27;</span>, <span class="string">&#x27;tag&#x27;</span>: <span class="string">&#x27;dj&#x27;</span>, <span class="string">&#x27;date&#x27;</span>: <span class="string">&#x27;2017-12-17&#x27;</span>&#125;</span><br><span class="line">  form = TestForm(data)</span><br><span class="line">  <span class="built_in">print</span>(form.is_valid())</span><br><span class="line">  <span class="built_in">print</span>(form.cleaned_data)  <span class="comment"># cleaned_data的属性是is_valid函数执行时动态添加的</span></span><br><span class="line">  <span class="built_in">print</span>(form.errors)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 十、企业项目中的静态文件处理</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> Nginx</span><br><span class="line"></span><br><span class="line">   Nginx处理静态资源速度非常快，并且自身还带有缓存</span><br><span class="line"></span><br><span class="line">   但需要注意，分布式部署的多台Nginx服务器上，静态资源需要互相同步</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> CDN</span><br><span class="line"></span><br><span class="line">   CDN的全称是Content Delivery Network即内容分发网络。</span><br><span class="line"></span><br><span class="line">   它依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率，CDN的关键技术主要有内容存储和分发技术。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 云存储</span><br><span class="line">   - 常见的云存储有：亚马逊S3服务、阿里云的OSS、七牛云等</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 七牛云接入</span><br><span class="line"></span><br><span class="line">   <span class="number">1.</span> 注册七牛云账号</span><br><span class="line">   <span class="number">2.</span> 创建存储空间</span><br><span class="line">   <span class="number">3.</span> 获取相关配置</span><br><span class="line">      - AccessKey</span><br><span class="line">      - SecretKey</span><br><span class="line">      - Bucket_name</span><br><span class="line">      - Bucket_URL</span><br><span class="line">   <span class="number">4.</span> 安装qiniu SDK: ```pip install qiniu```</span><br><span class="line">   <span class="number">5.</span> [根据接口文档进行接口封装](https://developer.qiniu.com/kodo/<span class="number">1242</span>/python)</span><br><span class="line">   <span class="number">6.</span> 按照需要将上传、下载接口封装成异步任务</span><br><span class="line">   <span class="number">7.</span> 程序处理流程</span><br><span class="line">      <span class="number">1.</span> 用户图片上传服务器</span><br><span class="line">      <span class="number">2.</span> 服务器将图片上传到七牛云</span><br><span class="line">      <span class="number">3.</span> 将七牛云返回的图片URL存入数据库</span><br><span class="line"></span><br><span class="line"><span class="comment"># 社交、VIP模块开发</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 一、功能概述</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 交友模块</span><br><span class="line">   - 数据模型设计</span><br><span class="line">   - 获取推荐列表</span><br><span class="line">   - 匹配检查</span><br><span class="line">   - 喜欢</span><br><span class="line">   - 超级喜欢</span><br><span class="line">   - 不喜欢</span><br><span class="line">   - 反悔</span><br><span class="line">   - 查看喜欢过我的人</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 好友模块</span><br><span class="line">   - 好友表结构设计</span><br><span class="line">   - 查看好友列表</span><br><span class="line">   - 查看好友信息</span><br><span class="line"></span><br><span class="line"><span class="comment">## 二、模型设计</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> Swiped（划过的记录）</span><br><span class="line"></span><br><span class="line">   | Field | Description    |</span><br><span class="line">   | ----- | -------------- |</span><br><span class="line">   | uid   | 用户自身<span class="built_in">id</span>     |</span><br><span class="line">   | sid   | 被滑的陌生人<span class="built_in">id</span> |</span><br><span class="line">   | mark  | 滑动类型       |</span><br><span class="line">   | time  | 滑动的时间     |</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Friend（匹配到的好友）</span><br><span class="line"></span><br><span class="line">   | Field | Description |</span><br><span class="line">   | ----- | ----------- |</span><br><span class="line">   | uid1  | 好友ID      |</span><br><span class="line">   | uid2  | 好友ID      |</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> VIP（会员）</span><br><span class="line"></span><br><span class="line">   | Field | Description |</span><br><span class="line">   | ----- | ----------- |</span><br><span class="line">   | name  | 会员名称    |</span><br><span class="line">   | level | 登记        |</span><br><span class="line">   | price | 价格        |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> Permission（权限）</span><br><span class="line"></span><br><span class="line">   | Field       | Description |</span><br><span class="line">   | ----------- | ----------- |</span><br><span class="line">   | name        | 权限名称    |</span><br><span class="line">   | description | 权限说明    |</span><br><span class="line"></span><br><span class="line"><span class="comment">## 三、关系分析</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 滑动者与被滑动者</span><br><span class="line">   - 一个人可以滑动很多人</span><br><span class="line">   - 一个人可以被多人滑动</span><br><span class="line">   - 结论：同表之内构建起来的逻辑上的多对多关系</span><br><span class="line"><span class="number">2.</span> 用户与好友</span><br><span class="line">   - 一个用户有多个好友</span><br><span class="line">   - 一个用户也可以被多人加为好友</span><br><span class="line">   - 结论：同表之内构建起来的逻辑上的多对多关系，Friend表实际上就是一个关系表</span><br><span class="line"><span class="number">3.</span> User与VIP</span><br><span class="line">   - 一种VIP对应多个User</span><br><span class="line">   - 一个User只会有一种VIP</span><br><span class="line">   - 结论：一对多关系</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> VIP与权限</span><br><span class="line">   - 一种VIP级别对应多种权限</span><br><span class="line">   - 一个权限会属于在多种级别的VIP</span><br><span class="line">   - 结论：多对多关系</span><br><span class="line"></span><br><span class="line"><span class="comment">## 四、类方法与静态方法</span></span><br><span class="line"></span><br><span class="line">- method</span><br><span class="line">  - 通过实例调用</span><br><span class="line">  - 可以引用类内部的任何属性和方法</span><br><span class="line">- <span class="built_in">classmethod</span></span><br><span class="line">  - 无需实例化</span><br><span class="line">  - 可以调用类属性和类方法</span><br><span class="line">  - 无法取到普通成员属性和方法</span><br><span class="line">- <span class="built_in">staticmethod</span></span><br><span class="line">  - 无需实例化</span><br><span class="line">  - 无法取到类内部的任何属性和方法，完全独立的一个方法</span><br><span class="line"></span><br><span class="line"><span class="comment">## 五、利用Q对象进行复杂查询</span></span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line"></span><br><span class="line"><span class="comment"># AND</span></span><br><span class="line">Model.objects.<span class="built_in">filter</span>(Q(x-<span class="number">1</span>) &amp; Q(y-<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">Model.objects.<span class="built_in">filter</span>(Q(x-<span class="number">1</span>) | Q(y-<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># NOT</span></span><br><span class="line">Model.objects.<span class="built_in">filter</span>(-Q(name=<span class="string">&#x27;kitty&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="日志、缓存、及分布式数据库"><a href="#日志、缓存、及分布式数据库" class="headerlink" title="日志、缓存、及分布式数据库"></a>日志、缓存、及分布式数据库</h1><h2 id="一、日志处理"><a href="#一、日志处理" class="headerlink" title="一、日志处理"></a>一、日志处理</h2><ol>
+<li><p>日志的作用</p>
+<ol>
+<li>记录程序运行状态<ol>
+<li>线上环境所有程序以deamon形式运行在后台，无法使用print输出程序状态</li>
+<li>线上程序无人值守全天候运行，需要有一种能持续记录程序运行状态的机制，以便遇到问题后分析处理</li>
+</ol>
+</li>
+<li>记录统计数据</li>
+<li>开发时进行Debug（调试）</li>
+</ol>
+</li>
+<li><p>基本用法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">import</span> logging</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 设置日志格式</span></span><br><span class="line">   fmt = (<span class="string">&#x27;%(asctime)s %(levelname)7.7s %(funcName)s: %(message)s&#x27;</span>)</span><br><span class="line">   formatter = logging.Formatter(fmt, datefmt=<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 设置 handler</span></span><br><span class="line">   handler = logging.handlers.TimedRotatingFileHandler(<span class="string">&#x27;myapp.log&#x27;</span>, when=<span class="string">&#x27;D&#x27;</span>, backupCount=<span class="number">30</span>)</span><br><span class="line">   handler.setFormatter(formatter)</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 定义 logger 对象</span></span><br><span class="line">   logger = logging.getLogger(<span class="string">&quot;MyApp&quot;</span>)</span><br><span class="line">   logger.addHandler(handler)</span><br><span class="line">   logger.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 日志的等级</span><br><span class="line"></span><br><span class="line">   * DEBUG: 调试信息</span><br><span class="line">   * INFO: 普通信息</span><br><span class="line">   * WARNING: 警告</span><br><span class="line">   * ERROR: 错误</span><br><span class="line">   * FATAL: 致命错误</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 对应函数</span><br><span class="line"></span><br><span class="line">   * `logger.debug(msg)`</span><br><span class="line">   * `logger.info(msg)`</span><br><span class="line">   * `logger.warning(msg)`</span><br><span class="line">   * `logger.error(msg)`</span><br><span class="line">   * `logger.fatal(msg)`</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> 日志格式允许的字段</span><br><span class="line"></span><br><span class="line">   * `%(name)s` : Logger的名字</span><br><span class="line">   * `%(levelno)s` : 数字形式的日志级别</span><br><span class="line">   * `%(levelname)s` : 文本形式的日志级别</span><br><span class="line">   * `%(pathname)s` : 调用日志输出函数的模块的完整路径名，可能没有</span><br><span class="line">   * `%(filename)s` : 调用日志输出函数的模块的文件名</span><br><span class="line">   * `%(module)s` : 调用日志输出函数的模块名</span><br><span class="line">   * `%(funcName)s` : 调用日志输出函数的函数名</span><br><span class="line">   * `%(lineno)d` : 调用日志输出函数的语句所在的代码行</span><br><span class="line">   * `%(created)f` : 当前时间，用UNIX标准的表示时间的浮点数表示</span><br><span class="line">   * `%(relativeCreated)d` : 输出日志信息时的，自Logger创建以来的毫秒数</span><br><span class="line">   * `%(asctime)s` : 字符串形式的当前时间。默认格式是“<span class="number">2003</span>-07-08 <span class="number">16</span>:<span class="number">49</span>:<span class="number">45</span>,<span class="number">896</span>”。逗号后面的是毫秒</span><br><span class="line">   * `%(thread)d` : 线程ID。可能没有</span><br><span class="line">   * `%(threadName)s` : 线程名。可能没有</span><br><span class="line">   * `%(process)d` : 进程ID。可能没有</span><br><span class="line">   * `%(message)s` : 用户输出的消息</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> Django 中的日志配置</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   LOGGING = &#123;</span><br><span class="line">       <span class="string">&#x27;version&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">       <span class="string">&#x27;disable_existing_loggers&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">       <span class="comment"># 格式配置</span></span><br><span class="line">       <span class="string">&#x27;formatters&#x27;</span>: &#123;</span><br><span class="line">           <span class="string">&#x27;simple&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;format&#x27;</span>: <span class="string">&#x27;%(asctime)s %(module)s.%(funcName)s: %(message)s&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;datefmt&#x27;</span>: <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>,</span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="string">&#x27;verbose&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;format&#x27;</span>: (<span class="string">&#x27;%(asctime)s %(levelname)s [%(process)d-%(threadName)s] &#x27;</span></span><br><span class="line">                       <span class="string">&#x27;%(module)s.%(funcName)s line %(lineno)d: %(message)s&#x27;</span>),</span><br><span class="line">               <span class="string">&#x27;datefmt&#x27;</span>: <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>,</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment"># Handler 配置</span></span><br><span class="line">       <span class="string">&#x27;handlers&#x27;</span>: &#123;</span><br><span class="line">           <span class="string">&#x27;console&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;logging.StreamHandler&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;level&#x27;</span>: <span class="string">&#x27;DEBUG&#x27;</span> <span class="keyword">if</span> DEBUG <span class="keyword">else</span> <span class="string">&#x27;WARNING&#x27;</span></span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="string">&#x27;info&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;logging.handlers.TimedRotatingFileHandler&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;filename&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;BASE_DIR&#125;</span>/logs/info.log&#x27;</span>,  <span class="comment"># 日志保存路径</span></span><br><span class="line">               <span class="string">&#x27;when&#x27;</span>: <span class="string">&#x27;D&#x27;</span>,        <span class="comment"># 每天切割日志</span></span><br><span class="line">               <span class="string">&#x27;backupCount&#x27;</span>: <span class="number">30</span>,  <span class="comment"># 日志保留 30 天</span></span><br><span class="line">               <span class="string">&#x27;formatter&#x27;</span>: <span class="string">&#x27;simple&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;level&#x27;</span>: <span class="string">&#x27;INFO&#x27;</span>,</span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="string">&#x27;error&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;logging.handlers.TimedRotatingFileHandler&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;filename&#x27;</span>: <span class="string">f&#x27;<span class="subst">&#123;BASE_DIR&#125;</span>/logs/error.log&#x27;</span>,  <span class="comment"># 日志保存路径</span></span><br><span class="line">               <span class="string">&#x27;when&#x27;</span>: <span class="string">&#x27;W0&#x27;</span>,      <span class="comment"># 每周一切割日志</span></span><br><span class="line">               <span class="string">&#x27;backupCount&#x27;</span>: <span class="number">4</span>,  <span class="comment"># 日志保留 4 周</span></span><br><span class="line">               <span class="string">&#x27;formatter&#x27;</span>: <span class="string">&#x27;verbose&#x27;</span>,</span><br><span class="line">               <span class="string">&#x27;level&#x27;</span>: <span class="string">&#x27;WARNING&#x27;</span>,</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment"># Logger 配置</span></span><br><span class="line">       <span class="string">&#x27;loggers&#x27;</span>: &#123;</span><br><span class="line">           <span class="string">&#x27;django&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;handlers&#x27;</span>: [<span class="string">&#x27;console&#x27;</span>],</span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="string">&#x27;inf&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;handlers&#x27;</span>: [<span class="string">&#x27;info&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;propagate&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">               <span class="string">&#x27;level&#x27;</span>: <span class="string">&#x27;INFO&#x27;</span>,</span><br><span class="line">           &#125;,</span><br><span class="line">           <span class="string">&#x27;err&#x27;</span>: &#123;</span><br><span class="line">               <span class="string">&#x27;handlers&#x27;</span>: [<span class="string">&#x27;error&#x27;</span>],</span><br><span class="line">               <span class="string">&#x27;propagate&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">               <span class="string">&#x27;level&#x27;</span>: <span class="string">&#x27;WARNING&#x27;</span>,</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>日志查找</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line">   grep dislike info.log</span><br><span class="line">   find <span class="string">&quot;dislike&quot;</span> info.log</span><br><span class="line">   </span><br><span class="line">   grep dislike info.log -c <span class="comment"># 仅显示行号</span></span><br><span class="line">   find <span class="string">&quot;dislike&quot;</span> info.log /C </span><br><span class="line">   </span><br><span class="line">   grep dislike info.log | awk <span class="string">&#x27;&#123;print $1,$6&#125;&#x27;</span>  <span class="comment"># 显示指定列的信息</span></span><br><span class="line">   </span><br><span class="line">   grep -rnw &lt;string&gt; ./  <span class="comment"># -rnw 递归查找单词字符并显示行号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 二、缓存处理</span></span><br><span class="line"></span><br><span class="line">1. 缓存一般处理流程</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   data = get_from_cache(key)  <span class="comment"># 首先从缓存中获取数据</span></span><br><span class="line">   <span class="keyword">if</span> data is None:</span><br><span class="line">       data = get_from_db()  <span class="comment"># 缓存中没有，从数据库获取</span></span><br><span class="line">       set_to_cache(key, data)  <span class="comment"># 将数据添加到缓存，方便下次获取</span></span><br><span class="line">   <span class="built_in">return</span> data</span><br><span class="line"></span><br><span class="line">2. Django的默认缓存接口</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   from django.core.cache import cache</span><br><span class="line">   </span><br><span class="line">   cache.set(<span class="string">&#x27;a&#x27;</span>, 123, 10)</span><br><span class="line">   a = cache.get(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">   <span class="built_in">print</span>(a)</span><br><span class="line">   x = cache.incr(a)</span><br><span class="line">   <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">3. Django中使用Redis缓存</span><br><span class="line"></span><br><span class="line">   - 安装django_redis: ```pip install django_redis```</span><br><span class="line"></span><br><span class="line">   - 配置</span><br><span class="line"></span><br><span class="line">     ```python</span><br><span class="line">     <span class="comment"># settings 添加如下配置</span></span><br><span class="line">     CACHES = &#123;</span><br><span class="line">         <span class="string">&quot;default&quot;</span>: &#123;</span><br><span class="line">             <span class="string">&quot;BACKEND&quot;</span>: <span class="string">&quot;django_redis.cache.RedisCache&quot;</span>,</span><br><span class="line">             <span class="string">&quot;LOCATION&quot;</span>: <span class="string">&quot;redis://192.168.200.116:6379/1&quot;</span>,</span><br><span class="line">             <span class="string">&quot;OPTIONS&quot;</span>: &#123;</span><br><span class="line">                 <span class="string">&quot;CLIENT_CLASS&quot;</span>: <span class="string">&quot;django_redis.client.DefaultClient&quot;</span>,</span><br><span class="line">                 <span class="string">&quot;PICKLE_VERSION&quot;</span>: -1,</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">4. Redis回顾</span><br><span class="line"></span><br><span class="line">   - String类：常用作普通缓存</span><br><span class="line"></span><br><span class="line">     | CMD   | Example                   | Description                    |</span><br><span class="line">     | ----- | ------------------------- | ------------------------------ |</span><br><span class="line">     | <span class="built_in">set</span>   | <span class="built_in">set</span>(<span class="string">&#x27;a&#x27;</span>, 123)             | 设置值                         |</span><br><span class="line">     | get   | get(<span class="string">&#x27;a&#x27;</span>)                  | 获取值                         |</span><br><span class="line">     | incr  | incr(<span class="string">&#x27;a&#x27;</span>)                 | 自增                           |</span><br><span class="line">     | decr  | decr(<span class="string">&#x27;a&#x27;</span>)                 | 自减                           |</span><br><span class="line">     | mset  | mset(a=123, b=456, c=789) | 设置多个值                     |</span><br><span class="line">     | mget  | mget([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])     | 获取多个值                     |</span><br><span class="line">     | setex | setex(<span class="string">&#x27;kk&#x27;</span>, 21, 10)       | 设置值的时候，同时设置过期时间 |</span><br><span class="line">     | setnx | setnx(<span class="string">&#x27;a&#x27;</span>, 999)           | 如果不存在，则创建该值         |</span><br><span class="line"></span><br><span class="line">   - Hash类：常用作对象存储</span><br><span class="line"></span><br><span class="line">     | CMD     | Example                          | Description                           |</span><br><span class="line">     | ------- | -------------------------------- | ------------------------------------- |</span><br><span class="line">     | hset    | hset(<span class="string">&#x27;obj&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;hello&#x27;</span>)     | 在哈希表obj中添加一个name = hello的值 |</span><br><span class="line">     | hget    | hget(<span class="string">&#x27;obj&#x27;</span>, <span class="string">&#x27;name&#x27;</span>)              | 获取哈希表obj中的值                   |</span><br><span class="line">     | hmset   | hmset(<span class="string">&#x27;obj&#x27;</span>, &#123;<span class="string">&#x27;a&#x27;</span>:1, <span class="string">&#x27;b&#x27;</span>:3&#125;)     | 在哈希表中设置多个值                  |</span><br><span class="line">     | hmget   | hmget(<span class="string">&#x27;obj&#x27;</span>, [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;name&#x27;</span>]) | 获取多个哈希表中的值                  |</span><br><span class="line">     | hgetail | hgetail(<span class="string">&#x27;obj&#x27;</span>)                   | 获取多个哈希表中所有的值              |</span><br><span class="line">     | hincrby | hincrby(<span class="string">&#x27;obj&#x27;</span>, <span class="string">&#x27;count&#x27;</span>)          | 将哈希表中的某个值自增1               |</span><br><span class="line">     | hdecrby | hdecrby(<span class="string">&#x27;obj&#x27;</span>, <span class="string">&#x27;count&#x27;</span>)          | 将哈希表中的某个值自减1               |</span><br><span class="line"></span><br><span class="line">   - List类：常用作队列（消息队列、任务队列等）</span><br><span class="line"></span><br><span class="line">     | CMD   | Example                 | Description                                     |</span><br><span class="line">     | ----- | ----------------------- | ----------------------------------------------- |</span><br><span class="line">     | lpush | lpush(name, *values)    | 向列表左侧添加多个元素                          |</span><br><span class="line">     | rpush | rpush(name, *values)    | 向列表右侧添加多个元素                          |</span><br><span class="line">     | lpop  | lpop(name)              | 从列表左侧弹出一个元素                          |</span><br><span class="line">     | rpop  | rpop(name)              | 从列表右侧弹出一个元素                          |</span><br><span class="line">     | blpop | blpop(keys, <span class="built_in">timeout</span>=0)  | 从列表左侧弹出一个元素，列表为空时阻塞<span class="built_in">timeout</span>秒 |</span><br><span class="line">     | brpop | brpop(keys, <span class="built_in">timeout</span>=0)  | 从列表右侧弹出一个元素，列表为空时阻塞<span class="built_in">timeout</span>秒 |</span><br><span class="line">     | ilen  | ilen(name)              | 获取列表长度                                    |</span><br><span class="line">     | ltrim | ltrim(name, start, end) | 从start到end位置截断列表                        |</span><br><span class="line"></span><br><span class="line">   - Set类：常用作去重</span><br><span class="line"></span><br><span class="line">     | CMD       | Example                | Description                     |</span><br><span class="line">     | --------- | ---------------------- | ------------------------------- |</span><br><span class="line">     | sadd      | sadd(name, *values)    | 向集合中添加元素                |</span><br><span class="line">     | sdiff     | sdiff(keys, *args)     | 多个集合做差集                  |</span><br><span class="line">     | sinter    | sinter(keys, *args)    | 多个集合做交集                  |</span><br><span class="line">     | sunion    | sunion(keys, *args)    | 多个集合做并集                  |</span><br><span class="line">     | sismember | sismember(name, value) | 元素value是否是集合name中的成员 |</span><br><span class="line">     | smembers  | smembers(name)         | 集合name中的全部成员            |</span><br><span class="line">     | spop      | spop(name)             | 随机弹出一个成员                |</span><br><span class="line">     | srem      | srem(name, *values)    | 删除一个或多个成员              |</span><br><span class="line"></span><br><span class="line">   - SortedSet类：常用作排行处理</span><br><span class="line"></span><br><span class="line">     | CMD       | Example                                  | Description                         |</span><br><span class="line">     | --------- | ---------------------------------------- | ----------------------------------- |</span><br><span class="line">     | zadd      | zadd(name, a=12)                         | 添加一个a，值为12                   |</span><br><span class="line">     | zcount    | zcount(name, min, max)                   | 从min到max的元素个数                |</span><br><span class="line">     | zincrby   | zincrby(name, key, 1)                    | key对应的值自增1                    |</span><br><span class="line">     | zrange    | zrange(name, 0, -1, withscores=False)    | 按升序返回排名0到最后一位的全部元素 |</span><br><span class="line">     | zrevrange | zrevrange(name, 0, -1, withscores=False) | 按降序返回排名0到最后一位的全部元素 |</span><br><span class="line">     | zrem      | zrem(name, *value)                       | 删除一个或多个元素                  |</span><br><span class="line"></span><br><span class="line">5. 使用pickle对Redis接口的封装</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   from pickle import dumps, loads</span><br><span class="line">   </span><br><span class="line">   rds = redis.Redis()</span><br><span class="line">   </span><br><span class="line">   def <span class="built_in">set</span>(key, value):</span><br><span class="line">       data = dumps(value)</span><br><span class="line">       <span class="built_in">return</span> rds.set(key, data)</span><br><span class="line">   </span><br><span class="line">   def get(key):</span><br><span class="line">       data = rds.get(key)</span><br><span class="line">       <span class="built_in">return</span> loads(data)</span><br><span class="line"></span><br><span class="line">6. 动态修改Python属性和方法</span><br><span class="line"></span><br><span class="line">   ```python</span><br><span class="line">   class A:</span><br><span class="line">       m = 128</span><br><span class="line">       def __init__(self):</span><br><span class="line">           self.x = 123</span><br><span class="line">       def add(self, n):</span><br><span class="line">           <span class="built_in">print</span>(self.x + n)</span><br><span class="line">   a = A()</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 动态添加属性（两种方式）</span></span><br><span class="line">   a.y = 456</span><br><span class="line">   setattr(a, <span class="string">&#x27;z&#x27;</span>, 789)</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 动态添加类属性</span></span><br><span class="line">   A.y = 654</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 类属性和实例属性互不影响</span></span><br><span class="line">   <span class="built_in">print</span>(A.y, a.y)</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 动态添加实例方法</span></span><br><span class="line">   def sub(self, n):</span><br><span class="line">       <span class="built_in">print</span>(self.x - n)</span><br><span class="line">   A.sub = sub</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 动态添加类方法</span></span><br><span class="line">   @classmethod</span><br><span class="line">   def mul(cls, n):</span><br><span class="line">       <span class="built_in">print</span>(cls.m * n)</span><br><span class="line">   A.mul = mul</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 动态添加静态方法</span></span><br><span class="line">   @staticmethod</span><br><span class="line">   def div(x, y):</span><br><span class="line">       <span class="built_in">print</span>(x / y)</span><br><span class="line">   A.div = div</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 属性修改的本质原因</span></span><br><span class="line">   <span class="built_in">print</span>(A.__dict__, a.__dict__)</span><br></pre></td></tr></table></figure></li>
+<li><p>在Model层插入缓存处理</p>
+</li>
+</ol>
+<h2 id="三、分布式数据库"><a href="#三、分布式数据库" class="headerlink" title="三、分布式数据库"></a>三、分布式数据库</h2><ol>
+<li><p>数据分片</p>
+<ul>
+<li>表单查询能力上限</li>
+<li>分库分表<ul>
+<li>分表</li>
+<li>分库</li>
+</ul>
+</li>
+<li>垂直切割</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">user												 |	ext_info</span><br><span class="line"></span><br><span class="line">id	 name		sex	  	  age  location	  |	 uid    aa	   bb   cc	   dd  ee ff  xx   yy  zz</span><br><span class="line"></span><br><span class="line">------------------------------------------ | --------------------------------------------------</span><br><span class="line"></span><br><span class="line">1	 xxx		f		 11	  beijing	 |	 1	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">2	 xxx		f		 11	  beijing	 |	 2	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">3	 xxx		f		 11	  beijing	 |	 3	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">4	 xxx		f		 11	  beijing	 |	 4	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">5	 xxx		f		 11	  beijing	 |	 5	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">6	 xxx		f		 11	  beijing	 |	 6	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">7	 xxx		f		 11	  beijing	 |	 7	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">8	 xxx		f		 11	  beijing	 |	 8	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">9	 xxx		f		 11	  beijing	 |	 9	   x	  x	   x	  x	  x	 x	 x	  x	  x</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>水平切割</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">- user												 </span><br><span class="line"></span><br><span class="line">  id	name	sex	age	location		aa	bb	cc	dd	ee	ff	xx	yy	zz</span><br><span class="line"></span><br><span class="line">  ------------------------------------------------------------------------------------- user_1</span><br><span class="line"></span><br><span class="line">  1	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  2	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  3	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  ------------------------------------------------------------------------------------- user_2</span><br><span class="line"></span><br><span class="line">  4	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  5	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  6	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  ------------------------------------------------------------------------------------- user_3</span><br><span class="line"></span><br><span class="line">  7	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  8	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br><span class="line"></span><br><span class="line">  9	 xxx		f		 11	  beijing	 x	  x	   x	  x	  x	 x	 x	  x	  x</span><br></pre></td></tr></table></figure>
+
+<p>水平拆分原则</p>
+</li>
+<li><ul>
+<li><p>按范围拆分</p>
+<ul>
+<li><p>优点：构建简单，扩容极其方便</p>
+</li>
+<li><p>缺点：不能随运营发展均衡分配资源</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Database-1		  1 - 500w	&lt;-- uid: 3120482</span><br><span class="line"></span><br><span class="line">Database-1	  500w - 1000w</span><br><span class="line"></span><br><span class="line">Database-1	  1000 - 1500w	 &lt;-- post_id: 20278327</span><br><span class="line"></span><br><span class="line">Database-1   1500w - 2000w</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>按余数拆分</p>
+<ul>
+<li><p>优点：能够随着运营发展均匀分配负数</p>
+</li>
+<li><p>缺点：扩容不方便，前期投入大</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">uid = 568456</span><br><span class="line"></span><br><span class="line">mod = uid % len(Database) -&gt; 3</span><br><span class="line"></span><br><span class="line">db_name = &#x27;Database-3&#x27;</span><br><span class="line"></span><br><span class="line">Database-0		10	20	30	...	3120480</span><br><span class="line"></span><br><span class="line">Database-1	  1	11	21	31	...	3120481</span><br><span class="line"></span><br><span class="line">Database-2	  2	12	22	32	...	3120482</span><br><span class="line"></span><br><span class="line">Database-3	  3	13	23	33	...	3120483</span><br><span class="line"></span><br><span class="line">Database-4	  4	14	24	34	...	3120484</span><br><span class="line"></span><br><span class="line">Database-5	  5	15	25	35	...	3120485</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据库集群</p>
+<ul>
+<li><p>读写分离</p>
+<ul>
+<li><p>程序自身实现读写分离</p>
+<p><img src="img/db1.png"></p>
+</li>
+<li><p>使用第三方代理实现读写分离</p>
+<p><img src="img/db2.png"></p>
+</li>
+</ul>
+</li>
+<li><p>服务高可用</p>
+<ol>
+<li>对软硬件的冗余，以消除单点故障。任何系统都会有一个或多个冗余系统做备份。</li>
+<li>对故障的检测和恢复。检测故障以及用备份的结点接管故障点，也就是“故障转移”。</li>
+<li>需要很可靠的交汇点（CrossOver），这是一些不容易冗余的结点。比如域名解析，负载均衡器等。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="服务器性能，及上线部署"><a href="#服务器性能，及上线部署" class="headerlink" title="服务器性能，及上线部署"></a>服务器性能，及上线部署</h1><h2 id="一、并发性能"><a href="#一、并发性能" class="headerlink" title="一、并发性能"></a>一、并发性能</h2><ul>
+<li><p>概念</p>
+<ul>
+<li>理解 I/O 的概念</li>
+<li>理解“同步/异步”、“阻塞/非阻塞”</li>
+<li>了解“事件驱动” 和 “多路复用”</li>
+<li>异步模型并不会消灭阻塞，而是在发生 I/O 阻塞时切换到其他任务，从而达到异步非阻塞</li>
+</ul>
+</li>
+<li><p>计算密集型</p>
+<ul>
+<li>CPU 长时间满负荷运行，如图像处理、大数据运算、科学运算等</li>
+<li>计算密集型：用C语言或Cpython补充</li>
+</ul>
+</li>
+<li><p>I/O密集型</p>
+<ul>
+<li>网络IO、文件IO、设备IO等</li>
+<li>Unix：一切皆文件</li>
+</ul>
+</li>
+<li><p>多任务处理</p>
+<ul>
+<li><p>进程、线程、协程调度的过程叫做上下文切换</p>
+</li>
+<li><p>进程、线程、协程对比</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>资源占用</th>
+<th>数据通信</th>
+<th>上下文切换（Context）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进程</td>
+<td>大</td>
+<td>不方便（网络、共享内容、管道等）</td>
+<td>操作系统按时间片切换，不灵活、慢</td>
+</tr>
+<tr>
+<td>线程</td>
+<td>小</td>
+<td>非常方便</td>
+<td>按时间片切换，不够灵活，快</td>
+</tr>
+<tr>
+<td>协程</td>
+<td>非常小</td>
+<td>非常方便</td>
+<td>根据I/O事件切换，更加有效的利用CPU</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>全局解释器锁（GIL）</p>
+<p><img src="img/GIL1.png"></p>
+<p><img src="img/GIL2.png"></p>
+<ul>
+<li>它确保任何时候一个进程中都只有一个Python线程能进入CPU执行</li>
+<li>全局解释器锁造成单个进程无法使用多个CPU核心</li>
+<li>通过多进程来利用多个CPU核心，一般进程数与CPU核心数相等，或者CPU核心数两倍</li>
+</ul>
+</li>
+<li><p>协程</p>
+<ul>
+<li><p>Python下协程的发展：</p>
+<ul>
+<li>stackless / greenlet / gevent</li>
+<li>tornado 通过纯Python代码实现了协程处理（底层使用yield）</li>
+<li>asyncio: Python官方实现的协程</li>
+</ul>
+</li>
+<li><p>asyncio实现协程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;wait %s s&#x27;</span> % n)</span><br><span class="line">        <span class="keyword">await</span> asyncio.sleep(n)</span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line"></span><br><span class="line">task1 = foo(<span class="number">1</span>)</span><br><span class="line">task2 = foo(<span class="number">1.5</span>)</span><br><span class="line">tasks = [asyncio.ensure_future(task1), asyncio.ensure_future(task2)]</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()  <span class="comment"># 事件循环，协程调度器</span></span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>结论：通常使用多进程 + 多协程达到最大并发性能</p>
+<ul>
+<li>因为GIL的原因，Python需要通过多进程来利用多个核心</li>
+<li>线程切换效率低，而且应对 I/O 不够灵活</li>
+<li>协程更轻量级，完全没有协程切换的消耗，而且可以由程序自身统一调度和切换</li>
+<li>一般使用协程来处理每一个请求</li>
+</ul>
+</li>
+<li><p>单台服务器最大连接数</p>
+<ul>
+<li>文件描述符：限制文件打开数量（一切皆文件）</li>
+<li>内核限制：<code>net.core.somaxconn</code></li>
+<li>内存限制</li>
+<li>修改文件描述符：<code>ulimit -n 65535</code></li>
+</ul>
+</li>
+<li><p>使用Gunicorn驱动Django</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://docs.gunicorn.org/en/latest/install.html">http://docs.gunicorn.org/en/latest/install.html</a></p>
+</li>
+<li><p>Gunicorn扮演HTTPServer的角色</p>
+</li>
+<li><p>HTTPServer：只负责网络连接（TCP握手、数据收发）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gunicorn -c swiper/gunicorn-config.py swiper.wsgi <span class="comment"># 启动gunicorn</span></span><br><span class="line">watch -n 0.5 <span class="string">&#x27;ps aux | grep -v grep | grep gunicorn&#x27;</span> <span class="comment"># 实时查看gunicorn运行情况</span></span><br><span class="line">watch -n 0.5 <span class="string">&quot;ps aux | grep -v grep | grep gunicorn | awk &#x27;&#123;print \$2&#125;&#x27;&quot;</span> <span class="comment"># 实时查看gunicorn运行的进程ID</span></span><br><span class="line"><span class="built_in">cat</span> logs/gunicorn.pid <span class="comment"># 查看gunicorn主进程（master）</span></span><br><span class="line"><span class="built_in">kill</span> -HUP &lt;master ID&gt; <span class="comment"># nginx不间断重启</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>报错：</strong> <strong>django.core.exceptions.ImproperlyConfigured</strong>: Requested setting REDIS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.</p>
+<p>注意在脚本中添加：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.environ.setdefault(<span class="string">&quot;DJANGO_SETTINGS_MODULE&quot;</span>, <span class="string">&quot;swiper.settings&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>分清几个概念</p>
+<ul>
+<li><p>WSGI：全称是WebServerGatewayInterface，它是Python官方定义的一种描述HTTP服务器（如Nginx）与Web应用程序（如Django、Flask）通信的规范。全文定义在<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0333/">PEP333</a>。</p>
+</li>
+<li><p>uwsgi：与WSGI类似，是uWSGI服务器自定义的通信协议，用于定义传输信息的类型(type of information)。每一个uwsgi packet前4byte为传输信息类型的描述，与WSGI协议是两种东西，该协议性能远好于早期的Fast-CGI协议。</p>
+</li>
+<li><p>uWSGI: uWSGI是一个全功能的HTTP服务器。实现了WSGI协议、uwsgi协议、http协议等。它要做的就是把HTTP协议转化成语言支持的网络协议。比如把HTTP协议转化成WSGI协议，让Python可以直接使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">    HTTP Server =&gt; 负责：1. 接受、断开客户端请求；2.接收、发送网络数据</span><br><span class="line">    	∧</span><br><span class="line">    	|</span><br><span class="line">    	∨</span><br><span class="line">       WSGI	    =&gt; 负责：在 HTTPServer 和 webapp 之间进行数据转换</span><br><span class="line">        ∧</span><br><span class="line">        |</span><br><span class="line">        ∨</span><br><span class="line">      web App   =&gt; 负责：web 应用的业务逻辑</span><br><span class="line"></span><br><span class="line">## 二、压力测试</span><br><span class="line"></span><br><span class="line">- 常用工具</span><br><span class="line">  - [ab(apach:benchmark)](https://httpd.apache.org/docs/2.4/programs/ab.html)</span><br><span class="line">  - [siege](https://github.com/loeDog/siege)</span><br><span class="line">  - webbench</span><br><span class="line">  - [wrk](https://github.com/wg/wrk)</span><br><span class="line">- Web系统性能关键指标：RPS（Requests per second）</span><br><span class="line">- 其他</span><br><span class="line">  - QPS（每秒查询数）</span><br><span class="line">  - TPS（每秒事务数，数据库指标）</span><br><span class="line">- Ubuntu下安装ab:```apt-get install apache2-utils```</span><br><span class="line">- 压测：```ab -n 1000 -c 300 http://127.0.0.1:9000/api/user/profile```</span><br><span class="line">- 进程</span><br><span class="line">  - 资源占用大，一般以Mb为单位</span><br><span class="line">  - 通信方式：需要一种媒介来进行通信，如：socket，管道，文件，共享内存，UDS</span><br><span class="line">  - 上下文切换性能：稍慢，不够灵活，由操作系统决定切换方式</span><br><span class="line">- 线程</span><br><span class="line">  - 资源占用很小，一般为2k左右</span><br><span class="line">  - 通信方式：直接通信，非常方便</span><br><span class="line">  - 上下文切换性能：稍快，不够灵活，由python解释器控制切换</span><br><span class="line"></span><br><span class="line">- 协程</span><br><span class="line">  - 资源占用更小，一般不到1K</span><br><span class="line">  - 通信方式：直接通信，非常方便</span><br><span class="line">  - 上下文切换性能：非常好，切换方式由开发者掌控，非常灵活</span><br><span class="line"></span><br><span class="line">- 阻塞：多任务异步处理</span><br><span class="line">- 上下文切换：使用尽可能快的处理单元 -&gt; 协程</span><br><span class="line"></span><br><span class="line">## 三、服务器的登录与维护</span><br><span class="line"></span><br><span class="line">1. SSH登录服务器：```ssh root@xxx.xxx.xxx```</span><br><span class="line"></span><br><span class="line">2. 密钥</span><br><span class="line">   1. 产生：ssh-keygen</span><br><span class="line">   </span><br><span class="line">      ```bash</span><br><span class="line">      ssh-keygen -t ed25519  # 产生ed25519的密钥</span><br><span class="line">   </span><br><span class="line">   2. 公钥：~/.ssh/id_rsa.pub</span><br><span class="line">   </span><br><span class="line">   3. 私钥：~/.ssh/id_rsa</span><br><span class="line">   </span><br><span class="line">   4. 免密登录服务器</span><br><span class="line">      1. 复制公钥内容</span><br><span class="line">      2. 将公钥内容粘贴到服务器的~/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">3. 代码上传</span><br><span class="line"></span><br><span class="line">   ```bash</span><br><span class="line">   cat /proc/cpuinfo</span><br><span class="line">   cat /proc/cpuinfo|grep processor -c  # 查看CPU</span><br><span class="line">   free -m  # 查看内存，以MB为单位</span><br><span class="line">   free -k</span><br><span class="line">   free -g</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li><p>rsync</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_27747695/article/details/114098005">https://blog.csdn.net/sinat_27747695/article/details/114098005</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">      B:\swiper&gt;rsync -crvP --exclude=&#123;.git,venv,__pycache__&#125; ./ root@[2a01:4f8:13a:2690:face:daf:68f3:1]:/opt/swiper/</span><br><span class="line"></span><br><span class="line"><span class="comment">## 四、脚本开发</span></span><br><span class="line"></span><br><span class="line">- 系统部署脚本</span><br><span class="line"></span><br><span class="line">- 代码发布脚本</span><br><span class="line">- 程序启动脚本</span><br><span class="line">- 程序停止脚本</span><br><span class="line">- 程序启动脚本</span><br><span class="line">  - 不间断重启：```<span class="built_in">kill</span> -HUP [进程 ID]```</span><br><span class="line"></span><br><span class="line">**shell脚本报错“/bin/bash^M: bad interpreter: No such file or directory” **</span><br><span class="line"></span><br><span class="line">https://www.cnblogs.com/xyztank/articles/16594936.html</span><br><span class="line"></span><br><span class="line">编辑文件，执行“: <span class="built_in">set</span> ff=unix”，将文件设置为unix格式，然后执行“:wq”，保存退出。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>vim filename</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 五、Nginx</span><br><span class="line"></span><br><span class="line">- nginx.conf</span><br><span class="line"></span><br><span class="line">  ```json</span><br><span class="line">  https://www.cnblogs.com/patrick-yeh/p/16407935.html</span><br><span class="line">  </span><br><span class="line">  user root;</span><br><span class="line">  worker_processes  4;</span><br><span class="line">  pid /run/nginx.pid;</span><br><span class="line">  </span><br><span class="line">  events &#123;</span><br><span class="line">      worker_connections  10240;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  http &#123;</span><br><span class="line">      include       mime.types;</span><br><span class="line">      default_type  application/octet-stream;</span><br><span class="line">  </span><br><span class="line">      log_format main &#x27;$time_local $remote_addr $status $request_time &#x27;</span><br><span class="line">                      &#x27;$request [$body_bytes_sent/$bytes_sent]   &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_referer&quot;&#x27;;</span><br><span class="line">  </span><br><span class="line">      sendfile            on;</span><br><span class="line">      tcp_nopush          on;</span><br><span class="line">      keepalive_timeout   65;</span><br><span class="line">      gzip                on;</span><br><span class="line">  </span><br><span class="line">      upstream app_server &#123;</span><br><span class="line">          server 127.0.0.1:8000 weight=10;</span><br><span class="line">          server 127.0.0.1:9000 weight=10;</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      upstream app_server_ipv6 &#123;</span><br><span class="line">          server localhost:8000 weight=10;</span><br><span class="line">          server localhost:9000 weight=20;</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      server &#123;</span><br><span class="line">          listen       80; ## listen for ipv4</span><br><span class="line">          server_name  localhost;</span><br><span class="line">  </span><br><span class="line">          access_log  /opt/swiper/logs/access.log  main;</span><br><span class="line">          error_log   /opt/swiper/logs/error.log;</span><br><span class="line">  </span><br><span class="line">          location = /favicon.ico  &#123;</span><br><span class="line">              empty_gif;</span><br><span class="line">              access_log off;</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          #location /static/ &#123;</span><br><span class="line">          #    root   /opt/swiper/frontend/;</span><br><span class="line">          #    expires 30d;</span><br><span class="line">          #    access_log off;</span><br><span class="line">          #&#125;</span><br><span class="line">  </span><br><span class="line">          location / &#123;</span><br><span class="line">              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">              proxy_set_header Host $http_host;</span><br><span class="line">              proxy_redirect off;</span><br><span class="line">              proxy_pass http://app_server;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      server &#123;</span><br><span class="line">          listen [::]:80 ipv6only=on; ## listen for ipv6</span><br><span class="line">          server_name  localhost;</span><br><span class="line">  </span><br><span class="line">          access_log  /opt/swiper/logs/access.log  main;</span><br><span class="line">          error_log   /opt/swiper/logs/error.log;</span><br><span class="line">  </span><br><span class="line">          location = /favicon.ico  &#123;</span><br><span class="line">              empty_gif;</span><br><span class="line">              access_log off;</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          #location /static/ &#123;</span><br><span class="line">          #    root   /opt/swiper/frontend/;</span><br><span class="line">          #    expires 30d;</span><br><span class="line">          #    access_log off;</span><br><span class="line">          #&#125;</span><br><span class="line">  </span><br><span class="line">          location / &#123;</span><br><span class="line">              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">              proxy_set_header Host $http_host;</span><br><span class="line">              proxy_redirect off;</span><br><span class="line">              proxy_pass http://app_server_ipv6;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>反向代理    nginx.conf：<code>proxy pass http://app_server</code></p>
+</li>
+<li><p>负载均衡</p>
+<ul>
+<li>轮询：rr（默认）</li>
+<li>权重：weight</li>
+<li>IP哈希：ip_hash</li>
+<li>最小连接数：least_conn</li>
+</ul>
+</li>
+<li><p>其他负载均衡</p>
+<ul>
+<li>LVS</li>
+<li>HAProxy</li>
+<li>F5</li>
+</ul>
+</li>
+<li><p>可以不使用nginx，直接用gunicorn吗？</p>
+<ul>
+<li>Nginx相对于Gunicorn来说更安全</li>
+<li>Nginx可以用作负载均衡</li>
+</ul>
+</li>
+<li><p>处理静态文件相关配置</p>
+<p>```json<br>location /static/ {</p>
+<pre><code>        root   /opt/swiper/frontend/;
+        expires 30d;
+        access_log off;
+    &#125;
+</code></pre>
+<p>location /medias/ {</p>
+<pre><code>        root   /opt/swiper/frontend/;
+        expires 30d;
+        access_log off;
+    &#125;
+</code></pre>
+<h2 id="七、服务器架构"><a href="#七、服务器架构" class="headerlink" title="七、服务器架构"></a>七、服务器架构</h2></li>
+</ul>
+<h2 id="八、动静分离"><a href="#八、动静分离" class="headerlink" title="八、动静分离"></a>八、动静分离</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python-swiper/" rel="tag"># python-swiper</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/26/python-web-project/" rel="prev" title="python-web-project">
+      <i class="fa fa-chevron-left"></i> python-web-project
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/17/hello-world/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91"><span class="nav-text">个人模块开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A7%88"><span class="nav-text">一、功能概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="nav-text">二、用户数据模型设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E7%B3%BB%E6%9E%84%E5%BB%BA"><span class="nav-text">三、关系构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E5%88%A0%E9%99%A4migrations%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%BB%93%E6%9E%9C%E4%B8%BANo-Changes%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">django删除migrations文件夹，结果为No Changes解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC%E4%B8%89%E6%96%B9%E7%9F%AD%E4%BF%A1%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%8E%A5%E5%85%A5"><span class="nav-text">四、第三方短信平台的接入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Celery%E5%8F%8A%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-text">五、Celery及异步任务的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Win10%E5%90%AF%E5%8A%A8Celery%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-Task-handler-raised-error-ValueError-not-enough-values-to-unpack"><span class="nav-text">Win10启动Celery报错解决方案 Task handler raised error: ValueError: not enough values to unpack</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81RESTful%E4%B8%8E%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB"><span class="nav-text">六、RESTful与前后端分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-text">七、状态码及异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Cookie%E3%80%81Session%E6%9C%BA%E5%88%B6%E5%89%96%E6%9E%90"><span class="nav-text">八、Cookie、Session机制剖析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81Django%E4%B8%AD%E7%9A%84Form%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="nav-text">九、Django中的Form表单验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E5%8F%8A%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">日志、缓存、及分布式数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86"><span class="nav-text">一、日志处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">三、分布式数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%EF%BC%8C%E5%8F%8A%E4%B8%8A%E7%BA%BF%E9%83%A8%E7%BD%B2"><span class="nav-text">服务器性能，及上线部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B9%B6%E5%8F%91%E6%80%A7%E8%83%BD"><span class="nav-text">一、并发性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">七、服务器架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="nav-text">八、动静分离</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Private</p>
+  <div class="site-description" itemprop="description">程序语言记录</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Private</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
