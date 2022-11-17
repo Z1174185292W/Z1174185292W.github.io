@@ -678,7 +678,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-08 16:32:37" itemprop="dateModified" datetime="2022-11-08T16:32:37+08:00">2022-11-08</time>
+                <time title="修改时间：2022-11-17 16:17:14" itemprop="dateModified" datetime="2022-11-17T16:17:14+08:00">2022-11-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1327,7 +1327,7 @@
 <li><p>Gunicorn扮演HTTPServer的角色</p>
 </li>
 <li><p>HTTPServer：只负责网络连接（TCP握手、数据收发）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gunicorn -c swiper/gunicorn-config.py swiper.wsgi <span class="comment"># 启动gunicorn</span></span><br><span class="line">watch -n 0.5 <span class="string">&#x27;ps aux | grep -v grep | grep gunicorn&#x27;</span> <span class="comment"># 实时查看gunicorn运行情况</span></span><br><span class="line">watch -n 0.5 <span class="string">&quot;ps aux | grep -v grep | grep gunicorn | awk &#x27;&#123;print \$2&#125;&#x27;&quot;</span> <span class="comment"># 实时查看gunicorn运行的进程ID</span></span><br><span class="line"><span class="built_in">cat</span> logs/gunicorn.pid <span class="comment"># 查看gunicorn主进程（master）</span></span><br><span class="line"><span class="built_in">kill</span> -HUP &lt;master ID&gt; <span class="comment"># nginx不间断重启</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gunicorn -c swiper/gunicorn-config.py swiper.wsgi <span class="comment"># 启动gunicorn</span></span><br><span class="line">watch -n 0.5 <span class="string">&#x27;ps aux | grep -v grep | grep gunicorn&#x27;</span> <span class="comment"># 实时查看gunicorn运行情况</span></span><br><span class="line">watch -n 0.5 <span class="string">&quot;ps aux | grep -v grep | grep gunicorn | awk &#x27;&#123;print \$2&#125;&#x27;&quot;</span> <span class="comment"># 实时查看gunicorn运行的进程ID</span></span><br><span class="line"><span class="built_in">cat</span> logs/gunicorn.pid <span class="comment"># 查看gunicorn主进程（master）</span></span><br><span class="line"><span class="built_in">kill</span> -HUP &lt;master ID&gt; <span class="comment"># nginx不间断重启</span></span><br><span class="line">ps aux | grep -v grep | grep &lt;app&gt; | awk <span class="string">&quot;&#123;print \$2&#125;&quot;</span> | xargs <span class="built_in">kill</span> <span class="comment"># xargs 前面的输出结果作为参数传给后面</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>报错：</strong> <strong>django.core.exceptions.ImproperlyConfigured</strong>: Requested setting REDIS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.</p>
 <p>注意在脚本中添加：</p>
