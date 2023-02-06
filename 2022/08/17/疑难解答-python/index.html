@@ -41,8 +41,16 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2e83a4ea95e44d30ba8f7dad5f2ce343.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/31924b5683e64ef3bc5efcb4fce45e6c.png">
 <meta property="og:image" content="https://ghost.oss.sherlocky.com/2/b6/005d8038088246fa2ef2ff24fa7b9.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/311516/201803/311516-20180301092953310-1075957612.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/311516/201803/311516-20180301093125715-1619631377.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5015daebd7d242448cf67ce5a320a52c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/cd4f4ed238364438bbe9f4d8f90a3153.png">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-8223537/f923a908cfb9c07d8f96becaccfdbc87.png?imageView2/2/w/1620">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-8223537/3c84fc7008f2cf8f43c7fe78c21a43cb.png?imageView2/2/w/1620">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-8223537/638de9483aeab44a398e8e9d67d19b0d.png?imageView2/2/w/1620">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-8223537/399360a3793f6aca890fbb1835721664.png?imageView2/2/w/1620">
 <meta property="article:published_time" content="2022-08-17T02:16:24.923Z">
-<meta property="article:modified_time" content="2022-10-19T04:46:21.836Z">
+<meta property="article:modified_time" content="2023-01-23T05:51:04.760Z">
 <meta property="article:author" content="Private">
 <meta property="article:tag" content="问题排除记录">
 <meta name="twitter:card" content="summary">
@@ -152,7 +160,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -240,7 +248,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-19 12:46:21" itemprop="dateModified" datetime="2022-10-19T12:46:21+08:00">2022-10-19</time>
+                <time title="修改时间：2023-01-23 13:51:04" itemprop="dateModified" datetime="2023-01-23T13:51:04+08:00">2023-01-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,6 +431,132 @@
 <p>方法二：<br>在使用 pip 的终端设置正确的 https 代理</p>
 <p>临时设置命令为: set https_proxy=<a href="http://127.0.0.1:port(自己的本地代理端口号)">http://127.0.0.1:port(自己的本地代理端口号)</a></p>
 <p>长期设置 or 终端启动 自动设置代理请自行 google 或者 bing</p>
+<h1 id="pip-install-weditor安装出错解决方法"><a href="#pip-install-weditor安装出错解决方法" class="headerlink" title="pip install weditor安装出错解决方法"></a>pip install weditor安装出错解决方法</h1><p>报错信息：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Looking in indexes: https:<span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">Collecting weditor</span><br><span class="line">Using cachedhttps:<span class="comment">//pypi.tuna.tsinghua.edu.cn/packages/04/9b/ec6c2b8ab08fecd21d98121e2b91244632d1836669bb9c917ff01406bd1a/wedito</span></span><br><span class="line">r<span class="number">-0.6</span><span class="number">.5</span>.tar.gz (<span class="number">2.2</span> MB)</span><br><span class="line">Preparing <span class="title function_">metadata</span> <span class="params">(setup.py)</span> ... error</span><br><span class="line">error: subprocess-exited-with-error</span><br><span class="line"></span><br><span class="line">× python setup.py egg_info did not run successfully.</span><br><span class="line">│ <span class="built_in">exit</span> code: 1</span><br><span class="line">╰─&gt; [34 lines of output]</span><br><span class="line">WARNING: Ignoring invalid distribution -pencv-<span class="title function_">python</span> <span class="params">(c:\users\administrator.desktop<span class="number">-3488</span>grn\appdata\roaming\python\python38</span></span><br><span class="line"><span class="params">site-packages)</span></span><br><span class="line">WARNING: Ignoring invalid distribution -<span class="title function_">ip</span> <span class="params">(e:\ziyuanbao\lib\site-packages)</span></span><br><span class="line">E:\ziyuanbao\lib\site-packages\setuptools\dist.py:738: UserWarning: Usage of dash-separated &#x27;author-email&#x27; will not be suppor</span><br><span class="line">ted in <span class="built_in">future</span> versions. Please use the underscore name &#x27;author_email&#x27; instead</span><br><span class="line">warnings.<span class="title function_">warn</span><span class="params">(</span></span><br><span class="line"><span class="params">E:\ziyuanbao\lib\site-packages\setuptools\dist.py:<span class="number">738</span>: UserWarning: Usage of dash-separated <span class="string">&#x27;home-page&#x27;</span> will not be supported</span></span><br><span class="line"><span class="params">in <span class="built_in">future</span> versions. Please use the underscore name <span class="string">&#x27;home_page&#x27;</span> instead</span></span><br><span class="line"><span class="params">warnings.warn(</span></span><br><span class="line"><span class="params">E:\ziyuanbao\lib\site-packages\setuptools\dist.py:<span class="number">738</span>: UserWarning: Usage of dash-separated <span class="string">&#x27;description-file&#x27;</span> will not be su</span></span><br><span class="line"><span class="params">pported in <span class="built_in">future</span> versions. Please use the underscore name <span class="string">&#x27;description_file&#x27;</span> instead</span></span><br><span class="line"><span class="params">warnings.warn(</span></span><br><span class="line"><span class="params">E:\ziyuanbao\lib\site-packages\pkg_resources_init.py:<span class="number">122</span>: PkgResourcesDeprecationWarning: <span class="number">4.0</span><span class="number">.0</span>-unsupported is an invalid</span></span><br><span class="line"><span class="params">version and will not be supported in a <span class="built_in">future</span> release</span></span><br><span class="line"><span class="params">warnings.warn(</span></span><br><span class="line"><span class="params">E:\ziyuanbao\lib\site-packages\setuptools\installer.py:<span class="number">27</span>: SetuptoolsDeprecationWarning: setuptools.installer is deprecated.</span></span><br><span class="line"><span class="params">Requirements should be satisfied by a PEP <span class="number">517</span> installer.</span></span><br><span class="line"><span class="params">warnings.warn(</span></span><br><span class="line"><span class="params">Error parsing</span></span><br><span class="line"><span class="params">Traceback (most recent call last):</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\core.py&quot;</span>, line <span class="number">111</span>, in pbr</span></span><br><span class="line"><span class="params">attrs = util.cfg_to_args(path, dist.script_args)</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\util.py&quot;</span>, line <span class="number">272</span>, in cfg_to_args</span></span><br><span class="line"><span class="params">pbr.hooks.setup_hook(config)</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\hooks_init.py&quot;</span>, line <span class="number">25</span>, in setup_hook</span></span><br><span class="line"><span class="params">metadata_config.run()</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\hooks\base.py&quot;</span>, line <span class="number">27</span>, in run</span></span><br><span class="line"><span class="params">self.hook()</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\hooks\metadata.py&quot;</span>, line <span class="number">25</span>, in hook</span></span><br><span class="line"><span class="params">self.config[<span class="string">&#x27;version&#x27;</span>] = packaging.get_version(</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\packaging.py&quot;</span>, line <span class="number">860</span>, in get_version</span></span><br><span class="line"><span class="params">version =get_version_from_pkg_metadata(package_name)</span></span><br><span class="line"><span class="params">File <span class="string">&quot;c:\users\administrator.desktop-3488grn\appdata\local\temp\pip-install-c_1owwyj\weditor_c837051f5af04a9893def95fbce5da</span></span></span><br><span class="line"><span class="string"><span class="params">7e.eggs\pbr-5.8.1-py3.8.egg\pbr\packaging.py&quot;</span>, line <span class="number">828</span>, in get_version_from_pkg_metadata</span></span><br><span class="line"><span class="params">pkg_metadata = email.message_from_file(pkg_metadata_file)</span></span><br><span class="line"><span class="params">File <span class="string">&quot;E:\ziyuanbao\lib\email_init.py&quot;</span>, line <span class="number">54</span>, in message_from_file</span></span><br><span class="line"><span class="params"><span class="keyword">return</span> Parser(*args, **kws).parse(fp)</span></span><br><span class="line"><span class="params">File <span class="string">&quot;E:\ziyuanbao\lib\email\parser.py&quot;</span>, line <span class="number">53</span>, in parse</span></span><br><span class="line"><span class="params">data = fp.read(<span class="number">8192</span>)</span></span><br><span class="line"><span class="params">UnicodeDecodeError: <span class="string">&#x27;gbk&#x27;</span> codec can<span class="string">&#x27;t decode byte 0xad in position 825: illegal multibyte sequence</span></span></span><br><span class="line"><span class="string"><span class="params">error in setup command: Error parsing C:\Users\Administrator.DESKTOP-3488GRN\AppData\Local\Temp\pip-install-c_1owwyj\weditor</span></span></span><br><span class="line"><span class="string"><span class="params">c837051f5af04a9893def95fbce5da7e\setup.cfg: UnicodeDecodeError: &#x27;</span>gbk<span class="string">&#x27; codec can&#x27;</span>t decode byte <span class="number">0xad</span> in position <span class="number">825</span>: illegal multiby</span></span><br><span class="line"><span class="params">te sequence</span></span><br><span class="line"><span class="params">[end of output]</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">note: This error originates from a subprocess, and is likely not a problem with pip.</span></span><br><span class="line"><span class="params">error: metadata-generation-failed</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">× Encountered error <span class="keyword">while</span> generating package metadata.</span></span><br><span class="line"><span class="params">╰─&gt; See above <span class="keyword">for</span> output.</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">note: This is an issue with the package mentioned above, not pip.</span></span><br><span class="line"><span class="params">hint: See above <span class="keyword">for</span> details.</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/openatx/weditor</span></span><br><span class="line">pip3 install -e weditor</span><br></pre></td></tr></table></figure>
+
+<h1 id="小米手机Uiautomator启动失败问题-uiautomator2-GatewayError报错"><a href="#小米手机Uiautomator启动失败问题-uiautomator2-GatewayError报错" class="headerlink" title="小米手机Uiautomator启动失败问题 uiautomator2.GatewayError报错"></a>小米手机Uiautomator启动失败问题 uiautomator2.GatewayError报错</h1><p>先看报错:</p>
+<p><code>WinError adb shell am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/android.support.test.runner.AndroidJUnitRunner] uiautomator2.GatewayError</code><br>打开 <a target="_blank" rel="noopener" href="https://github.com/openatx/uiautomator2/wiki/Common-issues">Common issues · openatx/uiautomator2 Wiki · GitHub</a></p>
+<p>是说 app-uiautomator.apk or app-uiautomator-test.apk not installed. 但是实际用</p>
+<p><code>python -m uiautomator2 init</code><br>是没有任何报错的，而且可以看到上面的两个app安装成功的信息，所以问题点不在uiautomator app安装失败。</p>
+<p>解决方案：</p>
+<p>打开小米手机的设置—开启开发者选项—开启USB调试—开启USB安装—开启USB调试（安全设置）—-开启通过USB验证应用（默认开启）—-开启无线显示认证（可选择），关键选项，必须不要启用MIUI优化，操作完上述设置，然后再执行 python -m uiautomator2 init （不会报错），就可以执行相关脚本了。</p>
+<h1 id="uiautomator2-使用Python测试-Android应用"><a href="#uiautomator2-使用Python测试-Android应用" class="headerlink" title="uiautomator2 使用Python测试 Android应用"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fnng/p/8486863.html">uiautomator2 使用Python测试 Android应用</a></h1><p>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/openatx/uiautomator2">https://github.com/openatx/uiautomator2</a></p>
+<p>###介绍</p>
+<p>uiautomator2 是一个可以使用Python对Android设备进行UI自动化的库。其底层基于Google uiautomator，Google提供的uiautomator库可以获取屏幕上任意一个APP的任意一个控件属性，并对其进行任意操作，但有两个缺点：</p>
+<p>1、测试脚本只能使用Java语言。</p>
+<p>2、测试脚本必须每次被上传到设备上运行。 我们希望测试能够用一个更脚本化的语言，例如Python编写，同时可以每次所见即所得地修改测试、运行测试。</p>
+<p>###安装</p>
+<p>安装uiautomator2</p>
+<pre><code>pip install --pre uiautomator2
+
+pip install pillow
+</code></pre>
+<p>###初始化</p>
+<p>部署相关的守护进程。</p>
+<p>电脑连接上一个手机或多个手机, 确保adb已经添加到环境变量中，执行下面的命令会自动安装本库所需要的设备端程序：uiautomator-server 、atx-agent、openstf/minicap、openstf/minitouch</p>
+<pre><code>python -m uiautomator2 init
+</code></pre>
+<p>安装完成，设备上会多一个uiautomator的应用。</p>
+<p>配置手机设备参数：</p>
+<p>有两种方法，一种是通过WIFI，另一种是通过USB数据线将手机链接电脑。</p>
+<p>WiFi连接更方便一点，需要保持PC和手机使用的一个WIFI，查看手机连接WIFI的IP地址。</p>
+<p><img src="https://images2018.cnblogs.com/blog/311516/201803/311516-20180301092953310-1075957612.png"></p>
+<p>###测试</p>
+<p>编写以下脚本进行验证：</p>
+<pre><code>import uiautomator2 as u2
+
+d = u2.connect(&#39;192.168.31.234&#39;)
+print(d.info)
+</code></pre>
+<p>运行结果：</p>
+<p>###定位元素：</p>
+<p>我们可以借助Android SDK自的uiautomatorviewer查看元素，这就要求手机必须以USB的方式连接PC，我前面使用的是WIFI连接进行连接的。所以，openatx提供了另外一个工具weditor 来解决这个问题。</p>
+<p>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/openatx/weditor">https://github.com/openatx/weditor</a></p>
+<p>1、安装：</p>
+<pre><code>pip install --pre --upgrade weditor
+</code></pre>
+<p>2、使用：</p>
+<pre><code>python3 -m weditor
+</code></pre>
+<p>默认会通过浏览器打开页面：<a target="_blank" rel="noopener" href="http://atx.open.netease.com/">http://atx.open.netease.com/</a></p>
+<p><img src="https://images2018.cnblogs.com/blog/311516/201803/311516-20180301093125715-1619631377.png"></p>
+<p>在页面左上角选择Android，输入设备IP（192.168.31.234），点击Connect按钮。</p>
+<p>当我们操作完手机后，可以点击“Reload”按钮进行刷新，从而保持与设备上的界面保持同步。weditor 还可以帮我们生成代码。总之，你研究一下就会用了。</p>
+<p>###编写测试脚本</p>
+<p>这里针对魅族社区App进行测试。</p>
+<pre><code>import uiautomator2 as u2
+from time import sleep
+
+d = u2.connect(&#39;192.168.31.234&#39;)
+
+# 启动App
+d.app_start(&quot;com.meizu.mzbbs&quot;)
+
+# 搜索
+d(resourceId=&quot;com.meizu.mzbbs:id/j0&quot;).click()
+
+# 输入关键字
+d(resourceId=&quot;com.meizu.mzbbs:id/p9&quot;).set_text(&quot;flyme&quot;)
+
+# 搜索按钮
+d(resourceId=&quot;com.meizu.mzbbs:id/tp&quot;).click()
+
+sleep(2)
+
+# 停止app
+d.app_stop(&quot;com.meizu.mzbbs&quot;) 
+</code></pre>
+<p>app_start()和app_stop()用于启动和停止应用。</p>
+<p>常用的定位方式：</p>
+<ul>
+<li>ResourceId定位：<br>  d(resourceId=”com.meizu.mzbbs:id/tp”).click()</li>
+<li>Text定位：<br>  d(text=”精选”).click()</li>
+<li>Description定位：<br>  d(description=”..”).click()</li>
+<li>ClassName定位：<br>  d(className=”android.widget.TextView”).click()</li>
+</ul>
+<p><strong>小结</strong>：其实关注该项目已经好几个月了，目前该项目已经趋于稳定，整个测试环境的搭建过程也要比Appium简单得多。</p>
+<h1 id="requests库中使用response-json-报错：json-decoder-JSONDecodeError-Expecting-value"><a href="#requests库中使用response-json-报错：json-decoder-JSONDecodeError-Expecting-value" class="headerlink" title="requests库中使用response.json()报错：json.decoder.JSONDecodeError: Expecting value"></a>requests库中使用response.json()报错：json.decoder.JSONDecodeError: Expecting value</h1><p>本文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Gabriel_wei/article/details/125843426">https://blog.csdn.net/Gabriel_wei/article/details/125843426</a></p>
+<p> 报错</p>
+<p><img src="https://img-blog.csdnimg.cn/5015daebd7d242448cf67ce5a320a52c.png"></p>
+<p>原因</p>
+<p>请求得到的数据，不是标准的json格式数据，不能采用<code>response.json()</code>函数解析，采用<code>response.text</code>查看一下数据格式，发现多了jQueryxxxxxxxxx<br><img src="https://img-blog.csdnimg.cn/cd4f4ed238364438bbe9f4d8f90a3153.png"></p>
+<p>解决</p>
+<p>数据请求的地址为</p>
+<pre><code>url = &#39;https://liveapi.huya.com/moment/getMomentContent?callback=jQuery1124023700002544508125_1658109026112&amp;videoId=699727183&amp;uid=&amp;_=1658109026118&#39;
+</code></pre>
+<p>将地址里面的callback删除，变为</p>
+<pre><code>url = &#39;https://liveapi.huya.com/moment/getMomentContent?videoId=699727183&amp;uid=&amp;_=1658109026118&#39;
+</code></pre>
+<p>改变url请求地址以后，再次使用<code>response.json()</code>就可以了</p>
+<h1 id="python中一次替换字符串中的多个字符-通俗易懂"><a href="#python中一次替换字符串中的多个字符-通俗易懂" class="headerlink" title="python中一次替换字符串中的多个字符[通俗易懂]"></a>python中一次替换字符串中的多个字符[通俗易懂]</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-reg-expressions.html">https://www.runoob.com/python/python-reg-expressions.html</a></p>
+<p>先直接上解决方案：</p>
+<p>比如下面给出的字符串a，有字母、’（单引号）、\n（换行符）、数字、：（冒号）、，（逗号），目标是只保留字符串中的数字和字母，且看我如何操作。</p>
+<pre><code>import re
+a=&#39;eew \&#39; eawr,2 fd\n sa:21&#39;
+
+b=re.sub(r&#39;[\&#39;:\s ,]*&#39;, &#39;&#39;, a) # 前面是正则表达式，匹配多种字符（串）
+print(b)
+</code></pre>
+<p>复制</p>
+<p>具体运行展示一下：</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-8223537/f923a908cfb9c07d8f96becaccfdbc87.png?imageView2/2/w/1620"></p>
+<p>解释一下这个正则表达式的意思：r’[\’:\s ,]*’</p>
+<p>1：添加r，说明该字符串中全为普通字符（可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangxinrun/article/details/8124333">以r或u开头的字符串</a>，按评论里<a target="_blank" rel="noopener" href="https://me.csdn.net/IwillbecomeAIgod">IwillbecomeAIgod</a>同学的说法是用于防转义），常用于正则表达式</p>
+<p>2：[]内是一个字符集，字符集内的字符任何一个被匹配，都算匹配成功，比如r’a[bcd]e’，可以匹配到’abe’、’ace’、’ade’。</p>
+<p>3：*代表匹配前一个字符0次或无限次。</p>
+<p>4：\s代表的是空白字符，比如空格、换行符、制表符等等。</p>
+<p>于是r’[\’:\s ,]*’组合起来就是匹配字符串中所有的的‘（单引号）、\n（换行符）、：（冒号）、，（逗号）</p>
+<p>最后re.sub(a, b, string)表示将string中a所匹配到的所有字符通通替换成b，我们这个例子就是将匹配到的’（单引号）、\n（换行符）、：（冒号）、，（逗号）通通替换成”（nothing）。</p>
+<p>关于<a target="_blank" rel="noopener" href="https://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html">正则表达式</a>，另外我是受了<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4c076da1b7f7">这篇文章</a>的启发（在此感谢）：启发就是re.sub可以传给他正则表达式。</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-8223537/3c84fc7008f2cf8f43c7fe78c21a43cb.png?imageView2/2/w/1620"></p>
+<p>在此之前，先试了一下用正则表达式来匹配多个字符串，然后用<a target="_blank" rel="noopener" href="http://www.runoob.com/python/att-string-replace.html">replace</a>方法行不通，但这个思路也是很正确的，最终还是帮我解决了问题。先看replace：</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-8223537/638de9483aeab44a398e8e9d67d19b0d.png?imageView2/2/w/1620"></p>
+<p>看看在replace中用上面提到的思路是什么结果：</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-8223537/399360a3793f6aca890fbb1835721664.png?imageView2/2/w/1620"></p>
+<p>看到了吗，我的正则表达式可没写错，是replace不行，就是说replace不接受我的正则表达式。</p>
 
     </div>
 
@@ -506,7 +640,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-text">python虚拟环境的常见命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#notes"><span class="nav-text">notes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-flask-flask-script-%E6%8A%A5%E9%94%99%EF%BC%9AModuleNotFoundError-No-module-named-%E2%80%98flask-compat%E2%80%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">Python flask flask_script 报错：ModuleNotFoundError: No module named ‘flask._compat’解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91Python-3-10-%E4%BD%BF%E7%94%A8pdf2docx%E6%8A%A5%E9%94%99ImportError-cannot-import-name-%E2%80%98Iterable%E2%80%98-from-%E2%80%98collections%E2%80%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">【已解决】Python 3.10 使用pdf2docx报错ImportError:cannot import name ‘Iterable‘ from ‘collections‘的解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cannot-import-name-%E2%80%98Mapping%E2%80%98-from-%E2%80%98collections%E2%80%98"><span class="nav-text">cannot import name ‘Mapping‘ from ‘collections‘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AttributeError-module-%E2%80%98collections%E2%80%98-has-no-attribute-%E2%80%98MutableMapping%E2%80%98"><span class="nav-text">AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content-Type%E6%A0%87%E5%A4%B4%E6%9C%AA%E5%9C%A8Tornado%E4%B8%AD%E8%AE%BE%E7%BD%AE"><span class="nav-text">Content-Type标头未在Tornado中设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E6%8A%A5-DeprecationWarning-%E2%80%9C-coroutine%E2%80%9D-decorator-%E2%80%A6-use-%E2%80%9Casync-def%E2%80%9D-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">python报 DeprecationWarning: “@coroutine” decorator …. use “async def” 解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DeprecationWarning-There-is-no-current-event-loop"><span class="nav-text">DeprecationWarning: There is no current event loop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Django%E7%AE%A1%E7%90%86%E5%91%98%E5%9C%A8%E5%90%8E%E5%8F%B0%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E5%87%BA%E7%8E%B0no-such-table-main-auth-user-old%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">使用Django管理员在后台添加数据库时出现no such table: main.auth_user__old解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TemplateDoesNotExist-at"><span class="nav-text">TemplateDoesNotExist at&#x2F;****</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-text">Windows 下安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pip-install-%E6%8A%A5%E9%94%99Caused-by-SSLError-SSLEOFError-8-%E2%80%98EOF-occurred-in-violation-of-protocol"><span class="nav-text">pip install 报错Caused by SSLError(SSLEOFError(8, ‘EOF occurred in violation of protocol</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-text">python虚拟环境的常见命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#notes"><span class="nav-text">notes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-flask-flask-script-%E6%8A%A5%E9%94%99%EF%BC%9AModuleNotFoundError-No-module-named-%E2%80%98flask-compat%E2%80%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">Python flask flask_script 报错：ModuleNotFoundError: No module named ‘flask._compat’解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91Python-3-10-%E4%BD%BF%E7%94%A8pdf2docx%E6%8A%A5%E9%94%99ImportError-cannot-import-name-%E2%80%98Iterable%E2%80%98-from-%E2%80%98collections%E2%80%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">【已解决】Python 3.10 使用pdf2docx报错ImportError:cannot import name ‘Iterable‘ from ‘collections‘的解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cannot-import-name-%E2%80%98Mapping%E2%80%98-from-%E2%80%98collections%E2%80%98"><span class="nav-text">cannot import name ‘Mapping‘ from ‘collections‘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AttributeError-module-%E2%80%98collections%E2%80%98-has-no-attribute-%E2%80%98MutableMapping%E2%80%98"><span class="nav-text">AttributeError: module ‘collections‘ has no attribute ‘MutableMapping‘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content-Type%E6%A0%87%E5%A4%B4%E6%9C%AA%E5%9C%A8Tornado%E4%B8%AD%E8%AE%BE%E7%BD%AE"><span class="nav-text">Content-Type标头未在Tornado中设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E6%8A%A5-DeprecationWarning-%E2%80%9C-coroutine%E2%80%9D-decorator-%E2%80%A6-use-%E2%80%9Casync-def%E2%80%9D-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">python报 DeprecationWarning: “@coroutine” decorator …. use “async def” 解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DeprecationWarning-There-is-no-current-event-loop"><span class="nav-text">DeprecationWarning: There is no current event loop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Django%E7%AE%A1%E7%90%86%E5%91%98%E5%9C%A8%E5%90%8E%E5%8F%B0%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E5%87%BA%E7%8E%B0no-such-table-main-auth-user-old%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">使用Django管理员在后台添加数据库时出现no such table: main.auth_user__old解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TemplateDoesNotExist-at"><span class="nav-text">TemplateDoesNotExist at&#x2F;****</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-text">Windows 下安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pip-install-%E6%8A%A5%E9%94%99Caused-by-SSLError-SSLEOFError-8-%E2%80%98EOF-occurred-in-violation-of-protocol"><span class="nav-text">pip install 报错Caused by SSLError(SSLEOFError(8, ‘EOF occurred in violation of protocol</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pip-install-weditor%E5%AE%89%E8%A3%85%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">pip install weditor安装出错解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BAUiautomator%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98-uiautomator2-GatewayError%E6%8A%A5%E9%94%99"><span class="nav-text">小米手机Uiautomator启动失败问题 uiautomator2.GatewayError报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uiautomator2-%E4%BD%BF%E7%94%A8Python%E6%B5%8B%E8%AF%95-Android%E5%BA%94%E7%94%A8"><span class="nav-text">uiautomator2 使用Python测试 Android应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#requests%E5%BA%93%E4%B8%AD%E4%BD%BF%E7%94%A8response-json-%E6%8A%A5%E9%94%99%EF%BC%9Ajson-decoder-JSONDecodeError-Expecting-value"><span class="nav-text">requests库中使用response.json()报错：json.decoder.JSONDecodeError: Expecting value</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E4%B8%AD%E4%B8%80%E6%AC%A1%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82"><span class="nav-text">python中一次替换字符串中的多个字符[通俗易懂]</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -520,7 +654,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -560,7 +694,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
